@@ -437,6 +437,51 @@ def fetch_financial_news(query: str, lookback_hours: int = 6) -> list[dict]:
         return []
 
 
+# Absolute sanity bounds for a KLSE share price scraped from
+# malaysiastock.biz. Regex-matched HTML has no schema guarantee -- a site
+# redesign can make a match land on an unrelated number (a volume figure,
+# a percentage, a table index). This is a coarse, ticker-agnostic floor/
+# ceiling; per-ticker deviation-from-last-known-price checking happens
+# downstream in buffett/scanner.py, which has DB access to a prior
+# snapshot and this module deliberately doesn't.
+KLSE_PRICE_MIN = 0.01
+KLSE_PRICE_MAX = 1_000.0
+
+
+def _is_plausible_klse_price(price) -> bool:
+    """Coarse sanity check for a scraped KLSE price: a real number in a
+    plausible absolute range, not the product of a regex matching the
+    wrong element on a redesigned page."""
+    try:
+        price = float(price)
+    except (TypeError, ValueError):
+        return False
+    return KLSE_PRICE_MIN <= price <= KLSE_PRICE_MAX
+
+
+def _http_get_with_retry(url: str, headers: dict, timeout: float,
+                         max_attempts: int = 3, backoff_seconds: float = 1.0):
+    """GET with retry/backoff for transient failures (timeouts, connection
+    errors, 5xx). malaysiastock.biz previously had zero retries -- a single
+    transient network hiccup meant total failure for that ticker's scan,
+    with no distinction from a genuine site outage."""
+    last_exc = None
+    for attempt in range(1, max_attempts + 1):
+        try:
+            response = httpx.get(url, headers=headers, timeout=timeout, follow_redirects=True)
+            if response.status_code >= 500 and attempt < max_attempts:
+                last_exc = Exception(f"HTTP {response.status_code}")
+                time.sleep(backoff_seconds * attempt)
+                continue
+            response.raise_for_status()
+            return response
+        except (httpx.TimeoutException, httpx.ConnectError, httpx.HTTPStatusError) as e:
+            last_exc = e
+            if attempt < max_attempts:
+                time.sleep(backoff_seconds * attempt)
+    raise last_exc
+
+
 def _extract_price_from_i3soup(soup: BeautifulSoup) -> Optional[float]:
     """
     Extract current stock price from page HTML.
@@ -460,11 +505,12 @@ def _extract_price_from_i3soup(soup: BeautifulSoup) -> Optional[float]:
                         match = re.search(r'[\d,]+\.\d{2}', price_text.replace(',', ''))
                         if match:
                             try:
-                                price = float(match.group().replace(',', ''))
-                                return price
+                                candidate = float(match.group().replace(',', ''))
+                                if _is_plausible_klse_price(candidate):
+                                    return candidate
                             except:
                                 pass
-    
+
     # Strategy 2: Look for patterns in page text
     page_text = soup.get_text()
     price_patterns = [
@@ -476,21 +522,23 @@ def _extract_price_from_i3soup(soup: BeautifulSoup) -> Optional[float]:
         match = re.search(pattern, page_text, re.IGNORECASE)
         if match:
             try:
-                price = float(match.group(1).replace(',', ''))
-                return price
+                candidate = float(match.group(1).replace(',', ''))
+                if _is_plausible_klse_price(candidate):
+                    return candidate
             except:
                 pass
-    
+
     # Strategy 3: Look for any RM X.XX pattern in prominent elements
     for elem in soup.find_all(['span', 'div', 'td']):
         text = elem.get_text(strip=True)
         if text.startswith('RM') and re.match(r'RM\s*[\d,]+\.\d{2}', text):
             try:
-                price = float(text.replace('RM', '').replace(',', '').strip())
-                return price
+                candidate = float(text.replace('RM', '').replace(',', '').strip())
+                if _is_plausible_klse_price(candidate):
+                    return candidate
             except:
                 pass
-    
+
     return price
 
 
@@ -526,9 +574,8 @@ def scrape_malaysiastock(bursa_code: str, get_price_only: bool = False) -> Optio
             'Referer': 'https://www.malaysiastock.biz/',
         }
         
-        response = httpx.get(url, headers=headers, timeout=15.0, follow_redirects=True)
-        response.raise_for_status()
-        
+        response = _http_get_with_retry(url, headers=headers, timeout=15.0)
+
         soup = BeautifulSoup(response.content, 'html.parser')
         
         # Extract price from the page
@@ -550,8 +597,10 @@ def scrape_malaysiastock(bursa_code: str, get_price_only: bool = False) -> Optio
                     if 'vwap' in label_text:
                         price_match = re.search(r'\d{1,3}\.\d{2,3}', cell_text)
                         if price_match:
-                            price = float(price_match.group())
-                            break
+                            candidate = float(price_match.group())
+                            if _is_plausible_klse_price(candidate):
+                                price = candidate
+                                break
                 # If no VWAP, look for any price in the buy/sell section
                 if not price:
                     for i, cell in enumerate(cells):
@@ -560,7 +609,7 @@ def scrape_malaysiastock(bursa_code: str, get_price_only: bool = False) -> Optio
                         price_match = re.search(r'(^|\s)(\d{1,3}\.\d{2,3})', cell_text)
                         if price_match:
                             potential_price = float(price_match.group(2))
-                            if 0.01 <= potential_price <= 1000:
+                            if _is_plausible_klse_price(potential_price):
                                 # Prefer the sell price (usually second price)
                                 if not price:
                                     price = potential_price
@@ -575,19 +624,26 @@ def scrape_malaysiastock(bursa_code: str, get_price_only: bool = False) -> Optio
         
         # Strategy 3: Look for the main price display in the summary
         if not price:
-            for elem in soup.find_all(text=re.compile(r'\d{1,3}\.\d{2}')):
+            for elem in soup.find_all(string=re.compile(r'\d{1,3}\.\d{2}')):
                 parent = elem.parent
                 if parent:
                     parent_text = parent.get_text(strip=True)
                     if re.match(r'^\d{1,3}\.\d{2}$', parent_text):
                         try:
                             potential_price = float(parent_text)
-                            if 0.01 <= potential_price <= 1000:
+                            if _is_plausible_klse_price(potential_price):
                                 price = potential_price
                                 break
                         except:
                             pass
-        
+
+        # Strategy 4: fall back to the generic (Last Price / Price /
+        # Current Price label-based) extraction, which uses different
+        # patterns than strategies 1-3 above and catches page layouts
+        # those miss.
+        if not price:
+            price = _extract_price_from_i3soup(soup)
+
         # Price-only mode
         if get_price_only:
             return {'price': price} if price else None

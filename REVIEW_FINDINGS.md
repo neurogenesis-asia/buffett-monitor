@@ -345,10 +345,54 @@ assertions, and there was no automated check on scan output quality.
 
 **Result after #4–#9 + settings**: `pytest tests/` → 88 passed, 0 failed.
 
-## Remaining recommendations (not yet started)
+### #10 — Hardened the malaysiastock.biz scraper (real-vendor swap out of scope)
+Replacing the scraper with a real paid data vendor is a cost/contract
+decision for the user, not something to implement unilaterally. Did the
+achievable half — sanity checks — instead:
 
-10. Replace/harden the malaysiastock.biz scraper with sanity checks or a
-    real vendor.
+- **Fixed an inconsistency that was the exact complaint in the original
+  review**: `scrape_malaysiastock`'s VWAP-cell price match (`buffett/
+  fetchers.py`) had *no* plausibility bound at all, while its other two
+  strategies had an inline `0.01 <= x <= 1000` check. Extracted a single
+  `_is_plausible_klse_price()` helper (`KLSE_PRICE_MIN`/`KLSE_PRICE_MAX`)
+  and applied it consistently across every extraction path, including the
+  previously-unchecked VWAP branch.
+- **Found and put to use another dead-code instance of the same pattern
+  as `SLIPPAGE_BPS` (#7)**: `_extract_price_from_i3soup()` — a second,
+  independent "3 strategies to find a price" implementation — was fully
+  defined but never called anywhere. Rather than leaving two duplicate,
+  half-maintained extraction paths, wired it in as a 4th fallback
+  strategy inside `scrape_malaysiastock` (different regex patterns catch
+  different page layouts, so this is genuine added resilience, not just
+  cleanup).
+- **Added retry/backoff** (`_http_get_with_retry`, up to 3 attempts) for
+  transient failures (timeouts, connection errors, 5xx) — previously a
+  single network hiccup meant total scraper failure for that ticker, with
+  no distinction from a genuine outage.
+- **Added the actual "sanity-check against last-known price" the review
+  asked for**, in `buffett/scanner.py`'s new `_check_price_sanity()`: for
+  scraper-sourced data only (not yfinance/Alpha Vantage, where a large
+  single-day move is plausible), compares the new price against the last
+  known snapshot (via `get_fundamentals_asof` from #8) and flags
+  `DATA_SUSPECT` on a >50% deviation.
+- **Found that this flag was previously completely dormant**: none of
+  the three fetchers (`fetch_yfinance`, `alpha_vantage_fallback`,
+  `scrape_malaysiastock`) ever set `fundamentals_flag` on their returned
+  data, so `decide_signal`'s `DATA_SUSPECT`/`DELISTED` → `AVOID` path
+  (`buffett/scorer.py`) could never actually fire, regardless of data
+  quality. `_check_price_sanity` is now the first thing to ever populate
+  it for real.
+- Replaced the old root-level `test_scraper.py`/`test_fetcher.py` print-
+  scripts (unmocked, hit the real network) with 26 new tests in
+  `tests/test_fetchers.py` plus 5 in `tests/test_scanner.py` for
+  `_check_price_sanity`.
+
+**Result after #4–#10 + settings**: `pytest tests/` → 119 passed, 0 failed.
+
+## All ten items from the original review are now addressed
+(#1–#3 in the first session, #4–#10 plus the agent-model-selection
+request above.) Remaining future work is vendor/cost decisions (#10's
+real-data-vendor swap) rather than code changes.
 
 ## LLM provider note (OpenRouter)
 

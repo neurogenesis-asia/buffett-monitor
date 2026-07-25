@@ -16,7 +16,7 @@ import pytest
 
 from data.init_db import init_database
 from buffett import scanner as scanner_module
-from buffett.scanner import run_weekly_scan, _check_scan_health
+from buffett.scanner import run_weekly_scan, _check_scan_health, _check_price_sanity
 
 
 @pytest.fixture
@@ -247,3 +247,62 @@ def test_check_scan_health_alerts_on_high_failure_rate(monkeypatch):
     _check_scan_health(results)
     assert len(sent) == 1
     assert "failure rate" in sent[0]["message"]
+
+
+# ---------------------------------------------------------------------------
+# _check_price_sanity -- scraper-sourced price deviation flagging (#10)
+# ---------------------------------------------------------------------------
+
+def _seed_prior_snapshot(db_path, ticker, snapshot_date, price):
+    init_database(db_path)
+    conn = sqlite3.connect(db_path)
+    try:
+        conn.execute(
+            "INSERT INTO buffett_universe (ticker, company_name, is_active) VALUES (?, ?, 1)",
+            (ticker, f"{ticker} Inc"),
+        )
+        conn.execute(
+            "INSERT INTO buffett_fundamentals (ticker, snapshot_date, price) VALUES (?, ?, ?)",
+            (ticker, snapshot_date, price),
+        )
+        conn.commit()
+    finally:
+        conn.close()
+
+
+def test_price_sanity_flags_large_deviation_for_scraped_data(db_path):
+    _seed_prior_snapshot(db_path, "ABC.KL", "2026-01-01", 10.0)
+    fundamentals = {"price": 25.0, "data_sources_json": '["malaysiastock"]'}
+    flag = _check_price_sanity("ABC.KL", fundamentals, db_path)
+    assert flag == "DATA_SUSPECT"
+
+
+def test_price_sanity_passes_small_deviation_for_scraped_data(db_path):
+    _seed_prior_snapshot(db_path, "ABC.KL", "2026-01-01", 10.0)
+    fundamentals = {"price": 10.5, "data_sources_json": '["malaysiastock"]'}
+    flag = _check_price_sanity("ABC.KL", fundamentals, db_path)
+    assert flag == "NORMAL"
+
+
+def test_price_sanity_ignores_deviation_for_non_scraped_data(db_path):
+    # Same wild deviation, but sourced from yfinance -- a real, large
+    # single-day price move is plausible for yfinance data (it's not
+    # regex-parsed from unstructured HTML), so this check is scraper-only.
+    _seed_prior_snapshot(db_path, "ABC.KL", "2026-01-01", 10.0)
+    fundamentals = {"price": 25.0, "data_sources_json": '["yfinance"]'}
+    flag = _check_price_sanity("ABC.KL", fundamentals, db_path)
+    assert flag == "NORMAL"
+
+
+def test_price_sanity_no_prior_snapshot_defaults_to_normal(db_path):
+    init_database(db_path)
+    fundamentals = {"price": 10.0, "data_sources_json": '["malaysiastock"]'}
+    flag = _check_price_sanity("NEWTICKER.KL", fundamentals, db_path)
+    assert flag == "NORMAL"
+
+
+def test_price_sanity_preserves_existing_flag_when_no_deviation_check_applies(db_path):
+    init_database(db_path)
+    fundamentals = {"price": 0, "data_sources_json": '["malaysiastock"]', "fundamentals_flag": "LOSS_MAKING"}
+    flag = _check_price_sanity("ABC.KL", fundamentals, db_path)
+    assert flag == "LOSS_MAKING"

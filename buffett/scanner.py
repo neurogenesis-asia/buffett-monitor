@@ -6,14 +6,14 @@ Orchestrates fetching, scoring, and change logging for the entire universe.
 import logging
 import sqlite3
 import sys
-from datetime import date
+from datetime import date, timedelta
 from typing import Dict, List, Tuple
 from pathlib import Path
 
 from buffett.fetchers import fetch_fundamentals
 from buffett.scorer import calculate_graham_number, compute_enhanced_score
 from buffett.moat_llm import judge_moat
-from buffett.sector_stats import compute_sector_stats
+from buffett.sector_stats import compute_sector_stats, get_fundamentals_asof
 from buffett.change_log import diff_previous
 from data.init_db import init_database  # Fixed import path
 from alerts.alert_system import price_alert, signal_alert, fundamental_alert, alert_manager
@@ -55,6 +55,52 @@ def _generate_signal_reason(quant_score: float, moat_strength: str,
         reasons.append("No margin of safety (overvalued)")
 
     return "; ".join(reasons)
+
+
+# A single-period price swing beyond this fraction, for data sourced from
+# the malaysiastock.biz scraper, is treated as suspect rather than trusted
+# outright -- the scraper's regex extraction has no schema guarantee and
+# can silently match the wrong number on a page redesign (see
+# buffett/fetchers.py's _is_plausible_klse_price for the absolute bound;
+# this is the relative, per-ticker check that needs DB access to the
+# prior snapshot, which fetchers.py deliberately doesn't have).
+SCRAPED_PRICE_DEVIATION_FLAG_THRESHOLD = 0.50
+
+
+def _check_price_sanity(ticker: str, fundamentals: Dict, db_path: str) -> str:
+    """
+    Compare a freshly fetched price against the last known snapshot price
+    and flag DATA_SUSPECT if it deviates implausibly for scraper-sourced
+    data.
+
+    Returns the fundamentals_flag to use. Previously fundamentals_flag was
+    never set by any fetcher (fetch_yfinance, alpha_vantage_fallback, or
+    scrape_malaysiastock all omit it), so this flag -- already wired into
+    decide_signal's AVOID path -- was completely dormant regardless of
+    data quality.
+    """
+    price = fundamentals.get("price", 0)
+    data_sources = fundamentals.get("data_sources_json") or ""
+    is_scraped = "malaysiastock" in data_sources
+
+    if not is_scraped or not price or price <= 0:
+        return fundamentals.get("fundamentals_flag") or "NORMAL"
+
+    yesterday = (date.today() - timedelta(days=1)).isoformat()
+    prior = get_fundamentals_asof(db_path, ticker, yesterday)
+    prior_price = prior.get("price") if prior else None
+    if not prior_price or prior_price <= 0:
+        return fundamentals.get("fundamentals_flag") or "NORMAL"
+
+    deviation = abs(price - prior_price) / prior_price
+    if deviation > SCRAPED_PRICE_DEVIATION_FLAG_THRESHOLD:
+        logger.warning(
+            f"{ticker}: scraped price {price:.2f} deviates {deviation:.0%} from "
+            f"last known {prior_price:.2f} -- flagging DATA_SUSPECT"
+        )
+        return "DATA_SUSPECT"
+
+    return fundamentals.get("fundamentals_flag") or "NORMAL"
 
 
 def run_weekly_scan(db_path: str = "data/buffett.db", tickers: list[str] | None = None) -> Dict:
@@ -146,6 +192,10 @@ def run_weekly_scan(db_path: str = "data/buffett.db", tickers: list[str] | None 
                 results["failed"] += 1
                 results["errors"].append(f"{ticker}: Failed to fetch fundamentals")
                 continue
+
+            # Sanity-check scraper-sourced prices against the last known
+            # snapshot before trusting them (see _check_price_sanity).
+            fundamentals["fundamentals_flag"] = _check_price_sanity(ticker, fundamentals, db_path)
 
             # Calculate Graham number
             eps = fundamentals.get("eps_ttm", 0)

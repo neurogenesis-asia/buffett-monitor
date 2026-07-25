@@ -74,6 +74,20 @@ def reverse_mapping(bursa_code: str) -> Optional[str]:
     return None
 
 
+# Yahoo Finance (yfinance's data source) sometimes lags a company's real
+# ticker change: the symbol is correct in the outside world, but Yahoo's
+# own data still only indexes the company under its pre-change symbol,
+# returning a clean 404 for the current one. Found via FI (Fiserv Inc,
+# renamed NASDAQ:FISV -> NYSE:FI in 2023; Yahoo still only serves FISV;
+# confirmed with yf.Search("Fiserv"), which still resolves to FISV).
+# Rather than silently failing, retry known cases under the legacy symbol
+# while still reporting the company's real current ticker in the
+# returned fundamentals.
+LEGACY_TICKER_ALIASES = {
+    "FI": "FISV",
+}
+
+
 def fetch_yfinance(ticker: str) -> Optional[Dict]:
     """
     Fetch fundamentals from yfinance.
@@ -93,13 +107,18 @@ def fetch_yfinance(ticker: str) -> Optional[Dict]:
     
     try:
         stock = yf.Ticker(yf_ticker)
-        
+
         # Get info dictionary
         info = stock.info
+        if (not info or len(info) < 5) and yf_ticker in LEGACY_TICKER_ALIASES:
+            legacy_symbol = LEGACY_TICKER_ALIASES[yf_ticker]
+            logger.info(f"{ticker}: no yfinance data under {yf_ticker}, retrying legacy symbol {legacy_symbol}")
+            stock = yf.Ticker(legacy_symbol)
+            info = stock.info
         if not info or len(info) < 5:
             print(f"Warning: No valid info returned for {ticker}")
             return None
-        
+
         # Get cashflow data for CF metrics
         try:
             cashflow = stock.cashflow

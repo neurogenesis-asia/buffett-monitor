@@ -18,8 +18,10 @@ from buffett.fetchers import (
     _extract_price_from_i3soup,
     _http_get_with_retry,
     scrape_malaysiastock,
+    fetch_yfinance,
     KLSE_PRICE_MIN,
     KLSE_PRICE_MAX,
+    LEGACY_TICKER_ALIASES,
 )
 
 
@@ -184,3 +186,62 @@ def test_scrape_malaysiastock_retries_transient_failure_via_http_get_with_retry(
         result = scrape_malaysiastock("1155", get_price_only=True)
     assert result == {"price": 11.36}
     assert mock_get.call_count == 2
+
+
+# ---------------------------------------------------------------------------
+# fetch_yfinance -- legacy ticker aliasing
+# ---------------------------------------------------------------------------
+
+def _mock_yf_ticker(info):
+    mock = MagicMock()
+    mock.info = info
+    mock.cashflow = MagicMock(empty=True)
+    mock.quarterly_cashflow = MagicMock(empty=True)
+    mock.financials = MagicMock(empty=True)
+    return mock
+
+
+def test_fetch_yfinance_retries_legacy_alias_when_primary_symbol_has_no_data():
+    """Regression test: FI (Fiserv Inc, renamed NASDAQ:FISV -> NYSE:FI in
+    2023) gets a clean 404 from Yahoo Finance under its real current
+    ticker -- Yahoo's own data still only indexes it under FISV. Verify
+    the retry kicks in and the returned fundamentals still report the
+    ticker the caller actually asked for (FI), not the legacy symbol."""
+    assert "FI" in LEGACY_TICKER_ALIASES  # documents the known case this guards
+
+    empty_info = {"trailingPegRatio": None}  # len < 5 -> triggers legacy retry
+    real_info = {
+        "longName": "Fiserv, Inc.", "regularMarketPrice": 51.02,
+        "trailingPE": 8.65, "marketCap": 1e11, "sector": "Financial Services",
+    }
+
+    call_log = []
+
+    def fake_ticker(symbol):
+        call_log.append(symbol)
+        return _mock_yf_ticker(real_info if symbol == "FISV" else empty_info)
+
+    with patch("buffett.fetchers.yf.Ticker", side_effect=fake_ticker), \
+         patch("buffett.fetchers.load_ticker_mapping", return_value={}):
+        result = fetch_yfinance("FI")
+
+    assert call_log == ["FI", "FISV"]  # tried real ticker first, then legacy alias
+    assert result is not None
+    assert result["ticker"] == "FI"  # reports the real ticker, not the legacy one
+    assert result["price"] == pytest.approx(51.02)
+
+
+def test_fetch_yfinance_does_not_retry_for_tickers_without_a_known_alias():
+    empty_info = {"trailingPegRatio": None}
+    call_log = []
+
+    def fake_ticker(symbol):
+        call_log.append(symbol)
+        return _mock_yf_ticker(empty_info)
+
+    with patch("buffett.fetchers.yf.Ticker", side_effect=fake_ticker), \
+         patch("buffett.fetchers.load_ticker_mapping", return_value={}):
+        result = fetch_yfinance("NOTAREALALIAS")
+
+    assert call_log == ["NOTAREALALIAS"]  # no retry attempted
+    assert result is None

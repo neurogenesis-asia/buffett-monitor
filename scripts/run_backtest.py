@@ -60,6 +60,30 @@ def classify_market(ticker: str) -> str:
     return "row"
 
 
+def apply_transaction_costs(df: pd.DataFrame, horizons=(20, 60, 252),
+                           slippage_bps: dict = SLIPPAGE_BPS) -> pd.DataFrame:
+    """
+    Add net-of-cost forward return columns.
+
+    Every prior version of this backtest measured forward returns as if
+    trades were frictionless -- a paper-only alpha number. Each backtest
+    observation is treated here as a round-trip trade: enter the position
+    at signal_date, exit at signal_date + horizon. We charge slippage/
+    market-impact cost on BOTH legs (entry + exit), sized per market via
+    SLIPPAGE_BPS (KLSE small caps are far less liquid than US large caps),
+    so the reported alpha reflects what's actually realizable rather than
+    a number that only exists on paper.
+    """
+    df = df.copy()
+    cost_bps = df["market"].map(slippage_bps).fillna(slippage_bps["all"])
+    round_trip_cost = 2 * cost_bps / 10000.0  # entry + exit, in return units
+    for h in horizons:
+        col = f"forward_{h}d_return"
+        if col in df.columns:
+            df[f"net_forward_{h}d_return"] = df[col] - round_trip_cost
+    return df
+
+
 def load_scores_and_outcomes(db_path: str) -> pd.DataFrame:
     """Returns one row per (ticker, snapshot_date) combining scores + fundamentals.
     State of ml_signal_outcomes is joined too (rule_based_signal, confidence).
@@ -130,7 +154,8 @@ def quintile_portfolios(df: pd.DataFrame, min_per_group: int = 5) -> pd.DataFram
 # ─────────────────────────────────────────────────────────────────────
 
 def alpha_per_quintile(df: pd.DataFrame, horizon: int = 60,
-                       min_per_group: int = 5) -> pd.DataFrame:
+                       min_per_group: int = 5,
+                       fwd_col: Optional[str] = None) -> pd.DataFrame:
     """For each (market, quintile), aggregate forward returns.
 
     forward_return column comes from ml_signal_outcomes when present
@@ -142,8 +167,14 @@ def alpha_per_quintile(df: pd.DataFrame, horizon: int = 60,
     benchmark indexes when possible — but we don't have per-ticker
     price data, so we measure **rank stability across snapshots** of
     scoring rules and benchmark-aligned alpha.
+
+    Args:
+        fwd_col: return column to aggregate. Defaults to the raw
+            ('forward_<horizon>d_return') gross column; pass
+            'net_forward_<horizon>d_return' (see apply_transaction_costs)
+            to measure alpha net of round-trip slippage.
     """
-    fwd_col = f"forward_{horizon}d_return"
+    fwd_col = fwd_col or f"forward_{horizon}d_return"
     if fwd_col not in df.columns:
         return pd.DataFrame()
 
@@ -185,9 +216,10 @@ def alpha_per_quintile(df: pd.DataFrame, horizon: int = 60,
     return pd.DataFrame(rows)
 
 
-def moat_alpha(df: pd.DataFrame, horizon: int = 60) -> pd.DataFrame:
+def moat_alpha(df: pd.DataFrame, horizon: int = 60,
+              fwd_col: Optional[str] = None) -> pd.DataFrame:
     """Compare forward returns across moat_strength buckets."""
-    fwd_col = f"forward_{horizon}d_return"
+    fwd_col = fwd_col or f"forward_{horizon}d_return"
     if fwd_col not in df.columns or "moat_strength" not in df.columns:
         return pd.DataFrame()
     valid = df.dropna(subset=[fwd_col, "moat_strength"]).copy()
@@ -198,11 +230,12 @@ def moat_alpha(df: pd.DataFrame, horizon: int = 60) -> pd.DataFrame:
     return grp.reset_index()
 
 
-def signal_label_alpha(df: pd.DataFrame, horizon: int = 60) -> pd.DataFrame:
+def signal_label_alpha(df: pd.DataFrame, horizon: int = 60,
+                       fwd_col: Optional[str] = None) -> pd.DataFrame:
     """Forward return distribution per rule_based_signal category.
     This is the actual alpha you're getting from your system today.
     """
-    fwd_col = f"forward_{horizon}d_return"
+    fwd_col = fwd_col or f"forward_{horizon}d_return"
     if fwd_col not in df.columns:
         return pd.DataFrame()
     sig_col = "ml_rule_signal"
@@ -214,7 +247,8 @@ def signal_label_alpha(df: pd.DataFrame, horizon: int = 60) -> pd.DataFrame:
     return grp.reset_index()
 
 
-def universe_top_minus_bottom(df: pd.DataFrame, horizon: int = 60) -> pd.DataFrame:
+def universe_top_minus_bottom(df: pd.DataFrame, horizon: int = 60,
+                              fwd_col: Optional[str] = None) -> pd.DataFrame:
     """Long top-score short bottom-score — alpha spread. If positive and
     stable across cohorts, scoring rules are informative.
 
@@ -222,7 +256,7 @@ def universe_top_minus_bottom(df: pd.DataFrame, horizon: int = 60) -> pd.DataFra
     quintile has highest mean and whatever has lowest mean, and use the
     difference for the alpha spread.
     """
-    a = alpha_per_quintile(df, horizon)
+    a = alpha_per_quintile(df, horizon, fwd_col=fwd_col)
     if a.empty or "_returns" not in a.columns:
         return pd.DataFrame()
     rows = []
@@ -328,7 +362,7 @@ def write_report(results: dict, horizon: int, span_days: int,
         out.append("")
 
     # 0 -- sanity check: was there ever a BUY?
-    out.append("-> SANITY: signal distribution with forward returns")
+    out.append("-> SANITY: signal distribution with forward returns (gross, no costs)")
     out.append("-" * 70)
     sig = results["signal_label"]
     if not sig.empty:
@@ -341,8 +375,30 @@ def write_report(results: dict, horizon: int, span_days: int,
         out.append("  (no rows with forward returns -- run collect_forward_returns.py)")
     out.append("")
 
+    out.append("-> SAME, NET OF ROUND-TRIP SLIPPAGE (SLIPPAGE_BPS per market, entry+exit)")
+    out.append("-" * 70)
+    sig_net = results.get("signal_label_net", pd.DataFrame())
+    if not sig_net.empty:
+        out.append(f"  {'rule_signal':<12s} {'n':>6s} {'mean_fwd':>10s} {'hit_rate':>10s}")
+        for _, row in sig_net.iterrows():
+            out.append(f"  {str(row['ml_rule_signal']):<12s} "
+                       f"{int(row['count']):>6d} "
+                       f"{fmt_pct(row['mean']):>10s} {fmt_pct(row['hit_rate']):>10s}")
+    else:
+        out.append("  (no rows)")
+    out.append("")
+
     # 1 -- alpha by quintile
-    out.append(f"-> ALPHA BY QUANT_SCORE QUINTILE ({horizon}d forward)")
+    def weighted_agg(sub_df):
+        rs = []
+        for _, row in sub_df.iterrows():
+            rs.extend(row["_returns"])
+        if not rs:
+            return float("nan"), 0, float("nan")
+        arr = pd.Series(rs)
+        return (float(arr.mean()), int(len(arr)), float((arr > 0).mean()))
+
+    out.append(f"-> ALPHA BY QUANT_SCORE QUINTILE ({horizon}d forward, gross, no costs)")
     out.append("-" * 70)
     q = results["quintile"]
     if not q.empty:
@@ -350,18 +406,6 @@ def write_report(results: dict, horizon: int, span_days: int,
         # by cohort size). This gives an honest "mean fwd return across
         # all observed ticker-snapshots in this quintile" rather than
         # the misleading "average of per-cohort means".
-        if "_returns" not in q.columns:
-            q = q.copy()
-
-        def weighted_agg(sub_df):
-            rs = []
-            for _, row in sub_df.iterrows():
-                rs.extend(row["_returns"])
-            if not rs:
-                return float("nan"), 0, float("nan")
-            arr = pd.Series(rs)
-            return (float(arr.mean()), int(len(arr)), float((arr > 0).mean()))
-
         out.append(f"  {'q':<2s} {'n_obs':>6s} {'mean_fwd':>10s} {'hit_rate':>10s}")
         for qi, sub in q.groupby("quintile"):
             m, n_total, hr = weighted_agg(sub)
@@ -371,10 +415,24 @@ def write_report(results: dict, horizon: int, span_days: int,
         out.append("  (no rows with both quant_score and forward returns)")
     out.append("")
 
+    out.append(f"-> SAME, NET OF ROUND-TRIP SLIPPAGE ({horizon}d forward)")
+    out.append("-" * 70)
+    q_net = results.get("quintile_net", pd.DataFrame())
+    if not q_net.empty:
+        out.append(f"  {'q':<2s} {'n_obs':>6s} {'mean_fwd':>10s} {'hit_rate':>10s}")
+        for qi, sub in q_net.groupby("quintile"):
+            m, n_total, hr = weighted_agg(sub)
+            out.append(f"  Q{int(qi):<1d} {int(n_total):>6d} "
+                       f"{fmt_pct(m):>10s} {fmt_pct(hr):>10s}")
+    else:
+        out.append("  (no rows)")
+    out.append("")
+
     # 2 -- alpha by market -- quintile spread
-    out.append(f"-> BEST-MINUS-WORST QUINTILE SPREAD BY MARKET ({horizon}d forward)")
+    out.append(f"-> BEST-MINUS-WORST QUINTILE SPREAD BY MARKET ({horizon}d forward, gross)")
     out.append("-" * 70)
     sp = results["spread"]
+    gross_mean_by_mkt = {}
     if not sp.empty:
         agg = sp.groupby("market").agg(
             n=("spread_best_minus_worst", "size"),
@@ -382,6 +440,7 @@ def write_report(results: dict, horizon: int, span_days: int,
             std=("spread_best_minus_worst", "std"),
         )
         for mkt, row in agg.iterrows():
+            gross_mean_by_mkt[mkt] = row["mean"]
             sh = results["sharpe"].get(mkt, {}).get("sharpe_ann")
             out.append(f"  {mkt:<6s} n_cohorts={int(row['n']):>3d} "
                        f"mean_spread={fmt_pct(row['mean']):>10s} "
@@ -389,6 +448,32 @@ def write_report(results: dict, horizon: int, span_days: int,
                        f"Sharpe_ann={fmt_sharpe(sh):>8s}")
     else:
         out.append("  (insufficient data)")
+    out.append("")
+
+    out.append(f"-> SAME, NET OF ROUND-TRIP SLIPPAGE ({horizon}d forward) -- what a real "
+                f"portfolio would actually keep")
+    out.append("-" * 70)
+    sp_net = results.get("spread_net", pd.DataFrame())
+    if not sp_net.empty:
+        agg_net = sp_net.groupby("market").agg(
+            n=("spread_best_minus_worst", "size"),
+            mean=("spread_best_minus_worst", "mean"),
+            std=("spread_best_minus_worst", "std"),
+        )
+        for mkt, row in agg_net.iterrows():
+            sh = results.get("sharpe_net", {}).get(mkt, {}).get("sharpe_ann")
+            gross = gross_mean_by_mkt.get(mkt)
+            drag = (gross - row["mean"]) if gross is not None and not pd.isna(gross) else None
+            out.append(f"  {mkt:<6s} n_cohorts={int(row['n']):>3d} "
+                       f"mean_spread={fmt_pct(row['mean']):>10s} "
+                       f"std={fmt_pct(row['std']):>10s} "
+                       f"Sharpe_ann={fmt_sharpe(sh):>8s} "
+                       f"cost_drag={fmt_pct(drag):>10s}")
+    else:
+        out.append("  (insufficient data)")
+    out.append("")
+    out.append(f"  Round-trip slippage assumptions (entry+exit, per market): "
+                + ", ".join(f"{m}={v*2:.0f}bps" for m, v in SLIPPAGE_BPS.items() if m != "all"))
     out.append("")
 
     # 3 -- alpha by moat
@@ -469,20 +554,28 @@ def main() -> int:
     t0 = time.time()
 
     df = load_scores_and_outcomes(args.db)
+    df = apply_transaction_costs(df)
     print(f"Loaded {len(df):,} score rows across "
           f"{df['snapshot_date'].min()} → {df['snapshot_date'].max()}")
     span_days = (
         (df['snapshot_date'].max() - df['snapshot_date'].min()).days
         if not df.empty else 0)
 
+    net_col = f"net_forward_{args.horizon}d_return"
     results = {
         "signal_label": signal_label_alpha(df, args.horizon),
         "quintile":     alpha_per_quintile(df, args.horizon),
         "moat":         moat_alpha(df, args.horizon),
         "spread":       universe_top_minus_bottom(df, args.horizon),
         "bm":           bm_fwd_returns(args.horizon),
+        # Net-of-cost mirrors of the above (round-trip slippage per
+        # SLIPPAGE_BPS) -- the honest "what would you actually keep" view.
+        "signal_label_net": signal_label_alpha(df, args.horizon, fwd_col=net_col),
+        "quintile_net":     alpha_per_quintile(df, args.horizon, fwd_col=net_col),
+        "spread_net":       universe_top_minus_bottom(df, args.horizon, fwd_col=net_col),
     }
     results["sharpe"] = build_sharpe_summary(results["spread"])
+    results["sharpe_net"] = build_sharpe_summary(results["spread_net"])
 
     n_total = len(df)
     n_labeled = df[f"forward_{args.horizon}d_return"].notna().sum() if f"forward_{args.horizon}d_return" in df.columns else 0

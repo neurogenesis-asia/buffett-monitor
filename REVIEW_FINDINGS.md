@@ -183,13 +183,42 @@ assertions, and there was no automated check on scan output quality.
 
 **Result after #4 and #6**: `pytest tests/` → 43 passed, 0 failed.
 
+### #7 — Transaction-cost/slippage modeling in the backtest
+- `scripts/run_backtest.py` already had a `SLIPPAGE_BPS` dict (per-market
+  round-trip cost assumptions: KLSE 20bps/side, US 5bps/side, rest-of-world
+  10bps/side) defined at the top of the file — but it was dead code,
+  never referenced anywhere. Every reported alpha/Sharpe number was
+  computed off raw forward returns, i.e. a paper-only figure that ignores
+  the real cost of trading (worse for KLSE small caps).
+- Added `apply_transaction_costs()`, which nets each observation's forward
+  return against a round-trip cost (entry + exit) sized by the ticker's
+  market classification, using the pre-existing `SLIPPAGE_BPS`.
+- `alpha_per_quintile`, `signal_label_alpha`, `moat_alpha`, and
+  `universe_top_minus_bottom` now accept an optional `fwd_col` override so
+  the same analysis can run on either the gross or the new
+  `net_forward_<horizon>d_return` column.
+- `main()` computes both gross and net results; `write_report()` prints
+  a net-of-cost mirror directly under each gross table, plus an explicit
+  `cost_drag` figure on the best-minus-worst spread and the slippage
+  assumptions used, so the report shows what a real portfolio would
+  actually keep, not just the frictionless number.
+- Note (documented in the new tests): within a single market, round-trip
+  slippage is a constant per row, so it cancels out of a same-market
+  long/short spread — costs matter for the *absolute* return figures
+  (quintile means, signal-label means) but not for a single-market
+  top-minus-bottom spread. This is real behavior, not a shortcut: the
+  cost impact would show up if/when the spread compares across markets
+  with different slippage assumptions.
+- Covered by 7 new tests (`tests/test_run_backtest.py`).
+
+**Result after #4, #6, #7**: `pytest tests/` → 50 passed, 0 failed.
+
 ## Remaining recommendations (not yet started)
 
 5. Make moat judgment genuinely independent of the quant score (require the
    LLM path in production, or clearly label the heuristic fallback as
    "quant-derived" rather than "moat"). **Pending**: LLM calls for this will
    go through OpenRouter — see below.
-7. Add transaction-cost/slippage modeling to `scripts/run_backtest.py`.
 8. Add point-in-time fundamental snapshots for backtest joins.
 9. Surface portfolio-level risk (concentration, correlation) directly on
    the Signals/Holdings tabs.

@@ -2314,16 +2314,16 @@ def settings_tab():
 # consumed by streamlit-option-menu.
 NAV_PAGES = [
     ("Holdings", "briefcase", lambda: holdings_tab()),
-    ("Signals", "bullseye", lambda: signals_tab()),
-    ("Change Log", "clock-history", lambda: change_log_tab()),
-    ("Sell Calculator", "calculator", lambda: sell_calculator_tab()),
     ("Portfolio Optimization", "pie-chart", lambda: portfolio_optimization_dashboard()),
-    ("Intelligence", "cpu", lambda: intelligence_dashboard()),
-    ("Week High/Low", "graph-up-arrow", lambda: week_high_low_radar()),
     ("AI Watchlist", "eye", lambda: ai_watchlist_tab()),
     ("ETF Watchlist", "bar-chart-line", lambda: etf_watchlist_tab()),
-    ("Bond Yield", "cash-coin", lambda: bond_yield_tab()),
     ("AI Ecosystem", "diagram-3", lambda: layers_tab()),
+    ("Signals", "bullseye", lambda: signals_tab()),
+    ("Week High/Low", "graph-up-arrow", lambda: week_high_low_radar()),
+    ("Bond Yield", "cash-coin", lambda: bond_yield_tab()),
+    ("Intelligence", "cpu", lambda: intelligence_dashboard()),
+    ("Sell Calculator", "calculator", lambda: sell_calculator_tab()),
+    ("Change Log", "clock-history", lambda: change_log_tab()),
     ("Settings", "gear", lambda: settings_tab()),
 ]
 

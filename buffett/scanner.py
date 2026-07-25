@@ -127,7 +127,7 @@ def run_weekly_scan(db_path: str = "data/buffett.db", tickers: list[str] | None 
     # than a single fixed global threshold. Falls back to no sector data
     # (compute_quant_score uses its fixed constants) if this fails.
     try:
-        sector_stats_by_sector = compute_sector_stats(db_path)
+        sector_stats_by_sector = compute_sector_stats(db_path, as_of_date=date.today().isoformat())
         logger.info(f"Computed sector-relative stats for {len(sector_stats_by_sector)} sectors")
     except Exception as e:
         sector_stats_by_sector = {}

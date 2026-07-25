@@ -213,13 +213,51 @@ assertions, and there was no automated check on scan output quality.
 
 **Result after #4, #6, #7**: `pytest tests/` → 50 passed, 0 failed.
 
+### #8 — Point-in-time fundamental snapshots for backtest joins
+- Investigated where look-ahead leakage could actually occur in the
+  current codebase. The existing backtest/training joins turned out to
+  already be point-in-time correct: `scripts/run_backtest.py`'s
+  `load_scores_and_outcomes` and `scripts/train_specialist_models.py`'s
+  `load_training_data` both join `buffett_fundamentals` to
+  `buffett_scores`/`ml_signal_outcomes` on an **exact** `snapshot_date`
+  match, not "latest fundamentals for this ticker" — each day's scan
+  writes its own row (`UNIQUE(ticker, snapshot_date)`), so history is
+  preserved correctly. Added a regression test
+  (`test_load_scores_and_outcomes_joins_fundamentals_on_exact_snapshot_date`
+  in `tests/test_run_backtest.py`) to guard this invariant, since it would
+  be an easy thing for a future refactor to silently break (e.g. by
+  "simplifying" to a "latest snapshot" join).
+- The one **real, concrete leak found**: `buffett/sector_stats.py`'s
+  `compute_sector_stats` (added for #6) computed each sector's peer median
+  using the **global** latest snapshot per ticker (`MAX(snapshot_date)`
+  with no date bound) — correct for live scanning, but if this function
+  is ever used to replay or validate sector-relative scoring against a
+  historical date (exactly the kind of follow-up work #6 invites), it
+  would silently score a past decision using sector medians computed from
+  data that didn't exist yet on that date.
+- Fixed: `compute_sector_stats` now accepts an optional `as_of_date`,
+  restricting "latest snapshot per ticker" to snapshots dated on or before
+  that date. `buffett/scanner.py` now passes `as_of_date=date.today()`
+  explicitly (functionally a no-op for today's live scan, but keeps this
+  correct if the scanner is ever used to backfill a past date).
+- Added `get_fundamentals_asof(db_path, ticker, as_of_date)` as reusable
+  point-in-time infrastructure: returns a ticker's fundamentals snapshot
+  as of a given date (never a later one), for any future backtest/replay
+  tooling that needs to reconstruct "what would scoring have said on date
+  X" without leaking future data into the answer.
+- Covered by 6 new tests (`tests/test_sector_stats.py`) proving
+  `as_of_date` excludes future snapshots, still finds the latest snapshot
+  at-or-before a sparse date, and that `get_fundamentals_asof` never
+  returns a snapshot dated after the requested date.
+
+**Result after #4, #6, #7, #8**: `pytest tests/` → 56 passed, 0 failed.
+
 ## Remaining recommendations (not yet started)
 
 5. Make moat judgment genuinely independent of the quant score (require the
    LLM path in production, or clearly label the heuristic fallback as
    "quant-derived" rather than "moat"). **Pending**: LLM calls for this will
    go through OpenRouter — see below.
-8. Add point-in-time fundamental snapshots for backtest joins.
 9. Surface portfolio-level risk (concentration, correlation) directly on
    the Signals/Holdings tabs.
 10. Replace/harden the malaysiastock.biz scraper with sanity checks or a

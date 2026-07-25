@@ -8,15 +8,21 @@ small caps. These tests verify apply_transaction_costs() correctly nets
 out round-trip slippage per market, and that the *_net analysis functions
 consume the net column rather than silently falling back to gross.
 """
+import os
+import sqlite3
+import tempfile
+
 import pandas as pd
 import pytest
 
+from data.init_db import init_database
 from scripts.run_backtest import (
     SLIPPAGE_BPS,
     apply_transaction_costs,
     alpha_per_quintile,
     signal_label_alpha,
     universe_top_minus_bottom,
+    load_scores_and_outcomes,
 )
 
 
@@ -122,3 +128,52 @@ def test_universe_top_minus_bottom_net_spread_smaller_than_gross():
     assert net_spread["spread_best_minus_worst"].iloc[0] == pytest.approx(
         gross_spread["spread_best_minus_worst"].iloc[0]
     )
+
+
+# ---------------------------------------------------------------------------
+# Point-in-time correctness of load_scores_and_outcomes's join
+# ---------------------------------------------------------------------------
+
+@pytest.fixture
+def db_path():
+    fd, path = tempfile.mkstemp(suffix=".db")
+    os.close(fd)
+    yield path
+    os.unlink(path)
+
+
+def test_load_scores_and_outcomes_joins_fundamentals_on_exact_snapshot_date(db_path):
+    """
+    Regression guard: buffett_scores must be joined to buffett_fundamentals
+    on an EXACT snapshot_date match, never "latest fundamentals for this
+    ticker" -- the latter would leak future-dated fundamentals (e.g. a
+    restated PE from months later) into a historical backtest row, which
+    is exactly the point-in-time bug this backtest must not have.
+    """
+    init_database(db_path)
+    conn = sqlite3.connect(db_path)
+    conn.execute(
+        "INSERT INTO buffett_universe (ticker, company_name, sector, is_active) VALUES ('ABC', 'ABC Inc', 'Tech', 1)"
+    )
+    # Score row on an early date...
+    conn.execute(
+        """INSERT INTO buffett_scores (ticker, snapshot_date, quant_score, signal)
+           VALUES ('ABC', '2026-01-01', 50.0, 'HOLD')"""
+    )
+    # ...with fundamentals matching that SAME date (pe=10).
+    conn.execute(
+        """INSERT INTO buffett_fundamentals (ticker, snapshot_date, pe_ratio)
+           VALUES ('ABC', '2026-01-01', 10.0)"""
+    )
+    # A much later fundamentals snapshot exists too (pe=999) -- must NOT be
+    # the one joined against the 2026-01-01 score row.
+    conn.execute(
+        """INSERT INTO buffett_fundamentals (ticker, snapshot_date, pe_ratio)
+           VALUES ('ABC', '2026-06-01', 999.0)"""
+    )
+    conn.commit()
+    conn.close()
+
+    df = load_scores_and_outcomes(db_path)
+    row = df[df["ticker"] == "ABC"].iloc[0]
+    assert row["pe_ratio"] == pytest.approx(10.0)

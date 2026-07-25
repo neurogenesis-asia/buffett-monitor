@@ -18,8 +18,6 @@ from streamlit_option_menu import option_menu
 sys.path.insert(0, '.')
 
 from buffett.fetchers import fetch_fundamentals, fetch_malaysiastock_price, load_ticker_mapping
-from buffett.scorer import compute_intrinsic_value, compute_quant_score, decide_signal, calculate_graham_number
-from buffett.moat_llm import judge_moat
 from buffett.change_log import get_recent_changes as load_change_log
 from data.init_db import init_database
 from dashboard.components.portfolio_optimization import portfolio_optimization_dashboard
@@ -645,50 +643,42 @@ def load_holdings():
         conn.close()
 
 def calculate_current_signal(ticker):
-    """Calculate current signal for a ticker based on latest data."""
+    """Look up the current signal for a ticker from the real scan pipeline
+    (buffett_scores, via load_latest_scores()) rather than recomputing it
+    live in the dashboard.
+
+    This used to be an independent, drifted scoring implementation -- the
+    same "duplicate copy that falls out of sync" bug already found and
+    fixed in buffett/scanner_ai.py and buffett/scanner_etf.py, just missed
+    here because it lived in the dashboard rather than a scanner module.
+    The old version: kept the "simplified" EPS*shares DCF proxy already
+    removed from buffett/scanner.py; called raw compute_quant_score()
+    instead of compute_enhanced_score() (no AI-native valuation, no
+    sector-relative thresholds, ever); called judge_moat() with no
+    db_path (always hit the wrong database for caching, and would trigger
+    a live, billed OpenRouter call on every Holdings-tab render or
+    keystroke in the add-holding ticker field); and read fundamentals_flag
+    from buffett_fundamentals, where it doesn't exist (it lives in
+    buffett_universe) -- so the DATA_SUSPECT/DELISTED -> AVOID gate could
+    never fire through this path. A ticker could show a different signal
+    on the Holdings tab than on the Signals tab, which reads this same
+    buffett_scores table correctly. Now both read the same source.
+
+    Returns (signal, error_message) -- error_message is None on success.
+    """
     try:
-        # Get latest fundamentals
-        fundamentals_df = load_latest_fundamentals(ticker)
-        if fundamentals_df.empty:
-            return None, "No data available"
-        
-        fundamentals = fundamentals_df.iloc[0].to_dict()
-        
-        # Calculate intrinsic value if needed
-        if fundamentals.get('intrinsic_value', 0) == 0:
-            eps = fundamentals.get('eps_ttm', 0)
-            shares = fundamentals.get('shares_outstanding', 0)
-            if eps > 0 and shares > 0:
-                fcf = eps * shares  # Simplified
-                iv = compute_intrinsic_value(fcf=fcf, growth_rate=0.05, discount_rate=0.10)
-                fundamentals['intrinsic_value'] = iv
-                
-                price = fundamentals.get('price', 0)
-                if iv > 0:
-                    fundamentals['margin_of_safety'] = (iv - price) / iv if price > 0 else 0
-        
-        # Calculate Graham number if needed
-        if fundamentals.get('graham_number', 0) == 0:
-            eps = fundamentals.get('eps_ttm', 0)
-            bvps = fundamentals.get('book_value_per_share', 0)
-            if eps > 0 and bvps > 0:
-                fundamentals['graham_number'] = calculate_graham_number(eps, bvps)
-        
-        # Get quantitative score
-        quant_score, _ = compute_quant_score(fundamentals)
-        
-        # Get moat judgment
-        moat_judgment = judge_moat(ticker, fundamentals)
-        
-        # Decide signal
-        signal = decide_signal(
-            quant_score=quant_score,
-            moat_strength=moat_judgment.get('moat_strength'),
-            fundamentals_flag=fundamentals.get('fundamentals_flag', 'NORMAL'),
-            price=fundamentals.get('price', 0),
-            intrinsic_value=fundamentals.get('intrinsic_value', 0)
-        )
-        
+        scores_df = load_latest_scores()
+        if scores_df is None or scores_df.empty:
+            return None, "No score data available -- run a scan first"
+
+        row = scores_df[scores_df["ticker"] == ticker]
+        if row.empty:
+            return None, "Ticker not yet scanned"
+
+        signal = row.iloc[0].get("signal")
+        if not signal:
+            return None, "No signal computed yet for this ticker"
+
         return signal, None
     except Exception as e:
         return None, str(e)

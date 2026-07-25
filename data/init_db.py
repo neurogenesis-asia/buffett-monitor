@@ -67,6 +67,11 @@ def init_database(db_path: str = "data/buffett.db"):
         intrinsic_value     REAL,
         margin_of_safety    REAL,
         implied_return_pct  REAL,
+        -- ETF-specific (buffett/etf_scorer.py; NULL for equities). An ETF
+        -- has no EPS/book-value/ROE in the equity sense, so it needs its
+        -- own fields rather than being scored against the columns above.
+        net_expense_ratio   REAL,
+        total_assets        REAL,
         -- Traceability
         data_sources_json   TEXT,
         fetch_errors_json   TEXT,
@@ -74,7 +79,19 @@ def init_database(db_path: str = "data/buffett.db"):
         FOREIGN KEY (ticker) REFERENCES buffett_universe(ticker)
     );
     """)
-    
+
+    # Migration: add ETF-specific columns to buffett_fundamentals if this
+    # table already existed before net_expense_ratio/total_assets were
+    # added. CREATE TABLE IF NOT EXISTS above is a no-op on an existing
+    # table, so it won't add new columns -- this is the same class of
+    # schema drift (schema-as-code vs. the live DB) that caused the
+    # moat_strength CHECK constraint bug found earlier.
+    for column, coltype in [("net_expense_ratio", "REAL"), ("total_assets", "REAL")]:
+        try:
+            cursor.execute(f"ALTER TABLE buffett_fundamentals ADD COLUMN {column} {coltype}")
+        except sqlite3.OperationalError:
+            pass  # column already exists
+
     # 3.3 Weekly scores + Buffett signal decision
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS buffett_scores (

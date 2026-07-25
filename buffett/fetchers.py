@@ -716,6 +716,47 @@ def fetch_malaysiastock_price(bursa_code: str) -> Optional[float]:
     return result.get('price') if result else None
 
 
+def fetch_etf_info(ticker: str) -> Optional[Dict]:
+    """
+    Fetch ETF-specific fields from yfinance: expense ratio, AUM, and
+    trailing returns. These are NOT the same fields fetch_yfinance()
+    pulls for equities (trailingPE, priceToBook, ROE, etc.) -- an ETF
+    has no earnings or book value in that sense, so scoring an ETF against
+    single-stock criteria is a category error (this is exactly what
+    buffett/scanner_etf.py used to do before switching to
+    buffett/etf_scorer.py).
+
+    Returns:
+        Dict with keys: ticker, price, net_expense_ratio (percent, e.g.
+        0.34 = 0.34%), total_assets (AUM in USD), category, fund_family,
+        ytd_return, three_year_avg_return. None if the ticker isn't a
+        fetchable ETF.
+    """
+    if yf is None:
+        return None
+    try:
+        info = yf.Ticker(ticker).info
+        if not info or info.get("quoteType") != "ETF":
+            logger.warning(f"{ticker}: not an ETF (quoteType={info.get('quoteType') if info else None})")
+        price = info.get("regularMarketPrice") or info.get("navPrice") or 0.0
+        return {
+            "ticker": ticker,
+            "company_name": info.get("longName", ticker),
+            "price": float(price) if price else 0.0,
+            "net_expense_ratio": info.get("netExpenseRatio"),
+            "total_assets": info.get("totalAssets"),
+            "category": info.get("category", ""),
+            "fund_family": info.get("fundFamily", ""),
+            "ytd_return": info.get("ytdReturn"),
+            "three_year_avg_return": info.get("threeYearAverageReturn"),
+            "snapshot_date": date.today().isoformat(),
+            "data_sources_json": json.dumps(["yfinance_etf"]),
+        }
+    except Exception as e:
+        logger.error(f"Error fetching ETF info for {ticker}: {e}")
+        return None
+
+
 def fetch_fundamentals(ticker: str) -> Dict:
     """
     Fetch fundamentals for a ticker using the available sources in order:

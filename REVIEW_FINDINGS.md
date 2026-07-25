@@ -394,6 +394,94 @@ achievable half — sanity checks — instead:
 request above.) Remaining future work is vendor/cost decisions (#10's
 real-data-vendor swap) rather than code changes.
 
+## Follow-up review: AI Watchlist, ETF Watchlist, AI Ecosystem tabs
+
+A separate, focused review of these three dashboard tabs (requested
+after the main review above) found they had never received the fixes
+applied to the main scanner — each had its own independent, drifted
+scan pipeline. Fixed all three, in priority order (worst first):
+
+### ETF Watchlist — was a category error, not just a bug
+- `buffett/scanner_etf.py` scored ETFs with single-stock Buffett criteria
+  (P/E, Graham Number, ROE, debt/equity) via `compute_quant_score` — an
+  ETF has none of these in the equity sense, so every fund failed nearly
+  every criterion regardless of actual quality. Replaced with
+  `buffett/etf_scorer.py`: fund-appropriate criteria (expense ratio ≤1%,
+  AUM ≥$100M for liquidity/closure risk, price-trend momentum via
+  50-day/200-day SMA crossovers). Moat/management judgment is skipped
+  entirely for ETFs — a passive fund has no management team or moat to
+  judge.
+- Added `buffett/fetchers.py:fetch_etf_info()` to pull real ETF fields
+  from yfinance (`netExpenseRatio`, `totalAssets`, `category`) — verified
+  live (SOXX: 0.34% expense ratio, $47.8B AUM). Added `net_expense_ratio`/
+  `total_assets` columns to `buffett_fundamentals` (migration in
+  `data/init_db.py`, same ALTER-TABLE-if-missing pattern used for other
+  schema drift found earlier).
+- **Found the ETF Watchlist's Signal column had never worked, for any
+  ETF, ever**: `display_etf_watchlist()` in `dashboard/app.py` read
+  `signal` from `fundamentals_df` (`buffett_fundamentals` — which has no
+  such column; `signal` only exists in `buffett_scores`). Fixed to load
+  from `load_latest_scores()`, matching the pattern the AI Watchlist's
+  `display_watchlist()` already used correctly.
+- Rewrote `scanner_etf.py` cleanly: removed two duplicated code blocks
+  that ran ML signal enhancement twice per ticker for no reason, and the
+  ML enhancer itself (trained on equity fundamentals) is no longer
+  applied to ETFs at all.
+- Replaced the untracked ticker list (`/home/shalu/Downloads/ETF list.txt`)
+  with `config/watchlists/etf_watchlist.csv` — one tracked source both
+  the scanner and the UI read, so they can't drift apart again.
+- Verified end-to-end with a live scan (SOXX → HOLD, 80/100, real AUM/
+  expense ratio/trend data). 21 new tests
+  (`tests/test_etf_scorer.py`, `tests/test_scanner_etf.py`).
+
+### AI Watchlist
+- `buffett/scanner_ai.py` had its own hardcoded 51-ticker list with
+  actual duplicates (INTC, CRWV, CORZ, IREN, COHR, SOI, TSEM, HUT, BTDR,
+  SNDK each appeared 2–3 times — only 36 unique), scored every ticker with
+  raw `compute_quant_score` instead of `compute_enhanced_score`'s AI-native
+  valuation path, still had the "simplified" EPS×shares DCF proxy already
+  removed from the main scanner, and had the same duplicated double-ML-
+  enhancement blocks as `scanner_etf.py`.
+- Rather than patch this drifted copy back to parity, rewrote it as a
+  thin wrapper delegating to `buffett.scanner.run_weekly_scan()` with a
+  curated ticker subset (the main scanner already supports a `tickers`
+  parameter) — zero duplicate scan logic left to drift out of sync again.
+  AI Watchlist tickers now get sector-relative scoring, `fundamentals_flag`/
+  price-sanity checks, and the AI-native valuation path automatically,
+  for free, from whatever the main scanner currently does.
+- Replaced the untracked, duplicate-laden list with
+  `config/watchlists/ai_watchlist.csv` (deduplicated to 36 tickers).
+  **Flagging for the user**: this list includes `GDX` (VanEck Gold Miners
+  ETF) — an ETF mixed into an equity watchlist, which would hit the exact
+  category-error problem just fixed for the ETF Watchlist if scanned
+  through the equity pipeline. Left as-is (ticker curation is a domain
+  decision, not a code bug) but worth removing or moving to the ETF list.
+- Fixed a stale enum bug found in the process: `dashboard/app.py` had
+  three separate `color_moat`/`_color_moat` functions still checking the
+  old `WIDE`/`NARROW` moat values (replaced with `STRONG`/`WEAK`/`NONE`
+  earlier this session) — moat color-coding had silently never fired
+  against real data on any tab. Fixed all three.
+- Verified end-to-end with a live scan (NVDA → HOLD, 71.4/100, moat WEAK,
+  via the real pipeline). 3 new tests (`tests/test_scanner_ai.py`).
+
+### AI Ecosystem ("layers_tab")
+- This tab turned out to be more honest than it looked once its two real
+  parts (pulling Signal/Moat/QS from the actual scan pipeline where
+  available, and a genuinely-live optional yfinance enrichment toggle)
+  were separated from its static part (which companies sit in which
+  layer of Nvidia's framework — a hand-curated reference with no scoring
+  model behind it at all).
+- Moved the source files from `/home/shalu/Downloads/layers/*.md` (a
+  personal, non-portable path) into the repo at
+  `config/reference/layers/*.md` (timestamps preserved: June 15, 2026).
+- Added a visible "reference data as of {date}" caption and rewrote the
+  function's docstring to describe it accurately as a curated research
+  reference browser, not "world-class stock analysis" — the prior framing
+  oversold what the tab actually does.
+
+**Result after the AI/ETF/Ecosystem follow-up**: `pytest tests/` → 143
+passed, 0 failed.
+
 ## LLM provider note (OpenRouter)
 
 Moat judgment (#5, above) now runs through **OpenRouter**

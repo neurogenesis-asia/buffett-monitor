@@ -249,14 +249,18 @@ def display_watchlist(ai_stocks, fundamentals_df, signal_filter="All", sector_fi
             return ""
         
         def color_moat(val):
-            if val == "WIDE":
+            # STRONG/WEAK/NONE/UNKNOWN is the current moat_strength enum
+            # (data/init_db.py's CHECK constraint) -- WIDE/NARROW was the
+            # old enum, replaced earlier; this coloring silently never
+            # fired against real data until this fix.
+            if val == "STRONG":
                 return "color: #00cc66; font-weight: bold"
-            elif val == "NARROW":
+            elif val == "WEAK":
                 return "color: #ffaa00; font-weight: bold"
-            elif val == "NONE" or val == "NONE ":
+            elif val == "NONE":
                 return "color: #ff4444; font-weight: bold"
             return ""
-        
+
         def color_qs(val):
             try:
                 v = float(val)
@@ -337,43 +341,29 @@ def ai_watchlist_tab():
     """Display AI stock watchlist for monitoring investment opportunities."""
     st.header("👁️ AI Watchlist")
     st.markdown("Monitor AI-related stocks for investment opportunities based on hedge fund holdings and AI sector trends.")
-    
-    # Load the AI stocks list with deduplication and proper parsing
+    st.caption(
+        "Scored via the main scan pipeline (buffett/scanner.py, delegated to by "
+        "buffett/scanner_ai.py) with AI-native valuation for AI/growth sectors. "
+        "Run `python -m buffett.scanner_ai` to refresh."
+    )
+
+    # Load the tracked AI watchlist ticker list (config/watchlists/ai_watchlist.csv
+    # -- the same file buffett/scanner_ai.py scans, so the UI and the scanner
+    # always agree on which tickers exist).
+    from buffett.scanner_ai import load_ai_watchlist, DEFAULT_WATCHLIST_PATH as AI_WATCHLIST_PATH
+    import csv as _csv
+
     ai_stocks = []
-    seen_tickers = set()
     try:
-        with open("/home/shalu/Downloads/List of AI stocks.txt", "r") as f:
-            raw = f.read()
-        
-        for line in raw.split("\n"):
-            line = line.strip()
-            if not line:
-                continue
-            
-            ticker = None
-            company = ""
-            
-            # Handle pipe-delimited format (e.g., "     1|CBRS   CEREBRAS SYSTEMS INC")
-            if "|" in line:
-                after_pipe = line.split("|", 1)[1].strip()
-                parts = after_pipe.split(None, 1)
-                if parts and parts[0].isalpha() and len(parts[0]) <= 5:
-                    ticker = parts[0].upper()
-                    company = parts[1].strip() if len(parts) > 1 else ticker
-            else:
-                # Handle space-delimited format (e.g., "NVDA  NVIDIA CORPORATION")
-                parts = line.split(None, 1)
-                if parts and parts[0].isalpha() and len(parts[0]) <= 5:
-                    ticker = parts[0].upper()
-                    company = parts[1].strip() if len(parts) > 1 else ticker
-            
-            if ticker and ticker not in seen_tickers:
-                seen_tickers.add(ticker)
-                ai_stocks.append({"ticker": ticker, "company": company})
+        with open(AI_WATCHLIST_PATH, newline="") as f:
+            for row in _csv.DictReader(f):
+                ticker = (row.get("ticker") or "").strip().upper()
+                if ticker:
+                    ai_stocks.append({"ticker": ticker, "company": row.get("company_name", ticker)})
     except Exception as e:
-        st.error(f"Error loading AI stocks list: {e}")
+        st.error(f"Error loading AI watchlist ({AI_WATCHLIST_PATH}): {e}")
         return
-    
+
     if not ai_stocks:
         st.warning("No AI stocks found in the watchlist.")
         return
@@ -704,44 +694,62 @@ def calculate_current_signal(ticker):
         return None, str(e)
 
 def display_etf_watchlist(etf_stocks, fundamentals_df):
-    """Display the ETF watchlist table with current data."""
-    # Prepare display data
+    """Display the ETF watchlist table with current data.
+
+    Signal/quant_score come from buffett_scores (via load_latest_scores()),
+    not fundamentals_df -- buffett_fundamentals has no `signal` column, so
+    the previous version of this function always showed "N/A" for every
+    ETF's signal. ETF fields (expense ratio, AUM) come from
+    buffett/etf_scorer.py's fund-appropriate scoring, not P/E or P/B,
+    which are meaningless for a fund.
+    """
+    scores_df = load_latest_scores()
     watchlist_data = []
-    
+
     for etf in etf_stocks:
         ticker = etf["ticker"]
         company = etf["company"]
-        
-        # Get current data if available
+
         current_price = 0
-        pe_ratio = 0
-        pb_ratio = 0
-        dividend_yield = 0
+        expense_ratio = None
+        total_assets = None
         signal = "N/A"
-        
+        quant_score = 0
+        signal_reason = ""
+
         if fundamentals_df is not None:
             stock_data = fundamentals_df[fundamentals_df["ticker"] == ticker]
             if not stock_data.empty:
-                stock_data = stock_data.iloc[0]
-                current_price = stock_data.get("price", 0)
-                pe_ratio = stock_data.get("pe_ratio", 0)
-                pb_ratio = stock_data.get("pb_ratio", 0)
-                dividend_yield = stock_data.get("dividend_yield", 0)
-                signal = stock_data.get("signal", "N/A")
-        
-        # ETFs are typically USD denominated
-        currency_symbol = "USD"
-        
+                row = stock_data.iloc[0]
+                current_price = row.get("price", 0) or 0
+                expense_ratio = row.get("net_expense_ratio")
+                total_assets = row.get("total_assets")
+
+        if scores_df is not None and not scores_df.empty:
+            score_row = scores_df[scores_df["ticker"] == ticker]
+            if not score_row.empty:
+                srow = score_row.iloc[0]
+                signal = srow.get("signal", "N/A") or "N/A"
+                quant_score = srow.get("quant_score", 0) or 0
+                signal_reason = srow.get("signal_reason", "") or ""
+
+        currency_symbol = "USD"  # ETFs in this watchlist are all USD-denominated
+
+        aum_display = "N/A"
+        if total_assets:
+            aum_display = f"${total_assets/1e9:.2f}B" if total_assets >= 1e9 else f"${total_assets/1e6:.0f}M"
+
         watchlist_data.append({
             "Ticker": ticker,
             "ETF Name": company[:40] + ("..." if len(company) > 40 else ""),
             "Price": f"{currency_symbol} {current_price:.2f}" if current_price > 0 else "N/A",
-            "PE": f"{pe_ratio:.1f}" if pe_ratio > 0 else "N/A",
-            "PB": f"{pb_ratio:.2f}" if pb_ratio > 0 else "N/A",
-            "Div Yield": f"{dividend_yield*100:.1f}%" if dividend_yield > 0 else "N/A",
+            "Expense Ratio": f"{expense_ratio:.2f}%" if expense_ratio is not None else "N/A",
+            "AUM": aum_display,
+            "QS": f"{quant_score:.0f}" if quant_score else "N/A",
             "Signal": signal,
+            "Why": signal_reason,
         })
-    
+
     # Display the watchlist table
     if watchlist_data:
         watchlist_df = pd.DataFrame(watchlist_data)
@@ -750,22 +758,22 @@ def display_etf_watchlist(etf_stocks, fundamentals_df):
             width="stretch",
             hide_index=True,
         )
-        
+
         # Summary stats
         st.subheader("ETF Watchlist Summary")
         col1, col2, col3, col4 = st.columns(4)
-        
+
         with col1:
             st.metric("Total ETFs", len(etf_stocks))
-        
+
         with col2:
             priced_etfs = [e for e in watchlist_data if e["Price"] != "N/A" and e["Price"] != ""]
             st.metric("With Price Data", len(priced_etfs))
-        
+
         with col3:
             buy_signals = [e for e in watchlist_data if e["Signal"] == "BUY"]
             st.metric("BUY Signals", len(buy_signals))
-        
+
         with col4:
             sell_signals = [e for e in watchlist_data if e["Signal"] == "SELL"]
             st.metric("SELL Signals", len(sell_signals))
@@ -1292,11 +1300,13 @@ def signals_tab():
             return ""
         
         def _color_moat(val):
-            if val == 'WIDE':
+            # STRONG/WEAK/NONE/UNKNOWN is the current moat_strength enum;
+            # WIDE/NARROW was the old one (see color_moat() above).
+            if val == 'STRONG':
                 return "color: #00cc66; font-weight: bold"
-            elif val == 'NARROW':
+            elif val == 'WEAK':
                 return "color: #ffaa00; font-weight: bold"
-            elif val in ('NONE', 'NONE '):
+            elif val == 'NONE':
                 return "color: #ff4444; font-weight: bold"
             return ""
         
@@ -1629,41 +1639,37 @@ def etf_watchlist_tab():
     """Display ETF watchlist for monitoring investment opportunities."""
     st.header("📊 ETF Watchlist")
     st.markdown("Monitor AI/data center/semiconductor ETFs for investment opportunities.")
-    
-    # Load the ETF stocks list
+    st.caption(
+        "Scored on fund-appropriate criteria (expense ratio, AUM, price-trend "
+        "momentum) via buffett/etf_scorer.py -- not P/E or Graham Number, which "
+        "don't apply to a fund. Run `python -m buffett.scanner_etf` to refresh."
+    )
+
+    # Load the tracked ETF ticker list (config/watchlists/etf_watchlist.csv --
+    # the same file buffett/scanner_etf.py scans, so the UI and the scanner
+    # always agree on which ETFs exist).
+    from buffett.scanner_etf import load_etf_watchlist, DEFAULT_WATCHLIST_PATH
+    import csv as _csv
+
     etf_stocks = []
     try:
-        with open("/home/shalu/Downloads/ETF list.txt", "r") as f:
-            lines = f.readlines()
-        
-        for line in lines:
-            line = line.strip()
-            # Skip line numbers, empty lines, and header/separator lines
-            if line and not line.startswith("     ") and not line.startswith("||") and "|" in line:
-                # Parse pipe-delimited format: || Ticker | ETF name | Exchange | Focus |
-                parts = [part.strip() for part in line.split("|") if part.strip()]
-                if len(parts) >= 2:
-                    ticker = parts[0]
-                    # Validate ticker: 2-5 uppercase letters
-                    if ticker.isalpha() and ticker.isupper() and 2 <= len(ticker) <= 5:
-                        company = parts[1] if len(parts) > 1 else ticker
-                        etf_stocks.append({"ticker": ticker, "company": company})
+        with open(DEFAULT_WATCHLIST_PATH, newline="") as f:
+            for row in _csv.DictReader(f):
+                ticker = (row.get("ticker") or "").strip().upper()
+                if ticker:
+                    etf_stocks.append({"ticker": ticker, "company": row.get("company_name", ticker)})
     except Exception as e:
-        st.error(f"Error loading ETF list: {e}")
+        st.error(f"Error loading ETF watchlist ({DEFAULT_WATCHLIST_PATH}): {e}")
         return
-    
+
     if not etf_stocks:
         st.warning("No ETFs found in the watchlist.")
         return
-    
-    # Remove duplicates based on ticker
-    seen_tickers = set()
-    unique_etfs = []
-    for etf in etf_stocks:
-        if etf["ticker"] not in seen_tickers:
-            seen_tickers.add(etf["ticker"])
-            unique_etfs.append(etf)
-    
+
+    # Already deduplicated by construction (config/watchlists/etf_watchlist.csv
+    # is the single tracked source, unlike the old per-run text file parse).
+    unique_etfs = etf_stocks
+
     # Load current fundamentals data for comparison
     try:
         fundamentals_df = load_latest_fundamentals()
@@ -2031,7 +2037,21 @@ def fetch_stock_data(ticker):
         return {'price': 0, 'pe': 0, 'pb': 0, 'roe': 0, 'market_cap': 0, 'dividend_yield': 0, 'revenue_growth': 0, 'debt_to_equity': 0}
 
 def layers_tab():
-    """Display the AI ecosystem layers tab - world-class stock analysis.
+    """Display the AI ecosystem layers tab -- a curated research reference,
+    not a scored analysis pipeline.
+
+    This tab is a browser over a static, hand-curated reference (which
+    companies sit in which layer of Nvidia's Energy -> Chips ->
+    Infrastructure -> Models -> Applications framework) -- there is no
+    scoring model behind the layer/company assignments themselves, and
+    the source files (config/reference/layers/*.md) are a point-in-time
+    snapshot (see LAYERS_AS_OF_DATE below), not a live feed. Real
+    Signal/Moat/QS values ARE pulled from the actual scan pipeline where
+    a ticker happens to have been scanned (most of the ~hundreds of names
+    here haven't been, since this reference covers far more US/HK/China
+    names than any scanner tracks), and live price/fundamentals enrichment
+    via yfinance is genuinely live when toggled on -- those two parts are
+    real. The layer/company categorization itself is not.
 
     Pipeline:
       1. Parse ALL markdown tables from each layer file (multi-table aware).
@@ -2049,14 +2069,26 @@ def layers_tab():
     import re
     st.subheader("🏗️ AI Ecosystem: $20T Industrial Cake")
     st.markdown("*Nvidia CEO Jensen Huang's framework: Energy → Chips → Infrastructure → Models → Applications*")
+
+    # Point-in-time reference, not a live feed -- these files were written
+    # once and haven't been regenerated since. Surfacing the date so users
+    # don't mistake a static research snapshot for current analysis.
+    LAYERS_AS_OF_DATE = "2026-06-15"
+    st.caption(
+        f"📅 Reference data as of **{LAYERS_AS_OF_DATE}** -- this is a curated "
+        "research reference (which companies sit in which layer), not a live "
+        "or scored feed. Signal/Moat/QS columns below pull from the real scan "
+        "pipeline where available; the layer/company categorization itself "
+        "is static."
+    )
     st.divider()
 
     layer_files = {
-        "⚡ Layer 1 - Energy": "/home/shalu/Downloads/layers/Layer 1  Energy Companies Powering the AI Infrastructure Buildout.md",
-        "💻 Layer 2 - Chips & Computers": "/home/shalu/Downloads/layers/Layer 2  Chips and Computers – Listed US and Hong Kong China Companies Powering AI Compute.md",
-        "🏢 Layer 3 - Infrastructure": "/home/shalu/Downloads/layers/Layer 3  AI Infrastructure – Data Centers, Land, and Power-Adjacent Real Assets.md",
-        "🧠 Layer 4 - AI Models": "/home/shalu/Downloads/layers/Layer 4  Model Layer – Listed US and Hong Kong China AI Model and Platform Companies.md",
-        "🚀 Layer 5 - Applications": "/home/shalu/Downloads/layers/Layer 5  Application Layer – Listed US and Hong Kong China AI-Enabled Companies.md",
+        "⚡ Layer 1 - Energy": "config/reference/layers/Layer 1  Energy Companies Powering the AI Infrastructure Buildout.md",
+        "💻 Layer 2 - Chips & Computers": "config/reference/layers/Layer 2  Chips and Computers – Listed US and Hong Kong China Companies Powering AI Compute.md",
+        "🏢 Layer 3 - Infrastructure": "config/reference/layers/Layer 3  AI Infrastructure – Data Centers, Land, and Power-Adjacent Real Assets.md",
+        "🧠 Layer 4 - AI Models": "config/reference/layers/Layer 4  Model Layer – Listed US and Hong Kong China AI Model and Platform Companies.md",
+        "🚀 Layer 5 - Applications": "config/reference/layers/Layer 5  Application Layer – Listed US and Hong Kong China AI-Enabled Companies.md",
     }
 
     # ----- Layer + region selection -----
@@ -2316,11 +2348,13 @@ def layers_tab():
         return ""
 
     def _color_moat(val):
-        if val == "WIDE":
+        # STRONG/WEAK/NONE/UNKNOWN is the current moat_strength enum;
+        # WIDE/NARROW was the old one (see color_moat() above).
+        if val == "STRONG":
             return "color: #00cc66; font-weight: bold"
-        elif val == "NARROW":
+        elif val == "WEAK":
             return "color: #ffaa00; font-weight: bold"
-        elif val == "NONE" or val == "NONE ":
+        elif val == "NONE":
             return "color: #ff4444; font-weight: bold"
         return ""
 

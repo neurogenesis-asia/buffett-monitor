@@ -14,6 +14,7 @@ import httpx
 from dotenv import load_dotenv
 
 from buffett.scorer import decide_signal
+from buffett.config import get_llm_model
 
 # Nothing in the production pipeline (scanner.py, scheduler.py) previously
 # loaded .env -- only a standalone test script did. That meant
@@ -25,7 +26,6 @@ from buffett.scorer import decide_signal
 load_dotenv()
 
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
-OPENROUTER_MODEL = "anthropic/claude-3-haiku"
 
 # Must match the CHECK constraints in data/init_db.py's buffett_scores
 # table exactly -- a value outside these sets will fail the INSERT for
@@ -137,7 +137,7 @@ class MoatLLMJudge:
                     "Content-Type": "application/json",
                 },
                 json={
-                    "model": OPENROUTER_MODEL,
+                    "model": get_llm_model(),
                     "temperature": 0.0,
                     "max_tokens": 1000,
                     "messages": [

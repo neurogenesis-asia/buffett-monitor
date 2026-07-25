@@ -1,12 +1,11 @@
 llm:
-  model: claude-haiku-4-5-20251001
+  model: anthropic/claude-3-haiku
   pillar_cache_days: 90
-
 thresholds:
   pe_max: 15
   pb_max: 1.5
   graham_max: 22.5
-  de_max: 0.50
+  de_max: 0.5
   current_ratio_min: 1.5
   roe_5y_min: 7.0
   dividend_yield_min: 2.0
@@ -16,15 +15,13 @@ thresholds:
   quant_score_watch_min: 60.0
   quant_score_review_min: 40.0
   iv_discount_rate_floor: 8.0
-
 scan:
   cron_day: sun
   cron_hour: 22
   cron_minute: 0
   timezone: Asia/Kuala_Lumpur
   per_ticker_timeout_s: 30
-  min_success_rate: 0.90
-
+  min_success_rate: 0.9
 telegram:
   send_on_scan_complete: true
   send_on_exit_alert: true

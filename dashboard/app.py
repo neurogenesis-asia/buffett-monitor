@@ -6,6 +6,7 @@ Provides 4-tab interface for monitoring stock investments.
 
 import streamlit as st
 import pandas as pd
+import plotly.express as px
 import sqlite3
 import re
 from datetime import date, datetime
@@ -902,6 +903,7 @@ def holdings_tab():
             'Notes': holding['notes'] or '',
             '_raw_quantity': quantity,
             '_raw_avg_cost': avg_cost,
+            '_raw_current_value': current_value,
             '_raw_notes': holding.get('notes', ''),
             '_holding_id': holding.get('id'),
             '_currency': currency_symbol
@@ -1015,9 +1017,108 @@ def holdings_tab():
         with col4:
             sell_signals = sum(1 for h in holdings_data if h['Signal'] == 'SELL')
             st.metric("SELL Signals", sell_signals)
+
+        portfolio_risk_section(holdings_data)
     else:
         st.warning("Unable to load holdings data.")
 
+
+def portfolio_risk_section(holdings_data: list):
+    """
+    Portfolio-level risk: concentration, sector exposure, and correlation
+    across actual current holdings. Distinct from the risk analytics in
+    dashboard/components/intelligence_dashboard.py, which analyze a
+    hypothetical optimizer-suggested allocation, not what's actually held.
+    """
+    from dashboard.utils.portfolio_risk import (
+        compute_concentration,
+        compute_sector_exposure,
+        fetch_returns_for_tickers,
+        compute_correlation_matrix,
+    )
+
+    st.markdown("---")
+    st.subheader("⚖️ Portfolio Risk")
+    st.caption("Concentration, sector exposure, and correlation across your actual holdings.")
+
+    values = {h['Ticker']: h['_raw_current_value'] for h in holdings_data}
+    values = {t: v for t, v in values.items() if v and v > 0}
+
+    if not values:
+        st.info("No priced positions available for risk analysis.")
+        return
+
+    concentration = compute_concentration(values)
+
+    risk_col1, risk_col2, risk_col3, risk_col4 = st.columns(4)
+    with risk_col1:
+        st.metric("Positions", concentration["num_positions"])
+    with risk_col2:
+        st.metric("Largest Position", f"{concentration['top1_weight']:.1%}")
+    with risk_col3:
+        st.metric("Top 3 Weight", f"{concentration['top3_weight']:.1%}")
+    with risk_col4:
+        hhi = concentration["hhi"]
+        hhi_label = "Concentrated" if hhi > 0.25 else ("Moderate" if hhi > 0.15 else "Diversified")
+        st.metric("HHI", f"{hhi:.3f}", hhi_label)
+
+    risk_chart_col1, risk_chart_col2 = st.columns(2)
+
+    with risk_chart_col1:
+        st.write("**Sector Exposure**")
+        sector_exposure = compute_sector_exposure(values, DB_PATH)
+        if not sector_exposure.empty:
+            fig_sector_exp = px.bar(
+                x=sector_exposure.values,
+                y=sector_exposure.index,
+                orientation='h',
+                labels={'x': 'Portfolio Weight', 'y': 'Sector'},
+                color=sector_exposure.values,
+                color_continuous_scale='Blues',
+            )
+            fig_sector_exp.update_layout(showlegend=False, height=300, coloraxis_showscale=False)
+            fig_sector_exp.update_xaxes(tickformat=".0%")
+            st.plotly_chart(fig_sector_exp, width='stretch')
+        else:
+            st.info("No sector data available for current holdings.")
+
+    with risk_chart_col2:
+        st.write("**Position Weights**")
+        weights = concentration["weights"]
+        if weights:
+            fig_weights = px.pie(
+                values=list(weights.values()),
+                names=list(weights.keys()),
+                hole=0.3,
+            )
+            fig_weights.update_layout(height=300)
+            st.plotly_chart(fig_weights, width='stretch')
+
+    st.write("**Correlation Between Holdings**")
+    tickers = list(values.keys())
+    if len(tickers) < 2:
+        st.info("Need at least 2 positions to compute correlation.")
+    else:
+        if st.button("Compute Correlation (fetches price history)", key="compute_correlation_btn"):
+            with st.spinner("Fetching price history..."):
+                returns_df = fetch_returns_for_tickers(tickers, lookback_days=252)
+                corr = compute_correlation_matrix(returns_df)
+            if corr is None:
+                st.warning("Not enough overlapping price history to compute a reliable correlation matrix.")
+            else:
+                fig_corr = px.imshow(
+                    corr.values,
+                    x=corr.columns.tolist(),
+                    y=corr.index.tolist(),
+                    color_continuous_scale='RdBu_r',
+                    zmin=-1, zmax=1, zmid=0,
+                    labels=dict(color="Correlation"),
+                    aspect="auto",
+                )
+                fig_corr.update_layout(height=max(300, len(corr.index) * 40))
+                st.plotly_chart(fig_corr, width='stretch')
+                if concentration["num_positions"] < len(tickers):
+                    st.caption("Tickers with insufficient price history are omitted from the matrix.")
 
 
 def signals_tab():
@@ -2216,6 +2317,72 @@ def layers_tab():
         key="ai_eco_download",
     )
 
+def settings_tab():
+    """Settings for agent/LLM configuration -- currently the model used
+    for moat judgment (buffett/moat_llm.py, via OpenRouter). Reads/writes
+    config/settings.yaml through buffett/config.py, which is the single
+    source of truth both this tab and moat_llm.py read from -- a change
+    here takes effect on the next call, no restart needed."""
+    import os
+    from buffett.config import get_llm_model, set_llm_model, DEFAULT_LLM_MODEL
+
+    st.header("⚙️ Settings")
+    st.subheader("Agent / LLM Model")
+    st.caption(
+        "Model used for moat judgment (buffett/moat_llm.py) and any future "
+        "LLM-backed agent, via OpenRouter. Changing this here updates "
+        "config/settings.yaml directly -- takes effect on the next scan, "
+        "no restart required."
+    )
+
+    has_key = bool(os.getenv("OPENROUTER_API_KEY"))
+    if has_key:
+        st.success("OPENROUTER_API_KEY is configured. The real LLM path will run.")
+    else:
+        st.warning(
+            "OPENROUTER_API_KEY is not set. Agents will silently use their "
+            "heuristic/rule-based fallback instead of a real LLM judgment "
+            "until a key is added to .env."
+        )
+
+    current_model = get_llm_model()
+
+    preset_models = [
+        "anthropic/claude-3-haiku",
+        "anthropic/claude-3.5-sonnet",
+        "openai/gpt-4o-mini",
+        "openai/gpt-4o",
+        "google/gemini-flash-1.5",
+        "Custom...",
+    ]
+    default_index = preset_models.index(current_model) if current_model in preset_models[:-1] else len(preset_models) - 1
+
+    choice = st.selectbox(
+        "Model (OpenRouter slug)",
+        preset_models,
+        index=default_index,
+        help="Any valid OpenRouter model slug, e.g. 'anthropic/claude-3-haiku'.",
+    )
+
+    if choice == "Custom...":
+        new_model = st.text_input("Custom model slug", value=current_model if current_model not in preset_models[:-1] else "")
+    else:
+        new_model = choice
+
+    st.caption(f"Currently configured: `{current_model}`")
+
+    if st.button("Save Model", type="primary"):
+        if new_model and new_model.strip():
+            try:
+                set_llm_model(new_model)
+                st.success(f"Saved. Agents will use `{new_model.strip()}` from the next call onward.")
+                st.rerun()
+            except ValueError as e:
+                st.error(str(e))
+        else:
+            st.error("Model slug cannot be empty.")
+
+
 def main():
     # Sidebar
     st.sidebar.title("📊 Stock Monitor")
@@ -2229,10 +2396,11 @@ def main():
     st.sidebar.markdown(f"*Last updated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}*")
     
     # Main tabs
-    tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8, tab9, tab10, tab11 = st.tabs([
-        "📈 Holdings", "🎯 Signals", "📋 Change Log", "💰 Sell Calculator", 
-        "📊 Portfolio Optimization", "🧠 Intelligence", "📈 Week High/Low", 
-        "👁️ AI Watchlist", "📊 ETF Watchlist", "📊 Bond Yield", "🏗️ AI Ecosystem"
+    tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8, tab9, tab10, tab11, tab12 = st.tabs([
+        "📈 Holdings", "🎯 Signals", "📋 Change Log", "💰 Sell Calculator",
+        "📊 Portfolio Optimization", "🧠 Intelligence", "📈 Week High/Low",
+        "👁️ AI Watchlist", "📊 ETF Watchlist", "📊 Bond Yield", "🏗️ AI Ecosystem",
+        "⚙️ Settings"
     ])
 
     with tab1:
@@ -2266,6 +2434,9 @@ def main():
     
     with tab11:
         layers_tab()
+
+    with tab12:
+        settings_tab()
 
 
 def edit_holding_form(holding):

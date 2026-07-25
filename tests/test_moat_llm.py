@@ -71,6 +71,25 @@ def test_with_api_key_calls_openrouter_not_fallback(db_path, monkeypatch):
     assert result["mgmt_quality"] == "GOOD"
 
 
+def test_uses_model_from_settings_yaml_not_a_hardcoded_constant(db_path, monkeypatch, tmp_path):
+    """Regression test: the model used to be a hardcoded module constant.
+    It must now come from buffett.config.get_llm_model() (backed by
+    config/settings.yaml, editable via the dashboard's Settings tab) so a
+    user can change it without a code change."""
+    monkeypatch.setenv("OPENROUTER_API_KEY", "test-key-123")
+    config_path = tmp_path / "settings.yaml"
+    monkeypatch.setattr("buffett.moat_llm.get_llm_model", lambda: "openai/gpt-4o-mini")
+
+    judge = MoatLLMJudge(db_path=db_path)
+    content = '{"pillar1": "STRONG", "pillar2": "STRONG", "moat_strength": "STRONG", ' \
+              '"moat_rationale": "test", "mgmt_quality": "GOOD", "mgmt_rationale": "test"}'
+    with patch("buffett.moat_llm.httpx.post", return_value=_openrouter_response(content)) as mock_post:
+        judge.judge_pillars("TEST.KL", SAMPLE_FUNDAMENTALS)
+
+    sent_model = mock_post.call_args.kwargs["json"]["model"]
+    assert sent_model == "openai/gpt-4o-mini"
+
+
 def test_openrouter_call_falls_back_on_http_error(db_path, monkeypatch):
     monkeypatch.setenv("OPENROUTER_API_KEY", "test-key-123")
     judge = MoatLLMJudge(db_path=db_path)

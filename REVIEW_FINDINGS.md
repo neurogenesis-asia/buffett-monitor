@@ -294,10 +294,59 @@ assertions, and there was no automated check on scan output quality.
 
 **Result after #4–#8**: `pytest tests/` → 65 passed, 0 failed.
 
+### #9 — Portfolio-level risk on the Holdings tab
+- Confirmed the existing "Risk Analytics" section in
+  `dashboard/components/intelligence_dashboard.py` analyzes a
+  *hypothetical* optimizer-suggested allocation (the `weight` column in
+  the `portfolio_optimization` table, from `ml/portfolio_optimizer.py`
+  runs) — not what the user actually owns. Nothing anywhere computed
+  concentration (HHI) or a correlation matrix for the real portfolio in
+  `buffett_holdings`.
+- Added `dashboard/utils/portfolio_risk.py`: `compute_concentration`
+  (HHI, top-1/top-3 weight, position count), `compute_sector_exposure`
+  (portfolio $ weight per sector via `buffett_universe.sector`, with an
+  explicit "Unknown" bucket rather than silently dropping unsectored
+  tickers), and `compute_correlation_matrix` — deliberately split from
+  `fetch_returns_for_tickers` (the yfinance call) so the correlation math
+  is unit-testable without the network.
+- Wired into `holdings_tab()` in `dashboard/app.py` as a new "⚖️ Portfolio
+  Risk" section: concentration metrics, a sector-exposure bar chart, a
+  position-weight pie chart, and an on-demand correlation heatmap (button-
+  gated, since it fetches live price history for each held ticker).
+- Covered by 14 new tests (`tests/test_portfolio_risk.py`) for the pure
+  computation functions.
+- **Not done**: fixing `intelligence_dashboard.py`'s separate, already-
+  broken "Sector Analysis" section (it hardcodes `'' as sector` in its
+  SQL query, so every sector always shows empty) — out of scope for #9,
+  noted here for later.
+
+**Result after #4–#9**: `pytest tests/` → 79 passed, 0 failed.
+
+### Agent model selection (user request, alongside #9)
+- `config/settings.yaml` already had an `llm.model` field, but nothing in
+  the codebase ever read it — `buffett/moat_llm.py` hardcoded its own
+  model constant instead, and the YAML's stale value
+  (`claude-haiku-4-5-20251001`) wasn't even a valid OpenRouter slug.
+- Added `buffett/config.py`: `get_llm_model()`/`set_llm_model()`, the
+  single read/write path for `settings.yaml`'s `llm.model`, preserving
+  every other key on write. `moat_llm.py` now calls `get_llm_model()`
+  fresh on every LLM call (not a module-level constant), so a change
+  takes effect on the very next scan — no restart needed.
+- Added a new "⚙️ Settings" tab to the dashboard (`dashboard/app.py`):
+  shows whether `OPENROUTER_API_KEY` is configured, a preset dropdown of
+  common OpenRouter models plus a custom-slug text input, and a Save
+  button that writes straight to `settings.yaml`.
+- Verified end-to-end: changing the model via `set_llm_model()` and then
+  calling `judge_pillars()` sent the new model string to OpenRouter on
+  the very next call, with no process restart.
+- Covered by 9 new tests (`tests/test_config.py`, plus a regression test
+  in `tests/test_moat_llm.py` confirming the model is read from config,
+  not a hardcoded constant).
+
+**Result after #4–#9 + settings**: `pytest tests/` → 88 passed, 0 failed.
+
 ## Remaining recommendations (not yet started)
 
-9. Surface portfolio-level risk (concentration, correlation) directly on
-   the Signals/Holdings tabs.
 10. Replace/harden the malaysiastock.biz scraper with sanity checks or a
     real vendor.
 

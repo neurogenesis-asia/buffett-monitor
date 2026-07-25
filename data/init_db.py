@@ -91,7 +91,7 @@ def init_database(db_path: str = "data/buffett.db"):
                          (\"BUY\",\"WATCH\",\"HOLD\",\"REVIEW\",\"EXIT\",\"PASS\",\"SELL\",\"AVOID\")),
         signal_reason      TEXT,
         moat_strength      TEXT CHECK (moat_strength IN
-                         ('NONE','NARROW','WIDE','UNKNOWN')),
+                         ('STRONG','WEAK','NONE','UNKNOWN')),
         moat_rationale     TEXT,
         mgmt_quality       TEXT CHECK (mgmt_quality IN
                          ('POOR','AVERAGE','GOOD','EXCELLENT','UNKNOWN')),
@@ -134,7 +134,29 @@ def init_database(db_path: str = "data/buffett.db"):
         created_at      DATETIME DEFAULT CURRENT_TIMESTAMP
     );
     """)
-    
+
+    # 3.5b News sentiment (read by buffett/scorer.py's compute_enhanced_score
+    # via get_latest_sentiment on every scan -- must exist on any fresh DB,
+    # not just ad hoc via buffett/news_sentiment.py's own init helper, or
+    # every ticker fails with "no such table: news_sentiment").
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS news_sentiment (
+        id                INTEGER PRIMARY KEY AUTOINCREMENT,
+        ticker            TEXT NOT NULL,
+        as_of             DATETIME NOT NULL,
+        sentiment_score   REAL NOT NULL,
+        headline_count    INTEGER NOT NULL,
+        top_keywords      TEXT,
+        top_headlines     TEXT,
+        source            TEXT NOT NULL,
+        created_at        DATETIME DEFAULT CURRENT_TIMESTAMP
+    );
+    """)
+    cursor.execute("""
+    CREATE INDEX IF NOT EXISTS idx_news_sentiment_ticker_date
+    ON news_sentiment(ticker, as_of DESC);
+    """)
+
     # 3.6 Bond yield reference
  
     # 3.7 ML Signal Outcomes

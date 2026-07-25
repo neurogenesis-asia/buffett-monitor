@@ -11,11 +11,11 @@ from typing import Dict, List, Tuple
 from pathlib import Path
 
 from buffett.fetchers import fetch_fundamentals
-from buffett.scorer import compute_intrinsic_value, compute_quant_score, decide_signal, calculate_graham_number, compute_enhanced_score
+from buffett.scorer import calculate_graham_number, compute_enhanced_score
 from buffett.moat_llm import judge_moat
 from buffett.change_log import diff_previous
 from data.init_db import init_database  # Fixed import path
-from alerts.alert_system import price_alert, signal_alert, fundamental_alert
+from alerts.alert_system import price_alert, signal_alert, fundamental_alert, alert_manager
 import yfinance as yf
 from ml.signal_enhancer import SignalEnhancer
 
@@ -135,21 +135,6 @@ def run_weekly_scan(db_path: str = "data/buffett.db", tickers: list[str] | None 
                 results["errors"].append(f"{ticker}: Failed to fetch fundamentals")
                 continue
 
-            # Calculate intrinsic value
-            fcf = fundamentals.get("eps_ttm", 0) * fundamentals.get("shares_outstanding", 0)  # Simplified
-            if fcf > 0:
-                iv = compute_intrinsic_value(
-                    fcf=fcf,
-                    growth_rate=0.05,  # TODO: get from fundamentals or config
-                    discount_rate=0.10
-                )
-                fundamentals["intrinsic_value"] = iv
-
-                price = fundamentals.get("price", 0)
-                if iv > 0:
-                    fundamentals["margin_of_safety"] = (iv - price) / iv if price > 0 else 0
-                    fundamentals["implied_return_pct"] = (iv / price - 1) if price > 0 else 0
-
             # Calculate Graham number
             eps = fundamentals.get("eps_ttm", 0)
             bvps = fundamentals.get("book_value_per_share", 0)
@@ -174,6 +159,19 @@ def run_weekly_scan(db_path: str = "data/buffett.db", tickers: list[str] | None 
             fundamentals["passed_criteria"] = passed_criteria
             fundamentals["scoring_metadata"] = scoring_metadata
             fundamentals.update(moat_judgment)  # Add pillar1, pillar2, moat_strength, etc.
+
+            # Single source of truth for intrinsic value / margin of safety:
+            # whichever valuation path actually drove the signal (AI or classic).
+            price = fundamentals.get("price", 0)
+            if scoring_metadata.get("ai_valuation"):
+                intrinsic_value = scoring_metadata["ai_valuation"]["intrinsic_value_ai"]
+                margin_of_safety = scoring_metadata["ai_valuation"]["margin_of_safety_ai"]
+            else:
+                intrinsic_value = scoring_metadata.get("classic_intrinsic", 0.0)
+                margin_of_safety = (intrinsic_value - price) / intrinsic_value if intrinsic_value > 0 and price > 0 else 0.0
+            fundamentals["intrinsic_value"] = intrinsic_value
+            fundamentals["margin_of_safety"] = margin_of_safety
+            fundamentals["implied_return_pct"] = (intrinsic_value / price - 1) if price > 0 and intrinsic_value > 0 else 0.0
             rule_based_signal = signal
             rule_based_confidence = 0.8  # placeholder confidence for rule-based signal
             fundamentals["signal_reason"] = _generate_signal_reason(
@@ -329,7 +327,67 @@ def run_weekly_scan(db_path: str = "data/buffett.db", tickers: list[str] | None 
     logger.info(f"Signals - BUY: {results['buy_signals']}, HOLD: {results['hold_signals']}, "
                 f"SELL: {results['sell_signals']}, AVOID: {results['avoid_signals']}")
 
+    _check_scan_health(results)
+
     return results
+
+
+def _check_scan_health(results: Dict) -> None:
+    """
+    Post-scan invariant checks.
+
+    A prior incident let fundamentals["signal"] go unset for six weeks,
+    silently producing all-NULL signals with no visible failure -- nothing
+    paged anyone because every ticker still counted as "successful". This
+    check catches that whole class of degenerate-but-not-erroring scan
+    outcome and pages via the existing alert channel (Telegram, if
+    configured) instead of relying on someone noticing the dashboard looks
+    empty.
+    """
+    total = results.get("total_tickers", 0)
+    successful = results.get("successful", 0)
+    failed = results.get("failed", 0)
+    signal_total = (
+        results.get("buy_signals", 0)
+        + results.get("hold_signals", 0)
+        + results.get("sell_signals", 0)
+        + results.get("avoid_signals", 0)
+    )
+
+    problems = []
+
+    if total > 0 and successful == 0:
+        problems.append(f"0/{total} tickers scanned successfully")
+    elif total > 0 and failed / total > 0.5:
+        problems.append(f"{failed}/{total} tickers failed ({failed / total:.0%} failure rate)")
+
+    if successful > 0 and signal_total == 0:
+        problems.append(
+            f"{successful} tickers scanned successfully but produced 0 categorized "
+            f"signals (BUY/HOLD/SELL/AVOID) -- signals may be NULL or malformed"
+        )
+    elif successful > 0 and signal_total < successful * 0.5:
+        problems.append(
+            f"Only {signal_total}/{successful} successful scans produced a categorized signal"
+        )
+
+    if problems:
+        message = "Weekly scan health check FAILED:\n- " + "\n- ".join(problems)
+        if results.get("errors"):
+            message += "\nSample errors:\n- " + "\n- ".join(results["errors"][:3])
+        logger.error(message)
+        try:
+            alert_manager.add_alert(
+                ticker="SYSTEM",
+                alert_type="pipeline_health",
+                message=message,
+                priority="urgent",
+                data={k: v for k, v in results.items() if k != "errors"},
+            )
+        except Exception as e:
+            logger.error(f"Failed to send pipeline health alert: {e}")
+    else:
+        logger.info("Scan health check passed.")
 
 
 def _save_snapshot(ticker: str, fundamentals: Dict, db_path: str):

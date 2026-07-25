@@ -84,10 +84,20 @@ def compute_quant_score(fundamentals: Dict) -> Tuple[float, Dict[str, bool]]:
     pb = fundamentals.get('pb_ratio', float('inf'))
     graham_number = fundamentals.get('graham_number', 0.0)
     price = fundamentals.get('price', 0.0)
-    debt_to_equity = fundamentals.get('debt_to_equity', float('inf'))
     current_ratio = fundamentals.get('current_ratio', 0.0)
-    roe = fundamentals.get('roe', -float('inf'))
     dividend_yield = fundamentals.get('dividend_yield', 0.0)
+
+    # fetchers.py populates 'de_ratio'/'roe_latest' (fraction, e.g. 0.12 = 12%),
+    # not 'debt_to_equity'/'roe' -- fall back so real scan data doesn't
+    # silently fail these two criteria on every ticker.
+    debt_to_equity = fundamentals.get('debt_to_equity')
+    if debt_to_equity is None:
+        debt_to_equity = fundamentals.get('de_ratio', float('inf'))
+
+    roe = fundamentals.get('roe')
+    if roe is None:
+        roe_latest = fundamentals.get('roe_latest')
+        roe = roe_latest * 100 if roe_latest is not None else -float('inf')
     eps_ttm = fundamentals.get('eps_ttm', 0.0)
     free_cash_flow = fundamentals.get('free_cash_flow', 0.0)
     market_cap = fundamentals.get('market_cap', 0.0)

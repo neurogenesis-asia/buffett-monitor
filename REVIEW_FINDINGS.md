@@ -252,12 +252,50 @@ assertions, and there was no automated check on scan output quality.
 
 **Result after #4, #6, #7, #8**: `pytest tests/` → 56 passed, 0 failed.
 
+### #5 — Moat judgment now genuinely runs via a real LLM (OpenRouter)
+- `buffett/moat_llm.py` swapped from a direct Anthropic SDK client to
+  OpenRouter's OpenAI-compatible chat completions API (`httpx`, already a
+  dependency — no new package needed), gated on `OPENROUTER_API_KEY`. When
+  the key is present, tickers get a genuine qualitative LLM judgment
+  instead of always silently falling onto the ratio-derived heuristic —
+  which is the core ask: the moat signal is no longer forced to double-
+  count the same ROE/D-E/current-ratio inputs already in the quant score.
+- **Found and fixed a bug that would have broken every ticker the moment
+  the real LLM path ran**: `buffett/prompts/moat.md` instructed the LLM to
+  return `moat_strength: STRONG|WEAK|AVERAGE` and
+  `mgmt_quality: STRONG|WEAK|AVERAGE`, but `data/init_db.py`'s CHECK
+  constraints only accept `STRONG/WEAK/NONE/UNKNOWN` for the former and
+  `POOR/AVERAGE/GOOD/EXCELLENT/UNKNOWN` for the latter. Fixed the prompt
+  to ask for the correct enums, and added `_normalize_judgment()` as a
+  defense-in-depth safety net that clamps any out-of-enum value (from
+  either prompt drift or the LLM simply not following instructions) to
+  `"UNKNOWN"` rather than crashing the INSERT for that ticker.
+- **Found a second blocking bug**: nothing in the production pipeline
+  (`scanner.py`, `scheduler.py`) ever called `load_dotenv()` — only a
+  standalone test script did. `OPENROUTER_API_KEY` (and `ANTHROPIC_API_KEY`
+  before it) could sit in `.env` and still never reach `os.getenv()` in a
+  live scan. Added `load_dotenv()` at the top of `moat_llm.py`.
+- **Found a third bug while writing tests**: `judge_moat()` hardcoded
+  `MoatLLMJudge()`'s default `db_path`, ignoring whatever `db_path` the
+  caller's scan actually used — a scan against a non-default database
+  would silently cache moat judgments into the wrong file. Fixed by
+  threading `db_path` through `judge_moat()` and updating `scanner.py`'s
+  call site to pass it.
+- Added a `judgment_source` field (`"llm"` vs. `"heuristic_fallback"`) to
+  every returned judgment for transparency — any downstream consumer can
+  now tell whether a moat_strength came from real qualitative reasoning or
+  the ratio-based fallback, rather than the two looking identical.
+- Verified end-to-end with a live OpenRouter call (not just mocks): a real
+  ticker (Maybank) returned a genuine qualitative judgment
+  (`judgment_source: llm`, correctly enum-formatted, sensible rationale).
+- Covered by 9 new tests (`tests/test_moat_llm.py`, replacing the old
+  root-level `test_moat_llm.py` print-script, which ran against the real
+  production DB and would have made a real, billed API call).
+
+**Result after #4–#8**: `pytest tests/` → 65 passed, 0 failed.
+
 ## Remaining recommendations (not yet started)
 
-5. Make moat judgment genuinely independent of the quant score (require the
-   LLM path in production, or clearly label the heuristic fallback as
-   "quant-derived" rather than "moat"). **Pending**: LLM calls for this will
-   go through OpenRouter — see below.
 9. Surface portfolio-level risk (concentration, correlation) directly on
    the Signals/Holdings tabs.
 10. Replace/harden the malaysiastock.biz scraper with sanity checks or a
@@ -265,10 +303,8 @@ assertions, and there was no automated check on scan output quality.
 
 ## LLM provider note (OpenRouter)
 
-Any future work that needs LLM calls (item #5 — moat judgment
-independence, and potentially better news-sentiment classification) will
-be wired through **OpenRouter** instead of a direct Anthropic key, per
-request. `OPENROUTER_API_KEY` will be read from the environment once
-provided; no code currently depends on it. `buffett/moat_llm.py`'s
-`MoatLLMJudge` client setup (`buffett/moat_llm.py:29-31`) is the integration
-point to swap when the key is available.
+Moat judgment (#5, above) now runs through **OpenRouter**
+(`OPENROUTER_API_KEY` in `.env`) rather than a direct Anthropic key, per
+request — see `buffett/moat_llm.py`. Any future LLM-backed work (e.g.
+upgrading `buffett/news_sentiment.py`'s classification) should use the
+same provider and the same `OPENROUTER_API_KEY`/`httpx` pattern.

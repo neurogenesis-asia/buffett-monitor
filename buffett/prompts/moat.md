@@ -34,16 +34,22 @@ Provide your judgment in the following JSON format only (no additional text):
 {
   "pillar1": "STRONG|WEAK|POOR",
   "pillar2": "STRONG|WEAK|POOR", 
-  "moat_strength": "STRONG|WEAK|AVERAGE",
+  "moat_strength": "STRONG|WEAK|NONE",
   "moat_rationale": "Brief explanation of your moat judgment",
-  "mgmt_quality": "STRONG|WEAK|AVERAGE",
+  "mgmt_quality": "EXCELLENT|GOOD|AVERAGE|POOR",
   "mgmt_rationale": "Brief explanation of your management quality judgment"
 }
 
 ## Guidelines
 - **STRONG**: Exemplary, best-in-class characteristics
 - **WEAK**: Below average or concerning characteristics  
-- **POOR**: Significantly deficient characteristics (for pillars only)
-- **AVERAGE**: Moderate or typical characteristics (for moat_strength only)
+- **POOR**: Significantly deficient characteristics (for pillars and management quality)
+- **NONE**: No discernible moat (for moat_strength only)
+- **AVERAGE**: Moderate or typical characteristics (for management quality only)
+- **EXCELLENT / GOOD**: Above-average management quality
+- moat_strength and mgmt_quality MUST be exactly one of the values listed
+  above for that field -- these are validated against a fixed database
+  enum, and any other value (e.g. "AVERAGE" for moat_strength) will be
+  rejected and replaced with "UNKNOWN".
 
 Base your judgment strictly on the financial data provided and Buffett's principles as outlined in his letters and teachings.

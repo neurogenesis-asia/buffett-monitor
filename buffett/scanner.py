@@ -156,7 +156,7 @@ def run_weekly_scan(db_path: str = "data/buffett.db", tickers: list[str] | None 
             # Enhanced scoring (AI + classic + news sentiment)
             sector = fundamentals.get("sector", "")
             industry = fundamentals.get("industry", "")
-            moat_judgment = judge_moat(ticker, fundamentals)
+            moat_judgment = judge_moat(ticker, fundamentals, db_path=db_path)
             moat_strength = moat_judgment.get("moat_strength", "UNKNOWN")
             
             quant_score, passed_criteria, signal, scoring_metadata = compute_enhanced_score(

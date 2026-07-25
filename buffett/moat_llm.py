@@ -1,5 +1,5 @@
 """
-Moat judgment using LLM (Anthropic Claude) for Pillars 1 and 2.
+Moat judgment using an LLM (via OpenRouter) for Pillars 1 and 2.
 Implements caching and prompt-based judgment as per design.
 """
 
@@ -10,13 +10,29 @@ from datetime import datetime, timedelta
 from typing import Dict, Optional, Tuple
 import sqlite3
 
-# Try to import anthropic, but provide a fallback for testing
-try:
-    import anthropic
-except ImportError:
-    anthropic = None
+import httpx
+from dotenv import load_dotenv
 
 from buffett.scorer import decide_signal
+
+# Nothing in the production pipeline (scanner.py, scheduler.py) previously
+# loaded .env -- only a standalone test script did. That meant
+# OPENROUTER_API_KEY (and before it, ANTHROPIC_API_KEY) could sit in .env
+# and still never reach os.getenv() in a live scan, silently forcing every
+# ticker onto the heuristic fallback regardless of whether a key was
+# configured. load_dotenv() only fills in variables not already set in the
+# environment, so this is safe alongside a real exported env var too.
+load_dotenv()
+
+OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
+OPENROUTER_MODEL = "anthropic/claude-3-haiku"
+
+# Must match the CHECK constraints in data/init_db.py's buffett_scores
+# table exactly -- a value outside these sets will fail the INSERT for
+# every ticker (this happened before: the prompt used to ask the LLM for
+# "AVERAGE" as a moat_strength value, which isn't in this enum).
+VALID_MOAT_STRENGTH = {"STRONG", "WEAK", "NONE", "UNKNOWN"}
+VALID_MGMT_QUALITY = {"POOR", "AVERAGE", "GOOD", "EXCELLENT", "UNKNOWN"}
 
 
 class MoatLLMJudge:
@@ -24,11 +40,8 @@ class MoatLLMJudge:
         self.db_path = db_path
         self.cache_days = cache_days
         self._ensure_cache_table()
-        
-        # Initialize Anthropic client if available
-        self.client = None
-        if anthropic and os.getenv("ANTHROPIC_API_KEY"):
-            self.client = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
+
+        self.api_key = os.getenv("OPENROUTER_API_KEY")
     
     def _ensure_cache_table(self):
         """Ensure the buffett_moat_judgments table exists for caching LLM judgments."""
@@ -104,40 +117,52 @@ class MoatLLMJudge:
         cached = self._is_cached(ticker)
         if cached is not None:
             return cached
-        
-        # If no LLM client, return a fallback judgment
-        if self.client is None:
+
+        # If no API key configured, use the heuristic fallback
+        if not self.api_key:
             return self._fallback_judgment(fundamentals)
-        
+
         # Load the prompt template
         prompt_template = self._load_prompt()
-        
+
         # Format the prompt with the fundamentals
         prompt = self._format_prompt(prompt_template, fundamentals)
-        
-        # Call the LLM
+
+        # Call the LLM via OpenRouter (OpenAI-compatible chat completions API)
         try:
-            message = self.client.messages.create(
-                model="claude-3-haiku-20240307",
-                max_tokens=1000,
-                temperature=0.0,
-                system="You are a financial analyst specializing in Warren Buffett's investment principles. "
-                       "Your task is to judge a company's moat and management quality based on financial data.",
-                messages=[
-                    {
-                        "role": "user",
-                        "content": prompt
-                    }
-                ]
+            response = httpx.post(
+                OPENROUTER_URL,
+                headers={
+                    "Authorization": f"Bearer {self.api_key}",
+                    "Content-Type": "application/json",
+                },
+                json={
+                    "model": OPENROUTER_MODEL,
+                    "temperature": 0.0,
+                    "max_tokens": 1000,
+                    "messages": [
+                        {
+                            "role": "system",
+                            "content": "You are a financial analyst specializing in Warren Buffett's "
+                                       "investment principles. Your task is to judge a company's moat "
+                                       "and management quality based on financial data.",
+                        },
+                        {"role": "user", "content": prompt},
+                    ],
+                },
+                timeout=30.0,
             )
-            
-            # Extract the JSON from the response
-            response_text = message.content[0].text
+            response.raise_for_status()
+            response_text = response.json()["choices"][0]["message"]["content"]
             judgment = self._parse_judgment(response_text)
-            
-            # Cache the judgment
+            if judgment is None:
+                # Response wasn't parseable JSON -- fall back without
+                # caching, same as the no-API-key case, so a transient bad
+                # response doesn't get stuck serving a fallback for 90 days.
+                return self._fallback_judgment(fundamentals)
+
+            judgment["judgment_source"] = "llm"
             self._cache_judgment(ticker, judgment)
-            
             return judgment
         except Exception as e:
             print(f"Error calling LLM for {ticker}: {e}")
@@ -159,19 +184,46 @@ class MoatLLMJudge:
         formatted = formatted.replace("{revenue_growth}", str(fundamentals.get("revenue_growth", "N/A")))
         return formatted
     
-    def _parse_judgment(self, response_text: str) -> Dict:
-        """Parse the LLM response to extract the JSON judgment."""
-        # Try to find JSON in the response
+    def _parse_judgment(self, response_text: str) -> Optional[Dict]:
+        """Parse the LLM response to extract the JSON judgment.
+
+        Returns None (not a fallback judgment) when parsing fails, so the
+        caller can decide how to handle it -- keeps "did this come from
+        the LLM" and "what do we do if not" as separate concerns, and
+        keeps _parse_judgment itself side-effect-free (no caching).
+        """
         import re
         json_match = re.search(r'\{.*\}', response_text, re.DOTALL)
         if json_match:
             try:
-                return json.loads(json_match.group())
+                judgment = json.loads(json_match.group())
+                return self._normalize_judgment(judgment)
             except json.JSONDecodeError:
                 pass
-        
-        # If we can't parse JSON, return a fallback
-        return self._fallback_judgment({})
+        return None
+
+    @staticmethod
+    def _normalize_judgment(judgment: Dict) -> Dict:
+        """
+        Clamp moat_strength/mgmt_quality to the exact enum values the
+        buffett_scores table's CHECK constraints accept.
+
+        The LLM is instructed (see prompts/moat.md) to return one of these
+        values, but instructions aren't guarantees -- an LLM that drifts
+        (e.g. returns "AVERAGE" for moat_strength, as the prompt used to
+        literally ask for) would otherwise fail the DB INSERT for every
+        ticker it judges. Falling back to "UNKNOWN" here means a bad LLM
+        response degrades to "no moat opinion" instead of crashing the scan.
+        """
+        moat_strength = judgment.get("moat_strength")
+        if moat_strength not in VALID_MOAT_STRENGTH:
+            judgment["moat_strength"] = "UNKNOWN"
+
+        mgmt_quality = judgment.get("mgmt_quality")
+        if mgmt_quality not in VALID_MGMT_QUALITY:
+            judgment["mgmt_quality"] = "UNKNOWN"
+
+        return judgment
     
     def _fallback_judgment(self, fundamentals: Dict) -> Dict:
         """Provide a fallback judgment when LLM is not available.
@@ -255,18 +307,24 @@ class MoatLLMJudge:
             "mgmt_quality": "AVERAGE",
             "mgmt_rationale":
                 "Fallback: no management data available.",
+            "judgment_source": "heuristic_fallback",
         }
 
-def judge_moat(ticker: str, fundamentals: Dict) -> Dict:
+def judge_moat(ticker: str, fundamentals: Dict, db_path: str = "data/buffett.db") -> Dict:
     """
     Convenience function to judge moat for a ticker.
-    
+
     Args:
         ticker: Stock ticker
         fundamentals: Dictionary of fundamental metrics
-       
+        db_path: Path to the database used for judgment caching. Must match
+            whatever db_path the caller's scan is using -- previously this
+            was hardcoded to the default, so a scan against a non-default
+            database (e.g. a test DB) would silently cache moat judgments
+            into the wrong file.
+
     Returns:
         Dictionary with moat judgment
     """
-    judge = MoatLLMJudge()
+    judge = MoatLLMJudge(db_path=db_path)
     return judge.judge_pillars(ticker, fundamentals)

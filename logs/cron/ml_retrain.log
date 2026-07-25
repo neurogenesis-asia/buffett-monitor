@@ -1,0 +1,371 @@
+2026-06-19 22:05:18+0800  [ml_retrain]  begin
+2026-06-19 22:05:20,643 - INFO - ============================================================
+2026-06-19 22:05:20,643 - INFO - WEEKLY MODEL RETRAINING PIPELINE
+2026-06-19 22:05:20,643 - INFO - Started at 2026-06-19 22:05:20.643671
+2026-06-19 22:05:20,643 - INFO - ============================================================
+2026-06-19 22:05:20,644 - INFO - Found 43 labeled outcomes for training
+2026-06-19 22:05:20,644 - INFO - Fetching features for training samples...
+2026-06-19 22:05:22,071 - INFO -   Processed 10/43 outcomes
+2026-06-19 22:05:23,342 - INFO -   Processed 20/43 outcomes
+2026-06-19 22:05:24,561 - INFO -   Processed 30/43 outcomes
+2026-06-19 22:05:25,825 - INFO -   Processed 40/43 outcomes
+2026-06-19 22:05:26,197 - INFO - Training with 43 valid samples
+2026-06-19 22:05:26,199 - INFO - Feature dimensions: (43, 46)
+2026-06-19 22:05:26,278 - INFO - Model loaded from /home/shalu/buffett-monitor/ml/models/
+2026-06-19 22:05:26,278 - INFO - Training ML model with 43 samples and 46 features
+/home/shalu/buffett-monitor/venv/lib/python3.11/site-packages/sklearn/metrics/_classification.py:1833: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/home/shalu/buffett-monitor/venv/lib/python3.11/site-packages/sklearn/metrics/_classification.py:1833: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/home/shalu/buffett-monitor/venv/lib/python3.11/site-packages/sklearn/metrics/_classification.py:1833: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+2026-06-19 22:05:26,948 - INFO - Model saved to /home/shalu/buffett-monitor/ml/models/
+2026-06-19 22:05:26,948 - INFO - Model training completed. Accuracy: 0.6667
+2026-06-19 22:05:26,948 - INFO - ============================================================
+2026-06-19 22:05:26,948 - INFO - TRAINING COMPLETE
+2026-06-19 22:05:26,948 - INFO -   Samples: 34 train, 9 test
+2026-06-19 22:05:26,948 - INFO -   Accuracy: 0.6667
+2026-06-19 22:05:26,948 - INFO -   Features: 46
+2026-06-19 22:05:26,948 - INFO -   Per-class metrics:
+2026-06-19 22:05:26,948 - INFO -     -1: P=0.667 R=1.000 F1=0.800
+2026-06-19 22:05:26,948 - INFO -     0: P=0.000 R=0.000 F1=0.000
+2026-06-19 22:05:26,948 - INFO -     macro avg: P=0.333 R=0.500 F1=0.400
+2026-06-19 22:05:26,948 - INFO -     weighted avg: P=0.444 R=0.667 F1=0.533
+2026-06-19 22:05:26,948 - INFO - Training log saved to ml/models/training_log.txt
+2026-06-19 22:05:26,948 - INFO - ============================================================
+2026-06-19 22:05:26,948 - INFO - Pipeline complete
+2026-06-19 22:05:27+0800  [ml_retrain]  FAIL: exit 1
+2026-06-19 22:12:47+0800  [ml_retrain]  begin
+2026-06-19 22:12:48,827 - INFO - ============================================================
+2026-06-19 22:12:48,827 - INFO - WEEKLY MODEL RETRAINING PIPELINE
+2026-06-19 22:12:48,827 - INFO - Started at 2026-06-19 22:12:48.827752
+2026-06-19 22:12:48,827 - INFO - ============================================================
+2026-06-19 22:12:48,828 - INFO - Found 43 labeled outcomes for training
+2026-06-19 22:12:48,828 - INFO - Fetching features for training samples...
+2026-06-19 22:12:50,289 - INFO -   Processed 10/43 outcomes
+2026-06-19 22:12:51,498 - INFO -   Processed 20/43 outcomes
+2026-06-19 22:12:52,679 - INFO -   Processed 30/43 outcomes
+2026-06-19 22:12:53,947 - INFO -   Processed 40/43 outcomes
+2026-06-19 22:12:54,292 - INFO - Training with 43 valid samples
+2026-06-19 22:12:54,294 - INFO - Feature dimensions: (43, 46)
+2026-06-19 22:12:54,373 - INFO - Model loaded from /home/shalu/buffett-monitor/ml/models/
+2026-06-19 22:12:54,373 - INFO - Training ML model with 43 samples and 46 features
+/home/shalu/buffett-monitor/venv/lib/python3.11/site-packages/sklearn/metrics/_classification.py:1833: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/home/shalu/buffett-monitor/venv/lib/python3.11/site-packages/sklearn/metrics/_classification.py:1833: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/home/shalu/buffett-monitor/venv/lib/python3.11/site-packages/sklearn/metrics/_classification.py:1833: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+2026-06-19 22:12:55,049 - INFO - Model saved to /home/shalu/buffett-monitor/ml/models/
+2026-06-19 22:12:55,049 - INFO - Model training completed. Accuracy: 0.6667
+2026-06-19 22:12:55,049 - INFO - ============================================================
+2026-06-19 22:12:55,049 - INFO - TRAINING COMPLETE
+2026-06-19 22:12:55,049 - INFO -   Samples: 34 train, 9 test
+2026-06-19 22:12:55,049 - INFO -   Accuracy: 0.6667
+2026-06-19 22:12:55,049 - INFO -   Features: 46
+2026-06-19 22:12:55,049 - INFO -   Per-class metrics:
+2026-06-19 22:12:55,049 - INFO -     -1: P=0.667 R=1.000 F1=0.800
+2026-06-19 22:12:55,049 - INFO -     0: P=0.000 R=0.000 F1=0.000
+2026-06-19 22:12:55,049 - INFO -     macro avg: P=0.333 R=0.500 F1=0.400
+2026-06-19 22:12:55,049 - INFO -     weighted avg: P=0.444 R=0.667 F1=0.533
+2026-06-19 22:12:55,050 - INFO - Training log saved to ml/models/training_log.txt
+2026-06-19 22:12:55,050 - INFO - ============================================================
+2026-06-19 22:12:55,050 - INFO - Pipeline complete
+2026-06-19 22:18:47+0800  [ml_retrain]  begin
+2026-06-19 22:18:49,627 - INFO - ============================================================
+2026-06-19 22:18:49,627 - INFO - WEEKLY MODEL RETRAINING PIPELINE
+2026-06-19 22:18:49,627 - INFO - Started at 2026-06-19 22:18:49.627223
+2026-06-19 22:18:49,627 - INFO - ============================================================
+2026-06-19 22:18:49,628 - INFO - Found 43 labeled outcomes for training
+2026-06-19 22:18:49,628 - INFO - Fetching features for training samples...
+2026-06-19 22:18:51,482 - INFO -   Processed 10/43 outcomes
+2026-06-19 22:18:52,636 - INFO -   Processed 20/43 outcomes
+2026-06-19 22:18:53,783 - INFO -   Processed 30/43 outcomes
+2026-06-19 22:18:54,950 - INFO -   Processed 40/43 outcomes
+2026-06-19 22:18:55,297 - INFO - Training with 43 valid samples
+2026-06-19 22:18:55,299 - INFO - Feature dimensions: (43, 46)
+2026-06-19 22:18:55,361 - INFO - Model loaded from /home/shalu/buffett-monitor/ml/models/
+2026-06-19 22:18:55,361 - INFO - Training ML model with 43 samples and 46 features
+/home/shalu/buffett-monitor/venv/lib/python3.11/site-packages/sklearn/metrics/_classification.py:1833: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/home/shalu/buffett-monitor/venv/lib/python3.11/site-packages/sklearn/metrics/_classification.py:1833: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/home/shalu/buffett-monitor/venv/lib/python3.11/site-packages/sklearn/metrics/_classification.py:1833: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+2026-06-19 22:18:56,023 - INFO - Model saved to /home/shalu/buffett-monitor/ml/models/
+2026-06-19 22:18:56,024 - INFO - Model training completed. Accuracy: 0.6667
+2026-06-19 22:18:56,024 - INFO - ============================================================
+2026-06-19 22:18:56,024 - INFO - TRAINING COMPLETE
+2026-06-19 22:18:56,024 - INFO -   Samples: 34 train, 9 test
+2026-06-19 22:18:56,024 - INFO -   Accuracy: 0.6667
+2026-06-19 22:18:56,024 - INFO -   Features: 46
+2026-06-19 22:18:56,024 - INFO -   Per-class metrics:
+2026-06-19 22:18:56,024 - INFO -     -1: P=0.667 R=1.000 F1=0.800
+2026-06-19 22:18:56,024 - INFO -     0: P=0.000 R=0.000 F1=0.000
+2026-06-19 22:18:56,024 - INFO -     macro avg: P=0.333 R=0.500 F1=0.400
+2026-06-19 22:18:56,024 - INFO -     weighted avg: P=0.444 R=0.667 F1=0.533
+2026-06-19 22:18:56,024 - INFO - Training log saved to ml/models/training_log.txt
+2026-06-19 22:18:56,024 - INFO - ============================================================
+2026-06-19 22:18:56,024 - INFO - Pipeline complete
+2026-06-19 22:26:46+0800  [ml_retrain]  begin
+2026-06-19 22:26:47,813 - INFO - ============================================================
+2026-06-19 22:26:47,813 - INFO - WEEKLY MODEL RETRAINING PIPELINE
+2026-06-19 22:26:47,813 - INFO - Started at 2026-06-19 22:26:47.813174
+2026-06-19 22:26:47,813 - INFO - ============================================================
+2026-06-19 22:26:47,814 - INFO - Found 43 labeled outcomes for training
+2026-06-19 22:26:47,814 - INFO - Fetching features for training samples...
+2026-06-19 22:26:49,237 - INFO -   Processed 10/43 outcomes
+2026-06-19 22:26:50,696 - INFO -   Processed 20/43 outcomes
+2026-06-19 22:26:51,821 - INFO -   Processed 30/43 outcomes
+2026-06-19 22:26:53,002 - INFO -   Processed 40/43 outcomes
+2026-06-19 22:26:53,363 - INFO - Training with 43 valid samples
+2026-06-19 22:26:53,365 - INFO - Feature dimensions: (43, 46)
+2026-06-19 22:26:53,454 - INFO - Model loaded from /home/shalu/buffett-monitor/ml/models/
+2026-06-19 22:26:53,454 - INFO - Training ML model with 43 samples and 46 features
+/home/shalu/buffett-monitor/venv/lib/python3.11/site-packages/sklearn/metrics/_classification.py:1833: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/home/shalu/buffett-monitor/venv/lib/python3.11/site-packages/sklearn/metrics/_classification.py:1833: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/home/shalu/buffett-monitor/venv/lib/python3.11/site-packages/sklearn/metrics/_classification.py:1833: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+2026-06-19 22:26:54,119 - INFO - Model saved to /home/shalu/buffett-monitor/ml/models/
+2026-06-19 22:26:54,119 - INFO - Model training completed. Accuracy: 0.6667
+2026-06-19 22:26:54,119 - INFO - ============================================================
+2026-06-19 22:26:54,119 - INFO - TRAINING COMPLETE
+2026-06-19 22:26:54,119 - INFO -   Samples: 34 train, 9 test
+2026-06-19 22:26:54,119 - INFO -   Accuracy: 0.6667
+2026-06-19 22:26:54,119 - INFO -   Features: 46
+2026-06-19 22:26:54,119 - INFO -   Per-class metrics:
+2026-06-19 22:26:54,120 - INFO -     -1: P=0.667 R=1.000 F1=0.800
+2026-06-19 22:26:54,120 - INFO -     0: P=0.000 R=0.000 F1=0.000
+2026-06-19 22:26:54,120 - INFO -     macro avg: P=0.333 R=0.500 F1=0.400
+2026-06-19 22:26:54,120 - INFO -     weighted avg: P=0.444 R=0.667 F1=0.533
+2026-06-19 22:26:54,120 - INFO - Training log saved to ml/models/training_log.txt
+2026-06-19 22:26:54,120 - INFO - ============================================================
+2026-06-19 22:26:54,120 - INFO - Pipeline complete
+2026-06-19 22:26:54+0800  [ml_retrain]  ok (raw=1)
+2026-06-20 00:07:44+0800  [ml_retrain]  begin
+2026-06-20 00:07:45,971 - INFO - ============================================================
+2026-06-20 00:07:45,971 - INFO - WEEKLY MODEL RETRAINING PIPELINE
+2026-06-20 00:07:45,971 - INFO - Started at 2026-06-20 00:07:45.971232
+2026-06-20 00:07:45,971 - INFO - ============================================================
+2026-06-20 00:07:45,972 - INFO - Found 43 labeled outcomes for training
+2026-06-20 00:07:45,972 - INFO - Fetching features for training samples...
+2026-06-20 00:07:47,366 - INFO -   Processed 10/43 outcomes
+2026-06-20 00:07:48,512 - INFO -   Processed 20/43 outcomes
+2026-06-20 00:07:49,874 - INFO -   Processed 30/43 outcomes
+2026-06-20 00:07:51,081 - INFO -   Processed 40/43 outcomes
+2026-06-20 00:07:51,417 - INFO - Training with 43 valid samples
+2026-06-20 00:07:51,419 - INFO - Feature dimensions: (43, 46)
+2026-06-20 00:07:51,495 - INFO - Model loaded from /home/shalu/buffett-monitor/ml/models/
+2026-06-20 00:07:51,495 - INFO - Training ML model with 43 samples and 46 features
+/home/shalu/buffett-monitor/venv/lib/python3.11/site-packages/sklearn/metrics/_classification.py:1833: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/home/shalu/buffett-monitor/venv/lib/python3.11/site-packages/sklearn/metrics/_classification.py:1833: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/home/shalu/buffett-monitor/venv/lib/python3.11/site-packages/sklearn/metrics/_classification.py:1833: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+2026-06-20 00:07:52,156 - INFO - Model saved to /home/shalu/buffett-monitor/ml/models/
+2026-06-20 00:07:52,156 - INFO - Model training completed. Accuracy: 0.6667
+2026-06-20 00:07:52,156 - INFO - ============================================================
+2026-06-20 00:07:52,156 - INFO - TRAINING COMPLETE
+2026-06-20 00:07:52,156 - INFO -   Samples: 34 train, 9 test
+2026-06-20 00:07:52,156 - INFO -   Accuracy: 0.6667
+2026-06-20 00:07:52,156 - INFO -   Features: 46
+2026-06-20 00:07:52,156 - INFO -   Per-class metrics:
+2026-06-20 00:07:52,156 - INFO -     -1: P=0.667 R=1.000 F1=0.800
+2026-06-20 00:07:52,156 - INFO -     0: P=0.000 R=0.000 F1=0.000
+2026-06-20 00:07:52,156 - INFO -     macro avg: P=0.333 R=0.500 F1=0.400
+2026-06-20 00:07:52,157 - INFO -     weighted avg: P=0.444 R=0.667 F1=0.533
+2026-06-20 00:07:52,158 - INFO - Training log saved to ml/models/training_log.txt
+2026-06-20 00:07:52,158 - INFO - ============================================================
+2026-06-20 00:07:52,158 - INFO - Pipeline complete
+2026-06-20 00:07:52+0800  [ml_retrain]  ok (raw=1)
+2026-06-20 00:41:47+0800  [ml_retrain]  begin
+2026-06-20 00:41:49,358 - INFO - ============================================================
+2026-06-20 00:41:49,358 - INFO - WEEKLY MODEL RETRAINING PIPELINE
+2026-06-20 00:41:49,358 - INFO - Started at 2026-06-20 00:41:49.358531
+2026-06-20 00:41:49,358 - INFO - ============================================================
+2026-06-20 00:41:49,359 - INFO - Found 43 labeled outcomes for training
+2026-06-20 00:41:49,359 - INFO - Fetching features for training samples...
+2026-06-20 00:41:50,745 - INFO -   Processed 10/43 outcomes
+2026-06-20 00:41:51,891 - INFO -   Processed 20/43 outcomes
+2026-06-20 00:41:53,184 - INFO -   Processed 30/43 outcomes
+2026-06-20 00:41:54,320 - INFO -   Processed 40/43 outcomes
+2026-06-20 00:41:54,646 - INFO - Training with 43 valid samples
+2026-06-20 00:41:54,647 - INFO - Feature dimensions: (43, 46)
+2026-06-20 00:41:54,707 - INFO - Model loaded from /home/shalu/buffett-monitor/ml/models/
+2026-06-20 00:41:54,707 - INFO - Training ML model with 43 samples and 46 features
+/home/shalu/buffett-monitor/venv/lib/python3.11/site-packages/sklearn/metrics/_classification.py:1833: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/home/shalu/buffett-monitor/venv/lib/python3.11/site-packages/sklearn/metrics/_classification.py:1833: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/home/shalu/buffett-monitor/venv/lib/python3.11/site-packages/sklearn/metrics/_classification.py:1833: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+2026-06-20 00:41:55,374 - INFO - Model saved to /home/shalu/buffett-monitor/ml/models/
+2026-06-20 00:41:55,374 - INFO - Model training completed. Accuracy: 0.6667
+2026-06-20 00:41:55,374 - INFO - ============================================================
+2026-06-20 00:41:55,374 - INFO - TRAINING COMPLETE
+2026-06-20 00:41:55,374 - INFO -   Samples: 34 train, 9 test
+2026-06-20 00:41:55,374 - INFO -   Accuracy: 0.6667
+2026-06-20 00:41:55,374 - INFO -   Features: 46
+2026-06-20 00:41:55,374 - INFO -   Per-class metrics:
+2026-06-20 00:41:55,374 - INFO -     -1: P=0.667 R=1.000 F1=0.800
+2026-06-20 00:41:55,374 - INFO -     0: P=0.000 R=0.000 F1=0.000
+2026-06-20 00:41:55,374 - INFO -     macro avg: P=0.333 R=0.500 F1=0.400
+2026-06-20 00:41:55,374 - INFO -     weighted avg: P=0.444 R=0.667 F1=0.533
+2026-06-20 00:41:55,374 - INFO - Training log saved to ml/models/training_log.txt
+2026-06-20 00:41:55,374 - INFO - ============================================================
+2026-06-20 00:41:55,374 - INFO - Pipeline complete
+2026-06-20 00:41:55+0800  [ml_retrain]  ok (raw=1)
+2026-06-20 06:29:06+0800  [ml_retrain]  begin
+2026-06-20 06:29:07,818 - INFO - ============================================================
+2026-06-20 06:29:07,818 - INFO - WEEKLY MODEL RETRAINING PIPELINE
+2026-06-20 06:29:07,818 - INFO - Started at 2026-06-20 06:29:07.818315
+2026-06-20 06:29:07,818 - INFO - ============================================================
+2026-06-20 06:29:07,819 - INFO - Found 43 labeled outcomes for training
+2026-06-20 06:29:07,819 - INFO - Fetching features for training samples...
+2026-06-20 06:29:09,173 - INFO -   Processed 10/43 outcomes
+2026-06-20 06:29:10,286 - INFO -   Processed 20/43 outcomes
+2026-06-20 06:29:11,398 - INFO -   Processed 30/43 outcomes
+2026-06-20 06:29:12,817 - INFO -   Processed 40/43 outcomes
+2026-06-20 06:29:13,169 - INFO - Training with 43 valid samples
+2026-06-20 06:29:13,170 - INFO - Feature dimensions: (43, 46)
+2026-06-20 06:29:13,258 - INFO - Model loaded from /home/shalu/buffett-monitor/ml/models/
+2026-06-20 06:29:13,258 - INFO - Training ML model with 43 samples and 46 features
+/home/shalu/buffett-monitor/venv/lib/python3.11/site-packages/sklearn/metrics/_classification.py:1833: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/home/shalu/buffett-monitor/venv/lib/python3.11/site-packages/sklearn/metrics/_classification.py:1833: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/home/shalu/buffett-monitor/venv/lib/python3.11/site-packages/sklearn/metrics/_classification.py:1833: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+2026-06-20 06:29:13,918 - INFO - Model saved to /home/shalu/buffett-monitor/ml/models/
+2026-06-20 06:29:13,918 - INFO - Model training completed. Accuracy: 0.6667
+2026-06-20 06:29:13,918 - INFO - ============================================================
+2026-06-20 06:29:13,918 - INFO - TRAINING COMPLETE
+2026-06-20 06:29:13,918 - INFO -   Samples: 34 train, 9 test
+2026-06-20 06:29:13,918 - INFO -   Accuracy: 0.6667
+2026-06-20 06:29:13,918 - INFO -   Features: 46
+2026-06-20 06:29:13,919 - INFO -   Per-class metrics:
+2026-06-20 06:29:13,919 - INFO -     -1: P=0.667 R=1.000 F1=0.800
+2026-06-20 06:29:13,919 - INFO -     0: P=0.000 R=0.000 F1=0.000
+2026-06-20 06:29:13,919 - INFO -     macro avg: P=0.333 R=0.500 F1=0.400
+2026-06-20 06:29:13,919 - INFO -     weighted avg: P=0.444 R=0.667 F1=0.533
+2026-06-20 06:29:13,920 - INFO - Training log saved to ml/models/training_log.txt
+2026-06-20 06:29:13,920 - INFO - ============================================================
+2026-06-20 06:29:13,920 - INFO - Pipeline complete
+2026-06-20 06:29:14+0800  [ml_retrain]  ok (raw=0)
+2026-06-20 10:08:07+0800  [ml_retrain]  begin
+2026-06-20 10:08:09,645 - INFO - ============================================================
+2026-06-20 10:08:09,645 - INFO - WEEKLY MODEL RETRAINING PIPELINE
+2026-06-20 10:08:09,645 - INFO - Started at 2026-06-20 10:08:09.645611
+2026-06-20 10:08:09,645 - INFO - ============================================================
+2026-06-20 10:08:09,647 - INFO - Found 43 labeled outcomes for training
+2026-06-20 10:08:09,647 - INFO - Fetching features for training samples...
+2026-06-20 10:08:11,022 - INFO -   Processed 10/43 outcomes
+2026-06-20 10:08:12,293 - INFO -   Processed 20/43 outcomes
+2026-06-20 10:08:13,762 - INFO -   Processed 30/43 outcomes
+2026-06-20 10:08:15,224 - INFO -   Processed 40/43 outcomes
+2026-06-20 10:08:15,814 - INFO - Training with 43 valid samples
+2026-06-20 10:08:15,816 - INFO - Feature dimensions: (43, 46)
+2026-06-20 10:08:15,894 - INFO - Model loaded from /home/shalu/buffett-monitor/ml/models/
+2026-06-20 10:08:15,894 - INFO - Training ML model with 43 samples and 46 features
+/home/shalu/buffett-monitor/venv/lib/python3.11/site-packages/sklearn/metrics/_classification.py:1833: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/home/shalu/buffett-monitor/venv/lib/python3.11/site-packages/sklearn/metrics/_classification.py:1833: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/home/shalu/buffett-monitor/venv/lib/python3.11/site-packages/sklearn/metrics/_classification.py:1833: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+2026-06-20 10:08:16,553 - INFO - Model saved to /home/shalu/buffett-monitor/ml/models/
+2026-06-20 10:08:16,553 - INFO - Model training completed. Accuracy: 0.6667
+2026-06-20 10:08:16,553 - INFO - ============================================================
+2026-06-20 10:08:16,553 - INFO - TRAINING COMPLETE
+2026-06-20 10:08:16,553 - INFO -   Samples: 34 train, 9 test
+2026-06-20 10:08:16,553 - INFO -   Accuracy: 0.6667
+2026-06-20 10:08:16,553 - INFO -   Features: 46
+2026-06-20 10:08:16,553 - INFO -   Per-class metrics:
+2026-06-20 10:08:16,553 - INFO -     -1: P=0.667 R=1.000 F1=0.800
+2026-06-20 10:08:16,553 - INFO -     0: P=0.000 R=0.000 F1=0.000
+2026-06-20 10:08:16,553 - INFO -     macro avg: P=0.333 R=0.500 F1=0.400
+2026-06-20 10:08:16,553 - INFO -     weighted avg: P=0.444 R=0.667 F1=0.533
+2026-06-20 10:08:16,553 - INFO - Training log saved to ml/models/training_log.txt
+2026-06-20 10:08:16,553 - INFO - ============================================================
+2026-06-20 10:08:16,553 - INFO - Pipeline complete
+2026-06-20 10:08:16+0800  [ml_retrain]  ok (raw=0)
+2026-06-20 10:13:16+0800  [ml_retrain]  begin
+2026-06-20 10:13:18,547 - INFO - ============================================================
+2026-06-20 10:13:18,548 - INFO - WEEKLY MODEL RETRAINING PIPELINE
+2026-06-20 10:13:18,548 - INFO - Started at 2026-06-20 10:13:18.548043
+2026-06-20 10:13:18,548 - INFO - ============================================================
+2026-06-20 10:13:18,549 - INFO - Found 43 labeled outcomes for training
+2026-06-20 10:13:18,549 - INFO - Fetching features for training samples...
+2026-06-20 10:13:19,957 - INFO -   Processed 10/43 outcomes
+2026-06-20 10:13:21,119 - INFO -   Processed 20/43 outcomes
+2026-06-20 10:13:22,285 - INFO -   Processed 30/43 outcomes
+2026-06-20 10:13:23,517 - INFO -   Processed 40/43 outcomes
+2026-06-20 10:13:23,876 - INFO - Training with 43 valid samples
+2026-06-20 10:13:23,878 - INFO - Feature dimensions: (43, 46)
+2026-06-20 10:13:23,956 - INFO - Model loaded from /home/shalu/buffett-monitor/ml/models/
+2026-06-20 10:13:23,956 - INFO - Training ML model with 43 samples and 46 features
+/home/shalu/buffett-monitor/venv/lib/python3.11/site-packages/sklearn/metrics/_classification.py:1833: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/home/shalu/buffett-monitor/venv/lib/python3.11/site-packages/sklearn/metrics/_classification.py:1833: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/home/shalu/buffett-monitor/venv/lib/python3.11/site-packages/sklearn/metrics/_classification.py:1833: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+2026-06-20 10:13:24,615 - INFO - Model saved to /home/shalu/buffett-monitor/ml/models/
+2026-06-20 10:13:24,615 - INFO - Model training completed. Accuracy: 0.6667
+2026-06-20 10:13:24,615 - INFO - ============================================================
+2026-06-20 10:13:24,615 - INFO - TRAINING COMPLETE
+2026-06-20 10:13:24,615 - INFO -   Samples: 34 train, 9 test
+2026-06-20 10:13:24,615 - INFO -   Accuracy: 0.6667
+2026-06-20 10:13:24,615 - INFO -   Features: 46
+2026-06-20 10:13:24,615 - INFO -   Per-class metrics:
+2026-06-20 10:13:24,615 - INFO -     -1: P=0.667 R=1.000 F1=0.800
+2026-06-20 10:13:24,615 - INFO -     0: P=0.000 R=0.000 F1=0.000
+2026-06-20 10:13:24,615 - INFO -     macro avg: P=0.333 R=0.500 F1=0.400
+2026-06-20 10:13:24,615 - INFO -     weighted avg: P=0.444 R=0.667 F1=0.533
+2026-06-20 10:13:24,616 - INFO - Training log saved to ml/models/training_log.txt
+2026-06-20 10:13:24,616 - INFO - ============================================================
+2026-06-20 10:13:24,616 - INFO - Pipeline complete
+2026-06-20 10:13:24+0800  [ml_retrain]  ok (raw=0)
+2026-06-22 03:00:01+0800  [ml_retrain]  begin
+2026-06-22 03:00:04,048 - INFO - ============================================================
+2026-06-22 03:00:04,048 - INFO - WEEKLY MODEL RETRAINING PIPELINE
+2026-06-22 03:00:04,048 - INFO - Started at 2026-06-22 03:00:04.048575
+2026-06-22 03:00:04,048 - INFO - ============================================================
+2026-06-22 03:00:04,050 - INFO - Found 43 labeled outcomes for training
+2026-06-22 03:00:04,050 - INFO - Fetching features for training samples...
+2026-06-22 03:00:05,417 - INFO -   Processed 10/43 outcomes
+2026-06-22 03:00:06,649 - INFO -   Processed 20/43 outcomes
+2026-06-22 03:00:07,881 - INFO -   Processed 30/43 outcomes
+2026-06-22 03:00:09,168 - INFO -   Processed 40/43 outcomes
+2026-06-22 03:00:09,545 - INFO - Training with 43 valid samples
+2026-06-22 03:00:09,547 - INFO - Feature dimensions: (43, 46)
+2026-06-22 03:00:09,634 - INFO - Model loaded from /home/shalu/buffett-monitor/ml/models/
+2026-06-22 03:00:09,634 - INFO - Training ML model with 43 samples and 46 features
+/home/shalu/buffett-monitor/venv/lib/python3.11/site-packages/sklearn/metrics/_classification.py:1833: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/home/shalu/buffett-monitor/venv/lib/python3.11/site-packages/sklearn/metrics/_classification.py:1833: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+/home/shalu/buffett-monitor/venv/lib/python3.11/site-packages/sklearn/metrics/_classification.py:1833: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", result.shape[0])
+2026-06-22 03:00:10,293 - INFO - Model saved to /home/shalu/buffett-monitor/ml/models/
+2026-06-22 03:00:10,294 - INFO - Model training completed. Accuracy: 0.6667
+2026-06-22 03:00:10,294 - INFO - ============================================================
+2026-06-22 03:00:10,294 - INFO - TRAINING COMPLETE
+2026-06-22 03:00:10,294 - INFO -   Samples: 34 train, 9 test
+2026-06-22 03:00:10,294 - INFO -   Accuracy: 0.6667
+2026-06-22 03:00:10,294 - INFO -   Features: 46
+2026-06-22 03:00:10,294 - INFO -   Per-class metrics:
+2026-06-22 03:00:10,294 - INFO -     -1: P=0.667 R=1.000 F1=0.800
+2026-06-22 03:00:10,294 - INFO -     0: P=0.000 R=0.000 F1=0.000
+2026-06-22 03:00:10,294 - INFO -     macro avg: P=0.333 R=0.500 F1=0.400
+2026-06-22 03:00:10,294 - INFO -     weighted avg: P=0.444 R=0.667 F1=0.533
+2026-06-22 03:00:10,295 - INFO - Training log saved to ml/models/training_log.txt
+2026-06-22 03:00:10,295 - INFO - ============================================================
+2026-06-22 03:00:10,295 - INFO - Pipeline complete
+2026-06-22 03:00:10+0800  [ml_retrain]  ok (raw=0)
+2026-07-06 03:00:01+0800  [ml_retrain]  begin
+
+2026-07-06 03:00:03+0800  [ml_retrain]  ok (raw=1)

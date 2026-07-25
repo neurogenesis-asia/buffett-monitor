@@ -1,0 +1,2 @@
+ticker,signal_type,detection_date,price_at_signal,signal_priority,ml_confidence,enhancement_used
+T,LOW_2W,2026-05-11,24.03,52.0,,0

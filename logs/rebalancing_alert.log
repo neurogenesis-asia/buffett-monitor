@@ -1,0 +1,4099 @@
+2026-05-11 09:33:21.597 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+Running Rebalancing Alert System...
+==================================================
+Loading current holdings...
+Warning: Using average cost for 6742UW (live price unavailable)
+Warning: Using average cost for 7113WA (live price unavailable)
+Found 44 holdings:
+ticker                             company_name  current_weight
+  1155                      Malayan Banking Bhd        0.039481
+  1818                       Bursa Malaysia Bhd        0.046260
+  3026           Dutch Lady Milk Industries Bhd        0.057290
+  3662                 Malaysia Flour Mills Bhd        0.000000
+  3689              Fraser & Neave Holdings Bhd        0.164914
+  3867             Malaysian Pacific Industries        0.128629
+  4197                           Sime Darby Bhd        0.077978
+  5099                            Capital A Bhd        0.000000
+  5183             Petronas Chemicals Group Bhd        0.000000
+  5238                            AirAsia X Bhd        0.000000
+  5249                 IOI Properties Group Bhd        0.003644
+  5296                     MR DIY Group (M) Bhd        0.000000
+  5326            99 Speed Mart Retail Holdings        0.000000
+  5337              Eco World International Bhd        0.000000
+  5347                      Tenaga Nasional Bhd        0.129788
+  6742              YTL Power International Bhd        0.001328
+6742UW        YTL Power International - Warrant        0.000000
+  7013                              Hubline Bhd        0.000597
+  7095                       PIE Industrial Bhd        0.000000
+  7113                       Top Glove Corp Bhd        0.000000
+7113WA             Top Glove Corp Bhd - Warrant        0.000237
+  AAPG Ascentage Pharma Group International ADR        0.000378
+  AAPL                               Apple Inc.        0.000052
+  ACHR                     Archer Aviation Inc.        0.002276
+    AI                       C3.ai Inc. Class A        0.004334
+   AMD              Advanced Micro Devices Inc.        0.035975
+   ARM                     Arm Holdings PLC ADR        0.032587
+  ASML                      ASML Holding NV ADR        0.005592
+  CALM                     Cal-Maine Foods Inc.        0.006696
+  CRSP                   CRISPR Therapeutics AG        0.002889
+  GOOG                    Alphabet Inc. Class C        0.006730
+ GOOGL                    Alphabet Inc. Class A        0.088904
+   IBM                                IBM Corp.        0.008070
+   INR          Infinity Natural Resources Inc.        0.002713
+  INTC                              Intel Corp.        0.083369
+  MSFT                          Microsoft Corp.        0.004374
+    MU                   Micron Technology Inc.        0.026232
+  NVDA                             NVIDIA Corp.        0.011338
+  PATH                              UiPath Inc.        0.008149
+  QCOM                            Qualcomm Inc.        0.005772
+  RXRX           Recursion Pharmaceuticals Inc.        0.004082
+  TSLA                               Tesla Inc.        0.007523
+    VG                      Venture Global Inc.        0.000603
+  WRBY                        Warby Parker Inc.        0.001216
+
+Loading optimal weights from latest optimization...
+Optimal weights from latest run:
+    ticker   weight signal  confidence
+      AAPL 0.037491   SELL         0.0
+      ACHR 0.037491   SELL         0.0
+        AI 0.037491   SELL         0.0
+       AMD 0.037491   SELL         0.0
+       ARM 0.037491   SELL         0.0
+      ASML 0.037491   SELL         0.0
+      CALM 0.037491   HOLD         0.0
+   CIMB.KL 0.017496   SELL         0.0
+      CRSP 0.037491   SELL         0.0
+GENTING.KL 0.023858   SELL         0.0
+      GOOG 0.037491   SELL         0.0
+     GOOGL 0.037491   SELL         0.0
+  HARTA.KL 0.037491   SELL         0.0
+       IBM 0.037491   SELL         0.0
+       INR 0.037491   SELL         0.0
+      INTC 0.037491   SELL         0.0
+    IOI.KL 0.023858   SELL         0.0
+  MAXIS.KL 0.037491   SELL         0.0
+MAYBANK.KL 0.017496   SELL         0.0
+      MSFT 0.037491   SELL         0.0
+        MU 0.037491   SELL         0.0
+      NVDA 0.037491   SELL         0.0
+      PATH 0.037491   SELL         0.0
+ PBBANK.KL 0.017496   SELL         0.0
+      QCOM 0.037491   SELL         0.0
+      RXRX 0.037491   SELL         0.0
+ TENAGA.KL 0.037491   SELL         0.0
+      TSLA 0.037491   SELL         0.0
+      WRBY 0.037491   SELL         0.0
+
+Calculating deviations (threshold: 5%)...
+⚠️  Found 6 holdings requiring rebalancing attention:
+  • 3026: Current 5.7% vs Optimal 0.0% (Deviation: 5.7%)
+  • 3689: Current 16.5% vs Optimal 0.0% (Deviation: 16.5%)
+  • 3867: Current 12.9% vs Optimal 0.0% (Deviation: 12.9%)
+  • 4197: Current 7.8% vs Optimal 0.0% (Deviation: 7.8%)
+  • 5347: Current 13.0% vs Optimal 0.0% (Deviation: 13.0%)
+  • GOOGL: Current 8.9% vs Optimal 3.7% (Deviation: 5.1%)
+\n==================================================
+ALERT SUMMARY:
+Rebalancing Alert: 6 holdings exceed 5% deviation threshold\n3026: Current 5.7% vs Optimal 0.0% (Deviation: 5.7%)\n3689: Current 16.5% vs Optimal 0.0% (Deviation: 16.5%)\n3867: Current 12.9% vs Optimal 0.0% (Deviation: 12.9%)\n4197: Current 7.8% vs Optimal 0.0% (Deviation: 7.8%)\n5347: Current 13.0% vs Optimal 0.0% (Deviation: 13.0%)\nGOOGL: Current 8.9% vs Optimal 3.7% (Deviation: 5.1%)
+TELEGRAM ALERT: Rebalancing Alert: 6 holdings exceed 5% deviation threshold\n3026: Current 5.7% vs Optimal 0.0% (Deviation: 5.7%)\n3689: Current 16.5% vs Optimal 0.0% (Deviation: 16.5%)\n3867: Current 12.9% vs Optimal 0.0% (Deviation: 12.9%)\n4197: Current 7.8% vs Optimal 0.0% (Deviation: 7.8%)\n5347: Current 13.0% vs Optimal 0.0% (Deviation: 13.0%)\nGOOGL: Current 8.9% vs Optimal 3.7% (Deviation: 5.1%)
+2026-05-25 09:36:04.133 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+Running Rebalancing Alert System...
+==================================================
+Loading current holdings...
+Warning: Using average cost for 6742UW (live price unavailable)
+Warning: Using average cost for 7113WA (live price unavailable)
+Found 44 holdings:
+ticker company_name  current_weight
+  1155         1155        0.038810
+  1818         1818        0.044979
+  3026         3026        0.057336
+  3662         3662        0.000000
+  3689         3689        0.165047
+  3867         3867        0.128734
+  4197         4197        0.073120
+  5099         5099        0.000000
+  5183         5183        0.000000
+  5238         5238        0.000000
+  5249         5249        0.003647
+  5296         5296        0.000000
+  5326         5326        0.000000
+  5337         5337        0.000000
+  5347         5347        0.126730
+  6742         6742        0.001297
+6742UW       6742UW        0.000000
+  7013         7013        0.000598
+  7095         7095        0.000000
+  7113         7113        0.000000
+7113WA       7113WA        0.000237
+  AAPG                     0.000369
+  AAPL                     0.000054
+  ACHR                     0.002278
+    AI                     0.004337
+   AMD                     0.036978
+   ARM                     0.046871
+  ASML                     0.005740
+  CALM                     0.006757
+  CRSP                     0.002553
+  GOOG                     0.006913
+ GOOGL                     0.088084
+   IBM                     0.008077
+   INR                     0.002716
+  INTC                     0.079456
+  MSFT                     0.004450
+    MU                     0.025732
+  NVDA                     0.011784
+  PATH                     0.008155
+  QCOM                     0.005312
+  RXRX                     0.003605
+  TSLA                     0.007422
+    VG                     0.000604
+  WRBY                     0.001217
+
+Loading optimal weights from latest optimization...
+Optimal weights from latest run:
+    ticker   weight signal  confidence
+      AAPL 0.037491   SELL         0.0
+      ACHR 0.037491   SELL         0.0
+        AI 0.037491   SELL         0.0
+       AMD 0.037491   SELL         0.0
+       ARM 0.037491   SELL         0.0
+      ASML 0.037491   SELL         0.0
+      CALM 0.037491   HOLD         0.0
+   CIMB.KL 0.017496   SELL         0.0
+      CRSP 0.037491   SELL         0.0
+GENTING.KL 0.023858   SELL         0.0
+      GOOG 0.037491   SELL         0.0
+     GOOGL 0.037491   SELL         0.0
+  HARTA.KL 0.037491   SELL         0.0
+       IBM 0.037491   SELL         0.0
+       INR 0.037491   SELL         0.0
+      INTC 0.037491   SELL         0.0
+    IOI.KL 0.023858   SELL         0.0
+  MAXIS.KL 0.037491   SELL         0.0
+MAYBANK.KL 0.017496   SELL         0.0
+      MSFT 0.037491   SELL         0.0
+        MU 0.037491   SELL         0.0
+      NVDA 0.037491   SELL         0.0
+      PATH 0.037491   SELL         0.0
+ PBBANK.KL 0.017496   SELL         0.0
+      QCOM 0.037491   SELL         0.0
+      RXRX 0.037491   SELL         0.0
+ TENAGA.KL 0.037491   SELL         0.0
+      TSLA 0.037491   SELL         0.0
+      WRBY 0.037491   SELL         0.0
+
+Calculating deviations (threshold: 5%)...
+⚠️  Found 6 holdings requiring rebalancing attention:
+  • 3026: Current 5.7% vs Optimal 0.0% (Deviation: 5.7%)
+  • 3689: Current 16.5% vs Optimal 0.0% (Deviation: 16.5%)
+  • 3867: Current 12.9% vs Optimal 0.0% (Deviation: 12.9%)
+  • 4197: Current 7.3% vs Optimal 0.0% (Deviation: 7.3%)
+  • 5347: Current 12.7% vs Optimal 0.0% (Deviation: 12.7%)
+  • GOOGL: Current 8.8% vs Optimal 3.7% (Deviation: 5.1%)
+\n==================================================
+ALERT SUMMARY:
+Rebalancing Alert: 6 holdings exceed 5% deviation threshold\n3026: Current 5.7% vs Optimal 0.0% (Deviation: 5.7%)\n3689: Current 16.5% vs Optimal 0.0% (Deviation: 16.5%)\n3867: Current 12.9% vs Optimal 0.0% (Deviation: 12.9%)\n4197: Current 7.3% vs Optimal 0.0% (Deviation: 7.3%)\n5347: Current 12.7% vs Optimal 0.0% (Deviation: 12.7%)\nGOOGL: Current 8.8% vs Optimal 3.7% (Deviation: 5.1%)
+TELEGRAM ALERT: Rebalancing Alert: 6 holdings exceed 5% deviation threshold\n3026: Current 5.7% vs Optimal 0.0% (Deviation: 5.7%)\n3689: Current 16.5% vs Optimal 0.0% (Deviation: 16.5%)\n3867: Current 12.9% vs Optimal 0.0% (Deviation: 12.9%)\n4197: Current 7.3% vs Optimal 0.0% (Deviation: 7.3%)\n5347: Current 12.7% vs Optimal 0.0% (Deviation: 12.7%)\nGOOGL: Current 8.8% vs Optimal 3.7% (Deviation: 5.1%)
+2026-06-01 09:32:14.748 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+Running Rebalancing Alert System...
+==================================================
+Loading current holdings...
+Warning: Using average cost for 6742UW (live price unavailable)
+Warning: Using average cost for 7113WA (live price unavailable)
+Found 44 holdings:
+ticker company_name  current_weight
+  1155         1155        0.037044
+  1818         1818        0.045957
+  3026         3026        0.056784
+  3662         3662        0.000000
+  3689         3689        0.163459
+  3867         3867        0.127495
+  4197         4197        0.072417
+  5099         5099        0.000000
+  5183         5183        0.000000
+  5238         5238        0.000000
+  5249         5249        0.003612
+  5296         5296        0.000000
+  5326         5326        0.000000
+  5337         5337        0.000000
+  5347         5347        0.124292
+  6742         6742        0.001303
+6742UW       6742UW        0.000000
+  7013         7013        0.000592
+  7095         7095        0.000000
+  7113         7113        0.000000
+7113WA       7113WA        0.000235
+  AAPG                     0.000348
+  AAPL                     0.000054
+  ACHR                     0.002256
+    AI                     0.004295
+   AMD                     0.040429
+   ARM                     0.053505
+  ASML                     0.005615
+  CALM                     0.006692
+  CRSP                     0.002528
+  GOOG                     0.006847
+ GOOGL                     0.087236
+   IBM                     0.007999
+   INR                     0.002690
+  INTC                     0.078692
+  MSFT                     0.004407
+    MU                     0.025485
+  NVDA                     0.011670
+  PATH                     0.008077
+  QCOM                     0.005261
+  RXRX                     0.003570
+  TSLA                     0.007350
+    VG                     0.000598
+  WRBY                     0.001205
+
+Loading optimal weights from latest optimization...
+Optimal weights from latest run:
+    ticker   weight signal  confidence
+      AAPL 0.037491   SELL         0.0
+      ACHR 0.037491   SELL         0.0
+        AI 0.037491   SELL         0.0
+       AMD 0.037491   SELL         0.0
+       ARM 0.037491   SELL         0.0
+      ASML 0.037491   SELL         0.0
+      CALM 0.037491   HOLD         0.0
+   CIMB.KL 0.017496   SELL         0.0
+      CRSP 0.037491   SELL         0.0
+GENTING.KL 0.023858   SELL         0.0
+      GOOG 0.037491   SELL         0.0
+     GOOGL 0.037491   SELL         0.0
+  HARTA.KL 0.037491   SELL         0.0
+       IBM 0.037491   SELL         0.0
+       INR 0.037491   SELL         0.0
+      INTC 0.037491   SELL         0.0
+    IOI.KL 0.023858   SELL         0.0
+  MAXIS.KL 0.037491   SELL         0.0
+MAYBANK.KL 0.017496   SELL         0.0
+      MSFT 0.037491   SELL         0.0
+        MU 0.037491   SELL         0.0
+      NVDA 0.037491   SELL         0.0
+      PATH 0.037491   SELL         0.0
+ PBBANK.KL 0.017496   SELL         0.0
+      QCOM 0.037491   SELL         0.0
+      RXRX 0.037491   SELL         0.0
+ TENAGA.KL 0.037491   SELL         0.0
+      TSLA 0.037491   SELL         0.0
+      WRBY 0.037491   SELL         0.0
+
+Calculating deviations (threshold: 5%)...
+⚠️  Found 5 holdings requiring rebalancing attention:
+  • 3026: Current 5.7% vs Optimal 0.0% (Deviation: 5.7%)
+  • 3689: Current 16.3% vs Optimal 0.0% (Deviation: 16.3%)
+  • 3867: Current 12.7% vs Optimal 0.0% (Deviation: 12.7%)
+  • 4197: Current 7.2% vs Optimal 0.0% (Deviation: 7.2%)
+  • 5347: Current 12.4% vs Optimal 0.0% (Deviation: 12.4%)
+\n==================================================
+ALERT SUMMARY:
+Rebalancing Alert: 5 holdings exceed 5% deviation threshold\n3026: Current 5.7% vs Optimal 0.0% (Deviation: 5.7%)\n3689: Current 16.3% vs Optimal 0.0% (Deviation: 16.3%)\n3867: Current 12.7% vs Optimal 0.0% (Deviation: 12.7%)\n4197: Current 7.2% vs Optimal 0.0% (Deviation: 7.2%)\n5347: Current 12.4% vs Optimal 0.0% (Deviation: 12.4%)
+TELEGRAM ALERT: Rebalancing Alert: 5 holdings exceed 5% deviation threshold\n3026: Current 5.7% vs Optimal 0.0% (Deviation: 5.7%)\n3689: Current 16.3% vs Optimal 0.0% (Deviation: 16.3%)\n3867: Current 12.7% vs Optimal 0.0% (Deviation: 12.7%)\n4197: Current 7.2% vs Optimal 0.0% (Deviation: 7.2%)\n5347: Current 12.4% vs Optimal 0.0% (Deviation: 12.4%)
+2026-06-08 09:31:59.980 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+Running Rebalancing Alert System...
+==================================================
+Loading current holdings...
+Warning: Using average cost for 6742UW (live price unavailable)
+Warning: Using average cost for 7113WA (live price unavailable)
+Found 44 holdings:
+ticker company_name  current_weight
+  1155         1155        0.038478
+  1818         1818        0.044997
+  3026         3026        0.058108
+  3662         3662        0.000000
+  3689         3689        0.167271
+  3867         3867        0.130467
+  4197         4197        0.073392
+  5099         5099        0.000000
+  5183         5183        0.000000
+  5238         5238        0.000000
+  5249         5249        0.003696
+  5296         5296        0.000000
+  5326         5326        0.000000
+  5337         5337        0.000000
+  5347         5347        0.125943
+  6742         6742        0.001305
+6742UW       6742UW        0.000000
+  7013         7013        0.000606
+  7095         7095        0.000000
+  7113         7113        0.000000
+7113WA       7113WA        0.000240
+  AAPG                     0.000306
+  AAPL                     0.000055
+  ACHR                     0.001974
+    AI                     0.004645
+   AMD                     0.037386
+   ARM                     0.053147
+  ASML                     0.005849
+  CALM                     0.006738
+  CRSP                     0.002770
+  GOOG                     0.006516
+ GOOGL                     0.082914
+   IBM                     0.010148
+   INR                     0.002344
+  INTC                     0.067130
+  MSFT                     0.004453
+    MU                     0.030782
+  NVDA                     0.010961
+  PATH                     0.008610
+  QCOM                     0.005770
+  RXRX                     0.004134
+  TSLA                     0.006965
+    VG                     0.000684
+  WRBY                     0.001214
+
+Loading optimal weights from latest optimization...
+Optimal weights from latest run:
+    ticker   weight signal  confidence
+      AAPL 0.037491   SELL         0.0
+      ACHR 0.037491   SELL         0.0
+        AI 0.037491   SELL         0.0
+       AMD 0.037491   SELL         0.0
+       ARM 0.037491   SELL         0.0
+      ASML 0.037491   SELL         0.0
+      CALM 0.037491   HOLD         0.0
+   CIMB.KL 0.017496   SELL         0.0
+      CRSP 0.037491   SELL         0.0
+GENTING.KL 0.023858   SELL         0.0
+      GOOG 0.037491   SELL         0.0
+     GOOGL 0.037491   SELL         0.0
+  HARTA.KL 0.037491   SELL         0.0
+       IBM 0.037491   SELL         0.0
+       INR 0.037491   SELL         0.0
+      INTC 0.037491   SELL         0.0
+    IOI.KL 0.023858   SELL         0.0
+  MAXIS.KL 0.037491   SELL         0.0
+MAYBANK.KL 0.017496   SELL         0.0
+      MSFT 0.037491   SELL         0.0
+        MU 0.037491   SELL         0.0
+      NVDA 0.037491   SELL         0.0
+      PATH 0.037491   SELL         0.0
+ PBBANK.KL 0.017496   SELL         0.0
+      QCOM 0.037491   SELL         0.0
+      RXRX 0.037491   SELL         0.0
+ TENAGA.KL 0.037491   SELL         0.0
+      TSLA 0.037491   SELL         0.0
+      WRBY 0.037491   SELL         0.0
+
+Calculating deviations (threshold: 5%)...
+⚠️  Found 5 holdings requiring rebalancing attention:
+  • 3026: Current 5.8% vs Optimal 0.0% (Deviation: 5.8%)
+  • 3689: Current 16.7% vs Optimal 0.0% (Deviation: 16.7%)
+  • 3867: Current 13.0% vs Optimal 0.0% (Deviation: 13.0%)
+  • 4197: Current 7.3% vs Optimal 0.0% (Deviation: 7.3%)
+  • 5347: Current 12.6% vs Optimal 0.0% (Deviation: 12.6%)
+\n==================================================
+ALERT SUMMARY:
+Rebalancing Alert: 5 holdings exceed 5% deviation threshold\n3026: Current 5.8% vs Optimal 0.0% (Deviation: 5.8%)\n3689: Current 16.7% vs Optimal 0.0% (Deviation: 16.7%)\n3867: Current 13.0% vs Optimal 0.0% (Deviation: 13.0%)\n4197: Current 7.3% vs Optimal 0.0% (Deviation: 7.3%)\n5347: Current 12.6% vs Optimal 0.0% (Deviation: 12.6%)
+TELEGRAM ALERT: Rebalancing Alert: 5 holdings exceed 5% deviation threshold\n3026: Current 5.8% vs Optimal 0.0% (Deviation: 5.8%)\n3689: Current 16.7% vs Optimal 0.0% (Deviation: 16.7%)\n3867: Current 13.0% vs Optimal 0.0% (Deviation: 13.0%)\n4197: Current 7.3% vs Optimal 0.0% (Deviation: 7.3%)\n5347: Current 12.6% vs Optimal 0.0% (Deviation: 12.6%)
+2026-06-15 09:31:42.781 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+Running Rebalancing Alert System...
+==================================================
+Loading current holdings...
+Warning: Using average cost for 6742UW (live price unavailable)
+Warning: Using average cost for 7113WA (live price unavailable)
+Found 44 holdings:
+ticker          company_name  current_weight
+  1155                  1155        0.038030
+  1818                  1818        0.045741
+  3026 KPJ Healthcare Berhad        0.057432
+  3662                  3662        0.000000
+  3689                  3689        0.165323
+  3867                  3867        0.128948
+  4197                  4197        0.072538
+  5099                  5099        0.000000
+  5183                  5183        0.000000
+  5238                  5238        0.000000
+  5249                  5249        0.003653
+  5296   MR DIY Group Berhad        0.000000
+  5326                  5326        0.000000
+  5337                  5337        0.000000
+  5347                  5347        0.124476
+  6742    TIME dotCom Berhad        0.001283
+6742UW                6742UW        0.000000
+  7013                  7013        0.000599
+  7095                  7095        0.000000
+  7113                  7113        0.000000
+7113WA                7113WA        0.000238
+  AAPG                              0.000310
+  AAPL                              0.000051
+  ACHR                              0.001951
+    AI                              0.004591
+   AMD                              0.040531
+   ARM                              0.058330
+  ASML                              0.006562
+  CALM                              0.006875
+  CRSP                              0.002738
+  GOOG                              0.006440
+ GOOGL                              0.081949
+   IBM                              0.010030
+   INR                              0.002317
+  INTC                              0.066348
+  MSFT                              0.004402
+    MU                              0.030424
+  NVDA                              0.010833
+  PATH                              0.008509
+  QCOM                              0.005703
+  RXRX                              0.004086
+  TSLA                              0.006884
+    VG                              0.000676
+  WRBY                              0.001200
+
+Loading optimal weights from latest optimization...
+Optimal weights from latest run:
+ticker       weight signal  confidence
+  AACB 4.498461e-10   HOLD    0.500000
+ AACBR 4.498467e-10   HOLD    0.500000
+ AACBU 4.498473e-10   HOLD    0.500000
+  AACG 2.419944e-10   HOLD    0.285714
+  AACI 4.498482e-10   HOLD    0.500000
+ AACIU 4.498467e-10   HOLD    0.500000
+ AACIW 4.498468e-10   HOLD    0.500000
+  AACO 1.099266e-10   HOLD    0.142857
+ AACOU 1.099265e-10   HOLD    0.142857
+ AACOW 1.099262e-10   HOLD    0.142857
+ AACPU 4.498477e-10   HOLD    0.500000
+  AADR 1.099265e-10   HOLD    0.142857
+  AAEQ 4.498476e-10   HOLD    0.500000
+   AAL 4.498452e-10   HOLD    0.500000
+  AALG 4.498448e-10   HOLD    0.500000
+  AAME 9.090907e-02   HOLD    0.714286
+  AAOI 1.099268e-10   HOLD    0.142857
+  AAON 2.419941e-10   HOLD    0.285714
+  AAPB 1.099262e-10   HOLD    0.142857
+  AAPD 1.099266e-10   HOLD    0.142857
+  AAPG 1.099263e-10   HOLD    0.142857
+  AAPL 1.099262e-10   HOLD    0.142857
+  AAPU 1.099263e-10   HOLD    0.142857
+  AARD 2.419940e-10   HOLD    0.285714
+  AAUS 4.498492e-10   HOLD    0.500000
+  AAVM 1.099263e-10   HOLD    0.142857
+  AAXJ 1.099269e-10   HOLD    0.142857
+  ABAT 1.099270e-10   HOLD    0.142857
+  ABCL 1.099265e-10   HOLD    0.142857
+  ABCS 1.099265e-10   HOLD    0.142857
+  ABEO 3.757233e-10   HOLD    0.428571
+   ABI 4.498479e-10   HOLD    0.500000
+  ABIG 1.099268e-10   HOLD    0.142857
+  ABLV 1.099269e-10   HOLD    0.142857
+ ABLVW 2.419945e-10   HOLD    0.285714
+  ABNB 4.498480e-10   HOLD    0.500000
+  ABNG 4.498471e-10   HOLD    0.500000
+  ABOS 1.099265e-10   HOLD    0.142857
+  ABSI 1.099262e-10   HOLD    0.142857
+  ABTC 1.099266e-10   HOLD    0.142857
+  ABTS 1.099256e-10   HOLD    0.142857
+  ABUS 3.757233e-10   HOLD    0.428571
+  ABVC 4.498468e-10   HOLD    0.500000
+  ABVE 4.498483e-10   HOLD    0.500000
+ ABVEW 4.498480e-10   HOLD    0.500000
+  ABVX 1.099270e-10   HOLD    0.142857
+  ACAA 4.498453e-10   HOLD    0.500000
+ ACAAU 4.498490e-10   HOLD    0.500000
+ ACAAW 4.498495e-10   HOLD    0.500000
+  ACAD 2.419944e-10   HOLD    0.285714
+   ACB 2.419945e-10   HOLD    0.285714
+  ACCL 1.099259e-10   HOLD    0.142857
+  ACDC 4.498470e-10   HOLD    0.500000
+  ACEP 4.498468e-10   HOLD    0.500000
+  ACET 2.419944e-10   HOLD    0.285714
+  ACFN 1.099270e-10   HOLD    0.142857
+ ACGCU 4.498473e-10   HOLD    0.500000
+  ACGL 3.757235e-10   HOLD    0.428571
+ ACGLN 5.180300e-10   HOLD    0.571429
+ ACGLO 5.180289e-10   HOLD    0.571429
+  ACHC 3.757231e-10   HOLD    0.428571
+  ACHV 1.099270e-10   HOLD    0.142857
+  ACIC 2.419944e-10   HOLD    0.285714
+  ACIU 4.498490e-10   HOLD    0.500000
+  ACIW 1.099258e-10   HOLD    0.142857
+  ACLS 1.099276e-10   HOLD    0.142857
+  ACMR 1.099270e-10   HOLD    0.142857
+  ACNB 5.180302e-10   HOLD    0.571429
+  ACNT 1.099274e-10   HOLD    0.142857
+  ACOG 1.099265e-10   HOLD    0.142857
+  ACON 2.419946e-10   HOLD    0.285714
+ ACONW 2.419946e-10   HOLD    0.285714
+  ACRS 1.099275e-10   HOLD    0.142857
+  ACRV 2.419946e-10   HOLD    0.285714
+   ACT 5.180302e-10   HOLD    0.571429
+  ACTG 2.419943e-10   HOLD    0.285714
+  ACTU 1.099273e-10   HOLD    0.142857
+  ACWI 1.099269e-10   HOLD    0.142857
+  ACWX 1.099251e-10   HOLD    0.142857
+  ACXP 2.419946e-10   HOLD    0.285714
+  ADAC 1.099267e-10   HOLD    0.142857
+ ADACU 1.099264e-10   HOLD    0.142857
+ ADACW 1.099262e-10   HOLD    0.142857
+  ADAG 1.099284e-10   HOLD    0.142857
+  ADAM 5.180283e-10   HOLD    0.571429
+ ADAMG 4.498464e-10   HOLD    0.500000
+ ADAMH 4.498457e-10   HOLD    0.500000
+ ADAMI 4.498476e-10   HOLD    0.500000
+ ADAML 1.099258e-10   HOLD    0.142857
+ ADAMM 1.099287e-10   HOLD    0.142857
+ ADAMN 1.099272e-10   HOLD    0.142857
+ ADAMO 4.498471e-10   HOLD    0.500000
+ ADAMZ 1.099280e-10   HOLD    0.142857
+  ADBE 1.099257e-10   HOLD    0.142857
+  ADBG 4.498477e-10   HOLD    0.500000
+  ADEA 2.419946e-10   HOLD    0.285714
+  ADGM 1.099260e-10   HOLD    0.142857
+   ADI 2.419945e-10   HOLD    0.285714
+  ADIL 2.419946e-10   HOLD    0.285714
+  ADMA 2.419946e-10   HOLD    0.285714
+   ADP 1.099244e-10   HOLD    0.142857
+  ADPT 1.099286e-10   HOLD    0.142857
+  ADSE 2.419946e-10   HOLD    0.285714
+ ADSEW 1.099259e-10   HOLD    0.142857
+  ADSK 4.498494e-10   HOLD    0.500000
+  ADTN 1.099283e-10   HOLD    0.142857
+  ADTX 4.498456e-10   HOLD    0.500000
+  ADUR 1.099266e-10   HOLD    0.142857
+  ADUS 1.099273e-10   HOLD    0.142857
+   ADV 3.757223e-10   HOLD    0.428571
+  ADVB 5.180294e-10   HOLD    0.571429
+  ADXN 1.099265e-10   HOLD    0.142857
+  AEAQ 1.099269e-10   HOLD    0.142857
+ AEAQU 1.099283e-10   HOLD    0.142857
+ AEAQW 1.099273e-10   HOLD    0.142857
+  AEBI 3.757243e-10   HOLD    0.428571
+   AEC 1.099283e-10   HOLD    0.142857
+  AEHL 2.419945e-10   HOLD    0.285714
+  AEHR 1.099268e-10   HOLD    0.142857
+   AEI 2.419945e-10   HOLD    0.285714
+  AEIS 2.419945e-10   HOLD    0.285714
+  AEMD 2.419945e-10   HOLD    0.285714
+  AENT 1.099280e-10   HOLD    0.142857
+ AENTW 1.099281e-10   HOLD    0.142857
+   AEP 1.099267e-10   HOLD    0.142857
+  AERT 1.099253e-10   HOLD    0.142857
+ AERTW 4.498483e-10   HOLD    0.500000
+  AEVA 1.099271e-10   HOLD    0.142857
+  AEYE 1.099265e-10   HOLD    0.142857
+  AFBI 4.498497e-10   HOLD    0.500000
+  AFCG 3.757246e-10   HOLD    0.428571
+  AFJK 4.498477e-10   HOLD    0.500000
+ AFJKR 4.498440e-10   HOLD    0.500000
+ AFJKU 4.498488e-10   HOLD    0.500000
+  AFOS 4.498461e-10   HOLD    0.500000
+  AFRI 4.498454e-10   HOLD    0.500000
+ AFRIW 4.498451e-10   HOLD    0.500000
+  AFRM 1.099257e-10   HOLD    0.142857
+  AFSC 1.099250e-10   HOLD    0.142857
+  AFYA 9.090907e-02   HOLD    0.714286
+  AGAE 2.419945e-10   HOLD    0.285714
+  AGCC 1.099257e-10   HOLD    0.142857
+  AGEM 1.099280e-10   HOLD    0.142857
+  AGEN 1.099272e-10   HOLD    0.142857
+  AGGA 1.099266e-10   HOLD    0.142857
+   AGH 1.099286e-10   HOLD    0.142857
+  AGIO 1.099283e-10   HOLD    0.142857
+  AGIX 4.498489e-10   HOLD    0.500000
+  AGMB 1.099269e-10   HOLD    0.142857
+  AGMH 5.180285e-10   HOLD    0.571429
+  AGMI 1.099282e-10   HOLD    0.142857
+  AGNC 5.180334e-10   HOLD    0.571429
+ AGNCL 1.099276e-10   HOLD    0.142857
+ AGNCM 1.099264e-10   HOLD    0.142857
+ AGNCN 1.099267e-10   HOLD    0.142857
+ AGNCO 1.099271e-10   HOLD    0.142857
+ AGNCP 1.099252e-10   HOLD    0.142857
+ AGNCZ 1.099272e-10   HOLD    0.142857
+  AGNG 1.099269e-10   HOLD    0.142857
+  AGNT 3.757231e-10   HOLD    0.428571
+  AGPU 2.419947e-10   HOLD    0.285714
+  AGRZ 2.419946e-10   HOLD    0.285714
+  AGYS 4.498480e-10   HOLD    0.500000
+  AGZD 1.099268e-10   HOLD    0.142857
+  AHCO 2.419945e-10   HOLD    0.285714
+   AHG 1.099279e-10   HOLD    0.142857
+  AHMA 1.099262e-10   HOLD    0.142857
+   AIA 1.099274e-10   HOLD    0.142857
+  AIDX 1.099269e-10   HOLD    0.142857
+  AIFC 1.099270e-10   HOLD    0.142857
+  AIFD 4.498448e-10   HOLD    0.500000
+  AIFF 1.099270e-10   HOLD    0.142857
+  AIFU 2.419945e-10   HOLD    0.285714
+  AIHS 1.099257e-10   HOLD    0.142857
+  AIIO 4.498461e-10   HOLD    0.500000
+ AIIOW 4.498466e-10   HOLD    0.500000
+  AIMD 4.498475e-10   HOLD    0.500000
+ AIMDW 1.099264e-10   HOLD    0.142857
+  AIMS 4.498468e-10   HOLD    0.500000
+  AIOS 2.419946e-10   HOLD    0.285714
+  AIOT 1.099278e-10   HOLD    0.142857
+   AIP 4.498488e-10   HOLD    0.500000
+  AIPI 1.099267e-10   HOLD    0.142857
+  AIPO 4.498470e-10   HOLD    0.500000
+   AIQ 1.099267e-10   HOLD    0.142857
+  AIRE 2.419946e-10   HOLD    0.285714
+  AIRG 1.099262e-10   HOLD    0.142857
+  AIRJ 2.419945e-10   HOLD    0.285714
+ AIRJW 2.419946e-10   HOLD    0.285714
+  AIRO 2.419947e-10   HOLD    0.285714
+  AIRR 1.099260e-10   HOLD    0.142857
+  AIRS 4.498473e-10   HOLD    0.500000
+  AIRT 4.498489e-10   HOLD    0.500000
+ AIRTP 1.099282e-10   HOLD    0.142857
+  AISP 1.099266e-10   HOLD    0.142857
+ AISPW 1.099271e-10   HOLD    0.142857
+  AIXC 1.099252e-10   HOLD    0.142857
+  AIXI 4.498479e-10   HOLD    0.500000
+  AKAM 1.099255e-10   HOLD    0.142857
+  AKAN 4.498480e-10   HOLD    0.500000
+  AKBA 4.498444e-10   HOLD    0.500000
+  AKTS 1.099265e-10   HOLD    0.142857
+  ALAB 1.099267e-10   HOLD    0.142857
+  ALAR 1.099267e-10   HOLD    0.142857
+  ALBG 4.498466e-10   HOLD    0.500000
+  ALBT 4.498470e-10   HOLD    0.500000
+  ALCO 2.419946e-10   HOLD    0.285714
+  ALCY 4.498472e-10   HOLD    0.500000
+ ALCYW 4.498440e-10   HOLD    0.500000
+  ALDF 1.099268e-10   HOLD    0.142857
+ ALDFU 1.099267e-10   HOLD    0.142857
+ ALDFW 1.099277e-10   HOLD    0.142857
+  ALDX 1.099268e-10   HOLD    0.142857
+  ALEC 1.099270e-10   HOLD    0.142857
+   ALF 4.498491e-10   HOLD    0.500000
+ ALFUU 4.498488e-10   HOLD    0.500000
+ ALFUW 4.498506e-10   HOLD    0.500000
+  ALGM 1.099277e-10   HOLD    0.142857
+  ALGN 4.498462e-10   HOLD    0.500000
+  ALGS 2.419947e-10   HOLD    0.285714
+  ALGT 1.099263e-10   HOLD    0.142857
+  ALHC 1.099276e-10   HOLD    0.142857
+  ALIL 1.099271e-10   HOLD    0.142857
+  ALIS 1.099273e-10   HOLD    0.142857
+ ALISR 1.099280e-10   HOLD    0.142857
+ ALISU 1.099283e-10   HOLD    0.142857
+  ALKS 1.099258e-10   HOLD    0.142857
+  ALKT 2.419947e-10   HOLD    0.285714
+  ALLO 1.099252e-10   HOLD    0.142857
+  ALLR 1.099262e-10   HOLD    0.142857
+  ALLT 1.099283e-10   HOLD    0.142857
+  ALLW 1.099274e-10   HOLD    0.142857
+   ALM 2.419946e-10   HOLD    0.285714
+  ALMR 1.099269e-10   HOLD    0.142857
+  ALMS 1.099258e-10   HOLD    0.142857
+  ALMU 1.099253e-10   HOLD    0.142857
+  ALNT 2.419946e-10   HOLD    0.285714
+  ALNY 1.099267e-10   HOLD    0.142857
+  ALOT 1.099257e-10   HOLD    0.142857
+  ALOV 4.498464e-10   HOLD    0.500000
+ ALOVU 4.498481e-10   HOLD    0.500000
+ ALOVW 4.498488e-10   HOLD    0.500000
+  ALOY 1.099263e-10   HOLD    0.142857
+   ALP 1.099262e-10   HOLD    0.142857
+  ALPS 4.498493e-10   HOLD    0.500000
+  ALRM 1.099270e-10   HOLD    0.142857
+  ALRS 2.419946e-10   HOLD    0.285714
+   ALT 2.419945e-10   HOLD    0.285714
+  ALTI 2.419946e-10   HOLD    0.285714
+  ALTO 1.099258e-10   HOLD    0.142857
+  ALTY 1.099277e-10   HOLD    0.142857
+  ALVO 1.099279e-10   HOLD    0.142857
+ ALVOW 1.099261e-10   HOLD    0.142857
+  ALXO 2.419947e-10   HOLD    0.285714
+  ALZN 1.099275e-10   HOLD    0.142857
+   AMA 4.498492e-10   HOLD    0.500000
+  AMAL 3.757236e-10   HOLD    0.428571
+  AMAT 2.419947e-10   HOLD    0.285714
+  AMBA 1.099280e-10   HOLD    0.142857
+  AMBR 1.099269e-10   HOLD    0.142857
+  AMCI 1.099285e-10   HOLD    0.142857
+  AMCX 5.180352e-10   HOLD    0.571429
+   AMD 1.099261e-10   HOLD    0.142857
+  AMDD 1.099265e-10   HOLD    0.142857
+  AMDG 1.099270e-10   HOLD    0.142857
+  AMDL 4.498481e-10   HOLD    0.500000
+  AMGN 1.099261e-10   HOLD    0.142857
+  AMID 1.099265e-10   HOLD    0.142857
+  AMIX 2.419947e-10   HOLD    0.285714
+  AMKR 2.419947e-10   HOLD    0.285714
+  AMLX 1.099269e-10   HOLD    0.142857
+  AMOD 4.498483e-10   HOLD    0.500000
+ AMODW 4.498478e-10   HOLD    0.500000
+  AMPG 1.099274e-10   HOLD    0.142857
+ AMPGR 1.099266e-10   HOLD    0.142857
+ AMPGZ 1.099282e-10   HOLD    0.142857
+  AMPH 5.180283e-10   HOLD    0.571429
+  AMPL 1.099269e-10   HOLD    0.142857
+  AMRN 2.419947e-10   HOLD    0.285714
+  AMRX 1.099281e-10   HOLD    0.142857
+  AMSC 2.419946e-10   HOLD    0.285714
+  AMSF 3.757240e-10   HOLD    0.428571
+  AMST 1.099266e-10   HOLD    0.142857
+  AMTX 4.498479e-10   HOLD    0.500000
+  AMUN 1.099258e-10   HOLD    0.142857
+  AMUU 1.099246e-10   HOLD    0.142857
+  AMWD 2.419946e-10   HOLD    0.285714
+  AMYY 4.498463e-10   HOLD    0.500000
+  AMZD 1.099284e-10   HOLD    0.142857
+  AMZN 4.498502e-10   HOLD    0.500000
+  AMZU 1.099252e-10   HOLD    0.142857
+  AMZZ 4.498434e-10   HOLD    0.500000
+  ANAB 2.419947e-10   HOLD    0.285714
+  ANDE 1.099268e-10   HOLD    0.142857
+  ANEL 4.498470e-10   HOLD    0.500000
+  ANGH 4.498488e-10   HOLD    0.500000
+ ANGHW 1.099266e-10   HOLD    0.142857
+  ANGI 3.757238e-10   HOLD    0.428571
+  ANGL 1.099270e-10   HOLD    0.142857
+  ANGO 1.099276e-10   HOLD    0.142857
+  ANIK 2.419947e-10   HOLD    0.285714
+  ANIP 1.099244e-10   HOLD    0.142857
+  ANIX 1.099268e-10   HOLD    0.142857
+   ANL 4.498464e-10   HOLD    0.500000
+  ANNA 1.099276e-10   HOLD    0.142857
+ ANNAW 2.419946e-10   HOLD    0.285714
+  ANNX 1.099262e-10   HOLD    0.142857
+  ANPA 4.498456e-10   HOLD    0.500000
+  ANSC 4.498466e-10   HOLD    0.500000
+ ANSCU 4.498461e-10   HOLD    0.500000
+ ANSCW 4.498477e-10   HOLD    0.500000
+  ANTA 3.757236e-10   HOLD    0.428571
+  ANTX 1.099273e-10   HOLD    0.142857
+   ANV 4.498450e-10   HOLD    0.500000
+   ANY 2.419946e-10   HOLD    0.285714
+  AOHY 2.419947e-10   HOLD    0.285714
+  AOSL 1.099267e-10   HOLD    0.142857
+  AOTG 4.498461e-10   HOLD    0.500000
+  AOUT 2.419946e-10   HOLD    0.285714
+   APA 3.757257e-10   HOLD    0.428571
+  APAC 1.099267e-10   HOLD    0.142857
+ APACR 1.099262e-10   HOLD    0.142857
+ APACU 1.099278e-10   HOLD    0.142857
+   APC 1.099286e-10   HOLD    0.142857
+  APEI 1.099256e-10   HOLD    0.142857
+  APGE 1.099273e-10   HOLD    0.142857
+   API 2.419946e-10   HOLD    0.285714
+  APLD 1.099278e-10   HOLD    0.142857
+  APLM 4.498508e-10   HOLD    0.500000
+ APLMW 4.498467e-10   HOLD    0.500000
+  APLS 1.099268e-10   HOLD    0.142857
+   APM 1.099276e-10   HOLD    0.142857
+  APOG 2.419946e-10   HOLD    0.285714
+   APP 1.099274e-10   HOLD    0.142857
+  APPF 1.099259e-10   HOLD    0.142857
+  APPN 4.498478e-10   HOLD    0.500000
+  APPS 1.099270e-10   HOLD    0.142857
+  APPX 1.099262e-10   HOLD    0.142857
+  APRE 2.419946e-10   HOLD    0.285714
+  APVO 5.180258e-10   HOLD    0.571429
+  APWC 5.180248e-10   HOLD    0.571429
+  APXT 1.099265e-10   HOLD    0.142857
+ APXTU 1.099263e-10   HOLD    0.142857
+ APXTW 1.099281e-10   HOLD    0.142857
+  APYX 1.099276e-10   HOLD    0.142857
+   AQB 4.498465e-10   HOLD    0.500000
+  AQMS 2.419946e-10   HOLD    0.285714
+  AQST 1.099280e-10   HOLD    0.142857
+  AQWA 1.099256e-10   HOLD    0.142857
+  ARAI 4.498465e-10   HOLD    0.500000
+  ARAY 1.099271e-10   HOLD    0.142857
+  ARBB 2.419947e-10   HOLD    0.285714
+  ARBE 1.099262e-10   HOLD    0.142857
+ ARBEW 2.419948e-10   HOLD    0.285714
+  ARBK 2.419947e-10   HOLD    0.285714
+  ARCB 1.099260e-10   HOLD    0.142857
+  ARCC 5.180262e-10   HOLD    0.571429
+  ARCI 4.498469e-10   HOLD    0.500000
+ ARCIU 4.498493e-10   HOLD    0.500000
+ ARCIW 4.498463e-10   HOLD    0.500000
+ ARCLU 4.498470e-10   HOLD    0.500000
+  ARCT 2.419946e-10   HOLD    0.285714
+  ARDX 2.419946e-10   HOLD    0.285714
+  AREB 2.419947e-10   HOLD    0.285714
+ AREBW 1.099242e-10   HOLD    0.142857
+  AREC 2.419948e-10   HOLD    0.285714
+  ARGX 4.498447e-10   HOLD    0.500000
+  ARHS 4.498487e-10   HOLD    0.500000
+  ARKO 2.419947e-10   HOLD    0.285714
+  ARKR 1.099259e-10   HOLD    0.142857
+  ARLP 2.419947e-10   HOLD    0.285714
+   ARM 1.099253e-10   HOLD    0.142857
+  ARMG 1.099247e-10   HOLD    0.142857
+  ARMY 4.498473e-10   HOLD    0.500000
+  AROW 5.180337e-10   HOLD    0.571429
+   ARQ 1.099272e-10   HOLD    0.142857
+  ARQQ 1.099275e-10   HOLD    0.142857
+ ARQQW 2.419948e-10   HOLD    0.285714
+  ARQT 1.099262e-10   HOLD    0.142857
+  ARRY 2.419947e-10   HOLD    0.285714
+  ARTC 4.498461e-10   HOLD    0.500000
+ ARTCU 4.498498e-10   HOLD    0.500000
+ ARTCW 4.498447e-10   HOLD    0.500000
+  ARTL 2.419946e-10   HOLD    0.285714
+ ARTNA 5.180247e-10   HOLD    0.571429
+  ARTV 1.099259e-10   HOLD    0.142857
+  ARTW 5.180295e-10   HOLD    0.571429
+  ARVN 2.419947e-10   HOLD    0.285714
+  ARVR 1.099268e-10   HOLD    0.142857
+  ARWR 1.099274e-10   HOLD    0.142857
+  ARXS 1.099258e-10   HOLD    0.142857
+  ASBP 2.419947e-10   HOLD    0.285714
+ ASBPW 2.419945e-10   HOLD    0.285714
+  ASCI 1.099252e-10   HOLD    0.142857
+  ASLE 3.757236e-10   HOLD    0.428571
+  ASMB 1.099263e-10   HOLD    0.142857
+  ASMG 1.099273e-10   HOLD    0.142857
+  ASML 1.099255e-10   HOLD    0.142857
+  ASMU 4.498456e-10   HOLD    0.500000
+  ASND 4.498480e-10   HOLD    0.500000
+   ASO 5.180277e-10   HOLD    0.571429
+  ASPC 4.498470e-10   HOLD    0.500000
+ ASPCR 1.099256e-10   HOLD    0.142857
+ ASPCU 4.498470e-10   HOLD    0.500000
+  ASPI 1.099261e-10   HOLD    0.142857
+  ASPS 1.099283e-10   HOLD    0.142857
+ ASPSW 4.498473e-10   HOLD    0.500000
+ ASPSZ 4.498463e-10   HOLD    0.500000
+  ASRT 2.419946e-10   HOLD    0.285714
+  ASRV 5.180256e-10   HOLD    0.571429
+  ASST 2.419946e-10   HOLD    0.285714
+  ASTC 1.099259e-10   HOLD    0.142857
+  ASTE 2.419947e-10   HOLD    0.285714
+  ASTH 4.498474e-10   HOLD    0.500000
+  ASTI 1.099264e-10   HOLD    0.142857
+  ASTL 1.099278e-10   HOLD    0.142857
+ ASTLW 2.419946e-10   HOLD    0.285714
+  ASTS 1.099258e-10   HOLD    0.142857
+  ASUR 2.419946e-10   HOLD    0.285714
+  ASYS 1.099260e-10   HOLD    0.142857
+  ATAI 1.099280e-10   HOLD    0.142857
+  ATAT 2.419946e-10   HOLD    0.285714
+  ATCX 4.498462e-10   HOLD    0.500000
+  ATEC 2.419946e-10   HOLD    0.285714
+  ATER 2.419946e-10   HOLD    0.285714
+  ATEX 1.099262e-10   HOLD    0.142857
+  ATGL 1.099295e-10   HOLD    0.142857
+  ATHE 2.419946e-10   HOLD    0.285714
+  ATHR 1.099265e-10   HOLD    0.142857
+  ATII 1.099274e-10   HOLD    0.142857
+ ATIIU 1.099269e-10   HOLD    0.142857
+ ATIIW 1.099276e-10   HOLD    0.142857
+  ATLC 2.419946e-10   HOLD    0.285714
+ ATLCL 4.498468e-10   HOLD    0.500000
+ ATLCP 9.090907e-02   HOLD    0.714286
+ ATLCZ 4.498455e-10   HOLD    0.500000
+  ATLN 4.498478e-10   HOLD    0.500000
+  ATLO 5.180234e-10   HOLD    0.571429
+  ATLX 1.099257e-10   HOLD    0.142857
+  ATNI 2.419946e-10   HOLD    0.285714
+  ATOM 1.099282e-10   HOLD    0.142857
+  ATOS 2.419946e-10   HOLD    0.285714
+  ATPC 5.180336e-10   HOLD    0.571429
+  ATRA 2.419947e-10   HOLD    0.285714
+  ATRC 1.099271e-10   HOLD    0.142857
+  ATRO 1.099261e-10   HOLD    0.142857
+  ATXG 2.419946e-10   HOLD    0.285714
+  ATYR 2.419946e-10   HOLD    0.285714
+  AUBN 5.180233e-10   HOLD    0.571429
+  AUDC 2.419946e-10   HOLD    0.285714
+  AUGO 1.099272e-10   HOLD    0.142857
+  AUID 1.099279e-10   HOLD    0.142857
+  AUMI 2.419947e-10   HOLD    0.285714
+  AUPH 2.419947e-10   HOLD    0.285714
+   AUR 1.099298e-10   HOLD    0.142857
+  AURA 1.099267e-10   HOLD    0.142857
+  AURE 2.419946e-10   HOLD    0.285714
+ AUROW 2.419946e-10   HOLD    0.285714
+  AUTL 2.419946e-10   HOLD    0.285714
+  AUUD 2.419946e-10   HOLD    0.285714
+  AVAH 1.099254e-10   HOLD    0.142857
+  AVAV 1.099272e-10   HOLD    0.142857
+  AVBH 2.419947e-10   HOLD    0.285714
+  AVBP 1.099269e-10   HOLD    0.142857
+  AVGB 1.099264e-10   HOLD    0.142857
+  AVGG 1.099261e-10   HOLD    0.142857
+  AVGO 2.419946e-10   HOLD    0.285714
+  AVGU 4.498469e-10   HOLD    0.500000
+  AVGX 1.099276e-10   HOLD    0.142857
+  AVIR 1.099272e-10   HOLD    0.142857
+   AVL 1.099257e-10   HOLD    0.142857
+  AVLN 1.099256e-10   HOLD    0.142857
+  AVNW 2.419946e-10   HOLD    0.285714
+   AVO 2.419947e-10   HOLD    0.285714
+  AVOS 4.498483e-10   HOLD    0.500000
+  AVPT 1.099266e-10   HOLD    0.142857
+   AVR 1.099276e-10   HOLD    0.142857
+   AVS 1.099248e-10   HOLD    0.142857
+   AVT 2.419947e-10   HOLD    0.285714
+  AVTX 1.099275e-10   HOLD    0.142857
+  AVUQ 1.099248e-10   HOLD    0.142857
+   AVX 2.419946e-10   HOLD    0.285714
+  AVXC 1.099259e-10   HOLD    0.142857
+  AVXL 1.099280e-10   HOLD    0.142857
+  AVXX 4.498485e-10   HOLD    0.500000
+  AWRE 2.419946e-10   HOLD    0.285714
+   AXG 1.099254e-10   HOLD    0.142857
+  AXGN 1.099268e-10   HOLD    0.142857
+  AXIN 1.099260e-10   HOLD    0.142857
+ AXINR 1.099276e-10   HOLD    0.142857
+ AXINU 1.099263e-10   HOLD    0.142857
+  AXON 1.099261e-10   HOLD    0.142857
+  AXPG 4.498472e-10   HOLD    0.500000
+  AXSM 4.498475e-10   HOLD    0.500000
+  AXTI 1.099272e-10   HOLD    0.142857
+   AYA 1.099260e-10   HOLD    0.142857
+  AYTU 1.099257e-10   HOLD    0.142857
+    AZ 2.419947e-10   HOLD    0.285714
+   AZI 4.498470e-10   HOLD    0.500000
+  AZTA 2.419946e-10   HOLD    0.285714
+  AZYY 4.498460e-10   HOLD    0.500000
+  BABU 4.498483e-10   HOLD    0.500000
+  BABX 4.498477e-10   HOLD    0.500000
+  BACC 4.498465e-10   HOLD    0.500000
+ BACCR 4.498469e-10   HOLD    0.500000
+ BACCU 4.498484e-10   HOLD    0.500000
+  BAER 4.498457e-10   HOLD    0.500000
+ BAERW 4.498472e-10   HOLD    0.500000
+  BAFE 1.099295e-10   HOLD    0.142857
+  BAFN 2.419947e-10   HOLD    0.285714
+  BAIG 4.498488e-10   HOLD    0.500000
+  BAIV 1.099265e-10   HOLD    0.142857
+  BALQ 4.498476e-10   HOLD    0.500000
+  BAND 4.498484e-10   HOLD    0.500000
+  BANF 1.099270e-10   HOLD    0.142857
+ BANFP 4.498471e-10   HOLD    0.500000
+  BANL 1.099259e-10   HOLD    0.142857
+  BANR 5.180311e-10   HOLD    0.571429
+  BANX 5.180236e-10   HOLD    0.571429
+  BAOS 1.099275e-10   HOLD    0.142857
+  BASG 4.498499e-10   HOLD    0.500000
+  BASV 4.498471e-10   HOLD    0.500000
+ BATRA 4.498470e-10   HOLD    0.500000
+ BATRK 4.498470e-10   HOLD    0.500000
+  BAYA 4.498471e-10   HOLD    0.500000
+ BAYAR 4.498447e-10   HOLD    0.500000
+ BAYAU 4.498469e-10   HOLD    0.500000
+   BBB 1.099270e-10   HOLD    0.142857
+  BBCP 1.099254e-10   HOLD    0.142857
+  BBCQ 4.498474e-10   HOLD    0.500000
+ BBCQU 4.498479e-10   HOLD    0.500000
+ BBCQW 4.498480e-10   HOLD    0.500000
+  BBGI 4.498474e-10   HOLD    0.500000
+   BBH 1.099267e-10   HOLD    0.142857
+  BBIO 1.099275e-10   HOLD    0.142857
+  BBLG 2.419947e-10   HOLD    0.285714
+ BBLGW 1.099265e-10   HOLD    0.142857
+  BBNX 1.099278e-10   HOLD    0.142857
+  BBOT 1.099269e-10   HOLD    0.142857
+  BBSI 1.099248e-10   HOLD    0.142857
+  BBYY 4.498496e-10   HOLD    0.500000
+  BCAB 4.498472e-10   HOLD    0.500000
+  BCAL 5.180233e-10   HOLD    0.571429
+  BCAR 1.099255e-10   HOLD    0.142857
+ BCARU 1.099263e-10   HOLD    0.142857
+ BCARW 1.099244e-10   HOLD    0.142857
+  BCAX 1.099287e-10   HOLD    0.142857
+  BCBP 3.757231e-10   HOLD    0.428571
+  BCDA 4.498458e-10   HOLD    0.500000
+  BCFN 4.498465e-10   HOLD    0.500000
+   BCG 4.498490e-10   HOLD    0.500000
+ BCGWW 1.099258e-10   HOLD    0.142857
+  BCIC 3.757239e-10   HOLD    0.428571
+  BCLO 1.099261e-10   HOLD    0.142857
+  BCML 5.180270e-10   HOLD    0.571429
+  BCPC 2.419946e-10   HOLD    0.285714
+  BCRX 2.419945e-10   HOLD    0.285714
+  BCTK 4.498473e-10   HOLD    0.500000
+  BCTX 2.419946e-10   HOLD    0.285714
+ BCTXL 2.419947e-10   HOLD    0.285714
+ BCTXZ 2.419945e-10   HOLD    0.285714
+  BCYC 2.419946e-10   HOLD    0.285714
+  BDCI 1.099266e-10   HOLD    0.142857
+ BDCIU 1.099282e-10   HOLD    0.142857
+ BDCIW 1.099264e-10   HOLD    0.142857
+  BDGS 1.099266e-10   HOLD    0.142857
+  BDMD 2.419946e-10   HOLD    0.285714
+ BDMDW 2.419947e-10   HOLD    0.285714
+  BDSX 1.099254e-10   HOLD    0.142857
+  BDTX 2.419946e-10   HOLD    0.285714
+  BDVL 1.099248e-10   HOLD    0.142857
+  BDYN 1.099275e-10   HOLD    0.142857
+  BEAG 1.099276e-10   HOLD    0.142857
+ BEAGR 1.099256e-10   HOLD    0.142857
+ BEAGU 1.099266e-10   HOLD    0.142857
+  BEAM 1.099270e-10   HOLD    0.142857
+  BEAT 4.498477e-10   HOLD    0.500000
+ BEATW 4.498448e-10   HOLD    0.500000
+  BEDY 1.099277e-10   HOLD    0.142857
+  BEEM 1.099252e-10   HOLD    0.142857
+  BEEP 1.099268e-10   HOLD    0.142857
+  BEEX 1.099250e-10   HOLD    0.142857
+  BEEZ 1.099270e-10   HOLD    0.142857
+   BEG 4.498471e-10   HOLD    0.500000
+ BELFA 2.419945e-10   HOLD    0.285714
+ BELFB 2.419945e-10   HOLD    0.285714
+  BELT 4.498463e-10   HOLD    0.500000
+  BENF 2.419945e-10   HOLD    0.285714
+ BENFW 2.419946e-10   HOLD    0.285714
+  BESO 4.498464e-10   HOLD    0.500000
+  BETR 4.498467e-10   HOLD    0.500000
+ BETRW 1.099254e-10   HOLD    0.142857
+   BFC 1.099251e-10   HOLD    0.142857
+  BFRG 1.099282e-10   HOLD    0.142857
+ BFRGW 1.099278e-10   HOLD    0.142857
+  BFRI 1.099268e-10   HOLD    0.142857
+ BFRIW 1.099279e-10   HOLD    0.142857
+  BFST 5.180297e-10   HOLD    0.571429
+   BGC 1.099284e-10   HOLD    0.142857
+  BGDE 4.498467e-10   HOLD    0.500000
+  BGIN 1.099268e-10   HOLD    0.142857
+   BGL 1.099262e-10   HOLD    0.142857
+  BGLC 2.419946e-10   HOLD    0.285714
+ BGLWW 4.498483e-10   HOLD    0.500000
+   BGM 1.099275e-10   HOLD    0.142857
+  BGMS 5.180292e-10   HOLD    0.571429
+  BGRN 1.099266e-10   HOLD    0.142857
+  BGRO 1.099272e-10   HOLD    0.142857
+  BHAV 1.099265e-10   HOLD    0.142857
+ BHAVR 1.099265e-10   HOLD    0.142857
+ BHAVU 1.099285e-10   HOLD    0.142857
+  BHDG 4.498492e-10   HOLD    0.500000
+   BHF 3.757230e-10   HOLD    0.428571
+ BHFAL 1.099277e-10   HOLD    0.142857
+ BHFAM 9.090907e-02   HOLD    0.714286
+ BHFAN 9.090907e-02   HOLD    0.714286
+ BHFAO 9.090907e-02   HOLD    0.714286
+ BHFAP 9.090907e-02   HOLD    0.714286
+  BHRB 5.180312e-10   HOLD    0.571429
+  BHST 1.099270e-10   HOLD    0.142857
+  BIAF 4.498464e-10   HOLD    0.500000
+ BIAFW 1.099275e-10   HOLD    0.142857
+   BIB 1.099272e-10   HOLD    0.142857
+  BIDG 4.498494e-10   HOLD    0.500000
+  BIDU 3.757226e-10   HOLD    0.428571
+  BIIB 1.099276e-10   HOLD    0.142857
+  BILI 4.498454e-10   HOLD    0.500000
+  BIOA 1.099282e-10   HOLD    0.142857
+  BIOX 2.419945e-10   HOLD    0.285714
+  BIOY 4.498482e-10   HOLD    0.500000
+  BIRD 1.099282e-10   HOLD    0.142857
+   BIS 1.099268e-10   HOLD    0.142857
+  BITS 2.419946e-10   HOLD    0.285714
+  BIVI 2.419945e-10   HOLD    0.285714
+ BIVIW 2.419945e-10   HOLD    0.285714
+  BIXI 1.099268e-10   HOLD    0.142857
+ BIXIU 1.099259e-10   HOLD    0.142857
+ BIXIW 1.099272e-10   HOLD    0.142857
+  BIYA 2.419945e-10   HOLD    0.285714
+  BJDX 2.419945e-10   HOLD    0.285714
+  BJRI 4.498477e-10   HOLD    0.500000
+  BKCH 1.099251e-10   HOLD    0.142857
+  BKHA 4.498487e-10   HOLD    0.500000
+ BKHAR 4.498473e-10   HOLD    0.500000
+ BKHAU 4.498475e-10   HOLD    0.500000
+  BKMI 1.099275e-10   HOLD    0.142857
+  BKMS 1.099280e-10   HOLD    0.142857
+  BKNG 1.099270e-10   HOLD    0.142857
+   BKR 2.419947e-10   HOLD    0.285714
+    BL 1.099257e-10   HOLD    0.142857
+  BLBD 1.099258e-10   HOLD    0.142857
+  BLCN 1.099242e-10   HOLD    0.142857
+  BLCR 1.099256e-10   HOLD    0.142857
+  BLDP 1.099264e-10   HOLD    0.142857
+  BLFS 1.099264e-10   HOLD    0.142857
+  BLIN 2.419946e-10   HOLD    0.285714
+  BLIV 1.099258e-10   HOLD    0.142857
+  BLKB 1.099275e-10   HOLD    0.142857
+  BLLN 1.099254e-10   HOLD    0.142857
+  BLMN 1.099279e-10   HOLD    0.142857
+  BLNE 3.757250e-10   HOLD    0.428571
+  BLNK 4.498469e-10   HOLD    0.500000
+  BLRK 1.099263e-10   HOLD    0.142857
+ BLRKU 1.099258e-10   HOLD    0.142857
+ BLRKW 1.099262e-10   HOLD    0.142857
+  BLSG 4.498471e-10   HOLD    0.500000
+  BLTE 1.099267e-10   HOLD    0.142857
+  BLUW 4.498461e-10   HOLD    0.500000
+ BLUWU 4.498459e-10   HOLD    0.500000
+ BLUWW 4.498462e-10   HOLD    0.500000
+  BLZE 4.498473e-10   HOLD    0.500000
+  BLZR 1.099279e-10   HOLD    0.142857
+ BLZRU 1.099251e-10   HOLD    0.142857
+ BLZRW 1.099253e-10   HOLD    0.142857
+  BMBL 2.419945e-10   HOLD    0.285714
+  BMEA 1.099262e-10   HOLD    0.142857
+  BMGL 4.498473e-10   HOLD    0.500000
+  BMHL 1.099251e-10   HOLD    0.142857
+   BMM 1.099276e-10   HOLD    0.142857
+  BMNG 4.498481e-10   HOLD    0.500000
+  BMOP 1.099262e-10   HOLD    0.142857
+   BMR 1.099258e-10   HOLD    0.142857
+  BMRA 2.419945e-10   HOLD    0.285714
+  BMRC 3.757258e-10   HOLD    0.428571
+  BMRN 1.099271e-10   HOLD    0.142857
+  BNAI 4.498477e-10   HOLD    0.500000
+ BNAIW 1.099275e-10   HOLD    0.142857
+  BNBX 5.180282e-10   HOLD    0.571429
+   BNC 3.757230e-10   HOLD    0.428571
+ BNCWW 2.419946e-10   HOLD    0.285714
+ BNCWZ 2.419945e-10   HOLD    0.285714
+   BND 1.099278e-10   HOLD    0.142857
+  BNDP 4.498494e-10   HOLD    0.500000
+  BNDW 1.099262e-10   HOLD    0.142857
+  BNDX 1.099280e-10   HOLD    0.142857
+  BNGO 2.419946e-10   HOLD    0.285714
+  BNKK 1.099270e-10   HOLD    0.142857
+   BNR 2.419945e-10   HOLD    0.285714
+  BNRG 1.099263e-10   HOLD    0.142857
+  BNTC 1.099255e-10   HOLD    0.142857
+  BNTX 2.419946e-10   HOLD    0.285714
+  BNZI 3.757250e-10   HOLD    0.428571
+ BNZIW 1.099257e-10   HOLD    0.142857
+  BODI 1.099261e-10   HOLD    0.142857
+  BOEG 4.498481e-10   HOLD    0.500000
+  BOEU 1.099253e-10   HOLD    0.142857
+   BOF 4.498463e-10   HOLD    0.500000
+  BOKF 5.180321e-10   HOLD    0.571429
+  BOLD 2.419945e-10   HOLD    0.285714
+  BOLT 2.419946e-10   HOLD    0.285714
+   BON 3.757227e-10   HOLD    0.428571
+  BOOM 3.757252e-10   HOLD    0.428571
+  BOSC 5.180279e-10   HOLD    0.571429
+   BOT 4.498479e-10   HOLD    0.500000
+  BOTJ 5.180276e-10   HOLD    0.571429
+  BOTT 4.498478e-10   HOLD    0.500000
+  BOTZ 1.099247e-10   HOLD    0.142857
+  BOXL 1.099268e-10   HOLD    0.142857
+  BPAC 4.498469e-10   HOLD    0.500000
+ BPACR 2.419946e-10   HOLD    0.285714
+ BPACU 4.498476e-10   HOLD    0.500000
+  BPOP 3.757247e-10   HOLD    0.428571
+ BPOPM 4.498476e-10   HOLD    0.500000
+  BPRN 5.180299e-10   HOLD    0.571429
+ BPYPM 1.099281e-10   HOLD    0.142857
+ BPYPN 5.180292e-10   HOLD    0.571429
+ BPYPO 5.180308e-10   HOLD    0.571429
+ BPYPP 5.180289e-10   HOLD    0.571429
+  BRAG 1.099275e-10   HOLD    0.142857
+  BRAI 4.498472e-10   HOLD    0.500000
+  BRBI 1.099267e-10   HOLD    0.142857
+  BRCB 4.498468e-10   HOLD    0.500000
+  BREM 4.498479e-10   HOLD    0.500000
+  BRES 4.498464e-10   HOLD    0.500000
+  BRFH 4.498465e-10   HOLD    0.500000
+  BRHY 2.419945e-10   HOLD    0.285714
+  BRID 2.419946e-10   HOLD    0.285714
+  BRKR 2.419945e-10   HOLD    0.285714
+ BRKRP 2.419945e-10   HOLD    0.285714
+  BRKU 2.419945e-10   HOLD    0.285714
+  BRLS 4.498480e-10   HOLD    0.500000
+ BRLSW 4.498470e-10   HOLD    0.500000
+  BRLT 2.419945e-10   HOLD    0.285714
+  BRNS 2.419945e-10   HOLD    0.285714
+  BRNY 1.099278e-10   HOLD    0.142857
+   BRR 2.419946e-10   HOLD    0.285714
+  BRRR 4.498487e-10   HOLD    0.500000
+ BRRWW 2.419946e-10   HOLD    0.285714
+  BRTR 2.419945e-10   HOLD    0.285714
+  BRTX 1.099266e-10   HOLD    0.142857
+  BRUN 4.498481e-10   HOLD    0.500000
+ BRUNW 4.498460e-10   HOLD    0.500000
+  BRZE 4.498464e-10   HOLD    0.500000
+  BSAA 1.099255e-10   HOLD    0.142857
+ BSAAR 2.419946e-10   HOLD    0.285714
+ BSAAU 1.099265e-10   HOLD    0.142857
+  BSBK 1.099270e-10   HOLD    0.142857
+  BSCQ 1.099275e-10   HOLD    0.142857
+  BSCR 1.099263e-10   HOLD    0.142857
+  BSCS 1.099263e-10   HOLD    0.142857
+  BSCT 1.099255e-10   HOLD    0.142857
+  BSCU 1.099270e-10   HOLD    0.142857
+  BSCV 1.099253e-10   HOLD    0.142857
+  BSCW 1.099256e-10   HOLD    0.142857
+  BSCX 1.099270e-10   HOLD    0.142857
+  BSCY 1.099275e-10   HOLD    0.142857
+  BSCZ 4.498483e-10   HOLD    0.500000
+  BSET 5.180288e-10   HOLD    0.571429
+  BSJQ 1.099262e-10   HOLD    0.142857
+  BSJR 1.099261e-10   HOLD    0.142857
+  BSJS 1.099260e-10   HOLD    0.142857
+  BSJT 1.099264e-10   HOLD    0.142857
+  BSJU 1.099259e-10   HOLD    0.142857
+  BSJV 1.099263e-10   HOLD    0.142857
+  BSJW 1.099267e-10   HOLD    0.142857
+  BSJX 4.498470e-10   HOLD    0.500000
+  BSMQ 1.099260e-10   HOLD    0.142857
+  BSMR 1.099271e-10   HOLD    0.142857
+  BSMS 1.099254e-10   HOLD    0.142857
+  BSMT 1.099270e-10   HOLD    0.142857
+  BSMU 1.099282e-10   HOLD    0.142857
+  BSMV 1.099276e-10   HOLD    0.142857
+  BSMW 1.099272e-10   HOLD    0.142857
+  BSMY 1.099264e-10   HOLD    0.142857
+  BSMZ 4.498490e-10   HOLD    0.500000
+  BSRR 5.180270e-10   HOLD    0.571429
+  BSSX 1.099266e-10   HOLD    0.142857
+  BSVN 3.757244e-10   HOLD    0.428571
+  BSVO 2.419946e-10   HOLD    0.285714
+   BSY 1.099249e-10   HOLD    0.142857
+  BTAI 4.498481e-10   HOLD    0.500000
+  BTBD 2.419945e-10   HOLD    0.285714
+ BTBDW 2.419945e-10   HOLD    0.285714
+  BTBT 2.419946e-10   HOLD    0.285714
+  BTCS 3.757221e-10   HOLD    0.428571
+  BTCT 2.419946e-10   HOLD    0.285714
+  BTDR 1.099271e-10   HOLD    0.142857
+   BTF 1.099283e-10   HOLD    0.142857
+  BTGD 1.099263e-10   HOLD    0.142857
+   BTM 2.419945e-10   HOLD    0.285714
+  BTMD 1.099278e-10   HOLD    0.142857
+ BTMWW 1.099283e-10   HOLD    0.142857
+  BTOC 1.099276e-10   HOLD    0.142857
+  BTOG 2.419945e-10   HOLD    0.285714
+   BTQ 1.099246e-10   HOLD    0.142857
+  BTSG 1.099261e-10   HOLD    0.142857
+ BTSGU 2.419945e-10   HOLD    0.285714
+  BTTC 1.099262e-10   HOLD    0.142857
+    BU 4.498476e-10   HOLD    0.500000
+  BUFC 4.498483e-10   HOLD    0.500000
+  BUFI 4.498470e-10   HOLD    0.500000
+  BUFM 4.498489e-10   HOLD    0.500000
+   BUG 1.099260e-10   HOLD    0.142857
+  BULD 1.099252e-10   HOLD    0.142857
+  BULG 4.498471e-10   HOLD    0.500000
+  BULL 4.498476e-10   HOLD    0.500000
+ BULLW 1.099271e-10   HOLD    0.142857
+  BULX 4.498494e-10   HOLD    0.500000
+  BUSE 5.180291e-10   HOLD    0.571429
+ BUSEP 2.419946e-10   HOLD    0.285714
+  BUUU 1.099261e-10   HOLD    0.142857
+   BVC 1.099264e-10   HOLD    0.142857
+  BVFL 3.757227e-10   HOLD    0.428571
+   BVS 1.099270e-10   HOLD    0.142857
+  BWAY 1.099272e-10   HOLD    0.142857
+   BWB 3.757225e-10   HOLD    0.428571
+ BWBBP 5.180292e-10   HOLD    0.571429
+  BWEN 2.419945e-10   HOLD    0.285714
+  BWFG 5.180296e-10   HOLD    0.571429
+  BWIN 1.099269e-10   HOLD    0.142857
+  BWMN 4.498487e-10   HOLD    0.500000
+  BYAH 2.419945e-10   HOLD    0.285714
+  BYFC 1.099259e-10   HOLD    0.142857
+  BYND 1.099266e-10   HOLD    0.142857
+  BYRN 1.099247e-10   HOLD    0.142857
+  BYSI 4.498458e-10   HOLD    0.500000
+    BZ 3.757235e-10   HOLD    0.428571
+  BZAI 1.099259e-10   HOLD    0.142857
+ BZAIW 1.099260e-10   HOLD    0.142857
+  BZFD 1.099262e-10   HOLD    0.142857
+ BZFDW 3.757232e-10   HOLD    0.428571
+  BZUN 3.757249e-10   HOLD    0.428571
+  CAAS 3.757230e-10   HOLD    0.428571
+  CABA 1.099266e-10   HOLD    0.142857
+  CABR 1.099268e-10   HOLD    0.142857
+   CAC 5.180305e-10   HOLD    0.571429
+  CACC 2.419946e-10   HOLD    0.285714
+  CADL 1.099274e-10   HOLD    0.142857
+  CAEP 4.498486e-10   HOLD    0.500000
+  CAFG 1.099253e-10   HOLD    0.142857
+   CAI 1.099257e-10   HOLD    0.142857
+ CAIIU 4.498472e-10   HOLD    0.500000
+  CAIQ 4.498463e-10   HOLD    0.500000
+  CAKE 1.099255e-10   HOLD    0.142857
+  CALC 1.099265e-10   HOLD    0.142857
+  CALI 1.099261e-10   HOLD    0.142857
+  CALM 9.090907e-02   HOLD    0.714286
+  CAMP 1.099262e-10   HOLD    0.142857
+  CAMT 1.099260e-10   HOLD    0.142857
+   CAN 2.419945e-10   HOLD    0.285714
+  CANC 1.099261e-10   HOLD    0.142857
+  CANQ 1.099268e-10   HOLD    0.142857
+  CAPN 4.498478e-10   HOLD    0.500000
+ CAPNR 4.498479e-10   HOLD    0.500000
+ CAPNU 4.498478e-10   HOLD    0.500000
+  CAPR 1.099254e-10   HOLD    0.142857
+  CAPS 1.099256e-10   HOLD    0.142857
+   CAQ 4.498468e-10   HOLD    0.500000
+ CAQUU 4.498477e-10   HOLD    0.500000
+ CAQUW 4.498471e-10   HOLD    0.500000
+   CAR 4.498474e-10   HOLD    0.500000
+  CARE 5.180278e-10   HOLD    0.571429
+  CARG 2.419945e-10   HOLD    0.285714
+  CARL 1.099258e-10   HOLD    0.142857
+  CART 1.099266e-10   HOLD    0.142857
+  CARY 1.099260e-10   HOLD    0.142857
+  CARZ 1.099266e-10   HOLD    0.142857
+  CASH 3.757246e-10   HOLD    0.428571
+  CASS 1.099262e-10   HOLD    0.142857
+  CAST 4.498482e-10   HOLD    0.500000
+  CASY 1.099268e-10   HOLD    0.142857
+  CATH 1.099262e-10   HOLD    0.142857
+  CATY 5.180290e-10   HOLD    0.571429
+  CBAT 2.419945e-10   HOLD    0.285714
+   CBC 1.099269e-10   HOLD    0.142857
+  CBFV 2.419945e-10   HOLD    0.285714
+  CBIO 1.099258e-10   HOLD    0.142857
+   CBK 5.180287e-10   HOLD    0.571429
+  CBLL 1.099266e-10   HOLD    0.142857
+  CBNK 5.180308e-10   HOLD    0.571429
+  CBRL 1.099260e-10   HOLD    0.142857
+  CBSH 2.419946e-10   HOLD    0.285714
+  CBUS 4.498464e-10   HOLD    0.500000
+  CCAP 5.180267e-10   HOLD    0.571429
+   CCB 4.498473e-10   HOLD    0.500000
+  CCBG 5.180312e-10   HOLD    0.571429
+   CCC 4.498476e-10   HOLD    0.500000
+  CCCC 1.099264e-10   HOLD    0.142857
+   CCD 2.419945e-10   HOLD    0.285714
+  CCEC 5.180295e-10   HOLD    0.571429
+  CCEP 1.099270e-10   HOLD    0.142857
+  CCFE 4.498471e-10   HOLD    0.500000
+   CCG 2.419945e-10   HOLD    0.285714
+ CCGWW 1.099275e-10   HOLD    0.142857
+  CCHH 2.419945e-10   HOLD    0.285714
+  CCII 1.099267e-10   HOLD    0.142857
+ CCIIU 1.099269e-10   HOLD    0.142857
+ CCIIW 1.099254e-10   HOLD    0.142857
+  CCIX 4.498467e-10   HOLD    0.500000
+ CCIXU 4.498468e-10   HOLD    0.500000
+ CCIXW 4.498477e-10   HOLD    0.500000
+  CCLD 4.498474e-10   HOLD    0.500000
+ CCLDO 1.099266e-10   HOLD    0.142857
+  CCNE 5.180285e-10   HOLD    0.571429
+ CCNEP 5.180313e-10   HOLD    0.571429
+  CCNR 1.099267e-10   HOLD    0.142857
+  CCOI 2.419946e-10   HOLD    0.285714
+  CCRN 2.419946e-10   HOLD    0.285714
+  CCSB 1.099268e-10   HOLD    0.142857
+  CCSI 2.419945e-10   HOLD    0.285714
+  CCSO 1.099260e-10   HOLD    0.142857
+  CCTG 2.419945e-10   HOLD    0.285714
+  CCXI 1.099263e-10   HOLD    0.142857
+ CCXIU 1.099266e-10   HOLD    0.142857
+ CCXIW 1.099257e-10   HOLD    0.142857
+    CD 1.099264e-10   HOLD    0.142857
+   CDC 1.099267e-10   HOLD    0.142857
+  CDIG 4.498477e-10   HOLD    0.500000
+  CDIO 2.419945e-10   HOLD    0.285714
+ CDIOW 2.419945e-10   HOLD    0.285714
+   CDL 1.099268e-10   HOLD    0.142857
+  CDLX 1.099261e-10   HOLD    0.142857
+  CDNA 1.099269e-10   HOLD    0.142857
+  CDNL 1.099265e-10   HOLD    0.142857
+  CDNS 4.498483e-10   HOLD    0.500000
+  CDRO 4.498480e-10   HOLD    0.500000
+ CDROW 1.099262e-10   HOLD    0.142857
+   CDT 4.498477e-10   HOLD    0.500000
+  CDTG 1.099274e-10   HOLD    0.142857
+ CDTTW 4.498472e-10   HOLD    0.500000
+   CDW 1.099269e-10   HOLD    0.142857
+  CDXS 1.099263e-10   HOLD    0.142857
+  CDZI 1.099264e-10   HOLD    0.142857
+ CDZIP 2.419946e-10   HOLD    0.285714
+  CECO 4.498475e-10   HOLD    0.500000
+  CEFA 1.099269e-10   HOLD    0.142857
+   CEG 1.099276e-10   HOLD    0.142857
+  CELC 1.099271e-10   HOLD    0.142857
+  CELH 1.099267e-10   HOLD    0.142857
+  CELU 4.498472e-10   HOLD    0.500000
+ CELUW 4.498474e-10   HOLD    0.500000
+  CELZ 2.419945e-10   HOLD    0.285714
+  CENN 2.419945e-10   HOLD    0.285714
+  CENT 1.099259e-10   HOLD    0.142857
+ CENTA 5.180288e-10   HOLD    0.571429
+  CENX 1.099265e-10   HOLD    0.142857
+  CEPF 1.099269e-10   HOLD    0.142857
+  CEPI 1.099264e-10   HOLD    0.142857
+  CEPO 4.498477e-10   HOLD    0.500000
+  CEPS 4.498481e-10   HOLD    0.500000
+  CEPT 4.498481e-10   HOLD    0.500000
+  CEPV 1.099266e-10   HOLD    0.142857
+  CERT 3.757236e-10   HOLD    0.428571
+  CETX 5.180294e-10   HOLD    0.571429
+  CETY 4.498480e-10   HOLD    0.500000
+  CEVA 1.099262e-10   HOLD    0.142857
+   CFA 1.099266e-10   HOLD    0.142857
+  CFBK 5.180288e-10   HOLD    0.571429
+  CFFI 5.180291e-10   HOLD    0.571429
+  CFFN 5.180292e-10   HOLD    0.571429
+   CFO 1.099260e-10   HOLD    0.142857
+    CG 2.419945e-10   HOLD    0.285714
+ CGABL 4.498473e-10   HOLD    0.500000
+  CGBD 5.180309e-10   HOLD    0.571429
+   CGC 2.419945e-10   HOLD    0.285714
+  CGCT 4.498469e-10   HOLD    0.500000
+ CGCTU 4.498475e-10   HOLD    0.500000
+ CGCTW 4.498475e-10   HOLD    0.500000
+  CGEM 1.099265e-10   HOLD    0.142857
+  CGEN 3.757241e-10   HOLD    0.428571
+  CGNT 1.099266e-10   HOLD    0.142857
+  CGNX 2.419945e-10   HOLD    0.285714
+   CGO 9.090907e-02   HOLD    0.714286
+  CGON 1.099274e-10   HOLD    0.142857
+  CGTL 2.419946e-10   HOLD    0.285714
+  CGTX 4.498464e-10   HOLD    0.500000
+   CHA 1.099267e-10   HOLD    0.142857
+  CHAI 4.498479e-10   HOLD    0.500000
+  CHAR 4.498477e-10   HOLD    0.500000
+ CHARR 4.498484e-10   HOLD    0.500000
+ CHARU 4.498477e-10   HOLD    0.500000
+  CHCI 3.757239e-10   HOLD    0.428571
+  CHCO 2.419945e-10   HOLD    0.285714
+  CHDN 1.099266e-10   HOLD    0.142857
+  CHEC 1.099260e-10   HOLD    0.142857
+ CHECU 1.099266e-10   HOLD    0.142857
+ CHECW 1.099267e-10   HOLD    0.142857
+  CHEF 1.099257e-10   HOLD    0.142857
+  CHGX 1.099262e-10   HOLD    0.142857
+   CHI 9.090907e-02   HOLD    0.714286
+  CHKP 2.419945e-10   HOLD    0.285714
+  CHMG 2.419945e-10   HOLD    0.285714
+  CHNR 1.099267e-10   HOLD    0.142857
+  CHPG 4.498475e-10   HOLD    0.500000
+ CHPGR 4.498478e-10   HOLD    0.500000
+ CHPGU 4.498478e-10   HOLD    0.500000
+  CHPS 1.099263e-10   HOLD    0.142857
+  CHPX 4.498473e-10   HOLD    0.500000
+   CHR 5.180298e-10   HOLD    0.571429
+  CHRD 3.757238e-10   HOLD    0.428571
+  CHRI 4.498481e-10   HOLD    0.500000
+  CHRN 1.099264e-10   HOLD    0.142857
+  CHRS 1.099265e-10   HOLD    0.142857
+  CHRW 2.419945e-10   HOLD    0.285714
+ CHSCL 1.099273e-10   HOLD    0.142857
+ CHSCM 1.099267e-10   HOLD    0.142857
+ CHSCN 1.099264e-10   HOLD    0.142857
+ CHSCO 1.099267e-10   HOLD    0.142857
+ CHSCP 1.099266e-10   HOLD    0.142857
+  CHSN 3.757242e-10   HOLD    0.428571
+  CHTR 3.757241e-10   HOLD    0.428571
+   CHW 5.180298e-10   HOLD    0.571429
+   CHY 9.090907e-02   HOLD    0.714286
+  CHYM 2.419946e-10   HOLD    0.285714
+  CIBR 1.099264e-10   HOLD    0.142857
+  CIFG 4.498475e-10   HOLD    0.500000
+  CIFR 1.099267e-10   HOLD    0.142857
+  CIGI 1.099263e-10   HOLD    0.142857
+  CIIT 1.099262e-10   HOLD    0.142857
+  CINF 3.757237e-10   HOLD    0.428571
+  CING 1.099265e-10   HOLD    0.142857
+ CINGW 2.419946e-10   HOLD    0.285714
+  CISO 3.757236e-10   HOLD    0.428571
+  CISS 2.419945e-10   HOLD    0.285714
+  CIVB 5.180287e-10   HOLD    0.571429
+  CJMB 1.099266e-10   HOLD    0.142857
+  CLAR 3.757236e-10   HOLD    0.428571
+  CLBK 4.498472e-10   HOLD    0.500000
+  CLBT 1.099266e-10   HOLD    0.142857
+  CLDX 1.099265e-10   HOLD    0.142857
+  CLFD 1.099266e-10   HOLD    0.142857
+  CLGN 2.419945e-10   HOLD    0.285714
+  CLIK 2.419945e-10   HOLD    0.285714
+  CLIR 1.099265e-10   HOLD    0.142857
+  CLLS 1.099268e-10   HOLD    0.142857
+  CLMB 1.099266e-10   HOLD    0.142857
+  CLMT 4.498473e-10   HOLD    0.500000
+  CLNE 2.419945e-10   HOLD    0.285714
+  CLNN 1.099267e-10   HOLD    0.142857
+  CLOA 1.099265e-10   HOLD    0.142857
+  CLOD 4.498474e-10   HOLD    0.500000
+  CLOU 4.498473e-10   HOLD    0.500000
+  CLOV 4.498476e-10   HOLD    0.500000
+  CLPS 2.419945e-10   HOLD    0.285714
+  CLPT 1.099268e-10   HOLD    0.142857
+  CLRB 1.099269e-10   HOLD    0.142857
+  CLRO 1.099265e-10   HOLD    0.142857
+  CLSK 1.099267e-10   HOLD    0.142857
+ CLSKW 2.419945e-10   HOLD    0.285714
+  CLSM 1.099267e-10   HOLD    0.142857
+  CLST 1.099268e-10   HOLD    0.142857
+  CLWT 2.419945e-10   HOLD    0.285714
+  CLYM 1.099265e-10   HOLD    0.142857
+  CMBO 4.498473e-10   HOLD    0.500000
+  CMCO 5.180289e-10   HOLD    0.571429
+ CMCSA 5.180288e-10   HOLD    0.571429
+  CMCT 1.099267e-10   HOLD    0.142857
+   CME 1.099266e-10   HOLD    0.142857
+  CMGG 4.498477e-10   HOLD    0.500000
+  CMII 4.498478e-10   HOLD    0.500000
+ CMIIU 4.498475e-10   HOLD    0.500000
+ CMIIW 4.498474e-10   HOLD    0.500000
+  CMMB 2.419945e-10   HOLD    0.285714
+  CMND 2.419946e-10   HOLD    0.285714
+  CMPR 4.498476e-10   HOLD    0.500000
+  CMPS 1.099264e-10   HOLD    0.142857
+  CMPX 1.099266e-10   HOLD    0.142857
+  CMRC 2.419945e-10   HOLD    0.285714
+  CMTL 1.099267e-10   HOLD    0.142857
+  CMTV 2.419945e-10   HOLD    0.285714
+  CNCG 4.498476e-10   HOLD    0.500000
+  CNCK 4.498476e-10   HOLD    0.500000
+ CNCKW 1.099265e-10   HOLD    0.142857
+  CNDT 2.419945e-10   HOLD    0.285714
+  CNET 2.419945e-10   HOLD    0.285714
+  CNEY 2.419945e-10   HOLD    0.285714
+  CNOB 3.757237e-10   HOLD    0.428571
+ CNOBP 5.180291e-10   HOLD    0.571429
+  CNQQ 4.498478e-10   HOLD    0.500000
+  CNSP 4.498477e-10   HOLD    0.500000
+  CNTA 1.099265e-10   HOLD    0.142857
+  CNTB 1.099266e-10   HOLD    0.142857
+  CNTN 2.419945e-10   HOLD    0.285714
+  CNTX 1.099265e-10   HOLD    0.142857
+  CNTY 4.498475e-10   HOLD    0.500000
+  CNVS 4.498476e-10   HOLD    0.500000
+  CNXC 3.757237e-10   HOLD    0.428571
+  CNXN 2.419945e-10   HOLD    0.285714
+  COAG 1.099265e-10   HOLD    0.142857
+  COCH 1.099265e-10   HOLD    0.142857
+ COCHW 2.419945e-10   HOLD    0.285714
+  COCO 1.099265e-10   HOLD    0.142857
+  COCP 1.099265e-10   HOLD    0.142857
+  CODA 1.099265e-10   HOLD    0.142857
+  CODX 2.419945e-10   HOLD    0.285714
+  COFS 5.180293e-10   HOLD    0.571429
+  COGT 1.099266e-10   HOLD    0.142857
+  COHU 1.099265e-10   HOLD    0.142857
+  COIG 4.498476e-10   HOLD    0.500000
+  COIN 1.099265e-10   HOLD    0.142857
+  COKE 1.099265e-10   HOLD    0.142857
+  COLA 4.498475e-10   HOLD    0.500000
+ COLAR 4.498476e-10   HOLD    0.500000
+ COLAU 4.498476e-10   HOLD    0.500000
+
+Calculating deviations (threshold: 5%)...
+⚠️  Found 19 holdings requiring rebalancing attention:
+  • 3026: Current 5.7% vs Optimal 0.0% (Deviation: 5.7%)
+  • 3689: Current 16.5% vs Optimal 0.0% (Deviation: 16.5%)
+  • 3867: Current 12.9% vs Optimal 0.0% (Deviation: 12.9%)
+  • 4197: Current 7.3% vs Optimal 0.0% (Deviation: 7.3%)
+  • 5347: Current 12.4% vs Optimal 0.0% (Deviation: 12.4%)
+  • AAME: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)
+  • AFYA: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)
+  • ARM: Current 5.8% vs Optimal 0.0% (Deviation: 5.8%)
+  • ATLCP: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)
+  • BHFAM: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)
+  • BHFAN: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)
+  • BHFAO: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)
+  • BHFAP: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)
+  • CALM: Current 0.7% vs Optimal 9.1% (Deviation: 8.4%)
+  • CGO: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)
+  • CHI: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)
+  • CHY: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)
+  • GOOGL: Current 8.2% vs Optimal 0.0% (Deviation: 8.2%)
+  • INTC: Current 6.6% vs Optimal 0.0% (Deviation: 6.6%)
+\n==================================================
+ALERT SUMMARY:
+Rebalancing Alert: 19 holdings exceed 5% deviation threshold\n3026: Current 5.7% vs Optimal 0.0% (Deviation: 5.7%)\n3689: Current 16.5% vs Optimal 0.0% (Deviation: 16.5%)\n3867: Current 12.9% vs Optimal 0.0% (Deviation: 12.9%)\n4197: Current 7.3% vs Optimal 0.0% (Deviation: 7.3%)\n5347: Current 12.4% vs Optimal 0.0% (Deviation: 12.4%)\nAAME: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nAFYA: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nARM: Current 5.8% vs Optimal 0.0% (Deviation: 5.8%)\nATLCP: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nBHFAM: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nBHFAN: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nBHFAO: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nBHFAP: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nCALM: Current 0.7% vs Optimal 9.1% (Deviation: 8.4%)\nCGO: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nCHI: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nCHY: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nGOOGL: Current 8.2% vs Optimal 0.0% (Deviation: 8.2%)\nINTC: Current 6.6% vs Optimal 0.0% (Deviation: 6.6%)
+TELEGRAM ALERT: Rebalancing Alert: 19 holdings exceed 5% deviation threshold\n3026: Current 5.7% vs Optimal 0.0% (Deviation: 5.7%)\n3689: Current 16.5% vs Optimal 0.0% (Deviation: 16.5%)\n3867: Current 12.9% vs Optimal 0.0% (Deviation: 12.9%)\n4197: Current 7.3% vs Optimal 0.0% (Deviation: 7.3%)\n5347: Current 12.4% vs Optimal 0.0% (Deviation: 12.4%)\nAAME: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nAFYA: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nARM: Current 5.8% vs Optimal 0.0% (Deviation: 5.8%)\nATLCP: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nBHFAM: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nBHFAN: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nBHFAO: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nBHFAP: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nCALM: Current 0.7% vs Optimal 9.1% (Deviation: 8.4%)\nCGO: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nCHI: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nCHY: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nGOOGL: Current 8.2% vs Optimal 0.0% (Deviation: 8.2%)\nINTC: Current 6.6% vs Optimal 0.0% (Deviation: 6.6%)
+2026-06-22 09:30:43.671 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+Running Rebalancing Alert System...
+==================================================
+Loading current holdings...
+Warning: Using average cost for 6742UW (live price unavailable)
+Warning: Using average cost for 7113WA (live price unavailable)
+Found 44 holdings:
+ticker          company_name  current_weight
+  1155                  1155        0.038510
+  1818                  1818        0.044744
+  3026 KPJ Healthcare Berhad        0.055973
+  3662                  3662        0.000000
+  3689                  3689        0.161720
+  3867                  3867        0.126138
+  4197                  4197        0.077502
+  5099                  5099        0.000000
+  5183                  5183        0.000000
+  5238                  5238        0.000000
+  5249                  5249        0.003574
+  5296   MR DIY Group Berhad        0.000000
+  5326                  5326        0.000000
+  5337                  5337        0.000000
+  5347                  5347        0.124864
+  6742    TIME dotCom Berhad        0.001283
+6742UW                6742UW        0.000000
+  7013                  7013        0.000586
+  7095                  7095        0.000000
+  7113                  7113        0.000000
+7113WA                7113WA        0.000233
+  AAPG                              0.000295
+  AAPL                              0.000051
+  ACHR                              0.001919
+    AI                              0.004491
+   AMD                              0.041647
+   ARM                              0.065847
+  ASML                              0.006647
+  CALM                              0.006725
+  CRSP                              0.002678
+  GOOG                              0.006299
+ GOOGL                              0.080163
+   IBM                              0.009811
+   INR                              0.002266
+  INTC                              0.064903
+  MSFT                              0.004306
+    MU                              0.029761
+  NVDA                              0.010597
+  PATH                              0.008324
+  QCOM                              0.005579
+  RXRX                              0.003996
+  TSLA                              0.006734
+    VG                              0.000661
+  WRBY                              0.001174
+
+Loading optimal weights from latest optimization...
+Optimal weights from latest run:
+ticker       weight signal  confidence
+  AACB 4.498461e-10   HOLD    0.500000
+ AACBR 4.498467e-10   HOLD    0.500000
+ AACBU 4.498473e-10   HOLD    0.500000
+  AACG 2.419944e-10   HOLD    0.285714
+  AACI 4.498482e-10   HOLD    0.500000
+ AACIU 4.498467e-10   HOLD    0.500000
+ AACIW 4.498468e-10   HOLD    0.500000
+  AACO 1.099266e-10   HOLD    0.142857
+ AACOU 1.099265e-10   HOLD    0.142857
+ AACOW 1.099262e-10   HOLD    0.142857
+ AACPU 4.498477e-10   HOLD    0.500000
+  AADR 1.099265e-10   HOLD    0.142857
+  AAEQ 4.498476e-10   HOLD    0.500000
+   AAL 4.498452e-10   HOLD    0.500000
+  AALG 4.498448e-10   HOLD    0.500000
+  AAME 9.090907e-02   HOLD    0.714286
+  AAOI 1.099268e-10   HOLD    0.142857
+  AAON 2.419941e-10   HOLD    0.285714
+  AAPB 1.099262e-10   HOLD    0.142857
+  AAPD 1.099266e-10   HOLD    0.142857
+  AAPG 1.099263e-10   HOLD    0.142857
+  AAPL 1.099262e-10   HOLD    0.142857
+  AAPU 1.099263e-10   HOLD    0.142857
+  AARD 2.419940e-10   HOLD    0.285714
+  AAUS 4.498492e-10   HOLD    0.500000
+  AAVM 1.099263e-10   HOLD    0.142857
+  AAXJ 1.099269e-10   HOLD    0.142857
+  ABAT 1.099270e-10   HOLD    0.142857
+  ABCL 1.099265e-10   HOLD    0.142857
+  ABCS 1.099265e-10   HOLD    0.142857
+  ABEO 3.757233e-10   HOLD    0.428571
+   ABI 4.498479e-10   HOLD    0.500000
+  ABIG 1.099268e-10   HOLD    0.142857
+  ABLV 1.099269e-10   HOLD    0.142857
+ ABLVW 2.419945e-10   HOLD    0.285714
+  ABNB 4.498480e-10   HOLD    0.500000
+  ABNG 4.498471e-10   HOLD    0.500000
+  ABOS 1.099265e-10   HOLD    0.142857
+  ABSI 1.099262e-10   HOLD    0.142857
+  ABTC 1.099266e-10   HOLD    0.142857
+  ABTS 1.099256e-10   HOLD    0.142857
+  ABUS 3.757233e-10   HOLD    0.428571
+  ABVC 4.498468e-10   HOLD    0.500000
+  ABVE 4.498483e-10   HOLD    0.500000
+ ABVEW 4.498480e-10   HOLD    0.500000
+  ABVX 1.099270e-10   HOLD    0.142857
+  ACAA 4.498453e-10   HOLD    0.500000
+ ACAAU 4.498490e-10   HOLD    0.500000
+ ACAAW 4.498495e-10   HOLD    0.500000
+  ACAD 2.419944e-10   HOLD    0.285714
+   ACB 2.419945e-10   HOLD    0.285714
+  ACCL 1.099259e-10   HOLD    0.142857
+  ACDC 4.498470e-10   HOLD    0.500000
+  ACEP 4.498468e-10   HOLD    0.500000
+  ACET 2.419944e-10   HOLD    0.285714
+  ACFN 1.099270e-10   HOLD    0.142857
+ ACGCU 4.498473e-10   HOLD    0.500000
+  ACGL 3.757235e-10   HOLD    0.428571
+ ACGLN 5.180300e-10   HOLD    0.571429
+ ACGLO 5.180289e-10   HOLD    0.571429
+  ACHC 3.757231e-10   HOLD    0.428571
+  ACHV 1.099270e-10   HOLD    0.142857
+  ACIC 2.419944e-10   HOLD    0.285714
+  ACIU 4.498490e-10   HOLD    0.500000
+  ACIW 1.099258e-10   HOLD    0.142857
+  ACLS 1.099276e-10   HOLD    0.142857
+  ACMR 1.099270e-10   HOLD    0.142857
+  ACNB 5.180302e-10   HOLD    0.571429
+  ACNT 1.099274e-10   HOLD    0.142857
+  ACOG 1.099265e-10   HOLD    0.142857
+  ACON 2.419946e-10   HOLD    0.285714
+ ACONW 2.419946e-10   HOLD    0.285714
+  ACRS 1.099275e-10   HOLD    0.142857
+  ACRV 2.419946e-10   HOLD    0.285714
+   ACT 5.180302e-10   HOLD    0.571429
+  ACTG 2.419943e-10   HOLD    0.285714
+  ACTU 1.099273e-10   HOLD    0.142857
+  ACWI 1.099269e-10   HOLD    0.142857
+  ACWX 1.099251e-10   HOLD    0.142857
+  ACXP 2.419946e-10   HOLD    0.285714
+  ADAC 1.099267e-10   HOLD    0.142857
+ ADACU 1.099264e-10   HOLD    0.142857
+ ADACW 1.099262e-10   HOLD    0.142857
+  ADAG 1.099284e-10   HOLD    0.142857
+  ADAM 5.180283e-10   HOLD    0.571429
+ ADAMG 4.498464e-10   HOLD    0.500000
+ ADAMH 4.498457e-10   HOLD    0.500000
+ ADAMI 4.498476e-10   HOLD    0.500000
+ ADAML 1.099258e-10   HOLD    0.142857
+ ADAMM 1.099287e-10   HOLD    0.142857
+ ADAMN 1.099272e-10   HOLD    0.142857
+ ADAMO 4.498471e-10   HOLD    0.500000
+ ADAMZ 1.099280e-10   HOLD    0.142857
+  ADBE 1.099257e-10   HOLD    0.142857
+  ADBG 4.498477e-10   HOLD    0.500000
+  ADEA 2.419946e-10   HOLD    0.285714
+  ADGM 1.099260e-10   HOLD    0.142857
+   ADI 2.419945e-10   HOLD    0.285714
+  ADIL 2.419946e-10   HOLD    0.285714
+  ADMA 2.419946e-10   HOLD    0.285714
+   ADP 1.099244e-10   HOLD    0.142857
+  ADPT 1.099286e-10   HOLD    0.142857
+  ADSE 2.419946e-10   HOLD    0.285714
+ ADSEW 1.099259e-10   HOLD    0.142857
+  ADSK 4.498494e-10   HOLD    0.500000
+  ADTN 1.099283e-10   HOLD    0.142857
+  ADTX 4.498456e-10   HOLD    0.500000
+  ADUR 1.099266e-10   HOLD    0.142857
+  ADUS 1.099273e-10   HOLD    0.142857
+   ADV 3.757223e-10   HOLD    0.428571
+  ADVB 5.180294e-10   HOLD    0.571429
+  ADXN 1.099265e-10   HOLD    0.142857
+  AEAQ 1.099269e-10   HOLD    0.142857
+ AEAQU 1.099283e-10   HOLD    0.142857
+ AEAQW 1.099273e-10   HOLD    0.142857
+  AEBI 3.757243e-10   HOLD    0.428571
+   AEC 1.099283e-10   HOLD    0.142857
+  AEHL 2.419945e-10   HOLD    0.285714
+  AEHR 1.099268e-10   HOLD    0.142857
+   AEI 2.419945e-10   HOLD    0.285714
+  AEIS 2.419945e-10   HOLD    0.285714
+  AEMD 2.419945e-10   HOLD    0.285714
+  AENT 1.099280e-10   HOLD    0.142857
+ AENTW 1.099281e-10   HOLD    0.142857
+   AEP 1.099267e-10   HOLD    0.142857
+  AERT 1.099253e-10   HOLD    0.142857
+ AERTW 4.498483e-10   HOLD    0.500000
+  AEVA 1.099271e-10   HOLD    0.142857
+  AEYE 1.099265e-10   HOLD    0.142857
+  AFBI 4.498497e-10   HOLD    0.500000
+  AFCG 3.757246e-10   HOLD    0.428571
+  AFJK 4.498477e-10   HOLD    0.500000
+ AFJKR 4.498440e-10   HOLD    0.500000
+ AFJKU 4.498488e-10   HOLD    0.500000
+  AFOS 4.498461e-10   HOLD    0.500000
+  AFRI 4.498454e-10   HOLD    0.500000
+ AFRIW 4.498451e-10   HOLD    0.500000
+  AFRM 1.099257e-10   HOLD    0.142857
+  AFSC 1.099250e-10   HOLD    0.142857
+  AFYA 9.090907e-02   HOLD    0.714286
+  AGAE 2.419945e-10   HOLD    0.285714
+  AGCC 1.099257e-10   HOLD    0.142857
+  AGEM 1.099280e-10   HOLD    0.142857
+  AGEN 1.099272e-10   HOLD    0.142857
+  AGGA 1.099266e-10   HOLD    0.142857
+   AGH 1.099286e-10   HOLD    0.142857
+  AGIO 1.099283e-10   HOLD    0.142857
+  AGIX 4.498489e-10   HOLD    0.500000
+  AGMB 1.099269e-10   HOLD    0.142857
+  AGMH 5.180285e-10   HOLD    0.571429
+  AGMI 1.099282e-10   HOLD    0.142857
+  AGNC 5.180334e-10   HOLD    0.571429
+ AGNCL 1.099276e-10   HOLD    0.142857
+ AGNCM 1.099264e-10   HOLD    0.142857
+ AGNCN 1.099267e-10   HOLD    0.142857
+ AGNCO 1.099271e-10   HOLD    0.142857
+ AGNCP 1.099252e-10   HOLD    0.142857
+ AGNCZ 1.099272e-10   HOLD    0.142857
+  AGNG 1.099269e-10   HOLD    0.142857
+  AGNT 3.757231e-10   HOLD    0.428571
+  AGPU 2.419947e-10   HOLD    0.285714
+  AGRZ 2.419946e-10   HOLD    0.285714
+  AGYS 4.498480e-10   HOLD    0.500000
+  AGZD 1.099268e-10   HOLD    0.142857
+  AHCO 2.419945e-10   HOLD    0.285714
+   AHG 1.099279e-10   HOLD    0.142857
+  AHMA 1.099262e-10   HOLD    0.142857
+   AIA 1.099274e-10   HOLD    0.142857
+  AIDX 1.099269e-10   HOLD    0.142857
+  AIFC 1.099270e-10   HOLD    0.142857
+  AIFD 4.498448e-10   HOLD    0.500000
+  AIFF 1.099270e-10   HOLD    0.142857
+  AIFU 2.419945e-10   HOLD    0.285714
+  AIHS 1.099257e-10   HOLD    0.142857
+  AIIO 4.498461e-10   HOLD    0.500000
+ AIIOW 4.498466e-10   HOLD    0.500000
+  AIMD 4.498475e-10   HOLD    0.500000
+ AIMDW 1.099264e-10   HOLD    0.142857
+  AIMS 4.498468e-10   HOLD    0.500000
+  AIOS 2.419946e-10   HOLD    0.285714
+  AIOT 1.099278e-10   HOLD    0.142857
+   AIP 4.498488e-10   HOLD    0.500000
+  AIPI 1.099267e-10   HOLD    0.142857
+  AIPO 4.498470e-10   HOLD    0.500000
+   AIQ 1.099267e-10   HOLD    0.142857
+  AIRE 2.419946e-10   HOLD    0.285714
+  AIRG 1.099262e-10   HOLD    0.142857
+  AIRJ 2.419945e-10   HOLD    0.285714
+ AIRJW 2.419946e-10   HOLD    0.285714
+  AIRO 2.419947e-10   HOLD    0.285714
+  AIRR 1.099260e-10   HOLD    0.142857
+  AIRS 4.498473e-10   HOLD    0.500000
+  AIRT 4.498489e-10   HOLD    0.500000
+ AIRTP 1.099282e-10   HOLD    0.142857
+  AISP 1.099266e-10   HOLD    0.142857
+ AISPW 1.099271e-10   HOLD    0.142857
+  AIXC 1.099252e-10   HOLD    0.142857
+  AIXI 4.498479e-10   HOLD    0.500000
+  AKAM 1.099255e-10   HOLD    0.142857
+  AKAN 4.498480e-10   HOLD    0.500000
+  AKBA 4.498444e-10   HOLD    0.500000
+  AKTS 1.099265e-10   HOLD    0.142857
+  ALAB 1.099267e-10   HOLD    0.142857
+  ALAR 1.099267e-10   HOLD    0.142857
+  ALBG 4.498466e-10   HOLD    0.500000
+  ALBT 4.498470e-10   HOLD    0.500000
+  ALCO 2.419946e-10   HOLD    0.285714
+  ALCY 4.498472e-10   HOLD    0.500000
+ ALCYW 4.498440e-10   HOLD    0.500000
+  ALDF 1.099268e-10   HOLD    0.142857
+ ALDFU 1.099267e-10   HOLD    0.142857
+ ALDFW 1.099277e-10   HOLD    0.142857
+  ALDX 1.099268e-10   HOLD    0.142857
+  ALEC 1.099270e-10   HOLD    0.142857
+   ALF 4.498491e-10   HOLD    0.500000
+ ALFUU 4.498488e-10   HOLD    0.500000
+ ALFUW 4.498506e-10   HOLD    0.500000
+  ALGM 1.099277e-10   HOLD    0.142857
+  ALGN 4.498462e-10   HOLD    0.500000
+  ALGS 2.419947e-10   HOLD    0.285714
+  ALGT 1.099263e-10   HOLD    0.142857
+  ALHC 1.099276e-10   HOLD    0.142857
+  ALIL 1.099271e-10   HOLD    0.142857
+  ALIS 1.099273e-10   HOLD    0.142857
+ ALISR 1.099280e-10   HOLD    0.142857
+ ALISU 1.099283e-10   HOLD    0.142857
+  ALKS 1.099258e-10   HOLD    0.142857
+  ALKT 2.419947e-10   HOLD    0.285714
+  ALLO 1.099252e-10   HOLD    0.142857
+  ALLR 1.099262e-10   HOLD    0.142857
+  ALLT 1.099283e-10   HOLD    0.142857
+  ALLW 1.099274e-10   HOLD    0.142857
+   ALM 2.419946e-10   HOLD    0.285714
+  ALMR 1.099269e-10   HOLD    0.142857
+  ALMS 1.099258e-10   HOLD    0.142857
+  ALMU 1.099253e-10   HOLD    0.142857
+  ALNT 2.419946e-10   HOLD    0.285714
+  ALNY 1.099267e-10   HOLD    0.142857
+  ALOT 1.099257e-10   HOLD    0.142857
+  ALOV 4.498464e-10   HOLD    0.500000
+ ALOVU 4.498481e-10   HOLD    0.500000
+ ALOVW 4.498488e-10   HOLD    0.500000
+  ALOY 1.099263e-10   HOLD    0.142857
+   ALP 1.099262e-10   HOLD    0.142857
+  ALPS 4.498493e-10   HOLD    0.500000
+  ALRM 1.099270e-10   HOLD    0.142857
+  ALRS 2.419946e-10   HOLD    0.285714
+   ALT 2.419945e-10   HOLD    0.285714
+  ALTI 2.419946e-10   HOLD    0.285714
+  ALTO 1.099258e-10   HOLD    0.142857
+  ALTY 1.099277e-10   HOLD    0.142857
+  ALVO 1.099279e-10   HOLD    0.142857
+ ALVOW 1.099261e-10   HOLD    0.142857
+  ALXO 2.419947e-10   HOLD    0.285714
+  ALZN 1.099275e-10   HOLD    0.142857
+   AMA 4.498492e-10   HOLD    0.500000
+  AMAL 3.757236e-10   HOLD    0.428571
+  AMAT 2.419947e-10   HOLD    0.285714
+  AMBA 1.099280e-10   HOLD    0.142857
+  AMBR 1.099269e-10   HOLD    0.142857
+  AMCI 1.099285e-10   HOLD    0.142857
+  AMCX 5.180352e-10   HOLD    0.571429
+   AMD 1.099261e-10   HOLD    0.142857
+  AMDD 1.099265e-10   HOLD    0.142857
+  AMDG 1.099270e-10   HOLD    0.142857
+  AMDL 4.498481e-10   HOLD    0.500000
+  AMGN 1.099261e-10   HOLD    0.142857
+  AMID 1.099265e-10   HOLD    0.142857
+  AMIX 2.419947e-10   HOLD    0.285714
+  AMKR 2.419947e-10   HOLD    0.285714
+  AMLX 1.099269e-10   HOLD    0.142857
+  AMOD 4.498483e-10   HOLD    0.500000
+ AMODW 4.498478e-10   HOLD    0.500000
+  AMPG 1.099274e-10   HOLD    0.142857
+ AMPGR 1.099266e-10   HOLD    0.142857
+ AMPGZ 1.099282e-10   HOLD    0.142857
+  AMPH 5.180283e-10   HOLD    0.571429
+  AMPL 1.099269e-10   HOLD    0.142857
+  AMRN 2.419947e-10   HOLD    0.285714
+  AMRX 1.099281e-10   HOLD    0.142857
+  AMSC 2.419946e-10   HOLD    0.285714
+  AMSF 3.757240e-10   HOLD    0.428571
+  AMST 1.099266e-10   HOLD    0.142857
+  AMTX 4.498479e-10   HOLD    0.500000
+  AMUN 1.099258e-10   HOLD    0.142857
+  AMUU 1.099246e-10   HOLD    0.142857
+  AMWD 2.419946e-10   HOLD    0.285714
+  AMYY 4.498463e-10   HOLD    0.500000
+  AMZD 1.099284e-10   HOLD    0.142857
+  AMZN 4.498502e-10   HOLD    0.500000
+  AMZU 1.099252e-10   HOLD    0.142857
+  AMZZ 4.498434e-10   HOLD    0.500000
+  ANAB 2.419947e-10   HOLD    0.285714
+  ANDE 1.099268e-10   HOLD    0.142857
+  ANEL 4.498470e-10   HOLD    0.500000
+  ANGH 4.498488e-10   HOLD    0.500000
+ ANGHW 1.099266e-10   HOLD    0.142857
+  ANGI 3.757238e-10   HOLD    0.428571
+  ANGL 1.099270e-10   HOLD    0.142857
+  ANGO 1.099276e-10   HOLD    0.142857
+  ANIK 2.419947e-10   HOLD    0.285714
+  ANIP 1.099244e-10   HOLD    0.142857
+  ANIX 1.099268e-10   HOLD    0.142857
+   ANL 4.498464e-10   HOLD    0.500000
+  ANNA 1.099276e-10   HOLD    0.142857
+ ANNAW 2.419946e-10   HOLD    0.285714
+  ANNX 1.099262e-10   HOLD    0.142857
+  ANPA 4.498456e-10   HOLD    0.500000
+  ANSC 4.498466e-10   HOLD    0.500000
+ ANSCU 4.498461e-10   HOLD    0.500000
+ ANSCW 4.498477e-10   HOLD    0.500000
+  ANTA 3.757236e-10   HOLD    0.428571
+  ANTX 1.099273e-10   HOLD    0.142857
+   ANV 4.498450e-10   HOLD    0.500000
+   ANY 2.419946e-10   HOLD    0.285714
+  AOHY 2.419947e-10   HOLD    0.285714
+  AOSL 1.099267e-10   HOLD    0.142857
+  AOTG 4.498461e-10   HOLD    0.500000
+  AOUT 2.419946e-10   HOLD    0.285714
+   APA 3.757257e-10   HOLD    0.428571
+  APAC 1.099267e-10   HOLD    0.142857
+ APACR 1.099262e-10   HOLD    0.142857
+ APACU 1.099278e-10   HOLD    0.142857
+   APC 1.099286e-10   HOLD    0.142857
+  APEI 1.099256e-10   HOLD    0.142857
+  APGE 1.099273e-10   HOLD    0.142857
+   API 2.419946e-10   HOLD    0.285714
+  APLD 1.099278e-10   HOLD    0.142857
+  APLM 4.498508e-10   HOLD    0.500000
+ APLMW 4.498467e-10   HOLD    0.500000
+  APLS 1.099268e-10   HOLD    0.142857
+   APM 1.099276e-10   HOLD    0.142857
+  APOG 2.419946e-10   HOLD    0.285714
+   APP 1.099274e-10   HOLD    0.142857
+  APPF 1.099259e-10   HOLD    0.142857
+  APPN 4.498478e-10   HOLD    0.500000
+  APPS 1.099270e-10   HOLD    0.142857
+  APPX 1.099262e-10   HOLD    0.142857
+  APRE 2.419946e-10   HOLD    0.285714
+  APVO 5.180258e-10   HOLD    0.571429
+  APWC 5.180248e-10   HOLD    0.571429
+  APXT 1.099265e-10   HOLD    0.142857
+ APXTU 1.099263e-10   HOLD    0.142857
+ APXTW 1.099281e-10   HOLD    0.142857
+  APYX 1.099276e-10   HOLD    0.142857
+   AQB 4.498465e-10   HOLD    0.500000
+  AQMS 2.419946e-10   HOLD    0.285714
+  AQST 1.099280e-10   HOLD    0.142857
+  AQWA 1.099256e-10   HOLD    0.142857
+  ARAI 4.498465e-10   HOLD    0.500000
+  ARAY 1.099271e-10   HOLD    0.142857
+  ARBB 2.419947e-10   HOLD    0.285714
+  ARBE 1.099262e-10   HOLD    0.142857
+ ARBEW 2.419948e-10   HOLD    0.285714
+  ARBK 2.419947e-10   HOLD    0.285714
+  ARCB 1.099260e-10   HOLD    0.142857
+  ARCC 5.180262e-10   HOLD    0.571429
+  ARCI 4.498469e-10   HOLD    0.500000
+ ARCIU 4.498493e-10   HOLD    0.500000
+ ARCIW 4.498463e-10   HOLD    0.500000
+ ARCLU 4.498470e-10   HOLD    0.500000
+  ARCT 2.419946e-10   HOLD    0.285714
+  ARDX 2.419946e-10   HOLD    0.285714
+  AREB 2.419947e-10   HOLD    0.285714
+ AREBW 1.099242e-10   HOLD    0.142857
+  AREC 2.419948e-10   HOLD    0.285714
+  ARGX 4.498447e-10   HOLD    0.500000
+  ARHS 4.498487e-10   HOLD    0.500000
+  ARKO 2.419947e-10   HOLD    0.285714
+  ARKR 1.099259e-10   HOLD    0.142857
+  ARLP 2.419947e-10   HOLD    0.285714
+   ARM 1.099253e-10   HOLD    0.142857
+  ARMG 1.099247e-10   HOLD    0.142857
+  ARMY 4.498473e-10   HOLD    0.500000
+  AROW 5.180337e-10   HOLD    0.571429
+   ARQ 1.099272e-10   HOLD    0.142857
+  ARQQ 1.099275e-10   HOLD    0.142857
+ ARQQW 2.419948e-10   HOLD    0.285714
+  ARQT 1.099262e-10   HOLD    0.142857
+  ARRY 2.419947e-10   HOLD    0.285714
+  ARTC 4.498461e-10   HOLD    0.500000
+ ARTCU 4.498498e-10   HOLD    0.500000
+ ARTCW 4.498447e-10   HOLD    0.500000
+  ARTL 2.419946e-10   HOLD    0.285714
+ ARTNA 5.180247e-10   HOLD    0.571429
+  ARTV 1.099259e-10   HOLD    0.142857
+  ARTW 5.180295e-10   HOLD    0.571429
+  ARVN 2.419947e-10   HOLD    0.285714
+  ARVR 1.099268e-10   HOLD    0.142857
+  ARWR 1.099274e-10   HOLD    0.142857
+  ARXS 1.099258e-10   HOLD    0.142857
+  ASBP 2.419947e-10   HOLD    0.285714
+ ASBPW 2.419945e-10   HOLD    0.285714
+  ASCI 1.099252e-10   HOLD    0.142857
+  ASLE 3.757236e-10   HOLD    0.428571
+  ASMB 1.099263e-10   HOLD    0.142857
+  ASMG 1.099273e-10   HOLD    0.142857
+  ASML 1.099255e-10   HOLD    0.142857
+  ASMU 4.498456e-10   HOLD    0.500000
+  ASND 4.498480e-10   HOLD    0.500000
+   ASO 5.180277e-10   HOLD    0.571429
+  ASPC 4.498470e-10   HOLD    0.500000
+ ASPCR 1.099256e-10   HOLD    0.142857
+ ASPCU 4.498470e-10   HOLD    0.500000
+  ASPI 1.099261e-10   HOLD    0.142857
+  ASPS 1.099283e-10   HOLD    0.142857
+ ASPSW 4.498473e-10   HOLD    0.500000
+ ASPSZ 4.498463e-10   HOLD    0.500000
+  ASRT 2.419946e-10   HOLD    0.285714
+  ASRV 5.180256e-10   HOLD    0.571429
+  ASST 2.419946e-10   HOLD    0.285714
+  ASTC 1.099259e-10   HOLD    0.142857
+  ASTE 2.419947e-10   HOLD    0.285714
+  ASTH 4.498474e-10   HOLD    0.500000
+  ASTI 1.099264e-10   HOLD    0.142857
+  ASTL 1.099278e-10   HOLD    0.142857
+ ASTLW 2.419946e-10   HOLD    0.285714
+  ASTS 1.099258e-10   HOLD    0.142857
+  ASUR 2.419946e-10   HOLD    0.285714
+  ASYS 1.099260e-10   HOLD    0.142857
+  ATAI 1.099280e-10   HOLD    0.142857
+  ATAT 2.419946e-10   HOLD    0.285714
+  ATCX 4.498462e-10   HOLD    0.500000
+  ATEC 2.419946e-10   HOLD    0.285714
+  ATER 2.419946e-10   HOLD    0.285714
+  ATEX 1.099262e-10   HOLD    0.142857
+  ATGL 1.099295e-10   HOLD    0.142857
+  ATHE 2.419946e-10   HOLD    0.285714
+  ATHR 1.099265e-10   HOLD    0.142857
+  ATII 1.099274e-10   HOLD    0.142857
+ ATIIU 1.099269e-10   HOLD    0.142857
+ ATIIW 1.099276e-10   HOLD    0.142857
+  ATLC 2.419946e-10   HOLD    0.285714
+ ATLCL 4.498468e-10   HOLD    0.500000
+ ATLCP 9.090907e-02   HOLD    0.714286
+ ATLCZ 4.498455e-10   HOLD    0.500000
+  ATLN 4.498478e-10   HOLD    0.500000
+  ATLO 5.180234e-10   HOLD    0.571429
+  ATLX 1.099257e-10   HOLD    0.142857
+  ATNI 2.419946e-10   HOLD    0.285714
+  ATOM 1.099282e-10   HOLD    0.142857
+  ATOS 2.419946e-10   HOLD    0.285714
+  ATPC 5.180336e-10   HOLD    0.571429
+  ATRA 2.419947e-10   HOLD    0.285714
+  ATRC 1.099271e-10   HOLD    0.142857
+  ATRO 1.099261e-10   HOLD    0.142857
+  ATXG 2.419946e-10   HOLD    0.285714
+  ATYR 2.419946e-10   HOLD    0.285714
+  AUBN 5.180233e-10   HOLD    0.571429
+  AUDC 2.419946e-10   HOLD    0.285714
+  AUGO 1.099272e-10   HOLD    0.142857
+  AUID 1.099279e-10   HOLD    0.142857
+  AUMI 2.419947e-10   HOLD    0.285714
+  AUPH 2.419947e-10   HOLD    0.285714
+   AUR 1.099298e-10   HOLD    0.142857
+  AURA 1.099267e-10   HOLD    0.142857
+  AURE 2.419946e-10   HOLD    0.285714
+ AUROW 2.419946e-10   HOLD    0.285714
+  AUTL 2.419946e-10   HOLD    0.285714
+  AUUD 2.419946e-10   HOLD    0.285714
+  AVAH 1.099254e-10   HOLD    0.142857
+  AVAV 1.099272e-10   HOLD    0.142857
+  AVBH 2.419947e-10   HOLD    0.285714
+  AVBP 1.099269e-10   HOLD    0.142857
+  AVGB 1.099264e-10   HOLD    0.142857
+  AVGG 1.099261e-10   HOLD    0.142857
+  AVGO 2.419946e-10   HOLD    0.285714
+  AVGU 4.498469e-10   HOLD    0.500000
+  AVGX 1.099276e-10   HOLD    0.142857
+  AVIR 1.099272e-10   HOLD    0.142857
+   AVL 1.099257e-10   HOLD    0.142857
+  AVLN 1.099256e-10   HOLD    0.142857
+  AVNW 2.419946e-10   HOLD    0.285714
+   AVO 2.419947e-10   HOLD    0.285714
+  AVOS 4.498483e-10   HOLD    0.500000
+  AVPT 1.099266e-10   HOLD    0.142857
+   AVR 1.099276e-10   HOLD    0.142857
+   AVS 1.099248e-10   HOLD    0.142857
+   AVT 2.419947e-10   HOLD    0.285714
+  AVTX 1.099275e-10   HOLD    0.142857
+  AVUQ 1.099248e-10   HOLD    0.142857
+   AVX 2.419946e-10   HOLD    0.285714
+  AVXC 1.099259e-10   HOLD    0.142857
+  AVXL 1.099280e-10   HOLD    0.142857
+  AVXX 4.498485e-10   HOLD    0.500000
+  AWRE 2.419946e-10   HOLD    0.285714
+   AXG 1.099254e-10   HOLD    0.142857
+  AXGN 1.099268e-10   HOLD    0.142857
+  AXIN 1.099260e-10   HOLD    0.142857
+ AXINR 1.099276e-10   HOLD    0.142857
+ AXINU 1.099263e-10   HOLD    0.142857
+  AXON 1.099261e-10   HOLD    0.142857
+  AXPG 4.498472e-10   HOLD    0.500000
+  AXSM 4.498475e-10   HOLD    0.500000
+  AXTI 1.099272e-10   HOLD    0.142857
+   AYA 1.099260e-10   HOLD    0.142857
+  AYTU 1.099257e-10   HOLD    0.142857
+    AZ 2.419947e-10   HOLD    0.285714
+   AZI 4.498470e-10   HOLD    0.500000
+  AZTA 2.419946e-10   HOLD    0.285714
+  AZYY 4.498460e-10   HOLD    0.500000
+  BABU 4.498483e-10   HOLD    0.500000
+  BABX 4.498477e-10   HOLD    0.500000
+  BACC 4.498465e-10   HOLD    0.500000
+ BACCR 4.498469e-10   HOLD    0.500000
+ BACCU 4.498484e-10   HOLD    0.500000
+  BAER 4.498457e-10   HOLD    0.500000
+ BAERW 4.498472e-10   HOLD    0.500000
+  BAFE 1.099295e-10   HOLD    0.142857
+  BAFN 2.419947e-10   HOLD    0.285714
+  BAIG 4.498488e-10   HOLD    0.500000
+  BAIV 1.099265e-10   HOLD    0.142857
+  BALQ 4.498476e-10   HOLD    0.500000
+  BAND 4.498484e-10   HOLD    0.500000
+  BANF 1.099270e-10   HOLD    0.142857
+ BANFP 4.498471e-10   HOLD    0.500000
+  BANL 1.099259e-10   HOLD    0.142857
+  BANR 5.180311e-10   HOLD    0.571429
+  BANX 5.180236e-10   HOLD    0.571429
+  BAOS 1.099275e-10   HOLD    0.142857
+  BASG 4.498499e-10   HOLD    0.500000
+  BASV 4.498471e-10   HOLD    0.500000
+ BATRA 4.498470e-10   HOLD    0.500000
+ BATRK 4.498470e-10   HOLD    0.500000
+  BAYA 4.498471e-10   HOLD    0.500000
+ BAYAR 4.498447e-10   HOLD    0.500000
+ BAYAU 4.498469e-10   HOLD    0.500000
+   BBB 1.099270e-10   HOLD    0.142857
+  BBCP 1.099254e-10   HOLD    0.142857
+  BBCQ 4.498474e-10   HOLD    0.500000
+ BBCQU 4.498479e-10   HOLD    0.500000
+ BBCQW 4.498480e-10   HOLD    0.500000
+  BBGI 4.498474e-10   HOLD    0.500000
+   BBH 1.099267e-10   HOLD    0.142857
+  BBIO 1.099275e-10   HOLD    0.142857
+  BBLG 2.419947e-10   HOLD    0.285714
+ BBLGW 1.099265e-10   HOLD    0.142857
+  BBNX 1.099278e-10   HOLD    0.142857
+  BBOT 1.099269e-10   HOLD    0.142857
+  BBSI 1.099248e-10   HOLD    0.142857
+  BBYY 4.498496e-10   HOLD    0.500000
+  BCAB 4.498472e-10   HOLD    0.500000
+  BCAL 5.180233e-10   HOLD    0.571429
+  BCAR 1.099255e-10   HOLD    0.142857
+ BCARU 1.099263e-10   HOLD    0.142857
+ BCARW 1.099244e-10   HOLD    0.142857
+  BCAX 1.099287e-10   HOLD    0.142857
+  BCBP 3.757231e-10   HOLD    0.428571
+  BCDA 4.498458e-10   HOLD    0.500000
+  BCFN 4.498465e-10   HOLD    0.500000
+   BCG 4.498490e-10   HOLD    0.500000
+ BCGWW 1.099258e-10   HOLD    0.142857
+  BCIC 3.757239e-10   HOLD    0.428571
+  BCLO 1.099261e-10   HOLD    0.142857
+  BCML 5.180270e-10   HOLD    0.571429
+  BCPC 2.419946e-10   HOLD    0.285714
+  BCRX 2.419945e-10   HOLD    0.285714
+  BCTK 4.498473e-10   HOLD    0.500000
+  BCTX 2.419946e-10   HOLD    0.285714
+ BCTXL 2.419947e-10   HOLD    0.285714
+ BCTXZ 2.419945e-10   HOLD    0.285714
+  BCYC 2.419946e-10   HOLD    0.285714
+  BDCI 1.099266e-10   HOLD    0.142857
+ BDCIU 1.099282e-10   HOLD    0.142857
+ BDCIW 1.099264e-10   HOLD    0.142857
+  BDGS 1.099266e-10   HOLD    0.142857
+  BDMD 2.419946e-10   HOLD    0.285714
+ BDMDW 2.419947e-10   HOLD    0.285714
+  BDSX 1.099254e-10   HOLD    0.142857
+  BDTX 2.419946e-10   HOLD    0.285714
+  BDVL 1.099248e-10   HOLD    0.142857
+  BDYN 1.099275e-10   HOLD    0.142857
+  BEAG 1.099276e-10   HOLD    0.142857
+ BEAGR 1.099256e-10   HOLD    0.142857
+ BEAGU 1.099266e-10   HOLD    0.142857
+  BEAM 1.099270e-10   HOLD    0.142857
+  BEAT 4.498477e-10   HOLD    0.500000
+ BEATW 4.498448e-10   HOLD    0.500000
+  BEDY 1.099277e-10   HOLD    0.142857
+  BEEM 1.099252e-10   HOLD    0.142857
+  BEEP 1.099268e-10   HOLD    0.142857
+  BEEX 1.099250e-10   HOLD    0.142857
+  BEEZ 1.099270e-10   HOLD    0.142857
+   BEG 4.498471e-10   HOLD    0.500000
+ BELFA 2.419945e-10   HOLD    0.285714
+ BELFB 2.419945e-10   HOLD    0.285714
+  BELT 4.498463e-10   HOLD    0.500000
+  BENF 2.419945e-10   HOLD    0.285714
+ BENFW 2.419946e-10   HOLD    0.285714
+  BESO 4.498464e-10   HOLD    0.500000
+  BETR 4.498467e-10   HOLD    0.500000
+ BETRW 1.099254e-10   HOLD    0.142857
+   BFC 1.099251e-10   HOLD    0.142857
+  BFRG 1.099282e-10   HOLD    0.142857
+ BFRGW 1.099278e-10   HOLD    0.142857
+  BFRI 1.099268e-10   HOLD    0.142857
+ BFRIW 1.099279e-10   HOLD    0.142857
+  BFST 5.180297e-10   HOLD    0.571429
+   BGC 1.099284e-10   HOLD    0.142857
+  BGDE 4.498467e-10   HOLD    0.500000
+  BGIN 1.099268e-10   HOLD    0.142857
+   BGL 1.099262e-10   HOLD    0.142857
+  BGLC 2.419946e-10   HOLD    0.285714
+ BGLWW 4.498483e-10   HOLD    0.500000
+   BGM 1.099275e-10   HOLD    0.142857
+  BGMS 5.180292e-10   HOLD    0.571429
+  BGRN 1.099266e-10   HOLD    0.142857
+  BGRO 1.099272e-10   HOLD    0.142857
+  BHAV 1.099265e-10   HOLD    0.142857
+ BHAVR 1.099265e-10   HOLD    0.142857
+ BHAVU 1.099285e-10   HOLD    0.142857
+  BHDG 4.498492e-10   HOLD    0.500000
+   BHF 3.757230e-10   HOLD    0.428571
+ BHFAL 1.099277e-10   HOLD    0.142857
+ BHFAM 9.090907e-02   HOLD    0.714286
+ BHFAN 9.090907e-02   HOLD    0.714286
+ BHFAO 9.090907e-02   HOLD    0.714286
+ BHFAP 9.090907e-02   HOLD    0.714286
+  BHRB 5.180312e-10   HOLD    0.571429
+  BHST 1.099270e-10   HOLD    0.142857
+  BIAF 4.498464e-10   HOLD    0.500000
+ BIAFW 1.099275e-10   HOLD    0.142857
+   BIB 1.099272e-10   HOLD    0.142857
+  BIDG 4.498494e-10   HOLD    0.500000
+  BIDU 3.757226e-10   HOLD    0.428571
+  BIIB 1.099276e-10   HOLD    0.142857
+  BILI 4.498454e-10   HOLD    0.500000
+  BIOA 1.099282e-10   HOLD    0.142857
+  BIOX 2.419945e-10   HOLD    0.285714
+  BIOY 4.498482e-10   HOLD    0.500000
+  BIRD 1.099282e-10   HOLD    0.142857
+   BIS 1.099268e-10   HOLD    0.142857
+  BITS 2.419946e-10   HOLD    0.285714
+  BIVI 2.419945e-10   HOLD    0.285714
+ BIVIW 2.419945e-10   HOLD    0.285714
+  BIXI 1.099268e-10   HOLD    0.142857
+ BIXIU 1.099259e-10   HOLD    0.142857
+ BIXIW 1.099272e-10   HOLD    0.142857
+  BIYA 2.419945e-10   HOLD    0.285714
+  BJDX 2.419945e-10   HOLD    0.285714
+  BJRI 4.498477e-10   HOLD    0.500000
+  BKCH 1.099251e-10   HOLD    0.142857
+  BKHA 4.498487e-10   HOLD    0.500000
+ BKHAR 4.498473e-10   HOLD    0.500000
+ BKHAU 4.498475e-10   HOLD    0.500000
+  BKMI 1.099275e-10   HOLD    0.142857
+  BKMS 1.099280e-10   HOLD    0.142857
+  BKNG 1.099270e-10   HOLD    0.142857
+   BKR 2.419947e-10   HOLD    0.285714
+    BL 1.099257e-10   HOLD    0.142857
+  BLBD 1.099258e-10   HOLD    0.142857
+  BLCN 1.099242e-10   HOLD    0.142857
+  BLCR 1.099256e-10   HOLD    0.142857
+  BLDP 1.099264e-10   HOLD    0.142857
+  BLFS 1.099264e-10   HOLD    0.142857
+  BLIN 2.419946e-10   HOLD    0.285714
+  BLIV 1.099258e-10   HOLD    0.142857
+  BLKB 1.099275e-10   HOLD    0.142857
+  BLLN 1.099254e-10   HOLD    0.142857
+  BLMN 1.099279e-10   HOLD    0.142857
+  BLNE 3.757250e-10   HOLD    0.428571
+  BLNK 4.498469e-10   HOLD    0.500000
+  BLRK 1.099263e-10   HOLD    0.142857
+ BLRKU 1.099258e-10   HOLD    0.142857
+ BLRKW 1.099262e-10   HOLD    0.142857
+  BLSG 4.498471e-10   HOLD    0.500000
+  BLTE 1.099267e-10   HOLD    0.142857
+  BLUW 4.498461e-10   HOLD    0.500000
+ BLUWU 4.498459e-10   HOLD    0.500000
+ BLUWW 4.498462e-10   HOLD    0.500000
+  BLZE 4.498473e-10   HOLD    0.500000
+  BLZR 1.099279e-10   HOLD    0.142857
+ BLZRU 1.099251e-10   HOLD    0.142857
+ BLZRW 1.099253e-10   HOLD    0.142857
+  BMBL 2.419945e-10   HOLD    0.285714
+  BMEA 1.099262e-10   HOLD    0.142857
+  BMGL 4.498473e-10   HOLD    0.500000
+  BMHL 1.099251e-10   HOLD    0.142857
+   BMM 1.099276e-10   HOLD    0.142857
+  BMNG 4.498481e-10   HOLD    0.500000
+  BMOP 1.099262e-10   HOLD    0.142857
+   BMR 1.099258e-10   HOLD    0.142857
+  BMRA 2.419945e-10   HOLD    0.285714
+  BMRC 3.757258e-10   HOLD    0.428571
+  BMRN 1.099271e-10   HOLD    0.142857
+  BNAI 4.498477e-10   HOLD    0.500000
+ BNAIW 1.099275e-10   HOLD    0.142857
+  BNBX 5.180282e-10   HOLD    0.571429
+   BNC 3.757230e-10   HOLD    0.428571
+ BNCWW 2.419946e-10   HOLD    0.285714
+ BNCWZ 2.419945e-10   HOLD    0.285714
+   BND 1.099278e-10   HOLD    0.142857
+  BNDP 4.498494e-10   HOLD    0.500000
+  BNDW 1.099262e-10   HOLD    0.142857
+  BNDX 1.099280e-10   HOLD    0.142857
+  BNGO 2.419946e-10   HOLD    0.285714
+  BNKK 1.099270e-10   HOLD    0.142857
+   BNR 2.419945e-10   HOLD    0.285714
+  BNRG 1.099263e-10   HOLD    0.142857
+  BNTC 1.099255e-10   HOLD    0.142857
+  BNTX 2.419946e-10   HOLD    0.285714
+  BNZI 3.757250e-10   HOLD    0.428571
+ BNZIW 1.099257e-10   HOLD    0.142857
+  BODI 1.099261e-10   HOLD    0.142857
+  BOEG 4.498481e-10   HOLD    0.500000
+  BOEU 1.099253e-10   HOLD    0.142857
+   BOF 4.498463e-10   HOLD    0.500000
+  BOKF 5.180321e-10   HOLD    0.571429
+  BOLD 2.419945e-10   HOLD    0.285714
+  BOLT 2.419946e-10   HOLD    0.285714
+   BON 3.757227e-10   HOLD    0.428571
+  BOOM 3.757252e-10   HOLD    0.428571
+  BOSC 5.180279e-10   HOLD    0.571429
+   BOT 4.498479e-10   HOLD    0.500000
+  BOTJ 5.180276e-10   HOLD    0.571429
+  BOTT 4.498478e-10   HOLD    0.500000
+  BOTZ 1.099247e-10   HOLD    0.142857
+  BOXL 1.099268e-10   HOLD    0.142857
+  BPAC 4.498469e-10   HOLD    0.500000
+ BPACR 2.419946e-10   HOLD    0.285714
+ BPACU 4.498476e-10   HOLD    0.500000
+  BPOP 3.757247e-10   HOLD    0.428571
+ BPOPM 4.498476e-10   HOLD    0.500000
+  BPRN 5.180299e-10   HOLD    0.571429
+ BPYPM 1.099281e-10   HOLD    0.142857
+ BPYPN 5.180292e-10   HOLD    0.571429
+ BPYPO 5.180308e-10   HOLD    0.571429
+ BPYPP 5.180289e-10   HOLD    0.571429
+  BRAG 1.099275e-10   HOLD    0.142857
+  BRAI 4.498472e-10   HOLD    0.500000
+  BRBI 1.099267e-10   HOLD    0.142857
+  BRCB 4.498468e-10   HOLD    0.500000
+  BREM 4.498479e-10   HOLD    0.500000
+  BRES 4.498464e-10   HOLD    0.500000
+  BRFH 4.498465e-10   HOLD    0.500000
+  BRHY 2.419945e-10   HOLD    0.285714
+  BRID 2.419946e-10   HOLD    0.285714
+  BRKR 2.419945e-10   HOLD    0.285714
+ BRKRP 2.419945e-10   HOLD    0.285714
+  BRKU 2.419945e-10   HOLD    0.285714
+  BRLS 4.498480e-10   HOLD    0.500000
+ BRLSW 4.498470e-10   HOLD    0.500000
+  BRLT 2.419945e-10   HOLD    0.285714
+  BRNS 2.419945e-10   HOLD    0.285714
+  BRNY 1.099278e-10   HOLD    0.142857
+   BRR 2.419946e-10   HOLD    0.285714
+  BRRR 4.498487e-10   HOLD    0.500000
+ BRRWW 2.419946e-10   HOLD    0.285714
+  BRTR 2.419945e-10   HOLD    0.285714
+  BRTX 1.099266e-10   HOLD    0.142857
+  BRUN 4.498481e-10   HOLD    0.500000
+ BRUNW 4.498460e-10   HOLD    0.500000
+  BRZE 4.498464e-10   HOLD    0.500000
+  BSAA 1.099255e-10   HOLD    0.142857
+ BSAAR 2.419946e-10   HOLD    0.285714
+ BSAAU 1.099265e-10   HOLD    0.142857
+  BSBK 1.099270e-10   HOLD    0.142857
+  BSCQ 1.099275e-10   HOLD    0.142857
+  BSCR 1.099263e-10   HOLD    0.142857
+  BSCS 1.099263e-10   HOLD    0.142857
+  BSCT 1.099255e-10   HOLD    0.142857
+  BSCU 1.099270e-10   HOLD    0.142857
+  BSCV 1.099253e-10   HOLD    0.142857
+  BSCW 1.099256e-10   HOLD    0.142857
+  BSCX 1.099270e-10   HOLD    0.142857
+  BSCY 1.099275e-10   HOLD    0.142857
+  BSCZ 4.498483e-10   HOLD    0.500000
+  BSET 5.180288e-10   HOLD    0.571429
+  BSJQ 1.099262e-10   HOLD    0.142857
+  BSJR 1.099261e-10   HOLD    0.142857
+  BSJS 1.099260e-10   HOLD    0.142857
+  BSJT 1.099264e-10   HOLD    0.142857
+  BSJU 1.099259e-10   HOLD    0.142857
+  BSJV 1.099263e-10   HOLD    0.142857
+  BSJW 1.099267e-10   HOLD    0.142857
+  BSJX 4.498470e-10   HOLD    0.500000
+  BSMQ 1.099260e-10   HOLD    0.142857
+  BSMR 1.099271e-10   HOLD    0.142857
+  BSMS 1.099254e-10   HOLD    0.142857
+  BSMT 1.099270e-10   HOLD    0.142857
+  BSMU 1.099282e-10   HOLD    0.142857
+  BSMV 1.099276e-10   HOLD    0.142857
+  BSMW 1.099272e-10   HOLD    0.142857
+  BSMY 1.099264e-10   HOLD    0.142857
+  BSMZ 4.498490e-10   HOLD    0.500000
+  BSRR 5.180270e-10   HOLD    0.571429
+  BSSX 1.099266e-10   HOLD    0.142857
+  BSVN 3.757244e-10   HOLD    0.428571
+  BSVO 2.419946e-10   HOLD    0.285714
+   BSY 1.099249e-10   HOLD    0.142857
+  BTAI 4.498481e-10   HOLD    0.500000
+  BTBD 2.419945e-10   HOLD    0.285714
+ BTBDW 2.419945e-10   HOLD    0.285714
+  BTBT 2.419946e-10   HOLD    0.285714
+  BTCS 3.757221e-10   HOLD    0.428571
+  BTCT 2.419946e-10   HOLD    0.285714
+  BTDR 1.099271e-10   HOLD    0.142857
+   BTF 1.099283e-10   HOLD    0.142857
+  BTGD 1.099263e-10   HOLD    0.142857
+   BTM 2.419945e-10   HOLD    0.285714
+  BTMD 1.099278e-10   HOLD    0.142857
+ BTMWW 1.099283e-10   HOLD    0.142857
+  BTOC 1.099276e-10   HOLD    0.142857
+  BTOG 2.419945e-10   HOLD    0.285714
+   BTQ 1.099246e-10   HOLD    0.142857
+  BTSG 1.099261e-10   HOLD    0.142857
+ BTSGU 2.419945e-10   HOLD    0.285714
+  BTTC 1.099262e-10   HOLD    0.142857
+    BU 4.498476e-10   HOLD    0.500000
+  BUFC 4.498483e-10   HOLD    0.500000
+  BUFI 4.498470e-10   HOLD    0.500000
+  BUFM 4.498489e-10   HOLD    0.500000
+   BUG 1.099260e-10   HOLD    0.142857
+  BULD 1.099252e-10   HOLD    0.142857
+  BULG 4.498471e-10   HOLD    0.500000
+  BULL 4.498476e-10   HOLD    0.500000
+ BULLW 1.099271e-10   HOLD    0.142857
+  BULX 4.498494e-10   HOLD    0.500000
+  BUSE 5.180291e-10   HOLD    0.571429
+ BUSEP 2.419946e-10   HOLD    0.285714
+  BUUU 1.099261e-10   HOLD    0.142857
+   BVC 1.099264e-10   HOLD    0.142857
+  BVFL 3.757227e-10   HOLD    0.428571
+   BVS 1.099270e-10   HOLD    0.142857
+  BWAY 1.099272e-10   HOLD    0.142857
+   BWB 3.757225e-10   HOLD    0.428571
+ BWBBP 5.180292e-10   HOLD    0.571429
+  BWEN 2.419945e-10   HOLD    0.285714
+  BWFG 5.180296e-10   HOLD    0.571429
+  BWIN 1.099269e-10   HOLD    0.142857
+  BWMN 4.498487e-10   HOLD    0.500000
+  BYAH 2.419945e-10   HOLD    0.285714
+  BYFC 1.099259e-10   HOLD    0.142857
+  BYND 1.099266e-10   HOLD    0.142857
+  BYRN 1.099247e-10   HOLD    0.142857
+  BYSI 4.498458e-10   HOLD    0.500000
+    BZ 3.757235e-10   HOLD    0.428571
+  BZAI 1.099259e-10   HOLD    0.142857
+ BZAIW 1.099260e-10   HOLD    0.142857
+  BZFD 1.099262e-10   HOLD    0.142857
+ BZFDW 3.757232e-10   HOLD    0.428571
+  BZUN 3.757249e-10   HOLD    0.428571
+  CAAS 3.757230e-10   HOLD    0.428571
+  CABA 1.099266e-10   HOLD    0.142857
+  CABR 1.099268e-10   HOLD    0.142857
+   CAC 5.180305e-10   HOLD    0.571429
+  CACC 2.419946e-10   HOLD    0.285714
+  CADL 1.099274e-10   HOLD    0.142857
+  CAEP 4.498486e-10   HOLD    0.500000
+  CAFG 1.099253e-10   HOLD    0.142857
+   CAI 1.099257e-10   HOLD    0.142857
+ CAIIU 4.498472e-10   HOLD    0.500000
+  CAIQ 4.498463e-10   HOLD    0.500000
+  CAKE 1.099255e-10   HOLD    0.142857
+  CALC 1.099265e-10   HOLD    0.142857
+  CALI 1.099261e-10   HOLD    0.142857
+  CALM 9.090907e-02   HOLD    0.714286
+  CAMP 1.099262e-10   HOLD    0.142857
+  CAMT 1.099260e-10   HOLD    0.142857
+   CAN 2.419945e-10   HOLD    0.285714
+  CANC 1.099261e-10   HOLD    0.142857
+  CANQ 1.099268e-10   HOLD    0.142857
+  CAPN 4.498478e-10   HOLD    0.500000
+ CAPNR 4.498479e-10   HOLD    0.500000
+ CAPNU 4.498478e-10   HOLD    0.500000
+  CAPR 1.099254e-10   HOLD    0.142857
+  CAPS 1.099256e-10   HOLD    0.142857
+   CAQ 4.498468e-10   HOLD    0.500000
+ CAQUU 4.498477e-10   HOLD    0.500000
+ CAQUW 4.498471e-10   HOLD    0.500000
+   CAR 4.498474e-10   HOLD    0.500000
+  CARE 5.180278e-10   HOLD    0.571429
+  CARG 2.419945e-10   HOLD    0.285714
+  CARL 1.099258e-10   HOLD    0.142857
+  CART 1.099266e-10   HOLD    0.142857
+  CARY 1.099260e-10   HOLD    0.142857
+  CARZ 1.099266e-10   HOLD    0.142857
+  CASH 3.757246e-10   HOLD    0.428571
+  CASS 1.099262e-10   HOLD    0.142857
+  CAST 4.498482e-10   HOLD    0.500000
+  CASY 1.099268e-10   HOLD    0.142857
+  CATH 1.099262e-10   HOLD    0.142857
+  CATY 5.180290e-10   HOLD    0.571429
+  CBAT 2.419945e-10   HOLD    0.285714
+   CBC 1.099269e-10   HOLD    0.142857
+  CBFV 2.419945e-10   HOLD    0.285714
+  CBIO 1.099258e-10   HOLD    0.142857
+   CBK 5.180287e-10   HOLD    0.571429
+  CBLL 1.099266e-10   HOLD    0.142857
+  CBNK 5.180308e-10   HOLD    0.571429
+  CBRL 1.099260e-10   HOLD    0.142857
+  CBSH 2.419946e-10   HOLD    0.285714
+  CBUS 4.498464e-10   HOLD    0.500000
+  CCAP 5.180267e-10   HOLD    0.571429
+   CCB 4.498473e-10   HOLD    0.500000
+  CCBG 5.180312e-10   HOLD    0.571429
+   CCC 4.498476e-10   HOLD    0.500000
+  CCCC 1.099264e-10   HOLD    0.142857
+   CCD 2.419945e-10   HOLD    0.285714
+  CCEC 5.180295e-10   HOLD    0.571429
+  CCEP 1.099270e-10   HOLD    0.142857
+  CCFE 4.498471e-10   HOLD    0.500000
+   CCG 2.419945e-10   HOLD    0.285714
+ CCGWW 1.099275e-10   HOLD    0.142857
+  CCHH 2.419945e-10   HOLD    0.285714
+  CCII 1.099267e-10   HOLD    0.142857
+ CCIIU 1.099269e-10   HOLD    0.142857
+ CCIIW 1.099254e-10   HOLD    0.142857
+  CCIX 4.498467e-10   HOLD    0.500000
+ CCIXU 4.498468e-10   HOLD    0.500000
+ CCIXW 4.498477e-10   HOLD    0.500000
+  CCLD 4.498474e-10   HOLD    0.500000
+ CCLDO 1.099266e-10   HOLD    0.142857
+  CCNE 5.180285e-10   HOLD    0.571429
+ CCNEP 5.180313e-10   HOLD    0.571429
+  CCNR 1.099267e-10   HOLD    0.142857
+  CCOI 2.419946e-10   HOLD    0.285714
+  CCRN 2.419946e-10   HOLD    0.285714
+  CCSB 1.099268e-10   HOLD    0.142857
+  CCSI 2.419945e-10   HOLD    0.285714
+  CCSO 1.099260e-10   HOLD    0.142857
+  CCTG 2.419945e-10   HOLD    0.285714
+  CCXI 1.099263e-10   HOLD    0.142857
+ CCXIU 1.099266e-10   HOLD    0.142857
+ CCXIW 1.099257e-10   HOLD    0.142857
+    CD 1.099264e-10   HOLD    0.142857
+   CDC 1.099267e-10   HOLD    0.142857
+  CDIG 4.498477e-10   HOLD    0.500000
+  CDIO 2.419945e-10   HOLD    0.285714
+ CDIOW 2.419945e-10   HOLD    0.285714
+   CDL 1.099268e-10   HOLD    0.142857
+  CDLX 1.099261e-10   HOLD    0.142857
+  CDNA 1.099269e-10   HOLD    0.142857
+  CDNL 1.099265e-10   HOLD    0.142857
+  CDNS 4.498483e-10   HOLD    0.500000
+  CDRO 4.498480e-10   HOLD    0.500000
+ CDROW 1.099262e-10   HOLD    0.142857
+   CDT 4.498477e-10   HOLD    0.500000
+  CDTG 1.099274e-10   HOLD    0.142857
+ CDTTW 4.498472e-10   HOLD    0.500000
+   CDW 1.099269e-10   HOLD    0.142857
+  CDXS 1.099263e-10   HOLD    0.142857
+  CDZI 1.099264e-10   HOLD    0.142857
+ CDZIP 2.419946e-10   HOLD    0.285714
+  CECO 4.498475e-10   HOLD    0.500000
+  CEFA 1.099269e-10   HOLD    0.142857
+   CEG 1.099276e-10   HOLD    0.142857
+  CELC 1.099271e-10   HOLD    0.142857
+  CELH 1.099267e-10   HOLD    0.142857
+  CELU 4.498472e-10   HOLD    0.500000
+ CELUW 4.498474e-10   HOLD    0.500000
+  CELZ 2.419945e-10   HOLD    0.285714
+  CENN 2.419945e-10   HOLD    0.285714
+  CENT 1.099259e-10   HOLD    0.142857
+ CENTA 5.180288e-10   HOLD    0.571429
+  CENX 1.099265e-10   HOLD    0.142857
+  CEPF 1.099269e-10   HOLD    0.142857
+  CEPI 1.099264e-10   HOLD    0.142857
+  CEPO 4.498477e-10   HOLD    0.500000
+  CEPS 4.498481e-10   HOLD    0.500000
+  CEPT 4.498481e-10   HOLD    0.500000
+  CEPV 1.099266e-10   HOLD    0.142857
+  CERT 3.757236e-10   HOLD    0.428571
+  CETX 5.180294e-10   HOLD    0.571429
+  CETY 4.498480e-10   HOLD    0.500000
+  CEVA 1.099262e-10   HOLD    0.142857
+   CFA 1.099266e-10   HOLD    0.142857
+  CFBK 5.180288e-10   HOLD    0.571429
+  CFFI 5.180291e-10   HOLD    0.571429
+  CFFN 5.180292e-10   HOLD    0.571429
+   CFO 1.099260e-10   HOLD    0.142857
+    CG 2.419945e-10   HOLD    0.285714
+ CGABL 4.498473e-10   HOLD    0.500000
+  CGBD 5.180309e-10   HOLD    0.571429
+   CGC 2.419945e-10   HOLD    0.285714
+  CGCT 4.498469e-10   HOLD    0.500000
+ CGCTU 4.498475e-10   HOLD    0.500000
+ CGCTW 4.498475e-10   HOLD    0.500000
+  CGEM 1.099265e-10   HOLD    0.142857
+  CGEN 3.757241e-10   HOLD    0.428571
+  CGNT 1.099266e-10   HOLD    0.142857
+  CGNX 2.419945e-10   HOLD    0.285714
+   CGO 9.090907e-02   HOLD    0.714286
+  CGON 1.099274e-10   HOLD    0.142857
+  CGTL 2.419946e-10   HOLD    0.285714
+  CGTX 4.498464e-10   HOLD    0.500000
+   CHA 1.099267e-10   HOLD    0.142857
+  CHAI 4.498479e-10   HOLD    0.500000
+  CHAR 4.498477e-10   HOLD    0.500000
+ CHARR 4.498484e-10   HOLD    0.500000
+ CHARU 4.498477e-10   HOLD    0.500000
+  CHCI 3.757239e-10   HOLD    0.428571
+  CHCO 2.419945e-10   HOLD    0.285714
+  CHDN 1.099266e-10   HOLD    0.142857
+  CHEC 1.099260e-10   HOLD    0.142857
+ CHECU 1.099266e-10   HOLD    0.142857
+ CHECW 1.099267e-10   HOLD    0.142857
+  CHEF 1.099257e-10   HOLD    0.142857
+  CHGX 1.099262e-10   HOLD    0.142857
+   CHI 9.090907e-02   HOLD    0.714286
+  CHKP 2.419945e-10   HOLD    0.285714
+  CHMG 2.419945e-10   HOLD    0.285714
+  CHNR 1.099267e-10   HOLD    0.142857
+  CHPG 4.498475e-10   HOLD    0.500000
+ CHPGR 4.498478e-10   HOLD    0.500000
+ CHPGU 4.498478e-10   HOLD    0.500000
+  CHPS 1.099263e-10   HOLD    0.142857
+  CHPX 4.498473e-10   HOLD    0.500000
+   CHR 5.180298e-10   HOLD    0.571429
+  CHRD 3.757238e-10   HOLD    0.428571
+  CHRI 4.498481e-10   HOLD    0.500000
+  CHRN 1.099264e-10   HOLD    0.142857
+  CHRS 1.099265e-10   HOLD    0.142857
+  CHRW 2.419945e-10   HOLD    0.285714
+ CHSCL 1.099273e-10   HOLD    0.142857
+ CHSCM 1.099267e-10   HOLD    0.142857
+ CHSCN 1.099264e-10   HOLD    0.142857
+ CHSCO 1.099267e-10   HOLD    0.142857
+ CHSCP 1.099266e-10   HOLD    0.142857
+  CHSN 3.757242e-10   HOLD    0.428571
+  CHTR 3.757241e-10   HOLD    0.428571
+   CHW 5.180298e-10   HOLD    0.571429
+   CHY 9.090907e-02   HOLD    0.714286
+  CHYM 2.419946e-10   HOLD    0.285714
+  CIBR 1.099264e-10   HOLD    0.142857
+  CIFG 4.498475e-10   HOLD    0.500000
+  CIFR 1.099267e-10   HOLD    0.142857
+  CIGI 1.099263e-10   HOLD    0.142857
+  CIIT 1.099262e-10   HOLD    0.142857
+  CINF 3.757237e-10   HOLD    0.428571
+  CING 1.099265e-10   HOLD    0.142857
+ CINGW 2.419946e-10   HOLD    0.285714
+  CISO 3.757236e-10   HOLD    0.428571
+  CISS 2.419945e-10   HOLD    0.285714
+  CIVB 5.180287e-10   HOLD    0.571429
+  CJMB 1.099266e-10   HOLD    0.142857
+  CLAR 3.757236e-10   HOLD    0.428571
+  CLBK 4.498472e-10   HOLD    0.500000
+  CLBT 1.099266e-10   HOLD    0.142857
+  CLDX 1.099265e-10   HOLD    0.142857
+  CLFD 1.099266e-10   HOLD    0.142857
+  CLGN 2.419945e-10   HOLD    0.285714
+  CLIK 2.419945e-10   HOLD    0.285714
+  CLIR 1.099265e-10   HOLD    0.142857
+  CLLS 1.099268e-10   HOLD    0.142857
+  CLMB 1.099266e-10   HOLD    0.142857
+  CLMT 4.498473e-10   HOLD    0.500000
+  CLNE 2.419945e-10   HOLD    0.285714
+  CLNN 1.099267e-10   HOLD    0.142857
+  CLOA 1.099265e-10   HOLD    0.142857
+  CLOD 4.498474e-10   HOLD    0.500000
+  CLOU 4.498473e-10   HOLD    0.500000
+  CLOV 4.498476e-10   HOLD    0.500000
+  CLPS 2.419945e-10   HOLD    0.285714
+  CLPT 1.099268e-10   HOLD    0.142857
+  CLRB 1.099269e-10   HOLD    0.142857
+  CLRO 1.099265e-10   HOLD    0.142857
+  CLSK 1.099267e-10   HOLD    0.142857
+ CLSKW 2.419945e-10   HOLD    0.285714
+  CLSM 1.099267e-10   HOLD    0.142857
+  CLST 1.099268e-10   HOLD    0.142857
+  CLWT 2.419945e-10   HOLD    0.285714
+  CLYM 1.099265e-10   HOLD    0.142857
+  CMBO 4.498473e-10   HOLD    0.500000
+  CMCO 5.180289e-10   HOLD    0.571429
+ CMCSA 5.180288e-10   HOLD    0.571429
+  CMCT 1.099267e-10   HOLD    0.142857
+   CME 1.099266e-10   HOLD    0.142857
+  CMGG 4.498477e-10   HOLD    0.500000
+  CMII 4.498478e-10   HOLD    0.500000
+ CMIIU 4.498475e-10   HOLD    0.500000
+ CMIIW 4.498474e-10   HOLD    0.500000
+  CMMB 2.419945e-10   HOLD    0.285714
+  CMND 2.419946e-10   HOLD    0.285714
+  CMPR 4.498476e-10   HOLD    0.500000
+  CMPS 1.099264e-10   HOLD    0.142857
+  CMPX 1.099266e-10   HOLD    0.142857
+  CMRC 2.419945e-10   HOLD    0.285714
+  CMTL 1.099267e-10   HOLD    0.142857
+  CMTV 2.419945e-10   HOLD    0.285714
+  CNCG 4.498476e-10   HOLD    0.500000
+  CNCK 4.498476e-10   HOLD    0.500000
+ CNCKW 1.099265e-10   HOLD    0.142857
+  CNDT 2.419945e-10   HOLD    0.285714
+  CNET 2.419945e-10   HOLD    0.285714
+  CNEY 2.419945e-10   HOLD    0.285714
+  CNOB 3.757237e-10   HOLD    0.428571
+ CNOBP 5.180291e-10   HOLD    0.571429
+  CNQQ 4.498478e-10   HOLD    0.500000
+  CNSP 4.498477e-10   HOLD    0.500000
+  CNTA 1.099265e-10   HOLD    0.142857
+  CNTB 1.099266e-10   HOLD    0.142857
+  CNTN 2.419945e-10   HOLD    0.285714
+  CNTX 1.099265e-10   HOLD    0.142857
+  CNTY 4.498475e-10   HOLD    0.500000
+  CNVS 4.498476e-10   HOLD    0.500000
+  CNXC 3.757237e-10   HOLD    0.428571
+  CNXN 2.419945e-10   HOLD    0.285714
+  COAG 1.099265e-10   HOLD    0.142857
+  COCH 1.099265e-10   HOLD    0.142857
+ COCHW 2.419945e-10   HOLD    0.285714
+  COCO 1.099265e-10   HOLD    0.142857
+  COCP 1.099265e-10   HOLD    0.142857
+  CODA 1.099265e-10   HOLD    0.142857
+  CODX 2.419945e-10   HOLD    0.285714
+  COFS 5.180293e-10   HOLD    0.571429
+  COGT 1.099266e-10   HOLD    0.142857
+  COHU 1.099265e-10   HOLD    0.142857
+  COIG 4.498476e-10   HOLD    0.500000
+  COIN 1.099265e-10   HOLD    0.142857
+  COKE 1.099265e-10   HOLD    0.142857
+  COLA 4.498475e-10   HOLD    0.500000
+ COLAR 4.498476e-10   HOLD    0.500000
+ COLAU 4.498476e-10   HOLD    0.500000
+
+Calculating deviations (threshold: 5%)...
+⚠️  Found 19 holdings requiring rebalancing attention:
+  • 3026: Current 5.6% vs Optimal 0.0% (Deviation: 5.6%)
+  • 3689: Current 16.2% vs Optimal 0.0% (Deviation: 16.2%)
+  • 3867: Current 12.6% vs Optimal 0.0% (Deviation: 12.6%)
+  • 4197: Current 7.8% vs Optimal 0.0% (Deviation: 7.8%)
+  • 5347: Current 12.5% vs Optimal 0.0% (Deviation: 12.5%)
+  • AAME: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)
+  • AFYA: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)
+  • ARM: Current 6.6% vs Optimal 0.0% (Deviation: 6.6%)
+  • ATLCP: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)
+  • BHFAM: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)
+  • BHFAN: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)
+  • BHFAO: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)
+  • BHFAP: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)
+  • CALM: Current 0.7% vs Optimal 9.1% (Deviation: 8.4%)
+  • CGO: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)
+  • CHI: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)
+  • CHY: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)
+  • GOOGL: Current 8.0% vs Optimal 0.0% (Deviation: 8.0%)
+  • INTC: Current 6.5% vs Optimal 0.0% (Deviation: 6.5%)
+\n==================================================
+ALERT SUMMARY:
+Rebalancing Alert: 19 holdings exceed 5% deviation threshold\n3026: Current 5.6% vs Optimal 0.0% (Deviation: 5.6%)\n3689: Current 16.2% vs Optimal 0.0% (Deviation: 16.2%)\n3867: Current 12.6% vs Optimal 0.0% (Deviation: 12.6%)\n4197: Current 7.8% vs Optimal 0.0% (Deviation: 7.8%)\n5347: Current 12.5% vs Optimal 0.0% (Deviation: 12.5%)\nAAME: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nAFYA: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nARM: Current 6.6% vs Optimal 0.0% (Deviation: 6.6%)\nATLCP: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nBHFAM: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nBHFAN: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nBHFAO: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nBHFAP: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nCALM: Current 0.7% vs Optimal 9.1% (Deviation: 8.4%)\nCGO: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nCHI: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nCHY: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nGOOGL: Current 8.0% vs Optimal 0.0% (Deviation: 8.0%)\nINTC: Current 6.5% vs Optimal 0.0% (Deviation: 6.5%)
+TELEGRAM ALERT: Rebalancing Alert: 19 holdings exceed 5% deviation threshold\n3026: Current 5.6% vs Optimal 0.0% (Deviation: 5.6%)\n3689: Current 16.2% vs Optimal 0.0% (Deviation: 16.2%)\n3867: Current 12.6% vs Optimal 0.0% (Deviation: 12.6%)\n4197: Current 7.8% vs Optimal 0.0% (Deviation: 7.8%)\n5347: Current 12.5% vs Optimal 0.0% (Deviation: 12.5%)\nAAME: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nAFYA: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nARM: Current 6.6% vs Optimal 0.0% (Deviation: 6.6%)\nATLCP: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nBHFAM: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nBHFAN: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nBHFAO: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nBHFAP: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nCALM: Current 0.7% vs Optimal 9.1% (Deviation: 8.4%)\nCGO: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nCHI: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nCHY: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nGOOGL: Current 8.0% vs Optimal 0.0% (Deviation: 8.0%)\nINTC: Current 6.5% vs Optimal 0.0% (Deviation: 6.5%)
+2026-06-29 09:30:40.233 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+Running Rebalancing Alert System...
+==================================================
+Loading current holdings...
+Warning: Using average cost for 6742UW (live price unavailable)
+Warning: Using average cost for 7113WA (live price unavailable)
+Found 44 holdings:
+ticker          company_name  current_weight
+  1155                  1155        0.038534
+  1818                  1818        0.044152
+  3026 KPJ Healthcare Berhad        0.056008
+  3662                  3662        0.000000
+  3689                  3689        0.161820
+  3867                  3867        0.126216
+  4197                  4197        0.077550
+  5099                  5099        0.000000
+  5183                  5183        0.000000
+  5238                  5238        0.000000
+  5249                  5249        0.003576
+  5296   MR DIY Group Berhad        0.000000
+  5326                  5326        0.000000
+  5337                  5337        0.000000
+  5347                  5347        0.124941
+  6742    TIME dotCom Berhad        0.001284
+6742UW                6742UW        0.000000
+  7013                  7013        0.000586
+  7095                  7095        0.000000
+  7113                  7113        0.000000
+7113WA                7113WA        0.000233
+  AAPG                              0.000295
+  AAPL                              0.000051
+  ACHR                              0.001920
+    AI                              0.004494
+   AMD                              0.041673
+   ARM                              0.065888
+  ASML                              0.006651
+  CALM                              0.006730
+  CRSP                              0.002680
+  GOOG                              0.006303
+ GOOGL                              0.080213
+   IBM                              0.009817
+   INR                              0.002268
+  INTC                              0.064943
+  MSFT                              0.004308
+    MU                              0.029779
+  NVDA                              0.010604
+  PATH                              0.008329
+  QCOM                              0.005582
+  RXRX                              0.003999
+  TSLA                              0.006738
+    VG                              0.000662
+  WRBY                              0.001175
+
+Loading optimal weights from latest optimization...
+Optimal weights from latest run:
+ticker       weight signal  confidence
+  AACB 4.498461e-10   HOLD    0.500000
+ AACBR 4.498467e-10   HOLD    0.500000
+ AACBU 4.498473e-10   HOLD    0.500000
+  AACG 2.419944e-10   HOLD    0.285714
+  AACI 4.498482e-10   HOLD    0.500000
+ AACIU 4.498467e-10   HOLD    0.500000
+ AACIW 4.498468e-10   HOLD    0.500000
+  AACO 1.099266e-10   HOLD    0.142857
+ AACOU 1.099265e-10   HOLD    0.142857
+ AACOW 1.099262e-10   HOLD    0.142857
+ AACPU 4.498477e-10   HOLD    0.500000
+  AADR 1.099265e-10   HOLD    0.142857
+  AAEQ 4.498476e-10   HOLD    0.500000
+   AAL 4.498452e-10   HOLD    0.500000
+  AALG 4.498448e-10   HOLD    0.500000
+  AAME 9.090907e-02   HOLD    0.714286
+  AAOI 1.099268e-10   HOLD    0.142857
+  AAON 2.419941e-10   HOLD    0.285714
+  AAPB 1.099262e-10   HOLD    0.142857
+  AAPD 1.099266e-10   HOLD    0.142857
+  AAPG 1.099263e-10   HOLD    0.142857
+  AAPL 1.099262e-10   HOLD    0.142857
+  AAPU 1.099263e-10   HOLD    0.142857
+  AARD 2.419940e-10   HOLD    0.285714
+  AAUS 4.498492e-10   HOLD    0.500000
+  AAVM 1.099263e-10   HOLD    0.142857
+  AAXJ 1.099269e-10   HOLD    0.142857
+  ABAT 1.099270e-10   HOLD    0.142857
+  ABCL 1.099265e-10   HOLD    0.142857
+  ABCS 1.099265e-10   HOLD    0.142857
+  ABEO 3.757233e-10   HOLD    0.428571
+   ABI 4.498479e-10   HOLD    0.500000
+  ABIG 1.099268e-10   HOLD    0.142857
+  ABLV 1.099269e-10   HOLD    0.142857
+ ABLVW 2.419945e-10   HOLD    0.285714
+  ABNB 4.498480e-10   HOLD    0.500000
+  ABNG 4.498471e-10   HOLD    0.500000
+  ABOS 1.099265e-10   HOLD    0.142857
+  ABSI 1.099262e-10   HOLD    0.142857
+  ABTC 1.099266e-10   HOLD    0.142857
+  ABTS 1.099256e-10   HOLD    0.142857
+  ABUS 3.757233e-10   HOLD    0.428571
+  ABVC 4.498468e-10   HOLD    0.500000
+  ABVE 4.498483e-10   HOLD    0.500000
+ ABVEW 4.498480e-10   HOLD    0.500000
+  ABVX 1.099270e-10   HOLD    0.142857
+  ACAA 4.498453e-10   HOLD    0.500000
+ ACAAU 4.498490e-10   HOLD    0.500000
+ ACAAW 4.498495e-10   HOLD    0.500000
+  ACAD 2.419944e-10   HOLD    0.285714
+   ACB 2.419945e-10   HOLD    0.285714
+  ACCL 1.099259e-10   HOLD    0.142857
+  ACDC 4.498470e-10   HOLD    0.500000
+  ACEP 4.498468e-10   HOLD    0.500000
+  ACET 2.419944e-10   HOLD    0.285714
+  ACFN 1.099270e-10   HOLD    0.142857
+ ACGCU 4.498473e-10   HOLD    0.500000
+  ACGL 3.757235e-10   HOLD    0.428571
+ ACGLN 5.180300e-10   HOLD    0.571429
+ ACGLO 5.180289e-10   HOLD    0.571429
+  ACHC 3.757231e-10   HOLD    0.428571
+  ACHV 1.099270e-10   HOLD    0.142857
+  ACIC 2.419944e-10   HOLD    0.285714
+  ACIU 4.498490e-10   HOLD    0.500000
+  ACIW 1.099258e-10   HOLD    0.142857
+  ACLS 1.099276e-10   HOLD    0.142857
+  ACMR 1.099270e-10   HOLD    0.142857
+  ACNB 5.180302e-10   HOLD    0.571429
+  ACNT 1.099274e-10   HOLD    0.142857
+  ACOG 1.099265e-10   HOLD    0.142857
+  ACON 2.419946e-10   HOLD    0.285714
+ ACONW 2.419946e-10   HOLD    0.285714
+  ACRS 1.099275e-10   HOLD    0.142857
+  ACRV 2.419946e-10   HOLD    0.285714
+   ACT 5.180302e-10   HOLD    0.571429
+  ACTG 2.419943e-10   HOLD    0.285714
+  ACTU 1.099273e-10   HOLD    0.142857
+  ACWI 1.099269e-10   HOLD    0.142857
+  ACWX 1.099251e-10   HOLD    0.142857
+  ACXP 2.419946e-10   HOLD    0.285714
+  ADAC 1.099267e-10   HOLD    0.142857
+ ADACU 1.099264e-10   HOLD    0.142857
+ ADACW 1.099262e-10   HOLD    0.142857
+  ADAG 1.099284e-10   HOLD    0.142857
+  ADAM 5.180283e-10   HOLD    0.571429
+ ADAMG 4.498464e-10   HOLD    0.500000
+ ADAMH 4.498457e-10   HOLD    0.500000
+ ADAMI 4.498476e-10   HOLD    0.500000
+ ADAML 1.099258e-10   HOLD    0.142857
+ ADAMM 1.099287e-10   HOLD    0.142857
+ ADAMN 1.099272e-10   HOLD    0.142857
+ ADAMO 4.498471e-10   HOLD    0.500000
+ ADAMZ 1.099280e-10   HOLD    0.142857
+  ADBE 1.099257e-10   HOLD    0.142857
+  ADBG 4.498477e-10   HOLD    0.500000
+  ADEA 2.419946e-10   HOLD    0.285714
+  ADGM 1.099260e-10   HOLD    0.142857
+   ADI 2.419945e-10   HOLD    0.285714
+  ADIL 2.419946e-10   HOLD    0.285714
+  ADMA 2.419946e-10   HOLD    0.285714
+   ADP 1.099244e-10   HOLD    0.142857
+  ADPT 1.099286e-10   HOLD    0.142857
+  ADSE 2.419946e-10   HOLD    0.285714
+ ADSEW 1.099259e-10   HOLD    0.142857
+  ADSK 4.498494e-10   HOLD    0.500000
+  ADTN 1.099283e-10   HOLD    0.142857
+  ADTX 4.498456e-10   HOLD    0.500000
+  ADUR 1.099266e-10   HOLD    0.142857
+  ADUS 1.099273e-10   HOLD    0.142857
+   ADV 3.757223e-10   HOLD    0.428571
+  ADVB 5.180294e-10   HOLD    0.571429
+  ADXN 1.099265e-10   HOLD    0.142857
+  AEAQ 1.099269e-10   HOLD    0.142857
+ AEAQU 1.099283e-10   HOLD    0.142857
+ AEAQW 1.099273e-10   HOLD    0.142857
+  AEBI 3.757243e-10   HOLD    0.428571
+   AEC 1.099283e-10   HOLD    0.142857
+  AEHL 2.419945e-10   HOLD    0.285714
+  AEHR 1.099268e-10   HOLD    0.142857
+   AEI 2.419945e-10   HOLD    0.285714
+  AEIS 2.419945e-10   HOLD    0.285714
+  AEMD 2.419945e-10   HOLD    0.285714
+  AENT 1.099280e-10   HOLD    0.142857
+ AENTW 1.099281e-10   HOLD    0.142857
+   AEP 1.099267e-10   HOLD    0.142857
+  AERT 1.099253e-10   HOLD    0.142857
+ AERTW 4.498483e-10   HOLD    0.500000
+  AEVA 1.099271e-10   HOLD    0.142857
+  AEYE 1.099265e-10   HOLD    0.142857
+  AFBI 4.498497e-10   HOLD    0.500000
+  AFCG 3.757246e-10   HOLD    0.428571
+  AFJK 4.498477e-10   HOLD    0.500000
+ AFJKR 4.498440e-10   HOLD    0.500000
+ AFJKU 4.498488e-10   HOLD    0.500000
+  AFOS 4.498461e-10   HOLD    0.500000
+  AFRI 4.498454e-10   HOLD    0.500000
+ AFRIW 4.498451e-10   HOLD    0.500000
+  AFRM 1.099257e-10   HOLD    0.142857
+  AFSC 1.099250e-10   HOLD    0.142857
+  AFYA 9.090907e-02   HOLD    0.714286
+  AGAE 2.419945e-10   HOLD    0.285714
+  AGCC 1.099257e-10   HOLD    0.142857
+  AGEM 1.099280e-10   HOLD    0.142857
+  AGEN 1.099272e-10   HOLD    0.142857
+  AGGA 1.099266e-10   HOLD    0.142857
+   AGH 1.099286e-10   HOLD    0.142857
+  AGIO 1.099283e-10   HOLD    0.142857
+  AGIX 4.498489e-10   HOLD    0.500000
+  AGMB 1.099269e-10   HOLD    0.142857
+  AGMH 5.180285e-10   HOLD    0.571429
+  AGMI 1.099282e-10   HOLD    0.142857
+  AGNC 5.180334e-10   HOLD    0.571429
+ AGNCL 1.099276e-10   HOLD    0.142857
+ AGNCM 1.099264e-10   HOLD    0.142857
+ AGNCN 1.099267e-10   HOLD    0.142857
+ AGNCO 1.099271e-10   HOLD    0.142857
+ AGNCP 1.099252e-10   HOLD    0.142857
+ AGNCZ 1.099272e-10   HOLD    0.142857
+  AGNG 1.099269e-10   HOLD    0.142857
+  AGNT 3.757231e-10   HOLD    0.428571
+  AGPU 2.419947e-10   HOLD    0.285714
+  AGRZ 2.419946e-10   HOLD    0.285714
+  AGYS 4.498480e-10   HOLD    0.500000
+  AGZD 1.099268e-10   HOLD    0.142857
+  AHCO 2.419945e-10   HOLD    0.285714
+   AHG 1.099279e-10   HOLD    0.142857
+  AHMA 1.099262e-10   HOLD    0.142857
+   AIA 1.099274e-10   HOLD    0.142857
+  AIDX 1.099269e-10   HOLD    0.142857
+  AIFC 1.099270e-10   HOLD    0.142857
+  AIFD 4.498448e-10   HOLD    0.500000
+  AIFF 1.099270e-10   HOLD    0.142857
+  AIFU 2.419945e-10   HOLD    0.285714
+  AIHS 1.099257e-10   HOLD    0.142857
+  AIIO 4.498461e-10   HOLD    0.500000
+ AIIOW 4.498466e-10   HOLD    0.500000
+  AIMD 4.498475e-10   HOLD    0.500000
+ AIMDW 1.099264e-10   HOLD    0.142857
+  AIMS 4.498468e-10   HOLD    0.500000
+  AIOS 2.419946e-10   HOLD    0.285714
+  AIOT 1.099278e-10   HOLD    0.142857
+   AIP 4.498488e-10   HOLD    0.500000
+  AIPI 1.099267e-10   HOLD    0.142857
+  AIPO 4.498470e-10   HOLD    0.500000
+   AIQ 1.099267e-10   HOLD    0.142857
+  AIRE 2.419946e-10   HOLD    0.285714
+  AIRG 1.099262e-10   HOLD    0.142857
+  AIRJ 2.419945e-10   HOLD    0.285714
+ AIRJW 2.419946e-10   HOLD    0.285714
+  AIRO 2.419947e-10   HOLD    0.285714
+  AIRR 1.099260e-10   HOLD    0.142857
+  AIRS 4.498473e-10   HOLD    0.500000
+  AIRT 4.498489e-10   HOLD    0.500000
+ AIRTP 1.099282e-10   HOLD    0.142857
+  AISP 1.099266e-10   HOLD    0.142857
+ AISPW 1.099271e-10   HOLD    0.142857
+  AIXC 1.099252e-10   HOLD    0.142857
+  AIXI 4.498479e-10   HOLD    0.500000
+  AKAM 1.099255e-10   HOLD    0.142857
+  AKAN 4.498480e-10   HOLD    0.500000
+  AKBA 4.498444e-10   HOLD    0.500000
+  AKTS 1.099265e-10   HOLD    0.142857
+  ALAB 1.099267e-10   HOLD    0.142857
+  ALAR 1.099267e-10   HOLD    0.142857
+  ALBG 4.498466e-10   HOLD    0.500000
+  ALBT 4.498470e-10   HOLD    0.500000
+  ALCO 2.419946e-10   HOLD    0.285714
+  ALCY 4.498472e-10   HOLD    0.500000
+ ALCYW 4.498440e-10   HOLD    0.500000
+  ALDF 1.099268e-10   HOLD    0.142857
+ ALDFU 1.099267e-10   HOLD    0.142857
+ ALDFW 1.099277e-10   HOLD    0.142857
+  ALDX 1.099268e-10   HOLD    0.142857
+  ALEC 1.099270e-10   HOLD    0.142857
+   ALF 4.498491e-10   HOLD    0.500000
+ ALFUU 4.498488e-10   HOLD    0.500000
+ ALFUW 4.498506e-10   HOLD    0.500000
+  ALGM 1.099277e-10   HOLD    0.142857
+  ALGN 4.498462e-10   HOLD    0.500000
+  ALGS 2.419947e-10   HOLD    0.285714
+  ALGT 1.099263e-10   HOLD    0.142857
+  ALHC 1.099276e-10   HOLD    0.142857
+  ALIL 1.099271e-10   HOLD    0.142857
+  ALIS 1.099273e-10   HOLD    0.142857
+ ALISR 1.099280e-10   HOLD    0.142857
+ ALISU 1.099283e-10   HOLD    0.142857
+  ALKS 1.099258e-10   HOLD    0.142857
+  ALKT 2.419947e-10   HOLD    0.285714
+  ALLO 1.099252e-10   HOLD    0.142857
+  ALLR 1.099262e-10   HOLD    0.142857
+  ALLT 1.099283e-10   HOLD    0.142857
+  ALLW 1.099274e-10   HOLD    0.142857
+   ALM 2.419946e-10   HOLD    0.285714
+  ALMR 1.099269e-10   HOLD    0.142857
+  ALMS 1.099258e-10   HOLD    0.142857
+  ALMU 1.099253e-10   HOLD    0.142857
+  ALNT 2.419946e-10   HOLD    0.285714
+  ALNY 1.099267e-10   HOLD    0.142857
+  ALOT 1.099257e-10   HOLD    0.142857
+  ALOV 4.498464e-10   HOLD    0.500000
+ ALOVU 4.498481e-10   HOLD    0.500000
+ ALOVW 4.498488e-10   HOLD    0.500000
+  ALOY 1.099263e-10   HOLD    0.142857
+   ALP 1.099262e-10   HOLD    0.142857
+  ALPS 4.498493e-10   HOLD    0.500000
+  ALRM 1.099270e-10   HOLD    0.142857
+  ALRS 2.419946e-10   HOLD    0.285714
+   ALT 2.419945e-10   HOLD    0.285714
+  ALTI 2.419946e-10   HOLD    0.285714
+  ALTO 1.099258e-10   HOLD    0.142857
+  ALTY 1.099277e-10   HOLD    0.142857
+  ALVO 1.099279e-10   HOLD    0.142857
+ ALVOW 1.099261e-10   HOLD    0.142857
+  ALXO 2.419947e-10   HOLD    0.285714
+  ALZN 1.099275e-10   HOLD    0.142857
+   AMA 4.498492e-10   HOLD    0.500000
+  AMAL 3.757236e-10   HOLD    0.428571
+  AMAT 2.419947e-10   HOLD    0.285714
+  AMBA 1.099280e-10   HOLD    0.142857
+  AMBR 1.099269e-10   HOLD    0.142857
+  AMCI 1.099285e-10   HOLD    0.142857
+  AMCX 5.180352e-10   HOLD    0.571429
+   AMD 1.099261e-10   HOLD    0.142857
+  AMDD 1.099265e-10   HOLD    0.142857
+  AMDG 1.099270e-10   HOLD    0.142857
+  AMDL 4.498481e-10   HOLD    0.500000
+  AMGN 1.099261e-10   HOLD    0.142857
+  AMID 1.099265e-10   HOLD    0.142857
+  AMIX 2.419947e-10   HOLD    0.285714
+  AMKR 2.419947e-10   HOLD    0.285714
+  AMLX 1.099269e-10   HOLD    0.142857
+  AMOD 4.498483e-10   HOLD    0.500000
+ AMODW 4.498478e-10   HOLD    0.500000
+  AMPG 1.099274e-10   HOLD    0.142857
+ AMPGR 1.099266e-10   HOLD    0.142857
+ AMPGZ 1.099282e-10   HOLD    0.142857
+  AMPH 5.180283e-10   HOLD    0.571429
+  AMPL 1.099269e-10   HOLD    0.142857
+  AMRN 2.419947e-10   HOLD    0.285714
+  AMRX 1.099281e-10   HOLD    0.142857
+  AMSC 2.419946e-10   HOLD    0.285714
+  AMSF 3.757240e-10   HOLD    0.428571
+  AMST 1.099266e-10   HOLD    0.142857
+  AMTX 4.498479e-10   HOLD    0.500000
+  AMUN 1.099258e-10   HOLD    0.142857
+  AMUU 1.099246e-10   HOLD    0.142857
+  AMWD 2.419946e-10   HOLD    0.285714
+  AMYY 4.498463e-10   HOLD    0.500000
+  AMZD 1.099284e-10   HOLD    0.142857
+  AMZN 4.498502e-10   HOLD    0.500000
+  AMZU 1.099252e-10   HOLD    0.142857
+  AMZZ 4.498434e-10   HOLD    0.500000
+  ANAB 2.419947e-10   HOLD    0.285714
+  ANDE 1.099268e-10   HOLD    0.142857
+  ANEL 4.498470e-10   HOLD    0.500000
+  ANGH 4.498488e-10   HOLD    0.500000
+ ANGHW 1.099266e-10   HOLD    0.142857
+  ANGI 3.757238e-10   HOLD    0.428571
+  ANGL 1.099270e-10   HOLD    0.142857
+  ANGO 1.099276e-10   HOLD    0.142857
+  ANIK 2.419947e-10   HOLD    0.285714
+  ANIP 1.099244e-10   HOLD    0.142857
+  ANIX 1.099268e-10   HOLD    0.142857
+   ANL 4.498464e-10   HOLD    0.500000
+  ANNA 1.099276e-10   HOLD    0.142857
+ ANNAW 2.419946e-10   HOLD    0.285714
+  ANNX 1.099262e-10   HOLD    0.142857
+  ANPA 4.498456e-10   HOLD    0.500000
+  ANSC 4.498466e-10   HOLD    0.500000
+ ANSCU 4.498461e-10   HOLD    0.500000
+ ANSCW 4.498477e-10   HOLD    0.500000
+  ANTA 3.757236e-10   HOLD    0.428571
+  ANTX 1.099273e-10   HOLD    0.142857
+   ANV 4.498450e-10   HOLD    0.500000
+   ANY 2.419946e-10   HOLD    0.285714
+  AOHY 2.419947e-10   HOLD    0.285714
+  AOSL 1.099267e-10   HOLD    0.142857
+  AOTG 4.498461e-10   HOLD    0.500000
+  AOUT 2.419946e-10   HOLD    0.285714
+   APA 3.757257e-10   HOLD    0.428571
+  APAC 1.099267e-10   HOLD    0.142857
+ APACR 1.099262e-10   HOLD    0.142857
+ APACU 1.099278e-10   HOLD    0.142857
+   APC 1.099286e-10   HOLD    0.142857
+  APEI 1.099256e-10   HOLD    0.142857
+  APGE 1.099273e-10   HOLD    0.142857
+   API 2.419946e-10   HOLD    0.285714
+  APLD 1.099278e-10   HOLD    0.142857
+  APLM 4.498508e-10   HOLD    0.500000
+ APLMW 4.498467e-10   HOLD    0.500000
+  APLS 1.099268e-10   HOLD    0.142857
+   APM 1.099276e-10   HOLD    0.142857
+  APOG 2.419946e-10   HOLD    0.285714
+   APP 1.099274e-10   HOLD    0.142857
+  APPF 1.099259e-10   HOLD    0.142857
+  APPN 4.498478e-10   HOLD    0.500000
+  APPS 1.099270e-10   HOLD    0.142857
+  APPX 1.099262e-10   HOLD    0.142857
+  APRE 2.419946e-10   HOLD    0.285714
+  APVO 5.180258e-10   HOLD    0.571429
+  APWC 5.180248e-10   HOLD    0.571429
+  APXT 1.099265e-10   HOLD    0.142857
+ APXTU 1.099263e-10   HOLD    0.142857
+ APXTW 1.099281e-10   HOLD    0.142857
+  APYX 1.099276e-10   HOLD    0.142857
+   AQB 4.498465e-10   HOLD    0.500000
+  AQMS 2.419946e-10   HOLD    0.285714
+  AQST 1.099280e-10   HOLD    0.142857
+  AQWA 1.099256e-10   HOLD    0.142857
+  ARAI 4.498465e-10   HOLD    0.500000
+  ARAY 1.099271e-10   HOLD    0.142857
+  ARBB 2.419947e-10   HOLD    0.285714
+  ARBE 1.099262e-10   HOLD    0.142857
+ ARBEW 2.419948e-10   HOLD    0.285714
+  ARBK 2.419947e-10   HOLD    0.285714
+  ARCB 1.099260e-10   HOLD    0.142857
+  ARCC 5.180262e-10   HOLD    0.571429
+  ARCI 4.498469e-10   HOLD    0.500000
+ ARCIU 4.498493e-10   HOLD    0.500000
+ ARCIW 4.498463e-10   HOLD    0.500000
+ ARCLU 4.498470e-10   HOLD    0.500000
+  ARCT 2.419946e-10   HOLD    0.285714
+  ARDX 2.419946e-10   HOLD    0.285714
+  AREB 2.419947e-10   HOLD    0.285714
+ AREBW 1.099242e-10   HOLD    0.142857
+  AREC 2.419948e-10   HOLD    0.285714
+  ARGX 4.498447e-10   HOLD    0.500000
+  ARHS 4.498487e-10   HOLD    0.500000
+  ARKO 2.419947e-10   HOLD    0.285714
+  ARKR 1.099259e-10   HOLD    0.142857
+  ARLP 2.419947e-10   HOLD    0.285714
+   ARM 1.099253e-10   HOLD    0.142857
+  ARMG 1.099247e-10   HOLD    0.142857
+  ARMY 4.498473e-10   HOLD    0.500000
+  AROW 5.180337e-10   HOLD    0.571429
+   ARQ 1.099272e-10   HOLD    0.142857
+  ARQQ 1.099275e-10   HOLD    0.142857
+ ARQQW 2.419948e-10   HOLD    0.285714
+  ARQT 1.099262e-10   HOLD    0.142857
+  ARRY 2.419947e-10   HOLD    0.285714
+  ARTC 4.498461e-10   HOLD    0.500000
+ ARTCU 4.498498e-10   HOLD    0.500000
+ ARTCW 4.498447e-10   HOLD    0.500000
+  ARTL 2.419946e-10   HOLD    0.285714
+ ARTNA 5.180247e-10   HOLD    0.571429
+  ARTV 1.099259e-10   HOLD    0.142857
+  ARTW 5.180295e-10   HOLD    0.571429
+  ARVN 2.419947e-10   HOLD    0.285714
+  ARVR 1.099268e-10   HOLD    0.142857
+  ARWR 1.099274e-10   HOLD    0.142857
+  ARXS 1.099258e-10   HOLD    0.142857
+  ASBP 2.419947e-10   HOLD    0.285714
+ ASBPW 2.419945e-10   HOLD    0.285714
+  ASCI 1.099252e-10   HOLD    0.142857
+  ASLE 3.757236e-10   HOLD    0.428571
+  ASMB 1.099263e-10   HOLD    0.142857
+  ASMG 1.099273e-10   HOLD    0.142857
+  ASML 1.099255e-10   HOLD    0.142857
+  ASMU 4.498456e-10   HOLD    0.500000
+  ASND 4.498480e-10   HOLD    0.500000
+   ASO 5.180277e-10   HOLD    0.571429
+  ASPC 4.498470e-10   HOLD    0.500000
+ ASPCR 1.099256e-10   HOLD    0.142857
+ ASPCU 4.498470e-10   HOLD    0.500000
+  ASPI 1.099261e-10   HOLD    0.142857
+  ASPS 1.099283e-10   HOLD    0.142857
+ ASPSW 4.498473e-10   HOLD    0.500000
+ ASPSZ 4.498463e-10   HOLD    0.500000
+  ASRT 2.419946e-10   HOLD    0.285714
+  ASRV 5.180256e-10   HOLD    0.571429
+  ASST 2.419946e-10   HOLD    0.285714
+  ASTC 1.099259e-10   HOLD    0.142857
+  ASTE 2.419947e-10   HOLD    0.285714
+  ASTH 4.498474e-10   HOLD    0.500000
+  ASTI 1.099264e-10   HOLD    0.142857
+  ASTL 1.099278e-10   HOLD    0.142857
+ ASTLW 2.419946e-10   HOLD    0.285714
+  ASTS 1.099258e-10   HOLD    0.142857
+  ASUR 2.419946e-10   HOLD    0.285714
+  ASYS 1.099260e-10   HOLD    0.142857
+  ATAI 1.099280e-10   HOLD    0.142857
+  ATAT 2.419946e-10   HOLD    0.285714
+  ATCX 4.498462e-10   HOLD    0.500000
+  ATEC 2.419946e-10   HOLD    0.285714
+  ATER 2.419946e-10   HOLD    0.285714
+  ATEX 1.099262e-10   HOLD    0.142857
+  ATGL 1.099295e-10   HOLD    0.142857
+  ATHE 2.419946e-10   HOLD    0.285714
+  ATHR 1.099265e-10   HOLD    0.142857
+  ATII 1.099274e-10   HOLD    0.142857
+ ATIIU 1.099269e-10   HOLD    0.142857
+ ATIIW 1.099276e-10   HOLD    0.142857
+  ATLC 2.419946e-10   HOLD    0.285714
+ ATLCL 4.498468e-10   HOLD    0.500000
+ ATLCP 9.090907e-02   HOLD    0.714286
+ ATLCZ 4.498455e-10   HOLD    0.500000
+  ATLN 4.498478e-10   HOLD    0.500000
+  ATLO 5.180234e-10   HOLD    0.571429
+  ATLX 1.099257e-10   HOLD    0.142857
+  ATNI 2.419946e-10   HOLD    0.285714
+  ATOM 1.099282e-10   HOLD    0.142857
+  ATOS 2.419946e-10   HOLD    0.285714
+  ATPC 5.180336e-10   HOLD    0.571429
+  ATRA 2.419947e-10   HOLD    0.285714
+  ATRC 1.099271e-10   HOLD    0.142857
+  ATRO 1.099261e-10   HOLD    0.142857
+  ATXG 2.419946e-10   HOLD    0.285714
+  ATYR 2.419946e-10   HOLD    0.285714
+  AUBN 5.180233e-10   HOLD    0.571429
+  AUDC 2.419946e-10   HOLD    0.285714
+  AUGO 1.099272e-10   HOLD    0.142857
+  AUID 1.099279e-10   HOLD    0.142857
+  AUMI 2.419947e-10   HOLD    0.285714
+  AUPH 2.419947e-10   HOLD    0.285714
+   AUR 1.099298e-10   HOLD    0.142857
+  AURA 1.099267e-10   HOLD    0.142857
+  AURE 2.419946e-10   HOLD    0.285714
+ AUROW 2.419946e-10   HOLD    0.285714
+  AUTL 2.419946e-10   HOLD    0.285714
+  AUUD 2.419946e-10   HOLD    0.285714
+  AVAH 1.099254e-10   HOLD    0.142857
+  AVAV 1.099272e-10   HOLD    0.142857
+  AVBH 2.419947e-10   HOLD    0.285714
+  AVBP 1.099269e-10   HOLD    0.142857
+  AVGB 1.099264e-10   HOLD    0.142857
+  AVGG 1.099261e-10   HOLD    0.142857
+  AVGO 2.419946e-10   HOLD    0.285714
+  AVGU 4.498469e-10   HOLD    0.500000
+  AVGX 1.099276e-10   HOLD    0.142857
+  AVIR 1.099272e-10   HOLD    0.142857
+   AVL 1.099257e-10   HOLD    0.142857
+  AVLN 1.099256e-10   HOLD    0.142857
+  AVNW 2.419946e-10   HOLD    0.285714
+   AVO 2.419947e-10   HOLD    0.285714
+  AVOS 4.498483e-10   HOLD    0.500000
+  AVPT 1.099266e-10   HOLD    0.142857
+   AVR 1.099276e-10   HOLD    0.142857
+   AVS 1.099248e-10   HOLD    0.142857
+   AVT 2.419947e-10   HOLD    0.285714
+  AVTX 1.099275e-10   HOLD    0.142857
+  AVUQ 1.099248e-10   HOLD    0.142857
+   AVX 2.419946e-10   HOLD    0.285714
+  AVXC 1.099259e-10   HOLD    0.142857
+  AVXL 1.099280e-10   HOLD    0.142857
+  AVXX 4.498485e-10   HOLD    0.500000
+  AWRE 2.419946e-10   HOLD    0.285714
+   AXG 1.099254e-10   HOLD    0.142857
+  AXGN 1.099268e-10   HOLD    0.142857
+  AXIN 1.099260e-10   HOLD    0.142857
+ AXINR 1.099276e-10   HOLD    0.142857
+ AXINU 1.099263e-10   HOLD    0.142857
+  AXON 1.099261e-10   HOLD    0.142857
+  AXPG 4.498472e-10   HOLD    0.500000
+  AXSM 4.498475e-10   HOLD    0.500000
+  AXTI 1.099272e-10   HOLD    0.142857
+   AYA 1.099260e-10   HOLD    0.142857
+  AYTU 1.099257e-10   HOLD    0.142857
+    AZ 2.419947e-10   HOLD    0.285714
+   AZI 4.498470e-10   HOLD    0.500000
+  AZTA 2.419946e-10   HOLD    0.285714
+  AZYY 4.498460e-10   HOLD    0.500000
+  BABU 4.498483e-10   HOLD    0.500000
+  BABX 4.498477e-10   HOLD    0.500000
+  BACC 4.498465e-10   HOLD    0.500000
+ BACCR 4.498469e-10   HOLD    0.500000
+ BACCU 4.498484e-10   HOLD    0.500000
+  BAER 4.498457e-10   HOLD    0.500000
+ BAERW 4.498472e-10   HOLD    0.500000
+  BAFE 1.099295e-10   HOLD    0.142857
+  BAFN 2.419947e-10   HOLD    0.285714
+  BAIG 4.498488e-10   HOLD    0.500000
+  BAIV 1.099265e-10   HOLD    0.142857
+  BALQ 4.498476e-10   HOLD    0.500000
+  BAND 4.498484e-10   HOLD    0.500000
+  BANF 1.099270e-10   HOLD    0.142857
+ BANFP 4.498471e-10   HOLD    0.500000
+  BANL 1.099259e-10   HOLD    0.142857
+  BANR 5.180311e-10   HOLD    0.571429
+  BANX 5.180236e-10   HOLD    0.571429
+  BAOS 1.099275e-10   HOLD    0.142857
+  BASG 4.498499e-10   HOLD    0.500000
+  BASV 4.498471e-10   HOLD    0.500000
+ BATRA 4.498470e-10   HOLD    0.500000
+ BATRK 4.498470e-10   HOLD    0.500000
+  BAYA 4.498471e-10   HOLD    0.500000
+ BAYAR 4.498447e-10   HOLD    0.500000
+ BAYAU 4.498469e-10   HOLD    0.500000
+   BBB 1.099270e-10   HOLD    0.142857
+  BBCP 1.099254e-10   HOLD    0.142857
+  BBCQ 4.498474e-10   HOLD    0.500000
+ BBCQU 4.498479e-10   HOLD    0.500000
+ BBCQW 4.498480e-10   HOLD    0.500000
+  BBGI 4.498474e-10   HOLD    0.500000
+   BBH 1.099267e-10   HOLD    0.142857
+  BBIO 1.099275e-10   HOLD    0.142857
+  BBLG 2.419947e-10   HOLD    0.285714
+ BBLGW 1.099265e-10   HOLD    0.142857
+  BBNX 1.099278e-10   HOLD    0.142857
+  BBOT 1.099269e-10   HOLD    0.142857
+  BBSI 1.099248e-10   HOLD    0.142857
+  BBYY 4.498496e-10   HOLD    0.500000
+  BCAB 4.498472e-10   HOLD    0.500000
+  BCAL 5.180233e-10   HOLD    0.571429
+  BCAR 1.099255e-10   HOLD    0.142857
+ BCARU 1.099263e-10   HOLD    0.142857
+ BCARW 1.099244e-10   HOLD    0.142857
+  BCAX 1.099287e-10   HOLD    0.142857
+  BCBP 3.757231e-10   HOLD    0.428571
+  BCDA 4.498458e-10   HOLD    0.500000
+  BCFN 4.498465e-10   HOLD    0.500000
+   BCG 4.498490e-10   HOLD    0.500000
+ BCGWW 1.099258e-10   HOLD    0.142857
+  BCIC 3.757239e-10   HOLD    0.428571
+  BCLO 1.099261e-10   HOLD    0.142857
+  BCML 5.180270e-10   HOLD    0.571429
+  BCPC 2.419946e-10   HOLD    0.285714
+  BCRX 2.419945e-10   HOLD    0.285714
+  BCTK 4.498473e-10   HOLD    0.500000
+  BCTX 2.419946e-10   HOLD    0.285714
+ BCTXL 2.419947e-10   HOLD    0.285714
+ BCTXZ 2.419945e-10   HOLD    0.285714
+  BCYC 2.419946e-10   HOLD    0.285714
+  BDCI 1.099266e-10   HOLD    0.142857
+ BDCIU 1.099282e-10   HOLD    0.142857
+ BDCIW 1.099264e-10   HOLD    0.142857
+  BDGS 1.099266e-10   HOLD    0.142857
+  BDMD 2.419946e-10   HOLD    0.285714
+ BDMDW 2.419947e-10   HOLD    0.285714
+  BDSX 1.099254e-10   HOLD    0.142857
+  BDTX 2.419946e-10   HOLD    0.285714
+  BDVL 1.099248e-10   HOLD    0.142857
+  BDYN 1.099275e-10   HOLD    0.142857
+  BEAG 1.099276e-10   HOLD    0.142857
+ BEAGR 1.099256e-10   HOLD    0.142857
+ BEAGU 1.099266e-10   HOLD    0.142857
+  BEAM 1.099270e-10   HOLD    0.142857
+  BEAT 4.498477e-10   HOLD    0.500000
+ BEATW 4.498448e-10   HOLD    0.500000
+  BEDY 1.099277e-10   HOLD    0.142857
+  BEEM 1.099252e-10   HOLD    0.142857
+  BEEP 1.099268e-10   HOLD    0.142857
+  BEEX 1.099250e-10   HOLD    0.142857
+  BEEZ 1.099270e-10   HOLD    0.142857
+   BEG 4.498471e-10   HOLD    0.500000
+ BELFA 2.419945e-10   HOLD    0.285714
+ BELFB 2.419945e-10   HOLD    0.285714
+  BELT 4.498463e-10   HOLD    0.500000
+  BENF 2.419945e-10   HOLD    0.285714
+ BENFW 2.419946e-10   HOLD    0.285714
+  BESO 4.498464e-10   HOLD    0.500000
+  BETR 4.498467e-10   HOLD    0.500000
+ BETRW 1.099254e-10   HOLD    0.142857
+   BFC 1.099251e-10   HOLD    0.142857
+  BFRG 1.099282e-10   HOLD    0.142857
+ BFRGW 1.099278e-10   HOLD    0.142857
+  BFRI 1.099268e-10   HOLD    0.142857
+ BFRIW 1.099279e-10   HOLD    0.142857
+  BFST 5.180297e-10   HOLD    0.571429
+   BGC 1.099284e-10   HOLD    0.142857
+  BGDE 4.498467e-10   HOLD    0.500000
+  BGIN 1.099268e-10   HOLD    0.142857
+   BGL 1.099262e-10   HOLD    0.142857
+  BGLC 2.419946e-10   HOLD    0.285714
+ BGLWW 4.498483e-10   HOLD    0.500000
+   BGM 1.099275e-10   HOLD    0.142857
+  BGMS 5.180292e-10   HOLD    0.571429
+  BGRN 1.099266e-10   HOLD    0.142857
+  BGRO 1.099272e-10   HOLD    0.142857
+  BHAV 1.099265e-10   HOLD    0.142857
+ BHAVR 1.099265e-10   HOLD    0.142857
+ BHAVU 1.099285e-10   HOLD    0.142857
+  BHDG 4.498492e-10   HOLD    0.500000
+   BHF 3.757230e-10   HOLD    0.428571
+ BHFAL 1.099277e-10   HOLD    0.142857
+ BHFAM 9.090907e-02   HOLD    0.714286
+ BHFAN 9.090907e-02   HOLD    0.714286
+ BHFAO 9.090907e-02   HOLD    0.714286
+ BHFAP 9.090907e-02   HOLD    0.714286
+  BHRB 5.180312e-10   HOLD    0.571429
+  BHST 1.099270e-10   HOLD    0.142857
+  BIAF 4.498464e-10   HOLD    0.500000
+ BIAFW 1.099275e-10   HOLD    0.142857
+   BIB 1.099272e-10   HOLD    0.142857
+  BIDG 4.498494e-10   HOLD    0.500000
+  BIDU 3.757226e-10   HOLD    0.428571
+  BIIB 1.099276e-10   HOLD    0.142857
+  BILI 4.498454e-10   HOLD    0.500000
+  BIOA 1.099282e-10   HOLD    0.142857
+  BIOX 2.419945e-10   HOLD    0.285714
+  BIOY 4.498482e-10   HOLD    0.500000
+  BIRD 1.099282e-10   HOLD    0.142857
+   BIS 1.099268e-10   HOLD    0.142857
+  BITS 2.419946e-10   HOLD    0.285714
+  BIVI 2.419945e-10   HOLD    0.285714
+ BIVIW 2.419945e-10   HOLD    0.285714
+  BIXI 1.099268e-10   HOLD    0.142857
+ BIXIU 1.099259e-10   HOLD    0.142857
+ BIXIW 1.099272e-10   HOLD    0.142857
+  BIYA 2.419945e-10   HOLD    0.285714
+  BJDX 2.419945e-10   HOLD    0.285714
+  BJRI 4.498477e-10   HOLD    0.500000
+  BKCH 1.099251e-10   HOLD    0.142857
+  BKHA 4.498487e-10   HOLD    0.500000
+ BKHAR 4.498473e-10   HOLD    0.500000
+ BKHAU 4.498475e-10   HOLD    0.500000
+  BKMI 1.099275e-10   HOLD    0.142857
+  BKMS 1.099280e-10   HOLD    0.142857
+  BKNG 1.099270e-10   HOLD    0.142857
+   BKR 2.419947e-10   HOLD    0.285714
+    BL 1.099257e-10   HOLD    0.142857
+  BLBD 1.099258e-10   HOLD    0.142857
+  BLCN 1.099242e-10   HOLD    0.142857
+  BLCR 1.099256e-10   HOLD    0.142857
+  BLDP 1.099264e-10   HOLD    0.142857
+  BLFS 1.099264e-10   HOLD    0.142857
+  BLIN 2.419946e-10   HOLD    0.285714
+  BLIV 1.099258e-10   HOLD    0.142857
+  BLKB 1.099275e-10   HOLD    0.142857
+  BLLN 1.099254e-10   HOLD    0.142857
+  BLMN 1.099279e-10   HOLD    0.142857
+  BLNE 3.757250e-10   HOLD    0.428571
+  BLNK 4.498469e-10   HOLD    0.500000
+  BLRK 1.099263e-10   HOLD    0.142857
+ BLRKU 1.099258e-10   HOLD    0.142857
+ BLRKW 1.099262e-10   HOLD    0.142857
+  BLSG 4.498471e-10   HOLD    0.500000
+  BLTE 1.099267e-10   HOLD    0.142857
+  BLUW 4.498461e-10   HOLD    0.500000
+ BLUWU 4.498459e-10   HOLD    0.500000
+ BLUWW 4.498462e-10   HOLD    0.500000
+  BLZE 4.498473e-10   HOLD    0.500000
+  BLZR 1.099279e-10   HOLD    0.142857
+ BLZRU 1.099251e-10   HOLD    0.142857
+ BLZRW 1.099253e-10   HOLD    0.142857
+  BMBL 2.419945e-10   HOLD    0.285714
+  BMEA 1.099262e-10   HOLD    0.142857
+  BMGL 4.498473e-10   HOLD    0.500000
+  BMHL 1.099251e-10   HOLD    0.142857
+   BMM 1.099276e-10   HOLD    0.142857
+  BMNG 4.498481e-10   HOLD    0.500000
+  BMOP 1.099262e-10   HOLD    0.142857
+   BMR 1.099258e-10   HOLD    0.142857
+  BMRA 2.419945e-10   HOLD    0.285714
+  BMRC 3.757258e-10   HOLD    0.428571
+  BMRN 1.099271e-10   HOLD    0.142857
+  BNAI 4.498477e-10   HOLD    0.500000
+ BNAIW 1.099275e-10   HOLD    0.142857
+  BNBX 5.180282e-10   HOLD    0.571429
+   BNC 3.757230e-10   HOLD    0.428571
+ BNCWW 2.419946e-10   HOLD    0.285714
+ BNCWZ 2.419945e-10   HOLD    0.285714
+   BND 1.099278e-10   HOLD    0.142857
+  BNDP 4.498494e-10   HOLD    0.500000
+  BNDW 1.099262e-10   HOLD    0.142857
+  BNDX 1.099280e-10   HOLD    0.142857
+  BNGO 2.419946e-10   HOLD    0.285714
+  BNKK 1.099270e-10   HOLD    0.142857
+   BNR 2.419945e-10   HOLD    0.285714
+  BNRG 1.099263e-10   HOLD    0.142857
+  BNTC 1.099255e-10   HOLD    0.142857
+  BNTX 2.419946e-10   HOLD    0.285714
+  BNZI 3.757250e-10   HOLD    0.428571
+ BNZIW 1.099257e-10   HOLD    0.142857
+  BODI 1.099261e-10   HOLD    0.142857
+  BOEG 4.498481e-10   HOLD    0.500000
+  BOEU 1.099253e-10   HOLD    0.142857
+   BOF 4.498463e-10   HOLD    0.500000
+  BOKF 5.180321e-10   HOLD    0.571429
+  BOLD 2.419945e-10   HOLD    0.285714
+  BOLT 2.419946e-10   HOLD    0.285714
+   BON 3.757227e-10   HOLD    0.428571
+  BOOM 3.757252e-10   HOLD    0.428571
+  BOSC 5.180279e-10   HOLD    0.571429
+   BOT 4.498479e-10   HOLD    0.500000
+  BOTJ 5.180276e-10   HOLD    0.571429
+  BOTT 4.498478e-10   HOLD    0.500000
+  BOTZ 1.099247e-10   HOLD    0.142857
+  BOXL 1.099268e-10   HOLD    0.142857
+  BPAC 4.498469e-10   HOLD    0.500000
+ BPACR 2.419946e-10   HOLD    0.285714
+ BPACU 4.498476e-10   HOLD    0.500000
+  BPOP 3.757247e-10   HOLD    0.428571
+ BPOPM 4.498476e-10   HOLD    0.500000
+  BPRN 5.180299e-10   HOLD    0.571429
+ BPYPM 1.099281e-10   HOLD    0.142857
+ BPYPN 5.180292e-10   HOLD    0.571429
+ BPYPO 5.180308e-10   HOLD    0.571429
+ BPYPP 5.180289e-10   HOLD    0.571429
+  BRAG 1.099275e-10   HOLD    0.142857
+  BRAI 4.498472e-10   HOLD    0.500000
+  BRBI 1.099267e-10   HOLD    0.142857
+  BRCB 4.498468e-10   HOLD    0.500000
+  BREM 4.498479e-10   HOLD    0.500000
+  BRES 4.498464e-10   HOLD    0.500000
+  BRFH 4.498465e-10   HOLD    0.500000
+  BRHY 2.419945e-10   HOLD    0.285714
+  BRID 2.419946e-10   HOLD    0.285714
+  BRKR 2.419945e-10   HOLD    0.285714
+ BRKRP 2.419945e-10   HOLD    0.285714
+  BRKU 2.419945e-10   HOLD    0.285714
+  BRLS 4.498480e-10   HOLD    0.500000
+ BRLSW 4.498470e-10   HOLD    0.500000
+  BRLT 2.419945e-10   HOLD    0.285714
+  BRNS 2.419945e-10   HOLD    0.285714
+  BRNY 1.099278e-10   HOLD    0.142857
+   BRR 2.419946e-10   HOLD    0.285714
+  BRRR 4.498487e-10   HOLD    0.500000
+ BRRWW 2.419946e-10   HOLD    0.285714
+  BRTR 2.419945e-10   HOLD    0.285714
+  BRTX 1.099266e-10   HOLD    0.142857
+  BRUN 4.498481e-10   HOLD    0.500000
+ BRUNW 4.498460e-10   HOLD    0.500000
+  BRZE 4.498464e-10   HOLD    0.500000
+  BSAA 1.099255e-10   HOLD    0.142857
+ BSAAR 2.419946e-10   HOLD    0.285714
+ BSAAU 1.099265e-10   HOLD    0.142857
+  BSBK 1.099270e-10   HOLD    0.142857
+  BSCQ 1.099275e-10   HOLD    0.142857
+  BSCR 1.099263e-10   HOLD    0.142857
+  BSCS 1.099263e-10   HOLD    0.142857
+  BSCT 1.099255e-10   HOLD    0.142857
+  BSCU 1.099270e-10   HOLD    0.142857
+  BSCV 1.099253e-10   HOLD    0.142857
+  BSCW 1.099256e-10   HOLD    0.142857
+  BSCX 1.099270e-10   HOLD    0.142857
+  BSCY 1.099275e-10   HOLD    0.142857
+  BSCZ 4.498483e-10   HOLD    0.500000
+  BSET 5.180288e-10   HOLD    0.571429
+  BSJQ 1.099262e-10   HOLD    0.142857
+  BSJR 1.099261e-10   HOLD    0.142857
+  BSJS 1.099260e-10   HOLD    0.142857
+  BSJT 1.099264e-10   HOLD    0.142857
+  BSJU 1.099259e-10   HOLD    0.142857
+  BSJV 1.099263e-10   HOLD    0.142857
+  BSJW 1.099267e-10   HOLD    0.142857
+  BSJX 4.498470e-10   HOLD    0.500000
+  BSMQ 1.099260e-10   HOLD    0.142857
+  BSMR 1.099271e-10   HOLD    0.142857
+  BSMS 1.099254e-10   HOLD    0.142857
+  BSMT 1.099270e-10   HOLD    0.142857
+  BSMU 1.099282e-10   HOLD    0.142857
+  BSMV 1.099276e-10   HOLD    0.142857
+  BSMW 1.099272e-10   HOLD    0.142857
+  BSMY 1.099264e-10   HOLD    0.142857
+  BSMZ 4.498490e-10   HOLD    0.500000
+  BSRR 5.180270e-10   HOLD    0.571429
+  BSSX 1.099266e-10   HOLD    0.142857
+  BSVN 3.757244e-10   HOLD    0.428571
+  BSVO 2.419946e-10   HOLD    0.285714
+   BSY 1.099249e-10   HOLD    0.142857
+  BTAI 4.498481e-10   HOLD    0.500000
+  BTBD 2.419945e-10   HOLD    0.285714
+ BTBDW 2.419945e-10   HOLD    0.285714
+  BTBT 2.419946e-10   HOLD    0.285714
+  BTCS 3.757221e-10   HOLD    0.428571
+  BTCT 2.419946e-10   HOLD    0.285714
+  BTDR 1.099271e-10   HOLD    0.142857
+   BTF 1.099283e-10   HOLD    0.142857
+  BTGD 1.099263e-10   HOLD    0.142857
+   BTM 2.419945e-10   HOLD    0.285714
+  BTMD 1.099278e-10   HOLD    0.142857
+ BTMWW 1.099283e-10   HOLD    0.142857
+  BTOC 1.099276e-10   HOLD    0.142857
+  BTOG 2.419945e-10   HOLD    0.285714
+   BTQ 1.099246e-10   HOLD    0.142857
+  BTSG 1.099261e-10   HOLD    0.142857
+ BTSGU 2.419945e-10   HOLD    0.285714
+  BTTC 1.099262e-10   HOLD    0.142857
+    BU 4.498476e-10   HOLD    0.500000
+  BUFC 4.498483e-10   HOLD    0.500000
+  BUFI 4.498470e-10   HOLD    0.500000
+  BUFM 4.498489e-10   HOLD    0.500000
+   BUG 1.099260e-10   HOLD    0.142857
+  BULD 1.099252e-10   HOLD    0.142857
+  BULG 4.498471e-10   HOLD    0.500000
+  BULL 4.498476e-10   HOLD    0.500000
+ BULLW 1.099271e-10   HOLD    0.142857
+  BULX 4.498494e-10   HOLD    0.500000
+  BUSE 5.180291e-10   HOLD    0.571429
+ BUSEP 2.419946e-10   HOLD    0.285714
+  BUUU 1.099261e-10   HOLD    0.142857
+   BVC 1.099264e-10   HOLD    0.142857
+  BVFL 3.757227e-10   HOLD    0.428571
+   BVS 1.099270e-10   HOLD    0.142857
+  BWAY 1.099272e-10   HOLD    0.142857
+   BWB 3.757225e-10   HOLD    0.428571
+ BWBBP 5.180292e-10   HOLD    0.571429
+  BWEN 2.419945e-10   HOLD    0.285714
+  BWFG 5.180296e-10   HOLD    0.571429
+  BWIN 1.099269e-10   HOLD    0.142857
+  BWMN 4.498487e-10   HOLD    0.500000
+  BYAH 2.419945e-10   HOLD    0.285714
+  BYFC 1.099259e-10   HOLD    0.142857
+  BYND 1.099266e-10   HOLD    0.142857
+  BYRN 1.099247e-10   HOLD    0.142857
+  BYSI 4.498458e-10   HOLD    0.500000
+    BZ 3.757235e-10   HOLD    0.428571
+  BZAI 1.099259e-10   HOLD    0.142857
+ BZAIW 1.099260e-10   HOLD    0.142857
+  BZFD 1.099262e-10   HOLD    0.142857
+ BZFDW 3.757232e-10   HOLD    0.428571
+  BZUN 3.757249e-10   HOLD    0.428571
+  CAAS 3.757230e-10   HOLD    0.428571
+  CABA 1.099266e-10   HOLD    0.142857
+  CABR 1.099268e-10   HOLD    0.142857
+   CAC 5.180305e-10   HOLD    0.571429
+  CACC 2.419946e-10   HOLD    0.285714
+  CADL 1.099274e-10   HOLD    0.142857
+  CAEP 4.498486e-10   HOLD    0.500000
+  CAFG 1.099253e-10   HOLD    0.142857
+   CAI 1.099257e-10   HOLD    0.142857
+ CAIIU 4.498472e-10   HOLD    0.500000
+  CAIQ 4.498463e-10   HOLD    0.500000
+  CAKE 1.099255e-10   HOLD    0.142857
+  CALC 1.099265e-10   HOLD    0.142857
+  CALI 1.099261e-10   HOLD    0.142857
+  CALM 9.090907e-02   HOLD    0.714286
+  CAMP 1.099262e-10   HOLD    0.142857
+  CAMT 1.099260e-10   HOLD    0.142857
+   CAN 2.419945e-10   HOLD    0.285714
+  CANC 1.099261e-10   HOLD    0.142857
+  CANQ 1.099268e-10   HOLD    0.142857
+  CAPN 4.498478e-10   HOLD    0.500000
+ CAPNR 4.498479e-10   HOLD    0.500000
+ CAPNU 4.498478e-10   HOLD    0.500000
+  CAPR 1.099254e-10   HOLD    0.142857
+  CAPS 1.099256e-10   HOLD    0.142857
+   CAQ 4.498468e-10   HOLD    0.500000
+ CAQUU 4.498477e-10   HOLD    0.500000
+ CAQUW 4.498471e-10   HOLD    0.500000
+   CAR 4.498474e-10   HOLD    0.500000
+  CARE 5.180278e-10   HOLD    0.571429
+  CARG 2.419945e-10   HOLD    0.285714
+  CARL 1.099258e-10   HOLD    0.142857
+  CART 1.099266e-10   HOLD    0.142857
+  CARY 1.099260e-10   HOLD    0.142857
+  CARZ 1.099266e-10   HOLD    0.142857
+  CASH 3.757246e-10   HOLD    0.428571
+  CASS 1.099262e-10   HOLD    0.142857
+  CAST 4.498482e-10   HOLD    0.500000
+  CASY 1.099268e-10   HOLD    0.142857
+  CATH 1.099262e-10   HOLD    0.142857
+  CATY 5.180290e-10   HOLD    0.571429
+  CBAT 2.419945e-10   HOLD    0.285714
+   CBC 1.099269e-10   HOLD    0.142857
+  CBFV 2.419945e-10   HOLD    0.285714
+  CBIO 1.099258e-10   HOLD    0.142857
+   CBK 5.180287e-10   HOLD    0.571429
+  CBLL 1.099266e-10   HOLD    0.142857
+  CBNK 5.180308e-10   HOLD    0.571429
+  CBRL 1.099260e-10   HOLD    0.142857
+  CBSH 2.419946e-10   HOLD    0.285714
+  CBUS 4.498464e-10   HOLD    0.500000
+  CCAP 5.180267e-10   HOLD    0.571429
+   CCB 4.498473e-10   HOLD    0.500000
+  CCBG 5.180312e-10   HOLD    0.571429
+   CCC 4.498476e-10   HOLD    0.500000
+  CCCC 1.099264e-10   HOLD    0.142857
+   CCD 2.419945e-10   HOLD    0.285714
+  CCEC 5.180295e-10   HOLD    0.571429
+  CCEP 1.099270e-10   HOLD    0.142857
+  CCFE 4.498471e-10   HOLD    0.500000
+   CCG 2.419945e-10   HOLD    0.285714
+ CCGWW 1.099275e-10   HOLD    0.142857
+  CCHH 2.419945e-10   HOLD    0.285714
+  CCII 1.099267e-10   HOLD    0.142857
+ CCIIU 1.099269e-10   HOLD    0.142857
+ CCIIW 1.099254e-10   HOLD    0.142857
+  CCIX 4.498467e-10   HOLD    0.500000
+ CCIXU 4.498468e-10   HOLD    0.500000
+ CCIXW 4.498477e-10   HOLD    0.500000
+  CCLD 4.498474e-10   HOLD    0.500000
+ CCLDO 1.099266e-10   HOLD    0.142857
+  CCNE 5.180285e-10   HOLD    0.571429
+ CCNEP 5.180313e-10   HOLD    0.571429
+  CCNR 1.099267e-10   HOLD    0.142857
+  CCOI 2.419946e-10   HOLD    0.285714
+  CCRN 2.419946e-10   HOLD    0.285714
+  CCSB 1.099268e-10   HOLD    0.142857
+  CCSI 2.419945e-10   HOLD    0.285714
+  CCSO 1.099260e-10   HOLD    0.142857
+  CCTG 2.419945e-10   HOLD    0.285714
+  CCXI 1.099263e-10   HOLD    0.142857
+ CCXIU 1.099266e-10   HOLD    0.142857
+ CCXIW 1.099257e-10   HOLD    0.142857
+    CD 1.099264e-10   HOLD    0.142857
+   CDC 1.099267e-10   HOLD    0.142857
+  CDIG 4.498477e-10   HOLD    0.500000
+  CDIO 2.419945e-10   HOLD    0.285714
+ CDIOW 2.419945e-10   HOLD    0.285714
+   CDL 1.099268e-10   HOLD    0.142857
+  CDLX 1.099261e-10   HOLD    0.142857
+  CDNA 1.099269e-10   HOLD    0.142857
+  CDNL 1.099265e-10   HOLD    0.142857
+  CDNS 4.498483e-10   HOLD    0.500000
+  CDRO 4.498480e-10   HOLD    0.500000
+ CDROW 1.099262e-10   HOLD    0.142857
+   CDT 4.498477e-10   HOLD    0.500000
+  CDTG 1.099274e-10   HOLD    0.142857
+ CDTTW 4.498472e-10   HOLD    0.500000
+   CDW 1.099269e-10   HOLD    0.142857
+  CDXS 1.099263e-10   HOLD    0.142857
+  CDZI 1.099264e-10   HOLD    0.142857
+ CDZIP 2.419946e-10   HOLD    0.285714
+  CECO 4.498475e-10   HOLD    0.500000
+  CEFA 1.099269e-10   HOLD    0.142857
+   CEG 1.099276e-10   HOLD    0.142857
+  CELC 1.099271e-10   HOLD    0.142857
+  CELH 1.099267e-10   HOLD    0.142857
+  CELU 4.498472e-10   HOLD    0.500000
+ CELUW 4.498474e-10   HOLD    0.500000
+  CELZ 2.419945e-10   HOLD    0.285714
+  CENN 2.419945e-10   HOLD    0.285714
+  CENT 1.099259e-10   HOLD    0.142857
+ CENTA 5.180288e-10   HOLD    0.571429
+  CENX 1.099265e-10   HOLD    0.142857
+  CEPF 1.099269e-10   HOLD    0.142857
+  CEPI 1.099264e-10   HOLD    0.142857
+  CEPO 4.498477e-10   HOLD    0.500000
+  CEPS 4.498481e-10   HOLD    0.500000
+  CEPT 4.498481e-10   HOLD    0.500000
+  CEPV 1.099266e-10   HOLD    0.142857
+  CERT 3.757236e-10   HOLD    0.428571
+  CETX 5.180294e-10   HOLD    0.571429
+  CETY 4.498480e-10   HOLD    0.500000
+  CEVA 1.099262e-10   HOLD    0.142857
+   CFA 1.099266e-10   HOLD    0.142857
+  CFBK 5.180288e-10   HOLD    0.571429
+  CFFI 5.180291e-10   HOLD    0.571429
+  CFFN 5.180292e-10   HOLD    0.571429
+   CFO 1.099260e-10   HOLD    0.142857
+    CG 2.419945e-10   HOLD    0.285714
+ CGABL 4.498473e-10   HOLD    0.500000
+  CGBD 5.180309e-10   HOLD    0.571429
+   CGC 2.419945e-10   HOLD    0.285714
+  CGCT 4.498469e-10   HOLD    0.500000
+ CGCTU 4.498475e-10   HOLD    0.500000
+ CGCTW 4.498475e-10   HOLD    0.500000
+  CGEM 1.099265e-10   HOLD    0.142857
+  CGEN 3.757241e-10   HOLD    0.428571
+  CGNT 1.099266e-10   HOLD    0.142857
+  CGNX 2.419945e-10   HOLD    0.285714
+   CGO 9.090907e-02   HOLD    0.714286
+  CGON 1.099274e-10   HOLD    0.142857
+  CGTL 2.419946e-10   HOLD    0.285714
+  CGTX 4.498464e-10   HOLD    0.500000
+   CHA 1.099267e-10   HOLD    0.142857
+  CHAI 4.498479e-10   HOLD    0.500000
+  CHAR 4.498477e-10   HOLD    0.500000
+ CHARR 4.498484e-10   HOLD    0.500000
+ CHARU 4.498477e-10   HOLD    0.500000
+  CHCI 3.757239e-10   HOLD    0.428571
+  CHCO 2.419945e-10   HOLD    0.285714
+  CHDN 1.099266e-10   HOLD    0.142857
+  CHEC 1.099260e-10   HOLD    0.142857
+ CHECU 1.099266e-10   HOLD    0.142857
+ CHECW 1.099267e-10   HOLD    0.142857
+  CHEF 1.099257e-10   HOLD    0.142857
+  CHGX 1.099262e-10   HOLD    0.142857
+   CHI 9.090907e-02   HOLD    0.714286
+  CHKP 2.419945e-10   HOLD    0.285714
+  CHMG 2.419945e-10   HOLD    0.285714
+  CHNR 1.099267e-10   HOLD    0.142857
+  CHPG 4.498475e-10   HOLD    0.500000
+ CHPGR 4.498478e-10   HOLD    0.500000
+ CHPGU 4.498478e-10   HOLD    0.500000
+  CHPS 1.099263e-10   HOLD    0.142857
+  CHPX 4.498473e-10   HOLD    0.500000
+   CHR 5.180298e-10   HOLD    0.571429
+  CHRD 3.757238e-10   HOLD    0.428571
+  CHRI 4.498481e-10   HOLD    0.500000
+  CHRN 1.099264e-10   HOLD    0.142857
+  CHRS 1.099265e-10   HOLD    0.142857
+  CHRW 2.419945e-10   HOLD    0.285714
+ CHSCL 1.099273e-10   HOLD    0.142857
+ CHSCM 1.099267e-10   HOLD    0.142857
+ CHSCN 1.099264e-10   HOLD    0.142857
+ CHSCO 1.099267e-10   HOLD    0.142857
+ CHSCP 1.099266e-10   HOLD    0.142857
+  CHSN 3.757242e-10   HOLD    0.428571
+  CHTR 3.757241e-10   HOLD    0.428571
+   CHW 5.180298e-10   HOLD    0.571429
+   CHY 9.090907e-02   HOLD    0.714286
+  CHYM 2.419946e-10   HOLD    0.285714
+  CIBR 1.099264e-10   HOLD    0.142857
+  CIFG 4.498475e-10   HOLD    0.500000
+  CIFR 1.099267e-10   HOLD    0.142857
+  CIGI 1.099263e-10   HOLD    0.142857
+  CIIT 1.099262e-10   HOLD    0.142857
+  CINF 3.757237e-10   HOLD    0.428571
+  CING 1.099265e-10   HOLD    0.142857
+ CINGW 2.419946e-10   HOLD    0.285714
+  CISO 3.757236e-10   HOLD    0.428571
+  CISS 2.419945e-10   HOLD    0.285714
+  CIVB 5.180287e-10   HOLD    0.571429
+  CJMB 1.099266e-10   HOLD    0.142857
+  CLAR 3.757236e-10   HOLD    0.428571
+  CLBK 4.498472e-10   HOLD    0.500000
+  CLBT 1.099266e-10   HOLD    0.142857
+  CLDX 1.099265e-10   HOLD    0.142857
+  CLFD 1.099266e-10   HOLD    0.142857
+  CLGN 2.419945e-10   HOLD    0.285714
+  CLIK 2.419945e-10   HOLD    0.285714
+  CLIR 1.099265e-10   HOLD    0.142857
+  CLLS 1.099268e-10   HOLD    0.142857
+  CLMB 1.099266e-10   HOLD    0.142857
+  CLMT 4.498473e-10   HOLD    0.500000
+  CLNE 2.419945e-10   HOLD    0.285714
+  CLNN 1.099267e-10   HOLD    0.142857
+  CLOA 1.099265e-10   HOLD    0.142857
+  CLOD 4.498474e-10   HOLD    0.500000
+  CLOU 4.498473e-10   HOLD    0.500000
+  CLOV 4.498476e-10   HOLD    0.500000
+  CLPS 2.419945e-10   HOLD    0.285714
+  CLPT 1.099268e-10   HOLD    0.142857
+  CLRB 1.099269e-10   HOLD    0.142857
+  CLRO 1.099265e-10   HOLD    0.142857
+  CLSK 1.099267e-10   HOLD    0.142857
+ CLSKW 2.419945e-10   HOLD    0.285714
+  CLSM 1.099267e-10   HOLD    0.142857
+  CLST 1.099268e-10   HOLD    0.142857
+  CLWT 2.419945e-10   HOLD    0.285714
+  CLYM 1.099265e-10   HOLD    0.142857
+  CMBO 4.498473e-10   HOLD    0.500000
+  CMCO 5.180289e-10   HOLD    0.571429
+ CMCSA 5.180288e-10   HOLD    0.571429
+  CMCT 1.099267e-10   HOLD    0.142857
+   CME 1.099266e-10   HOLD    0.142857
+  CMGG 4.498477e-10   HOLD    0.500000
+  CMII 4.498478e-10   HOLD    0.500000
+ CMIIU 4.498475e-10   HOLD    0.500000
+ CMIIW 4.498474e-10   HOLD    0.500000
+  CMMB 2.419945e-10   HOLD    0.285714
+  CMND 2.419946e-10   HOLD    0.285714
+  CMPR 4.498476e-10   HOLD    0.500000
+  CMPS 1.099264e-10   HOLD    0.142857
+  CMPX 1.099266e-10   HOLD    0.142857
+  CMRC 2.419945e-10   HOLD    0.285714
+  CMTL 1.099267e-10   HOLD    0.142857
+  CMTV 2.419945e-10   HOLD    0.285714
+  CNCG 4.498476e-10   HOLD    0.500000
+  CNCK 4.498476e-10   HOLD    0.500000
+ CNCKW 1.099265e-10   HOLD    0.142857
+  CNDT 2.419945e-10   HOLD    0.285714
+  CNET 2.419945e-10   HOLD    0.285714
+  CNEY 2.419945e-10   HOLD    0.285714
+  CNOB 3.757237e-10   HOLD    0.428571
+ CNOBP 5.180291e-10   HOLD    0.571429
+  CNQQ 4.498478e-10   HOLD    0.500000
+  CNSP 4.498477e-10   HOLD    0.500000
+  CNTA 1.099265e-10   HOLD    0.142857
+  CNTB 1.099266e-10   HOLD    0.142857
+  CNTN 2.419945e-10   HOLD    0.285714
+  CNTX 1.099265e-10   HOLD    0.142857
+  CNTY 4.498475e-10   HOLD    0.500000
+  CNVS 4.498476e-10   HOLD    0.500000
+  CNXC 3.757237e-10   HOLD    0.428571
+  CNXN 2.419945e-10   HOLD    0.285714
+  COAG 1.099265e-10   HOLD    0.142857
+  COCH 1.099265e-10   HOLD    0.142857
+ COCHW 2.419945e-10   HOLD    0.285714
+  COCO 1.099265e-10   HOLD    0.142857
+  COCP 1.099265e-10   HOLD    0.142857
+  CODA 1.099265e-10   HOLD    0.142857
+  CODX 2.419945e-10   HOLD    0.285714
+  COFS 5.180293e-10   HOLD    0.571429
+  COGT 1.099266e-10   HOLD    0.142857
+  COHU 1.099265e-10   HOLD    0.142857
+  COIG 4.498476e-10   HOLD    0.500000
+  COIN 1.099265e-10   HOLD    0.142857
+  COKE 1.099265e-10   HOLD    0.142857
+  COLA 4.498475e-10   HOLD    0.500000
+ COLAR 4.498476e-10   HOLD    0.500000
+ COLAU 4.498476e-10   HOLD    0.500000
+
+Calculating deviations (threshold: 5%)...
+⚠️  Found 19 holdings requiring rebalancing attention:
+  • 3026: Current 5.6% vs Optimal 0.0% (Deviation: 5.6%)
+  • 3689: Current 16.2% vs Optimal 0.0% (Deviation: 16.2%)
+  • 3867: Current 12.6% vs Optimal 0.0% (Deviation: 12.6%)
+  • 4197: Current 7.8% vs Optimal 0.0% (Deviation: 7.8%)
+  • 5347: Current 12.5% vs Optimal 0.0% (Deviation: 12.5%)
+  • AAME: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)
+  • AFYA: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)
+  • ARM: Current 6.6% vs Optimal 0.0% (Deviation: 6.6%)
+  • ATLCP: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)
+  • BHFAM: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)
+  • BHFAN: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)
+  • BHFAO: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)
+  • BHFAP: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)
+  • CALM: Current 0.7% vs Optimal 9.1% (Deviation: 8.4%)
+  • CGO: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)
+  • CHI: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)
+  • CHY: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)
+  • GOOGL: Current 8.0% vs Optimal 0.0% (Deviation: 8.0%)
+  • INTC: Current 6.5% vs Optimal 0.0% (Deviation: 6.5%)
+\n==================================================
+ALERT SUMMARY:
+Rebalancing Alert: 19 holdings exceed 5% deviation threshold\n3026: Current 5.6% vs Optimal 0.0% (Deviation: 5.6%)\n3689: Current 16.2% vs Optimal 0.0% (Deviation: 16.2%)\n3867: Current 12.6% vs Optimal 0.0% (Deviation: 12.6%)\n4197: Current 7.8% vs Optimal 0.0% (Deviation: 7.8%)\n5347: Current 12.5% vs Optimal 0.0% (Deviation: 12.5%)\nAAME: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nAFYA: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nARM: Current 6.6% vs Optimal 0.0% (Deviation: 6.6%)\nATLCP: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nBHFAM: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nBHFAN: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nBHFAO: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nBHFAP: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nCALM: Current 0.7% vs Optimal 9.1% (Deviation: 8.4%)\nCGO: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nCHI: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nCHY: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nGOOGL: Current 8.0% vs Optimal 0.0% (Deviation: 8.0%)\nINTC: Current 6.5% vs Optimal 0.0% (Deviation: 6.5%)
+TELEGRAM ALERT: Rebalancing Alert: 19 holdings exceed 5% deviation threshold\n3026: Current 5.6% vs Optimal 0.0% (Deviation: 5.6%)\n3689: Current 16.2% vs Optimal 0.0% (Deviation: 16.2%)\n3867: Current 12.6% vs Optimal 0.0% (Deviation: 12.6%)\n4197: Current 7.8% vs Optimal 0.0% (Deviation: 7.8%)\n5347: Current 12.5% vs Optimal 0.0% (Deviation: 12.5%)\nAAME: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nAFYA: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nARM: Current 6.6% vs Optimal 0.0% (Deviation: 6.6%)\nATLCP: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nBHFAM: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nBHFAN: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nBHFAO: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nBHFAP: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nCALM: Current 0.7% vs Optimal 9.1% (Deviation: 8.4%)\nCGO: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nCHI: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nCHY: Current 0.0% vs Optimal 9.1% (Deviation: 9.1%)\nGOOGL: Current 8.0% vs Optimal 0.0% (Deviation: 8.0%)\nINTC: Current 6.5% vs Optimal 0.0% (Deviation: 6.5%)
+2026-07-20 12:49:04.808 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+Running Rebalancing Alert System...
+==================================================
+Loading current holdings...
+Warning: Using average cost for 6742UW (live price unavailable)
+Warning: Using average cost for 7113WA (live price unavailable)
+Warning: Using average cost for AI (live price unavailable)
+Warning: Using average cost for AMD (live price unavailable)
+Warning: Using average cost for GOOGL (live price unavailable)
+Warning: Using average cost for IBM (live price unavailable)
+Warning: Using average cost for INTC (live price unavailable)
+Warning: Using average cost for MSFT (live price unavailable)
+Warning: Using average cost for MU (live price unavailable)
+Warning: Using average cost for NVDA (live price unavailable)
+Warning: Using average cost for QCOM (live price unavailable)
+Found 44 holdings:
+ticker          company_name  current_weight
+  1155                  1155        0.046826
+  1818                  1818        0.054247
+  3026 KPJ Healthcare Berhad        0.066894
+  3662                  3662        0.000000
+  3689                  3689        0.196293
+  3867                  3867        0.153104
+  4197                  4197        0.087799
+  5099                  5099        0.000000
+  5183                  5183        0.000000
+  5238                  5238        0.000000
+  5249                  5249        0.004338
+  5296   MR DIY Group Berhad        0.000000
+  5326                  5326        0.000000
+  5337                  5337        0.000000
+  5347                  5347        0.149467
+  6742    TIME dotCom Berhad        0.001595
+6742UW                6742UW        0.000000
+  7013                  7013        0.000711
+  7095                  7095        0.000000
+  7113                  7113        0.000000
+7113WA                7113WA        0.000282
+  AAPG                              0.000417
+  AAPL                              0.000066
+  ACHR                              0.002329
+    AI                              0.009726
+   AMD                              0.010753
+   ARM                              0.062285
+  ASML                              0.008068
+  CALM                              0.008163
+  CRSP                              0.003251
+  GOOG                              0.007646
+ GOOGL                              0.049805
+   IBM                              0.010320
+   INR                              0.002751
+  INTC                              0.016809
+  MSFT                              0.005216
+    MU                              0.002951
+  NVDA                              0.008252
+  PATH                              0.010104
+  QCOM                              0.004281
+  RXRX                              0.004851
+  TSLA                              0.008174
+    VG                              0.000803
+  WRBY                              0.001425
+
+Loading optimal weights from latest optimization...
+Optimal weights from latest run:
+ticker   weight signal  confidence
+  ABCL 0.000014   HOLD    0.142857
+  AACB 0.073443   HOLD    0.500000
+ AACBR 0.050123   HOLD    0.500000
+ AACBU 0.054315   HOLD    0.500000
+  AACG 0.000013   HOLD    0.285714
+  AACI 0.080258   HOLD    0.500000
+ AACIU 0.056007   HOLD    0.500000
+ AACIW 0.050123   HOLD    0.500000
+  AACO 0.000014   HOLD    0.142857
+ AACOU 0.000014   HOLD    0.142857
+ AACOW 0.000014   HOLD    0.142857
+ AACPU 0.076677   HOLD    0.500000
+  AADR 0.000014   HOLD    0.142857
+  AAEQ 0.070157   HOLD    0.500000
+   AAL 0.071704   HOLD    0.500000
+  AALG 0.063437   HOLD    0.500000
+  AAME 0.200014   HOLD    0.714286
+  AAOI 0.000014   HOLD    0.142857
+  AAON 0.000013   HOLD    0.285714
+  AAPB 0.077715   HOLD    0.500000
+  AAPD 0.000014   HOLD    0.142857
+  AAPG 0.000014   HOLD    0.142857
+  AAPL 0.000014   HOLD    0.142857
+  AAPU 0.000014   HOLD    0.142857
+  AARD 0.000013   HOLD    0.285714
+  AAUS 0.075807   HOLD    0.500000
+  AAVM 0.000014   HOLD    0.142857
+  AAXJ 0.000014   HOLD    0.142857
+  ABAT 0.000014   HOLD    0.142857
+
+Calculating deviations (threshold: 5%)...
+⚠️  Found 20 holdings requiring rebalancing attention:
+  • 1818: Current 5.4% vs Optimal 0.0% (Deviation: 5.4%)
+  • 3026: Current 6.7% vs Optimal 0.0% (Deviation: 6.7%)
+  • 3689: Current 19.6% vs Optimal 0.0% (Deviation: 19.6%)
+  • 3867: Current 15.3% vs Optimal 0.0% (Deviation: 15.3%)
+  • 4197: Current 8.8% vs Optimal 0.0% (Deviation: 8.8%)
+  • 5347: Current 14.9% vs Optimal 0.0% (Deviation: 14.9%)
+  • AACB: Current 0.0% vs Optimal 7.3% (Deviation: 7.3%)
+  • AACBR: Current 0.0% vs Optimal 5.0% (Deviation: 5.0%)
+  • AACBU: Current 0.0% vs Optimal 5.4% (Deviation: 5.4%)
+  • AACI: Current 0.0% vs Optimal 8.0% (Deviation: 8.0%)
+  • AACIU: Current 0.0% vs Optimal 5.6% (Deviation: 5.6%)
+  • AACIW: Current 0.0% vs Optimal 5.0% (Deviation: 5.0%)
+  • AACPU: Current 0.0% vs Optimal 7.7% (Deviation: 7.7%)
+  • AAEQ: Current 0.0% vs Optimal 7.0% (Deviation: 7.0%)
+  • AAL: Current 0.0% vs Optimal 7.2% (Deviation: 7.2%)
+  • AALG: Current 0.0% vs Optimal 6.3% (Deviation: 6.3%)
+  • AAME: Current 0.0% vs Optimal 20.0% (Deviation: 20.0%)
+  • AAPB: Current 0.0% vs Optimal 7.8% (Deviation: 7.8%)
+  • AAUS: Current 0.0% vs Optimal 7.6% (Deviation: 7.6%)
+  • ARM: Current 6.2% vs Optimal 0.0% (Deviation: 6.2%)
+\n==================================================
+ALERT SUMMARY:
+Rebalancing Alert: 20 holdings exceed 5% deviation threshold\n1818: Current 5.4% vs Optimal 0.0% (Deviation: 5.4%)\n3026: Current 6.7% vs Optimal 0.0% (Deviation: 6.7%)\n3689: Current 19.6% vs Optimal 0.0% (Deviation: 19.6%)\n3867: Current 15.3% vs Optimal 0.0% (Deviation: 15.3%)\n4197: Current 8.8% vs Optimal 0.0% (Deviation: 8.8%)\n5347: Current 14.9% vs Optimal 0.0% (Deviation: 14.9%)\nAACB: Current 0.0% vs Optimal 7.3% (Deviation: 7.3%)\nAACBR: Current 0.0% vs Optimal 5.0% (Deviation: 5.0%)\nAACBU: Current 0.0% vs Optimal 5.4% (Deviation: 5.4%)\nAACI: Current 0.0% vs Optimal 8.0% (Deviation: 8.0%)\nAACIU: Current 0.0% vs Optimal 5.6% (Deviation: 5.6%)\nAACIW: Current 0.0% vs Optimal 5.0% (Deviation: 5.0%)\nAACPU: Current 0.0% vs Optimal 7.7% (Deviation: 7.7%)\nAAEQ: Current 0.0% vs Optimal 7.0% (Deviation: 7.0%)\nAAL: Current 0.0% vs Optimal 7.2% (Deviation: 7.2%)\nAALG: Current 0.0% vs Optimal 6.3% (Deviation: 6.3%)\nAAME: Current 0.0% vs Optimal 20.0% (Deviation: 20.0%)\nAAPB: Current 0.0% vs Optimal 7.8% (Deviation: 7.8%)\nAAUS: Current 0.0% vs Optimal 7.6% (Deviation: 7.6%)\nARM: Current 6.2% vs Optimal 0.0% (Deviation: 6.2%)
+TELEGRAM ALERT: Rebalancing Alert: 20 holdings exceed 5% deviation threshold\n1818: Current 5.4% vs Optimal 0.0% (Deviation: 5.4%)\n3026: Current 6.7% vs Optimal 0.0% (Deviation: 6.7%)\n3689: Current 19.6% vs Optimal 0.0% (Deviation: 19.6%)\n3867: Current 15.3% vs Optimal 0.0% (Deviation: 15.3%)\n4197: Current 8.8% vs Optimal 0.0% (Deviation: 8.8%)\n5347: Current 14.9% vs Optimal 0.0% (Deviation: 14.9%)\nAACB: Current 0.0% vs Optimal 7.3% (Deviation: 7.3%)\nAACBR: Current 0.0% vs Optimal 5.0% (Deviation: 5.0%)\nAACBU: Current 0.0% vs Optimal 5.4% (Deviation: 5.4%)\nAACI: Current 0.0% vs Optimal 8.0% (Deviation: 8.0%)\nAACIU: Current 0.0% vs Optimal 5.6% (Deviation: 5.6%)\nAACIW: Current 0.0% vs Optimal 5.0% (Deviation: 5.0%)\nAACPU: Current 0.0% vs Optimal 7.7% (Deviation: 7.7%)\nAAEQ: Current 0.0% vs Optimal 7.0% (Deviation: 7.0%)\nAAL: Current 0.0% vs Optimal 7.2% (Deviation: 7.2%)\nAALG: Current 0.0% vs Optimal 6.3% (Deviation: 6.3%)\nAAME: Current 0.0% vs Optimal 20.0% (Deviation: 20.0%)\nAAPB: Current 0.0% vs Optimal 7.8% (Deviation: 7.8%)\nAAUS: Current 0.0% vs Optimal 7.6% (Deviation: 7.6%)\nARM: Current 6.2% vs Optimal 0.0% (Deviation: 6.2%)

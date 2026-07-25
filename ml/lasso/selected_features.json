@@ -1,0 +1,15 @@
+[
+  "return_1d",
+  "return_5d",
+  "return_20d",
+  "price_to_sma_5",
+  "ema_26",
+  "macd_signal",
+  "macd_histogram",
+  "rsi",
+  "bb_width",
+  "atr",
+  "volume_trend",
+  "fund_roe",
+  "fund_debt_to_equity"
+]

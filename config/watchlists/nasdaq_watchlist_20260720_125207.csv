@@ -1,0 +1,8 @@
+ticker,signal_type,detection_date,price_at_signal,signal_priority,ml_confidence,enhancement_used
+TECH,HIGH_12W,2026-07-13,72.12,61.0,,0
+TECH,HIGH_4W,2026-07-13,72.12,59.0,,0
+QMMM,HIGH_4W,2026-07-13,119.4,59.0,,0
+TECH,HIGH_2W,2026-07-13,72.12,57.0,,0
+QMMM,HIGH_2W,2026-07-13,119.4,57.0,,0
+QMMM,LOW_4W,2026-07-13,119.4,54.0,,0
+QMMM,LOW_2W,2026-07-13,119.4,52.0,,0

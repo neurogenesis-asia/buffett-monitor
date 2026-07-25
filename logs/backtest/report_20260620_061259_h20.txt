@@ -1,0 +1,45 @@
+======================================================================
+BUFFETT MONITOR -- BACKTEST REPORT  (horizon=20d, span=56d)
+======================================================================
+
+DATA SUMMARY
+  total scoring rows:                      18,500
+  with non-null forward_20d_return         43
+  labelled fraction:                           0.23%
+  WARNING: <200 labelled rows -- quintile alpha is NOT statistically meaningful.
+           Treat any Sharpe / Q5-Q1 number as anecdotal, not predictive.
+
+-> SANITY: signal distribution with forward returns
+----------------------------------------------------------------------
+  rule_signal       n   mean_fwd   hit_rate
+  HOLD              2     -0.23%    +50.00%
+  SELL             41     +8.55%    +65.85%
+
+-> ALPHA BY QUANT_SCORE QUINTILE (20d forward)
+----------------------------------------------------------------------
+  (no rows with both quant_score and forward returns)
+
+-> Q5-MINUS-Q1 SPREAD BY MARKET (20d forward)
+----------------------------------------------------------------------
+  (insufficient data)
+
+-> ALPHA BY MOAT STRENGTH (20d forward)
+----------------------------------------------------------------------
+  moat            n   mean_fwd   hit_rate
+  NARROW         43     +8.15%    +65.12%
+
+-> BENCHMARK FWD RETURNS (20d) at sampled dates
+----------------------------------------------------------------------
+  klse     mean=    +2.07% n=  6 (across 6 sampled dates)
+  us       mean=    +1.54% n=  6 (across 6 sampled dates)
+  world    mean=    +1.48% n=  6 (across 6 sampled dates)
+
+======================================================================
+INTERPRETATION GUIDANCE
+======================================================================
+- The signal table tells you what rules the system actually emits.
+- The quintile table tells you whether quant_score orders returns.
+- The Q5-Q1 spread is the alpha-claim. If mean and std are both ~0,
+  scoring is currently an information-zero ranking on this horizon.
+- Sharpe_ann > ~1.0 across many markets would be a strong edge.
+- Sharpe_ann < 0.5 = no edge. Sharpe_ann < 0 = the rules select losers.

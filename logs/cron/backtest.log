@@ -1,0 +1,106 @@
+2026-06-20 06:29:19+0800  [backtest]  begin
+usage: run_backtest.py [-h] [--db DB] [--horizon {20,60,252}] [--out OUT]
+run_backtest.py: error: unrecognized arguments: /home/shalu/buffett-monitor/scripts/run_backtest.py
+2026-06-20 06:29:20+0800  [backtest]  WARN exit 2
+2026-06-20 10:08:21+0800  [backtest]  begin
+usage: run_backtest.py [-h] [--db DB] [--horizon {20,60,252}] [--out OUT]
+run_backtest.py: error: unrecognized arguments: /home/shalu/buffett-monitor/scripts/run_backtest.py
+2026-06-20 10:08:22+0800  [backtest]  WARN exit 2
+2026-06-20 10:13:29+0800  [backtest]  begin
+usage: run_backtest.py [-h] [--db DB] [--horizon {20,60,252}] [--out OUT]
+run_backtest.py: error: unrecognized arguments: /home/shalu/buffett-monitor/scripts/run_backtest.py
+2026-06-20 10:13:30+0800  [backtest]  WARN exit 2
+2026-06-21 14:30:01+0800  [backtest]  begin
+usage: run_backtest.py [-h] [--db DB] [--horizon {20,60,252}] [--out OUT]
+run_backtest.py: error: unrecognized arguments: /home/shalu/buffett-monitor/scripts/run_backtest.py
+2026-06-21 14:30:02+0800  [backtest]  WARN exit 2
+2026-06-30 10:22:35+0800  [backtest]  begin
+Loaded 18,504 score rows across 2026-04-25 00:00:00 → 2026-06-21 00:00:00
+======================================================================
+BUFFETT MONITOR -- BACKTEST REPORT  (horizon=20d, span=57d)
+======================================================================
+
+DATA SUMMARY
+  total scoring rows:                      18,504
+  with non-null forward_20d_return      6,006
+  labelled fraction:                          32.46%
+-> SANITY: signal distribution with forward returns
+----------------------------------------------------------------------
+  rule_signal       n   mean_fwd   hit_rate
+  HOLD              2     -0.23%    +50.00%
+  SELL             41     +8.55%    +65.85%
+  UNKNOWN        5963     +2.08%    +51.72%
+
+-> ALPHA BY QUANT_SCORE QUINTILE (20d forward)
+----------------------------------------------------------------------
+  q   n_obs   mean_fwd   hit_rate
+  Q1   3591     +0.69%    +52.44%
+  Q2   1506     +5.77%    +45.22%
+  Q3    832     +1.96%    +60.34%
+  Q4     74     -0.66%    +58.11%
+
+-> BEST-MINUS-WORST QUINTILE SPREAD BY MARKET (20d forward)
+----------------------------------------------------------------------
+  us     n_cohorts= 12 mean_spread=   +18.44% std=    +8.91% Sharpe_ann=  +14.93
+
+-> ALPHA BY MOAT STRENGTH (20d forward)
+----------------------------------------------------------------------
+  moat            n   mean_fwd   hit_rate
+  NARROW       6006     +2.12%    +51.81%
+
+-> BENCHMARK FWD RETURNS (20d) at sampled dates
+----------------------------------------------------------------------
+  klse     mean=    +1.48% n=  6 (across 6 sampled dates)
+  us       mean=    +1.32% n=  6 (across 6 sampled dates)
+  world    mean=    +1.36% n=  6 (across 6 sampled dates)
+
+======================================================================
+INTERPRETATION GUIDANCE
+======================================================================
+- The signal table tells you what rules the system actually emits.
+- The quintile table tells you whether quant_score orders returns.
+- The Q5-Q1 spread is the alpha-claim. If mean and std are both ~0,
+  scoring is currently an information-zero ranking on this horizon.
+- Sharpe_ann > ~1.0 across many markets would be a strong edge.
+- Sharpe_ann < 0.5 = no edge. Sharpe_ann < 0 = the rules select losers.
+
+WHAT THE DATA TELLS US (current state):
+- System has produced 1929 scoring events; ONLY 0 were BUY.
+- ~99% of outputs are SELL, ~1% HOLD. Very low signal variety.
+- 43 forward-20d labels exist (April 2026 cohort).
+- SELL cohort forward-20d return: +8.55% mean (n=41).
+  vs SPY same dates: +1.54%.  SELL selected WINNERS, not losers,
+  though n is too small to call this statistically significant.
+- To get a real answer, you need ~500+ labeled outcomes. Path:
+  1. Run collect_forward_returns.py weekly — fills 60d on existing 41.
+  2. Subscriber weekly_scan slice continues to add ~200 new scoring events.
+  3. By ~4 weeks you'll have ~800 labeled rows; backtest becomes meaningful.
+- For now, this report's only honest claim is: system is too immature
+  to prove or disprove edge (small n, no BUY history).
+- Actionable: pick a NEW declarative edge test and run it manually
+  against SPY to validate before relying on the live system.
+
+
+[written] /home/shalu/buffett-monitor/logs/backtest/report_20260630_102237_h20.txt
+[written] /home/shalu/buffett-monitor/logs/backtest/report_20260630_102237_h20.json  (peak 1.8s)
+2026-06-30 10:22:38+0800  [backtest]  ok (raw=0)
+2026-07-05 14:30:01+0800  [backtest]  begin
+$SPY: possibly delisted; no price data found  (1d 2024-01-01 -> 2026-07-05)
+
+1 Failed download:
+['SPY']: possibly delisted; no price data found  (1d 2024-01-01 -> 2026-07-05)
+Loaded 18,543 score rows across 2026-04-25 00:00:00 → 2026-07-02 00:00:00
+Traceback (most recent call last):
+  File "/home/shalu/buffett-monitor/scripts/run_backtest.py", line 513, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/shalu/buffett-monitor/scripts/run_backtest.py", line 483, in main
+    "bm":           bm_fwd_returns(args.horizon),
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/shalu/buffett-monitor/scripts/run_backtest.py", line 285, in bm_fwd_returns
+    idx = load_index_history(ticker, start="2024-01-01")
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/shalu/buffett-monitor/scripts/backtest/price_loader.py", line 62, in load_index_history
+    raise RuntimeError(f"yfinance returned no data for {ticker}")
+RuntimeError: yfinance returned no data for SPY
+2026-07-05 14:30:33+0800  [backtest]  ok (raw=1)

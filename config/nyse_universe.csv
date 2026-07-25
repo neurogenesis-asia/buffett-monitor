@@ -1,0 +1,301 @@
+ticker,exchange,company_name
+TSM,NYSE,Taiwan Semiconductor Manufacturing Company Limited
+LLY,NYSE,Eli Lilly and Company
+JPM,NYSE,JPMorgan Chase & Co.
+XOM,NYSE,Exxon Mobil Corporation
+V,NYSE,Visa Inc.
+JNJ,NYSE,Johnson & Johnson
+ORCL,NYSE,Oracle Corporation
+MA,NYSE,Mastercard Incorporated
+CAT,NYSE,Caterpillar Inc.
+CVX,NYSE,Chevron Corporation
+ABBV,NYSE,AbbVie Inc.
+BAC,NYSE,Bank of America Corporation
+UNH,NYSE,UnitedHealth Group Incorporated
+KO,NYSE,The Coca-Cola Company
+PG,NYSE,The Procter & Gamble Company
+BABA,NYSE,Alibaba Group Holding Limited
+GE,NYSE,GE Aerospace
+HD,NYSE,"The Home Depot, Inc."
+HSBC,NYSE,HSBC Holdings plc
+MS,NYSE,Morgan Stanley
+PM,NYSE,Philip Morris International Inc.
+GEV,NYSE,GE Vernova Inc.
+AZN,NYSE,AstraZeneca PLC
+NVS,NYSE,Novartis AG
+GS,NYSE,"The Goldman Sachs Group, Inc."
+MRK,NYSE,"Merck & Co., Inc."
+RY,NYSE,Royal Bank of Canada
+RTX,NYSE,RTX Corporation
+SHEL,NYSE,Shell plc
+WFC,NYSE,Wells Fargo & Company
+BHP,NYSE,BHP Group Limited
+C,NYSE,Citigroup Inc.
+TM,NYSE,Toyota Motor Corporation
+AXP,NYSE,American Express Company
+MUFG,NYSE,"Mitsubishi UFJ Financial Group, Inc."
+NVO,NYSE,Novo Nordisk A/S
+IBM,NYSE,International Business Machines Corporation
+BX,NYSE,Blackstone Inc.
+TTE,NYSE,TotalEnergies SE
+VZ,NYSE,Verizon Communications Inc.
+NEE,NYSE,"NextEra Energy, Inc."
+SAP,NYSE,SAP SE
+MCD,NYSE,McDonald's Corporation
+BA,NYSE,The Boeing Company
+DIS,NYSE,The Walt Disney Company
+TD,NYSE,The Toronto-Dominion Bank
+RIO,NYSE,Rio Tinto Group
+ANET,NYSE,"Arista Networks, Inc."
+T,NYSE,AT&T Inc.
+SAN,NYSE,"Banco Santander, S.A."
+TMO,NYSE,Thermo Fisher Scientific Inc.
+BLK,NYSE,"BlackRock, Inc."
+GLW,NYSE,Corning Incorporated
+TJX,NYSE,"The TJX Companies, Inc."
+DE,NYSE,Deere & Company
+UNP,NYSE,Union Pacific Corporation
+SCCO,NYSE,Southern Copper Corporation
+SCHW,NYSE,The Charles Schwab Corporation
+APH,NYSE,Amphenol Corporation
+ETN,NYSE,Eaton Corporation plc
+UBER,NYSE,"Uber Technologies, Inc."
+BUD,NYSE,Anheuser-Busch InBev SA/NV
+DELL,NYSE,Dell Technologies Inc.
+WELL,NYSE,Welltower Inc.
+PFE,NYSE,Pfizer Inc.
+UBS,NYSE,UBS Group AG
+ABT,NYSE,Abbott Laboratories
+COP,NYSE,ConocoPhillips
+VRT,NYSE,Vertiv Holdings Co
+SMFG,NYSE,"Sumitomo Mitsui Financial Group, Inc."
+CRM,NYSE,"Salesforce, Inc."
+BTI,NYSE,British American Tobacco p.l.c.
+PLD,NYSE,"Prologis, Inc."
+PBR,NYSE,Petróleo Brasileiro S.A. - Petrobras
+SONY,NYSE,Sony Group Corporation
+NEM,NYSE,Newmont Corporation
+LOW,NYSE,"Lowe's Companies, Inc."
+UL,NYSE,Unilever PLC
+SPGI,NYSE,S&P Global Inc.
+CB,NYSE,Chubb Limited
+HDB,NYSE,HDFC Bank Limited
+BBVA,NYSE,"Banco Bilbao Vizcaya Argentaria, S.A."
+CVS,NYSE,CVS Health Corporation
+LMT,NYSE,Lockheed Martin Corporation
+ENB,NYSE,Enbridge Inc.
+DHR,NYSE,Danaher Corporation
+MO,NYSE,"Altria Group, Inc."
+PGR,NYSE,The Progressive Corporation
+BMY,NYSE,Bristol-Myers Squibb Company
+PWR,NYSE,"Quanta Services, Inc."
+COF,NYSE,Capital One Financial Corporation
+BP,NYSE,BP p.l.c.
+SYK,NYSE,Stryker Corporation
+PH,NYSE,Parker-Hannifin Corporation
+MFG,NYSE,"Mizuho Financial Group, Inc."
+HWM,NYSE,Howmet Aerospace Inc.
+BMO,NYSE,Bank of Montreal
+ACN,NYSE,Accenture plc
+SO,NYSE,The Southern Company
+TT,NYSE,Trane Technologies plc
+BN,NYSE,Brookfield Corporation
+CM,NYSE,Canadian Imperial Bank of Commerce
+GSK,NYSE,GSK plc
+MDT,NYSE,Medtronic plc
+AEM,NYSE,Agnico Eagle Mines Limited
+DUK,NYSE,Duke Energy Corporation
+CNQ,NYSE,Canadian Natural Resources Limited
+CMI,NYSE,Cummins Inc.
+HCA,NYSE,"HCA Healthcare, Inc."
+EQNR,NYSE,Equinor ASA
+BNS,NYSE,The Bank of Nova Scotia
+FCX,NYSE,Freeport-McMoRan Inc.
+GD,NYSE,General Dynamics Corporation
+KKR,NYSE,KKR & Co. Inc.
+IBN,NYSE,ICICI Bank Limited
+NOW,NYSE,"ServiceNow, Inc."
+BK,NYSE,The Bank of New York Mellon Corporation
+WMB,NYSE,"The Williams Companies, Inc."
+FDX,NYSE,FedEx Corporation
+ITUB,NYSE,Itaú Unibanco Holding S.A.
+SPOT,NYSE,Spotify Technology S.A.
+MCK,NYSE,McKesson Corporation
+ICE,NYSE,"Intercontinental Exchange, Inc."
+WM,NYSE,"Waste Management, Inc."
+NGG,NYSE,National Grid plc
+PNC,NYSE,"The PNC Financial Services Group, Inc."
+JCI,NYSE,Johnson Controls International plc
+ING,NYSE,ING Groep N.V.
+ELV,NYSE,"Elevance Health, Inc."
+USB,NYSE,U.S. Bancorp
+SLB,NYSE,SLB N.V.
+UPS,NYSE,"United Parcel Service, Inc."
+AMT,NYSE,American Tower Corporation
+EPD,NYSE,Enterprise Products Partners L.P.
+E,NYSE,Eni S.p.A.
+AMX,NYSE,"América Móvil, S.A.B. de C.V."
+CIEN,NYSE,Ciena Corporation
+BSX,NYSE,Boston Scientific Corporation
+MCO,NYSE,Moody's Corporation
+NOC,NYSE,Northrop Grumman Corporation
+BE,NYSE,Bloom Energy Corporation
+MRSH,NYSE,"Marsh & McLennan Companies, Inc."
+SU,NYSE,Suncor Energy Inc.
+CI,NYSE,The Cigna Group
+BAM,NYSE,Brookfield Asset Management Ltd.
+SPG,NYSE,"Simon Property Group, Inc."
+BCS,NYSE,Barclays PLC
+SHW,NYSE,The Sherwin-Williams Company
+B,NYSE,B
+EMR,NYSE,Emerson Electric Co.
+CP,NYSE,Canadian Pacific Kansas City Limited
+APO,NYSE,"Apollo Global Management, Inc."
+LYG,NYSE,Lloyds Banking Group plc
+MMM,NYSE,3M Company
+CRH,NYSE,CRH plc
+ASX,NYSE,"ASE Technology Holding Co., Ltd."
+MPC,NYSE,Marathon Petroleum Corporation
+NOK,NYSE,Nokia Oyj
+VLO,NYSE,Valero Energy Corporation
+VALE,NYSE,Vale S.A.
+ITW,NYSE,Illinois Tool Works Inc.
+KMI,NYSE,"Kinder Morgan, Inc."
+COHR,NYSE,Coherent Corp.
+HLT,NYSE,Hilton Worldwide Holdings Inc.
+EOG,NYSE,"EOG Resources, Inc."
+ECL,NYSE,Ecolab Inc.
+FIX,NYSE,"Comfort Systems USA, Inc."
+PSX,NYSE,Phillips 66
+NSC,NYSE,Norfolk Southern Corporation
+CL,NYSE,Colgate-Palmolive Company
+RCL,NYSE,Royal Caribbean Cruises Ltd.
+DLR,NYSE,"Digital Realty Trust, Inc."
+GM,NYSE,General Motors Company
+TRP,NYSE,TC Energy Corporation
+ET,NYSE,Energy Transfer LP
+CNI,NYSE,Canadian National Railway Company
+APD,NYSE,"Air Products and Chemicals, Inc."
+AON,NYSE,Aon plc
+MFC,NYSE,Manulife Financial Corporation
+TDG,NYSE,TransDigm Group Incorporated
+NET,NYSE,"Cloudflare, Inc."
+WPM,NYSE,Wheaton Precious Metals Corp.
+MSI,NYSE,"Motorola Solutions, Inc."
+NU,NYSE,Nu Holdings Ltd.
+TRV,NYSE,"The Travelers Companies, Inc."
+NKE,NYSE,"NIKE, Inc."
+RSG,NYSE,"Republic Services, Inc."
+TEL,NYSE,TE Connectivity plc
+KEYS,NYSE,"Keysight Technologies, Inc."
+SRE,NYSE,Sempra
+NWG,NYSE,NatWest Group plc
+DB,NYSE,Deutsche Bank Aktiengesellschaft
+URI,NYSE,"United Rentals, Inc."
+TFC,NYSE,Truist Financial Corporation
+SE,NYSE,Sea Limited
+AFL,NYSE,Aflac Incorporated
+CVNA,NYSE,Carvana Co.
+GWW,NYSE,"W.W. Grainger, Inc."
+RELX,NYSE,RELX PLC
+O,NYSE,Realty Income Corporation
+RACE,NYSE,Ferrari N.V.
+LHX,NYSE,"L3Harris Technologies, Inc."
+AZO,NYSE,"AutoZone, Inc."
+OXY,NYSE,Occidental Petroleum Corporation
+CVE,NYSE,Cenovus Energy Inc.
+OKE,NYSE,"ONEOK, Inc."
+ALL,NYSE,The Allstate Corporation
+CTVA,NYSE,"Corteva, Inc."
+D,NYSE,"Dominion Energy, Inc."
+MPLX,NYSE,MPLX LP
+TGT,NYSE,Target Corporation
+TRGP,NYSE,Targa Resources Corp.
+CARR,NYSE,Carrier Global Corporation
+PSA,NYSE,Public Storage
+DVN,NYSE,Devon Energy Corporation
+AME,NYSE,"AMETEK, Inc."
+AU,NYSE,AngloGold Ashanti plc
+NUE,NYSE,Nucor Corporation
+SNOW,NYSE,Snowflake Inc.
+TAK,NYSE,Takeda Pharmaceutical Company Limited
+ETR,NYSE,Entergy Corporation
+STM,NYSE,STMicroelectronics N.V.
+LNG,NYSE,"Cheniere Energy, Inc."
+COR,NYSE,"Cencora, Inc."
+ABEV,NYSE,Ambev S.A.
+CCJ,NYSE,Cameco Corporation
+AJG,NYSE,Arthur J. Gallagher & Co.
+ROK,NYSE,"Rockwell Automation, Inc."
+MET,NYSE,"MetLife, Inc."
+VST,NYSE,Vistra Corp.
+INFY,NYSE,Infosys Limited
+F,NYSE,Ford Motor Company
+MT,NYSE,ArcelorMittal S.A.
+DAL,NYSE,"Delta Air Lines, Inc."
+FERG,NYSE,Ferguson Enterprises Inc.
+GRMN,NYSE,Garmin Ltd.
+WAB,NYSE,Westinghouse Air Brake Technologies Corporation
+EW,NYSE,Edwards Lifesciences Corporation
+FNV,NYSE,Franco-Nevada Corporation
+DEO,NYSE,Diageo plc
+VTR,NYSE,"Ventas, Inc."
+XYZ,NYSE,"Block, Inc."
+CAH,NYSE,"Cardinal Health, Inc."
+WDS,NYSE,Woodside Energy Group Ltd
+UI,NYSE,Ubiquiti Inc.
+BSBR,NYSE,Banco Santander (Brasil) S.A.
+AMP,NYSE,"Ameriprise Financial, Inc."
+FMX,NYSE,"Fomento Económico Mexicano, S.A.B. de C.V."
+MSCI,NYSE,MSCI Inc.
+CLS,NYSE,Celestica Inc.
+CBRE,NYSE,"CBRE Group, Inc."
+YUM,NYSE,"Yum! Brands, Inc."
+RKT,NYSE,"Rocket Companies, Inc."
+CMG,NYSE,"Chipotle Mexican Grill, Inc."
+STT,NYSE,State Street Corporation
+TEVA,NYSE,Teva Pharmaceutical Industries Limited
+IX,NYSE,ORIX Corporation
+EME,NYSE,"EMCOR Group, Inc."
+KR,NYSE,The Kroger Co.
+BDX,NYSE,"Becton, Dickinson and Company"
+DHI,NYSE,"D.R. Horton, Inc."
+GFI,NYSE,Gold Fields Limited
+HLN,NYSE,Haleon plc
+AIG,NYSE,"American International Group, Inc."
+HEI,NYSE,HEICO Corporation
+UMC,NYSE,United Microelectronics Corporation
+CCI,NYSE,Crown Castle Inc.
+HPE,NYSE,Hewlett Packard Enterprise Company
+ED,NYSE,"Consolidated Edison, Inc."
+ADM,NYSE,Archer-Daniels-Midland Company
+PEG,NYSE,Public Service Enterprise Group Incorporated
+SLF,NYSE,Sun Life Financial Inc.
+HSY,NYSE,The Hershey Company
+PUK,NYSE,Prudential plc
+BBD,NYSE,Banco Bradesco S.A.
+LYV,NYSE,"Live Nation Entertainment, Inc."
+WCN,NYSE,"Waste Connections, Inc."
+KGC,NYSE,Kinross Gold Corporation
+IRM,NYSE,Iron Mountain Incorporated
+PCG,NYSE,PG&E Corporation
+JBL,NYSE,Jabil Inc.
+KB,NYSE,KB Financial Group Inc.
+WEC,NYSE,"WEC Energy Group, Inc."
+HIG,NYSE,"The Hartford Insurance Group, Inc."
+VMC,NYSE,Vulcan Materials Company
+VIK,NYSE,Viking Holdings Ltd
+QSR,NYSE,Restaurant Brands International Inc.
+PRU,NYSE,"Prudential Financial, Inc."
+HUM,NYSE,Humana Inc.
+EQT,NYSE,EQT Corporation
+Q,NYSE,"Qnity Electronics, Inc."
+SYY,NYSE,Sysco Corporation
+MLM,NYSE,"Martin Marietta Materials, Inc."
+HAL,NYSE,Halliburton Company
+NTR,NYSE,Nutrien Ltd.
+CCL,NYSE,Carnival Corporation Ltd.
+BBDO,NYSE,Banco Bradesco S.A.
+WAT,NYSE,Waters Corporation
+LVS,NYSE,Las Vegas Sands Corp.
+KVUE,NYSE,Kenvue Inc.

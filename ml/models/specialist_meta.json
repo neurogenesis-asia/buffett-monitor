@@ -1,0 +1,14 @@
+{
+  "trained_at": "2026-07-25T09:43:59.426125",
+  "models": {
+    "SELL": {
+      "path": "/home/shalu/buffett-monitor/ml/models/specialist_sell_model.joblib",
+      "accuracy": 0.8333333333333334,
+      "precision_1": 0.5,
+      "recall_1": 1.0,
+      "n_train": 15,
+      "n_test": 6,
+      "features": 21
+    }
+  }
+}

@@ -1,0 +1,12 @@
+2026-05-11 09:08:57.496919: Weekly optimization successful - Run 20260511_090857, Sharpe: 0.000
+2026-05-18 09:29:35.449780: Weekly optimization successful - Sharpe: 0.000
+2026-05-25 09:09:11.447475: Weekly optimization successful - Sharpe: 0.000, Return: 0.000, Vol: 0.114
+2026-06-01 09:06:47.805071: Weekly optimization successful - Run 20260601_090647, Sharpe: 0.000\n2026-06-08 09:10:10.019031: Weekly optimization successful - Run 232, Sharpe: 0.000\n2026-06-11 12:27:06.281918: Weekly optimization successful - Run 261, Sharpe: 0.000
+2026-06-11 12:45:29.494950: Weekly optimization successful - Run 401, Sharpe: 0.000
+2026-06-11 12:48:53.511905: Weekly optimization successful - Run 541, Sharpe: 0.517
+2026-06-11 12:58:42.271049: Weekly optimization successful - Run 836, Sharpe: 0.407
+2026-06-11 13:12:01.219768: Weekly optimization successful - Run 1174, Sharpe: 0.419
+2026-06-15 09:30:26.106269: Weekly optimization successful - Run 20260615_093026, Sharpe: 0.474\n2026-06-15 09:31:29.195001: Weekly optimization successful - Run 20260615_093129, Sharpe: 0.474\n2026-06-29 09:00:58.103909: Weekly optimization completed; assets=4; weights_sum=1.0000
+2026-07-03 03:31:57.853613: Weekly optimization successful - Run 3479, Sharpe: 0.141
+2026-07-06 09:14:34.176394: Weekly optimization failed - No price data downloaded for any ticker
+2026-07-20 12:52:29.707694: Weekly optimization successful - Run 3629, Sharpe: 0.147

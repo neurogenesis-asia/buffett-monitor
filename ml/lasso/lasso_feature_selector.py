@@ -1,0 +1,356 @@
+#!/usr/bin/env python3
+"""
+LASSO Feature Selector for Double-Selection LASSO
+Implements double-selection LASSO for identifying predictive features
+after controlling for fundamentals, as described in Paper #5.
+"""
+
+import numpy as np
+import pandas as pd
+from typing import Dict, List, Tuple, Optional, Any
+import logging
+from sklearn.linear_model import LassoCV, LassoLarsIC
+from sklearn.preprocessing import StandardScaler
+import os
+import json
+
+logger = logging.getLogger(__name__)
+
+
+class DoubleSelectionLASSO:
+    """
+    Implements double-selection LASSO for feature selection:
+    1. First stage: Regress each candidate feature on fundamentals to get residuals
+    2. Second stage: Regress target on residuals to select features
+    """
+
+    def __init__(self,
+                 cv: int = 5,
+                 random_state: int = 42,
+                 max_features: Optional[int] = None,
+                 criterion: str = 'bic'):
+        """
+        Initialize double-selection LASSO selector.
+
+        Args:
+            cv: Number of cross-validation folds for LassoCV
+            random_state: Random seed for reproducibility
+            max_features: Maximum number of features to select (None for no limit)
+            criterion: Information criterion for LassoLarsIC ('aic' or 'bic')
+        """
+        self.cv = cv
+        self.random_state = random_state
+        self.max_features = max_features
+        self.criterion = criterion
+
+        # Selected features after double-selection
+        self.selected_features_: List[str] = []
+        self.feature_importances_: Dict[str, float] = {}
+
+        # Internal models
+        self.first_stage_models_: Dict[str, Any] = {}
+        self.second_stage_model_: Any = None
+        self.scaler_X_: StandardScaler = StandardScaler()
+        self.scaler_y_: StandardScaler = StandardScaler()
+
+        logger.info(f"Initialized DoubleSelectionLASSO with cv={cv}, criterion={criterion}")
+
+    def fit(self,
+            X: pd.DataFrame,
+            fundamentals: pd.DataFrame,
+            y: pd.Series) -> 'DoubleSelectionLASSO':
+        """
+        Fit the double-selection LASSO selector.
+
+        Args:
+            X: Candidate features DataFrame (n_samples, n_features)
+            fundamentals: Fundamental features DataFrame (n_samples, n_fundamentals)
+            y: Target variable Series (n_samples,)
+
+        Returns:
+            self: Fitted selector
+        """
+        logger.info(f"Starting double-selection LASSO with {X.shape[1]} candidate features, "
+                    f"{fundamentals.shape[1]} fundamental features, {len(y)} samples")
+
+        # Store column names
+        self.feature_names_ = list(X.columns)
+        self.fundamental_names_ = list(fundamentals.columns)
+
+        # Ensure indices are aligned
+        common_index = X.index.intersection(fundamentals.index).intersection(y.index)
+        X_aligned = X.loc[common_index].copy()
+        fundamentals_aligned = fundamentals.loc[common_index].copy()
+        y_aligned = y.loc[common_index].copy()
+
+        logger.info(f"After alignment: {X_aligned.shape[0]} samples")
+
+        # Stage 1: Regress each candidate feature on fundamentals to get residuals
+        logger.info("Stage 1: Regressing candidate features on fundamentals")
+        residuals_df = pd.DataFrame(index=X_aligned.index)
+
+        for feature in self.feature_names_:
+            try:
+                # Get feature values
+                x_values = X_aligned[feature].values.reshape(-1, 1)
+
+                # Scale features and target for stability
+                x_scaled = self.scaler_X_.fit_transform(x_values)
+                y_scaled = fundamentals_aligned.values  # Don't scale fundamentals here
+
+                # Use LassoLarsIC for feature selection in first stage
+                # This selects which fundamentals are predictive of each feature
+                lasso_lars = LassoLarsIC(criterion=self.criterion)
+                lasso_lars.fit(x_scaled, y_scaled)
+
+                # Get residuals: actual - predicted
+                y_pred = lasso_lars.predict(x_scaled)
+                residuals = x_values.flatten() - y_pred.flatten()
+
+                residuals_df[feature] = residuals
+
+                # Store the model for potential inspection
+                self.first_stage_models_[feature] = lasso_lars
+
+            except Exception as e:
+                logger.warning(f"Failed to compute residuals for feature {feature}: {e}")
+                # Fallback: use original feature if regression fails
+                residuals_df[feature] = X_aligned[feature].values
+
+        logger.info(f"Stage 1 complete: computed residuals for {len(residuals_df.columns)} features")
+
+        # Stage 2: Regress target on residuals to select features
+        logger.info("Stage 2: Regressing target on residuals")
+        try:
+            # Scale residuals for LASSO
+            residuals_scaled = self.scaler_X_.fit_transform(residuals_df.values)
+            y_scaled = self.scaler_y_.fit_transform(y_aligned.values.reshape(-1, 1)).flatten()
+
+            # Use LassoCV for automatic lambda selection
+            lasso_cv = LassoCV(cv=self.cv,
+                               random_state=self.random_state,
+                               max_iter=10000,
+                               n_jobs=-1)
+            lasso_cv.fit(residuals_scaled, y_scaled)
+
+            self.second_stage_model_ = lasso_cv
+
+            # Get selected features (non-zero coefficients)
+            coef_threshold = 1e-6
+            selected_mask = np.abs(lasso_cv.coef_) > coef_threshold
+            selected_features = [self.feature_names_[i] for i in range(len(self.feature_names_))
+                                 if selected_mask[i]]
+
+            self.selected_features_ = selected_features
+
+            # Compute feature importances (absolute coefficients)
+            self.feature_importances_ = {
+                feature: np.abs(lasso_cv.coef_[i])
+                for i, feature in enumerate(self.feature_names_)
+                if i < len(lasso_cv.coef_)
+            }
+
+            logger.info(f"Stage 2 complete: selected {len(selected_features)} features")
+            logger.info(f"Selected features: {selected_features[:10]}{'...' if len(selected_features) > 10 else ''}")
+
+        except Exception as e:
+            logger.error(f"Stage 2 failed: {e}")
+            # Fallback: select all features if LASSO fails
+            self.selected_features_ = self.feature_names_.copy()
+            self.feature_importances_ = {
+                feature: 1.0 for feature in self.feature_names_
+            }
+
+        return self
+
+    def transform(self, X: pd.DataFrame) -> pd.DataFrame:
+        """
+        Transform data to selected features only.
+
+        Args:
+            X: Features DataFrame to transform
+
+        Returns:
+            DataFrame with only selected features
+        """
+        if not self.selected_features_:
+            logger.warning("No features selected, returning all features")
+            return X
+
+        # Ensure we only select features that exist in X
+        available_features = [f for f in self.selected_features_ if f in X.columns]
+        if len(available_features) != len(self.selected_features_):
+            missing = set(self.selected_features_) - set(X.columns)
+            logger.warning(f"Some selected features not in input data: {missing}")
+
+        return X[available_features].copy()
+
+    def fit_transform(self,
+                      X: pd.DataFrame,
+                      fundamentals: pd.DataFrame,
+                      y: pd.Series) -> pd.DataFrame:
+        """
+        Fit selector and transform data.
+
+        Args:
+            X: Candidate features DataFrame
+            fundamentals: Fundamental features DataFrame
+            y: Target variable Series
+
+        Returns:
+            Transformed DataFrame with selected features
+        """
+        return self.fit(X, fundamentals, y).transform(X)
+
+    def get_selected_features(self) -> List[str]:
+        """Get list of selected feature names."""
+        return self.selected_features_.copy()
+
+    def get_feature_importances(self) -> Dict[str, float]:
+        """Get feature importance scores."""
+        return self.feature_importances_.copy()
+
+    def get_support(self) -> np.ndarray:
+        """Get boolean mask of selected features."""
+        mask = np.zeros(len(self.feature_names_), dtype=bool)
+        for i, feature in enumerate(self.feature_names_):
+            if feature in self.selected_features_:
+                mask[i] = True
+        return mask
+
+    def save(self, filepath: str):
+        """Save the fitted selector to disk."""
+        import pickle
+
+        # Ensure directory exists
+        os.makedirs(os.path.dirname(filepath), exist_ok=True)
+
+        # Save everything needed to reconstruct
+        save_dict = {
+            'selected_features_': self.selected_features_,
+            'feature_importances_': self.feature_importances_,
+            'feature_names_': getattr(self, 'feature_names_', []),
+            'fundamental_names_': getattr(self, 'fundamental_names_', []),
+            'first_stage_models_': self.first_stage_models_,
+            'second_stage_model_': self.second_stage_model_,
+            'scaler_X_': self.scaler_X_,
+            'scaler_y_': self.scaler_y_,
+            'cv': self.cv,
+            'random_state': self.random_state,
+            'max_features': self.max_features,
+            'criterion': self.criterion
+        }
+
+        with open(filepath, 'wb') as f:
+            pickle.dump(save_dict, f)
+
+        logger.info(f"DoubleSelectionLASSO saved to {filepath}")
+
+    @classmethod
+    def load(cls, filepath: str) -> 'DoubleSelectionLASSO':
+        """Load a fitted selector from disk."""
+        import pickle
+
+        with open(filepath, 'rb') as f:
+            save_dict = pickle.load(f)
+
+        # Create new instance
+        selector = cls(
+            cv=save_dict['cv'],
+            random_state=save_dict['random_state'],
+            max_features=save_dict['max_features'],
+            criterion=save_dict['criterion']
+        )
+
+        # Restore state
+        selector.selected_features_ = save_dict['selected_features_']
+        selector.feature_importances_ = save_dict['feature_importances_']
+        selector.feature_names_ = save_dict.get('feature_names_', [])
+        selector.fundamental_names_ = save_dict.get('fundamental_names_', [])
+        selector.first_stage_models_ = save_dict.get('first_stage_models_', {})
+        selector.second_stage_model_ = save_dict.get('second_stage_model_')
+        selector.scaler_X_ = save_dict.get('scaler_X_', StandardScaler())
+        selector.scaler_y_ = save_dict.get('scaler_y_', StandardScaler())
+
+        logger.info(f"DoubleSelectionLASSO loaded from {filepath}")
+        return selector
+
+
+def create_double_selection_lasso(cv: int = 5,
+                                 random_state: int = 42,
+                                 max_features: Optional[int] = None,
+                                 criterion: str = 'bic') -> DoubleSelectionLASSO:
+    """
+    Factory function to create a DoubleSelectionLASSO instance.
+
+    Args:
+        cv: Number of cross-validation folds
+        random_state: Random seed
+        max_features: Maximum number of features to select
+        criterion: Information criterion ('aic' or 'bic')
+
+    Returns:
+        Configured DoubleSelectionLASSO instance
+    """
+    return DoubleSelectionLASSO(cv=cv,
+                                random_state=random_state,
+                                max_features=max_features,
+                                criterion=criterion)
+
+
+if __name__ == "__main__":
+    # Test the double-selection LASSO
+    import sys
+    import os
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+    # Set up logging
+    logging.basicConfig(level=logging.INFO)
+
+    # Create sample data for testing
+    np.random.seed(42)
+    n_samples = 500
+    n_features = 50
+    n_fundamentals = 10
+
+    # Generate correlated features to simulate real scenario
+    fundamentals = pd.DataFrame(
+        np.random.randn(n_samples, n_fundamentals),
+        columns=[f'fund_{i}' for i in range(n_fundamentals)]
+    )
+
+    # Generate candidate features that depend on fundamentals + noise
+    X_data = np.random.randn(n_samples, n_features)
+    # Add some fundamental influence to make first stage meaningful
+    for i in range(n_features):
+        # Each feature gets influence from 2-3 random fundamentals
+        fund_weights = np.random.randn(n_fundamentals) * 0.3
+        X_data[:, i] += fundamentals.dot(fund_weights)
+
+    # Add some truly predictive features (independent of fundamentals)
+    true_predictive = np.random.randn(n_samples, 5)  # 5 truly predictive features
+    X_data[:, :5] += true_predictive  # Add to first 5 features
+
+    X = pd.DataFrame(X_data, columns=[f'feat_{i}' for i in range(n_features)])
+
+    # Generate target that depends on the truly predictive features
+    y = pd.Series(
+        X_data[:, :5].sum(axis=1) + np.random.randn(n_samples) * 0.5,
+        name='target'
+    )
+
+    # Test double-selection LASSO
+    print("Testing DoubleSelectionLASSO...")
+    selector = DoubleSelectionLASSO(cv=3, random_state=42)
+    selected_X = selector.fit_transform(X, fundamentals, y)
+
+    print(f"Original features: {X.shape[1]}")
+    print(f"Selected features: {selected_X.shape[1]}")
+    print(f"Selected feature names: {selector.get_selected_features()}")
+
+    # Show feature importances
+    importances = selector.get_feature_importances()
+    sorted_importances = sorted(importances.items(), key=lambda x: x[1], reverse=True)
+    print("\nTop 10 feature importances:")
+    for feature, importance in sorted_importances[:10]:
+        print(f"  {feature}: {importance:.4f}")

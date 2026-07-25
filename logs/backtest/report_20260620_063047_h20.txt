@@ -1,0 +1,63 @@
+======================================================================
+BUFFETT MONITOR -- BACKTEST REPORT  (horizon=20d, span=56d)
+======================================================================
+
+DATA SUMMARY
+  total scoring rows:                      18,500
+  with non-null forward_20d_return         43
+  labelled fraction:                           0.23%
+  WARNING: <200 labelled rows -- quintile alpha is NOT statistically meaningful.
+           Treat any Sharpe / Q5-Q1 number as anecdotal, not predictive.
+
+-> SANITY: signal distribution with forward returns
+----------------------------------------------------------------------
+  rule_signal       n   mean_fwd   hit_rate
+  HOLD              2     -0.23%    +50.00%
+  SELL             41     +8.55%    +65.85%
+
+-> ALPHA BY QUANT_SCORE QUINTILE (20d forward)
+----------------------------------------------------------------------
+  q   n_obs   mean_fwd   hit_rate
+  Q1      2     +9.24%    +65.79%
+  Q2      2     -0.82%    +50.00%
+
+-> Q5-MINUS-Q1 SPREAD BY MARKET (20d forward)
+----------------------------------------------------------------------
+  (insufficient data)
+
+-> ALPHA BY MOAT STRENGTH (20d forward)
+----------------------------------------------------------------------
+  moat            n   mean_fwd   hit_rate
+  NARROW         43     +8.15%    +65.12%
+
+-> BENCHMARK FWD RETURNS (20d) at sampled dates
+----------------------------------------------------------------------
+  klse     mean=    +2.07% n=  6 (across 6 sampled dates)
+  us       mean=    +1.54% n=  6 (across 6 sampled dates)
+  world    mean=    +1.48% n=  6 (across 6 sampled dates)
+
+======================================================================
+INTERPRETATION GUIDANCE
+======================================================================
+- The signal table tells you what rules the system actually emits.
+- The quintile table tells you whether quant_score orders returns.
+- The Q5-Q1 spread is the alpha-claim. If mean and std are both ~0,
+  scoring is currently an information-zero ranking on this horizon.
+- Sharpe_ann > ~1.0 across many markets would be a strong edge.
+- Sharpe_ann < 0.5 = no edge. Sharpe_ann < 0 = the rules select losers.
+
+WHAT THE DATA TELLS US (current state):
+- System has produced 1929 scoring events; ONLY 0 were BUY.
+- ~99% of outputs are SELL, ~1% HOLD. Very low signal variety.
+- 43 forward-20d labels exist (April 2026 cohort).
+- SELL cohort forward-20d return: +8.55% mean (n=41).
+  vs SPY same dates: +1.54%.  SELL selected WINNERS, not losers,
+  though n is too small to call this statistically significant.
+- To get a real answer, you need ~500+ labeled outcomes. Path:
+  1. Run collect_forward_returns.py weekly — fills 60d on existing 41.
+  2. Subscriber weekly_scan slice continues to add ~200 new scoring events.
+  3. By ~4 weeks you'll have ~800 labeled rows; backtest becomes meaningful.
+- For now, this report's only honest claim is: system is too immature
+  to prove or disprove edge (small n, no BUY history).
+- Actionable: pick a NEW declarative edge test and run it manually
+  against SPY to validate before relying on the live system.

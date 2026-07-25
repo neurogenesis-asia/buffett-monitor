@@ -1,0 +1,50 @@
+#!/bin/bash
+set -e
+
+DASHBOARD_DIR="/home/shalu/buffett-monitor"
+LOG_FILE="$DASHBOARD_DIR/dashboard.log"
+
+# Determine streamlit executable
+if [ -f "$DASHBOARD_DIR/venv/bin/streamlit" ]; then
+    STREAMLIT="$DASHBOARD_DIR/venv/bin/streamlit"
+elif [ -f "$DASHBOARD_DIR/.venv/bin/streamlit" ]; then
+    STREAMLIT="$DASHBOARD_DIR/.venv/bin/streamlit"
+else
+    STREAMLIT="streamlit"
+fi
+
+# Check if the streamlit process for our dashboard is running
+if ! pgrep -f "$STREAMLIT.*dashboard/app.py" > /dev/null; then
+    echo "$(date): Buffett Monitor dashboard process not found. Starting..." >> "$LOG_FILE"
+    # Kill any existing stale processes for our dashboard
+    pkill -f "$STREAMLIT.*dashboard/app.py" || true
+    # Start the dashboard
+    cd "$DASHBOARD_DIR"
+    nohup "$STREAMLIT" run dashboard/app.py --server.port=8501 --server.address=0.0.0.0 >> "$LOG_FILE" 2>&1 &
+    echo "$(date): Started Buffett Monitor dashboard." >> "$LOG_FILE"
+    started=true
+else
+    started=false
+fi
+
+# If we just started the dashboard, wait a bit for the port to become available
+if [ "$started" = true ]; then
+    for i in {1..10}; do
+        if ss -tlnp | grep -q ":8501.*LISTEN"; then
+            echo "$(date): Port 8501 is now listening." >> "$LOG_FILE"
+            break
+        fi
+        sleep 1
+    done
+fi
+
+# Check if port 8501 is listening
+if ! ss -tlnp | grep -qE ":8501.*LISTEN|LISTEN.*:8501"; then
+    echo "$(date): Buffett Monitor dashboard process running but port 8501 not listening. Restarting..." >> "$LOG_FILE"
+    pkill -f "$STREAMLIT.*dashboard/app.py" || true
+    cd "$DASHBOARD_DIR"
+    nohup "$STREAMLIT" run dashboard/app.py --server.port=8501 --server.address=0.0.0.0 >> "$LOG_FILE" 2>&1 &
+    echo "$(date): Restarted Buffett Monitor dashboard." >> "$LOG_FILE"
+else
+    echo "$(date): Buffett Monitor dashboard is running and listening on port 8501." >> "$LOG_FILE"
+fi

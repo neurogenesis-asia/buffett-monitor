@@ -1,0 +1,5 @@
+ticker,signal_type,detection_date,price_at_signal,signal_priority,ml_confidence,enhancement_used
+QMMM,HIGH_2W,2026-05-11,119.4,,,0
+QMMM,LOW_2W,2026-05-11,119.4,,,0
+QMMM,HIGH_4W,2026-05-11,119.4,,,0
+QMMM,LOW_4W,2026-05-11,119.4,,,0

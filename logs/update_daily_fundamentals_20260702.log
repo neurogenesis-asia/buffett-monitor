@@ -1,0 +1,371 @@
+2026-07-02 00:52:13,173 - INFO - Starting daily fundamentals update for AI watchlist and layers
+2026-07-02 00:52:14,108 - INFO - Loaded 37 tickers from AI watchlist
+2026-07-02 00:52:14,108 - INFO - Loaded 106 tickers from layers
+2026-07-02 00:52:14,108 - INFO - Total unique tickers to process: 136
+2026-07-02 00:52:14,108 - INFO - Processing WYFI (1/136)
+2026-07-02 00:52:14,962 - ERROR - Error processing WYFI: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:14,962 - INFO - Processing 002230.SZ (2/136)
+2026-07-02 00:52:15,497 - ERROR - Error processing 002230.SZ: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:15,497 - INFO - Processing 0008.HK (3/136)
+2026-07-02 00:52:15,914 - ERROR - Error processing 0008.HK: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:15,914 - INFO - Processing IBM (4/136)
+2026-07-02 00:52:16,337 - ERROR - Error processing IBM: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:16,338 - INFO - Processing CIFR (5/136)
+2026-07-02 00:52:16,698 - ERROR - Error processing CIFR: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:16,699 - INFO - Processing DRAM (6/136)
+2026-07-02 00:52:17,030 - ERROR - Error processing DRAM: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:17,031 - INFO - Processing HUT (7/136)
+2026-07-02 00:52:17,433 - ERROR - Error processing HUT: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:17,433 - INFO - Processing PLUG (8/136)
+2026-07-02 00:52:17,858 - ERROR - Error processing PLUG: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:17,858 - INFO - Processing 9698.HK (9/136)
+2026-07-02 00:52:18,281 - ERROR - Error processing 9698.HK: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:18,281 - INFO - Processing BW (10/136)
+2026-07-02 00:52:18,671 - ERROR - Error processing BW: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:18,671 - INFO - Processing NOK (11/136)
+2026-07-02 00:52:19,092 - ERROR - Error processing NOK: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:19,092 - INFO - Processing ANET (12/136)
+2026-07-02 00:52:19,540 - ERROR - Error processing ANET: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:19,540 - INFO - Processing C (13/136)
+2026-07-02 00:52:19,896 - ERROR - Error processing C: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:19,896 - INFO - Processing GDX (14/136)
+2026-07-02 00:52:20,227 - ERROR - Error processing GDX: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:20,227 - INFO - Processing NFG (15/136)
+2026-07-02 00:52:20,668 - ERROR - Error processing NFG: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:20,668 - INFO - Processing SOI (16/136)
+2026-07-02 00:52:21,011 - ERROR - Error processing SOI: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:21,011 - INFO - Processing 1398.HK (17/136)
+2026-07-02 00:52:21,450 - ERROR - Error processing 1398.HK: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:21,451 - INFO - Processing 9618.HK (18/136)
+2026-07-02 00:52:21,953 - ERROR - Error processing 9618.HK: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:21,953 - INFO - Processing 0020.HK (19/136)
+2026-07-02 00:52:22,345 - ERROR - Error processing 0020.HK: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:22,345 - INFO - Processing AMD (20/136)
+2026-07-02 00:52:22,791 - ERROR - Error processing AMD: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:22,791 - INFO - Processing 0968.HK (21/136)
+2026-07-02 00:52:23,232 - ERROR - Error processing 0968.HK: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:23,232 - INFO - Processing AVGO (22/136)
+2026-07-02 00:52:23,714 - ERROR - Error processing AVGO: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:23,714 - INFO - Processing 0963.HK (23/136)
+2026-07-02 00:52:24,075 - ERROR - Error processing 0963.HK: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:24,076 - INFO - Processing GCL (24/136)
+2026-07-02 00:52:24,540 - ERROR - Error processing GCL: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:24,541 - INFO - Processing META (25/136)
+2026-07-02 00:52:24,924 - ERROR - Error processing META: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:24,924 - INFO - Processing FLNC (26/136)
+2026-07-02 00:52:25,340 - ERROR - Error processing FLNC: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:25,340 - INFO - Processing 00981.HK (27/136)
+2026-07-02 00:52:25,743 - ERROR - Error processing 00981.HK: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:25,743 - INFO - Processing HOOD (28/136)
+2026-07-02 00:52:26,143 - ERROR - Error processing HOOD: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:26,143 - INFO - Processing WMB (29/136)
+2026-07-02 00:52:26,581 - ERROR - Error processing WMB: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:26,581 - INFO - Processing JD (30/136)
+2026-07-02 00:52:27,099 - ERROR - Error processing JD: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:27,099 - INFO - Processing GEV (31/136)
+2026-07-02 00:52:27,516 - ERROR - Error processing GEV: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:27,516 - INFO - Processing SNPS (32/136)
+2026-07-02 00:52:27,934 - ERROR - Error processing SNPS: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:27,935 - INFO - Processing CEG (33/136)
+2026-07-02 00:52:28,341 - ERROR - Error processing CEG: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:28,341 - INFO - Processing 0700.HK (34/136)
+2026-07-02 00:52:28,736 - ERROR - Error processing 0700.HK: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:28,736 - INFO - Processing BFLY (35/136)
+2026-07-02 00:52:29,131 - ERROR - Error processing BFLY: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:29,132 - INFO - Processing DLR (36/136)
+2026-07-02 00:52:29,537 - ERROR - Error processing DLR: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:29,537 - INFO - Processing 9888.HK (37/136)
+2026-07-02 00:52:30,037 - ERROR - Error processing 9888.HK: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:30,037 - INFO - Processing PLTR (38/136)
+2026-07-02 00:52:30,513 - ERROR - Error processing PLTR: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:30,513 - INFO - Processing SNDK (39/136)
+2026-07-02 00:52:30,939 - ERROR - Error processing SNDK: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:30,940 - INFO - Processing NOW (40/136)
+2026-07-02 00:52:31,333 - ERROR - Error processing NOW: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:31,333 - INFO - Processing CBRS (41/136)
+2026-07-02 00:52:31,775 - ERROR - Error processing CBRS: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:31,775 - INFO - Processing COHR (42/136)
+2026-07-02 00:52:32,195 - ERROR - Error processing COHR: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:32,195 - INFO - Processing IREN (43/136)
+2026-07-02 00:52:32,573 - ERROR - Error processing IREN: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:32,574 - INFO - Processing TSM (44/136)
+2026-07-02 00:52:33,023 - ERROR - Error processing TSM: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:33,023 - INFO - Processing TEM (45/136)
+2026-07-02 00:52:33,540 - ERROR - Error processing TEM: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:33,540 - INFO - Processing FSLR (46/136)
+2026-07-02 00:52:33,984 - ERROR - Error processing FSLR: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:33,984 - INFO - Processing E (47/136)
+2026-07-02 00:52:34,420 - ERROR - Error processing E: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:34,421 - INFO - Processing CORZ (48/136)
+2026-07-02 00:52:34,835 - ERROR - Error processing CORZ: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:34,835 - INFO - Processing PUMP (49/136)
+2026-07-02 00:52:35,191 - ERROR - Error processing PUMP: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:35,192 - INFO - Processing 2618.HK (50/136)
+2026-07-02 00:52:35,643 - ERROR - Error processing 2618.HK: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:35,643 - INFO - Processing MU (51/136)
+2026-07-02 00:52:36,077 - ERROR - Error processing MU: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:36,077 - INFO - Processing MRVL (52/136)
+2026-07-02 00:52:36,523 - ERROR - Error processing MRVL: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:36,524 - INFO - Processing ARM (53/136)
+2026-07-02 00:52:36,962 - ERROR - Error processing ARM: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:36,962 - INFO - Processing 0388.HK (54/136)
+2026-07-02 00:52:37,369 - ERROR - Error processing 0388.HK: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:37,369 - INFO - Processing SMIC (55/136)
+2026-07-02 00:52:37,814 - ERROR - Error processing SMIC: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:37,814 - INFO - Processing IRM (56/136)
+2026-07-02 00:52:38,227 - ERROR - Error processing IRM: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:38,228 - INFO - Processing 0728.HK (57/136)
+2026-07-02 00:52:38,640 - ERROR - Error processing 0728.HK: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:38,640 - INFO - Processing D (58/136)
+2026-07-02 00:52:39,111 - ERROR - Error processing D: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:39,115 - INFO - Processing YNDX (59/136)
+2026-07-02 00:52:39,447 - ERROR - Error processing YNDX: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:39,447 - INFO - Processing LITE (60/136)
+2026-07-02 00:52:39,941 - ERROR - Error processing LITE: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:39,941 - INFO - Processing STX (61/136)
+2026-07-02 00:52:40,419 - ERROR - Error processing STX: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:40,419 - INFO - Processing AMZN (62/136)
+2026-07-02 00:52:40,820 - ERROR - Error processing AMZN: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:40,821 - INFO - Processing 9988.HK (63/136)
+2026-07-02 00:52:41,229 - ERROR - Error processing 9988.HK: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:41,229 - INFO - Processing UPST (64/136)
+2026-07-02 00:52:41,651 - ERROR - Error processing UPST: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:41,651 - INFO - Processing KMI (65/136)
+2026-07-02 00:52:42,056 - ERROR - Error processing KMI: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:42,056 - INFO - Processing CSCO (66/136)
+2026-07-02 00:52:42,490 - ERROR - Error processing CSCO: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:42,490 - INFO - Processing FI (67/136)
+2026-07-02 00:52:42,749 - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: FI"}}}
+2026-07-02 00:52:42,803 - WARNING - Alpha Vantage API key not configured
+2026-07-02 00:52:42,803 - ERROR - Error processing FI: All fetchers failed for ticker FI
+2026-07-02 00:52:42,803 - INFO - Processing FIS (68/136)
+2026-07-02 00:52:43,216 - ERROR - Error processing FIS: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:43,217 - INFO - Processing LBRT (69/136)
+2026-07-02 00:52:43,616 - ERROR - Error processing LBRT: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:43,616 - INFO - Processing QCOM (70/136)
+2026-07-02 00:52:44,173 - ERROR - Error processing QCOM: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:44,173 - INFO - Processing GOOGL (71/136)
+2026-07-02 00:52:44,580 - ERROR - Error processing GOOGL: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:44,580 - INFO - Processing BAC (72/136)
+2026-07-02 00:52:45,063 - ERROR - Error processing BAC: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:45,063 - INFO - Processing HPE (73/136)
+2026-07-02 00:52:45,508 - ERROR - Error processing HPE: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:45,508 - INFO - Processing NRGV (74/136)
+2026-07-02 00:52:45,969 - ERROR - Error processing NRGV: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:45,970 - INFO - Processing CLP (75/136)
+2026-07-02 00:52:46,310 - ERROR - Error processing CLP: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:46,310 - INFO - Processing 3800.HK (76/136)
+2026-07-02 00:52:46,761 - ERROR - Error processing 3800.HK: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:46,761 - INFO - Processing BEP (77/136)
+2026-07-02 00:52:47,176 - ERROR - Error processing BEP: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:47,176 - INFO - Processing GLM (78/136)
+2026-07-02 00:52:47,531 - ERROR - Error processing GLM: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:47,531 - INFO - Processing EQIX (79/136)
+2026-07-02 00:52:47,977 - ERROR - Error processing EQIX: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:47,977 - INFO - Processing MSFT (80/136)
+2026-07-02 00:52:48,374 - ERROR - Error processing MSFT: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:48,375 - INFO - Processing EPC (81/136)
+2026-07-02 00:52:48,779 - ERROR - Error processing EPC: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:48,779 - INFO - Processing PCCW (82/136)
+2026-07-02 00:52:49,035 - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: PCCW"}}}
+2026-07-02 00:52:49,081 - WARNING - Alpha Vantage API key not configured
+2026-07-02 00:52:49,082 - ERROR - Error processing PCCW: All fetchers failed for ticker PCCW
+2026-07-02 00:52:49,082 - INFO - Processing 0992.HK (83/136)
+2026-07-02 00:52:49,489 - ERROR - Error processing 0992.HK: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:49,489 - INFO - Processing CGN (84/136)
+2026-07-02 00:52:49,835 - ERROR - Error processing CGN: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:49,835 - INFO - Processing DELL (85/136)
+2026-07-02 00:52:50,241 - ERROR - Error processing DELL: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:50,241 - INFO - Processing ETN (86/136)
+2026-07-02 00:52:50,667 - ERROR - Error processing ETN: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:50,667 - INFO - Processing SNOW (87/136)
+2026-07-02 00:52:51,123 - ERROR - Error processing SNOW: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:51,123 - INFO - Processing BITF (88/136)
+2026-07-02 00:52:51,381 - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: BITF"}}}
+2026-07-02 00:52:51,448 - WARNING - Alpha Vantage API key not configured
+2026-07-02 00:52:51,448 - ERROR - Error processing BITF: All fetchers failed for ticker BITF
+2026-07-02 00:52:51,448 - INFO - Processing KRC (89/136)
+2026-07-02 00:52:51,888 - ERROR - Error processing KRC: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:51,888 - INFO - Processing GDS (90/136)
+2026-07-02 00:52:52,400 - ERROR - Error processing GDS: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:52,401 - INFO - Processing INTC (91/136)
+2026-07-02 00:52:52,788 - ERROR - Error processing INTC: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:52,788 - INFO - Processing 2318.HK (92/136)
+2026-07-02 00:52:53,191 - ERROR - Error processing 2318.HK: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:53,192 - INFO - Processing SMCI (93/136)
+2026-07-02 00:52:53,594 - ERROR - Error processing SMCI: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:53,594 - INFO - Processing 1686.HK (94/136)
+2026-07-02 00:52:53,966 - ERROR - Error processing 1686.HK: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:53,967 - INFO - Processing CPU (95/136)
+2026-07-02 00:52:54,296 - ERROR - Error processing CPU: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:54,296 - INFO - Processing TSEM (96/136)
+2026-07-02 00:52:54,778 - ERROR - Error processing TSEM: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:54,778 - INFO - Processing CRM (97/136)
+2026-07-02 00:52:55,310 - ERROR - Error processing CRM: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:55,310 - INFO - Processing JPM (98/136)
+2026-07-02 00:52:55,793 - ERROR - Error processing JPM: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:55,793 - INFO - Processing 0939.HK (99/136)
+2026-07-02 00:52:56,248 - ERROR - Error processing 0939.HK: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:56,248 - INFO - Processing INFY (100/136)
+2026-07-02 00:52:56,697 - ERROR - Error processing INFY: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:56,697 - INFO - Processing RIOT (101/136)
+2026-07-02 00:52:57,187 - ERROR - Error processing RIOT: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:57,187 - INFO - Processing 688256.SH (102/136)
+2026-07-02 00:52:57,442 - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: 688256.SH"}}}
+2026-07-02 00:52:57,486 - WARNING - Alpha Vantage API key not configured
+2026-07-02 00:52:57,680 - INFO - HTTP Request: GET https://www.malaysiastock.biz/Corporate-Infomation.aspx?securitycode=688256 "HTTP/1.1 302 Found"
+2026-07-02 00:52:57,712 - INFO - HTTP Request: GET https://www.malaysiastock.biz/PageNotFound.aspx "HTTP/1.1 200 OK"
+2026-07-02 00:52:57,734 - INFO - Successfully scraped price for 688256 from malaysiastock.biz: RM None
+2026-07-02 00:52:57,734 - ERROR - Error processing 688256.SH: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:57,734 - INFO - Processing 3690.HK (103/136)
+2026-07-02 00:52:58,200 - ERROR - Error processing 3690.HK: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:58,200 - INFO - Processing 2208.HK (104/136)
+2026-07-02 00:52:58,652 - ERROR - Error processing 2208.HK: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:58,652 - INFO - Processing BYD (105/136)
+2026-07-02 00:52:59,106 - ERROR - Error processing BYD: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:59,106 - INFO - Processing PSIX (106/136)
+2026-07-02 00:52:59,501 - ERROR - Error processing PSIX: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:59,501 - INFO - Processing AI (107/136)
+2026-07-02 00:52:59,874 - ERROR - Error processing AI: table buffett_fundamentals has no column named company_name
+2026-07-02 00:52:59,874 - INFO - Processing A (108/136)
+2026-07-02 00:53:00,412 - ERROR - Error processing A: table buffett_fundamentals has no column named company_name
+2026-07-02 00:53:00,412 - INFO - Processing 01347.HK (109/136)
+2026-07-02 00:53:00,774 - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: 01347.HK"}}}
+2026-07-02 00:53:00,819 - WARNING - Alpha Vantage API key not configured
+2026-07-02 00:53:00,896 - INFO - HTTP Request: GET https://www.malaysiastock.biz/Corporate-Infomation.aspx?securitycode=01347 "HTTP/1.1 302 Found"
+2026-07-02 00:53:00,926 - INFO - HTTP Request: GET https://www.malaysiastock.biz/PageNotFound.aspx "HTTP/1.1 200 OK"
+2026-07-02 00:53:00,954 - INFO - Successfully scraped price for 01347 from malaysiastock.biz: RM None
+2026-07-02 00:53:00,954 - ERROR - Error processing 01347.HK: table buffett_fundamentals has no column named company_name
+2026-07-02 00:53:00,954 - INFO - Processing XOM (110/136)
+2026-07-02 00:53:01,494 - ERROR - Error processing XOM: table buffett_fundamentals has no column named company_name
+2026-07-02 00:53:01,494 - INFO - Processing GPU (111/136)
+2026-07-02 00:53:01,827 - ERROR - Error processing GPU: table buffett_fundamentals has no column named company_name
+2026-07-02 00:53:01,827 - INFO - Processing NEE (112/136)
+2026-07-02 00:53:02,332 - ERROR - Error processing NEE: table buffett_fundamentals has no column named company_name
+2026-07-02 00:53:02,332 - INFO - Processing BE (113/136)
+2026-07-02 00:53:02,768 - ERROR - Error processing BE: table buffett_fundamentals has no column named company_name
+2026-07-02 00:53:02,768 - INFO - Processing MOD (114/136)
+2026-07-02 00:53:03,235 - ERROR - Error processing MOD: table buffett_fundamentals has no column named company_name
+2026-07-02 00:53:03,235 - INFO - Processing 0762.HK (115/136)
+2026-07-02 00:53:03,717 - ERROR - Error processing 0762.HK: table buffett_fundamentals has no column named company_name
+2026-07-02 00:53:03,717 - INFO - Processing VST (116/136)
+2026-07-02 00:53:04,202 - ERROR - Error processing VST: table buffett_fundamentals has no column named company_name
+2026-07-02 00:53:04,202 - INFO - Processing NVDA (117/136)
+2026-07-02 00:53:04,607 - ERROR - Error processing NVDA: table buffett_fundamentals has no column named company_name
+2026-07-02 00:53:04,607 - INFO - Processing ADBE (118/136)
+2026-07-02 00:53:05,170 - ERROR - Error processing ADBE: table buffett_fundamentals has no column named company_name
+2026-07-02 00:53:05,170 - INFO - Processing CLSK (119/136)
+2026-07-02 00:53:05,650 - ERROR - Error processing CLSK: table buffett_fundamentals has no column named company_name
+2026-07-02 00:53:05,651 - INFO - Processing 00285.HK (120/136)
+2026-07-02 00:53:05,996 - ERROR - Error processing 00285.HK: table buffett_fundamentals has no column named company_name
+2026-07-02 00:53:05,996 - INFO - Processing SQ (121/136)
+2026-07-02 00:53:06,308 - ERROR - Error processing SQ: table buffett_fundamentals has no column named company_name
+2026-07-02 00:53:06,308 - INFO - Processing 1816.HK (122/136)
+2026-07-02 00:53:06,712 - ERROR - Error processing 1816.HK: table buffett_fundamentals has no column named company_name
+2026-07-02 00:53:06,712 - INFO - Processing EQT (123/136)
+2026-07-02 00:53:07,136 - ERROR - Error processing EQT: table buffett_fundamentals has no column named company_name
+2026-07-02 00:53:07,136 - INFO - Processing BTDR (124/136)
+2026-07-02 00:53:07,669 - ERROR - Error processing BTDR: table buffett_fundamentals has no column named company_name
+2026-07-02 00:53:07,669 - INFO - Processing 0836.HK (125/136)
+2026-07-02 00:53:08,089 - ERROR - Error processing 0836.HK: table buffett_fundamentals has no column named company_name
+2026-07-02 00:53:08,089 - INFO - Processing 0916.HK (126/136)
+2026-07-02 00:53:08,515 - ERROR - Error processing 0916.HK: table buffett_fundamentals has no column named company_name
+2026-07-02 00:53:08,515 - INFO - Processing GE (127/136)
+2026-07-02 00:53:08,938 - ERROR - Error processing GE: table buffett_fundamentals has no column named company_name
+2026-07-02 00:53:08,938 - INFO - Processing 0002.HK (128/136)
+2026-07-02 00:53:09,361 - ERROR - Error processing 0002.HK: table buffett_fundamentals has no column named company_name
+2026-07-02 00:53:09,361 - INFO - Processing APLD (129/136)
+2026-07-02 00:53:09,820 - ERROR - Error processing APLD: table buffett_fundamentals has no column named company_name
+2026-07-02 00:53:09,820 - INFO - Processing CRWV (130/136)
+2026-07-02 00:53:10,230 - ERROR - Error processing CRWV: table buffett_fundamentals has no column named company_name
+2026-07-02 00:53:10,233 - INFO - Processing AROC (131/136)
+2026-07-02 00:53:10,672 - ERROR - Error processing AROC: table buffett_fundamentals has no column named company_name
+2026-07-02 00:53:10,673 - INFO - Processing GLXY (132/136)
+2026-07-02 00:53:11,113 - ERROR - Error processing GLXY: table buffett_fundamentals has no column named company_name
+2026-07-02 00:53:11,113 - INFO - Processing US (133/136)
+2026-07-02 00:53:11,468 - ERROR - Error processing US: table buffett_fundamentals has no column named company_name
+2026-07-02 00:53:11,469 - INFO - Processing HKEX (134/136)
+2026-07-02 00:53:11,732 - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: HKEX"}}}
+2026-07-02 00:53:11,780 - WARNING - Alpha Vantage API key not configured
+2026-07-02 00:53:11,780 - ERROR - Error processing HKEX: All fetchers failed for ticker HKEX
+2026-07-02 00:53:11,780 - INFO - Processing AMT (135/136)
+2026-07-02 00:53:12,248 - ERROR - Error processing AMT: table buffett_fundamentals has no column named company_name
+2026-07-02 00:53:12,249 - INFO - Processing 0941.HK (136/136)
+2026-07-02 00:53:12,714 - ERROR - Error processing 0941.HK: table buffett_fundamentals has no column named company_name
+2026-07-02 00:53:12,786 - INFO - Finished. Updated: 0, Errors: 136
+2026-07-02 00:53:12,787 - WARNING - Completed with 136 errors. Check the log for details.
+2026-07-02 00:54:49,780 - INFO - Starting daily fundamentals update for AI watchlist and layers
+2026-07-02 00:54:50,325 - INFO - Loaded 37 tickers from AI watchlist
+2026-07-02 00:54:50,326 - INFO - Loaded 106 tickers from layers
+2026-07-02 00:54:50,326 - INFO - Total unique tickers to process: 136
+2026-07-02 00:57:56,157 - INFO - Starting daily fundamentals update for AI watchlist and layers
+2026-07-02 00:57:56,664 - INFO - Loaded 37 tickers from AI watchlist
+2026-07-02 00:57:56,664 - INFO - Loaded 106 tickers from layers
+2026-07-02 00:57:56,664 - INFO - Total unique tickers to process: 136
+2026-07-02 00:57:56,665 - INFO - Processing SMIC (1/136)
+2026-07-02 00:57:57,553 - INFO - Processing 0992.HK (2/136)
+2026-07-02 00:57:58,077 - INFO - Processing HKEX (3/136)
+2026-07-02 00:57:58,325 - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: HKEX"}}}
+2026-07-02 00:57:58,371 - WARNING - Alpha Vantage API key not configured
+2026-07-02 00:57:58,372 - ERROR - Error processing HKEX: All fetchers failed for ticker HKEX
+2026-07-02 00:57:58,372 - INFO - Processing 0941.HK (4/136)
+2026-07-02 00:57:58,886 - INFO - Processing 1816.HK (5/136)
+2026-07-02 00:57:59,364 - INFO - Processing 1398.HK (6/136)
+2026-07-02 00:57:59,848 - INFO - Processing 00285.HK (7/136)
+2026-07-02 00:58:00,386 - INFO - Processing GLXY (8/136)
+2026-07-02 00:58:00,925 - INFO - Processing E (9/136)
+2026-07-02 00:58:01,485 - INFO - Processing PLUG (10/136)
+2026-07-02 00:58:02,022 - INFO - Processing EPC (11/136)
+2026-07-02 00:58:02,556 - INFO - Processing BEP (12/136)
+2026-07-02 00:58:03,117 - INFO - Processing 01347.HK (13/136)
+2026-07-02 00:58:03,379 - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: 01347.HK"}}}
+2026-07-02 00:58:03,425 - WARNING - Alpha Vantage API key not configured
+2026-07-02 00:58:03,643 - INFO - HTTP Request: GET https://www.malaysiastock.biz/Corporate-Infomation.aspx?securitycode=01347 "HTTP/1.1 302 Found"
+2026-07-02 00:58:03,670 - INFO - HTTP Request: GET https://www.malaysiastock.biz/PageNotFound.aspx "HTTP/1.1 200 OK"
+2026-07-02 00:58:03,696 - INFO - Successfully scraped price for 01347 from malaysiastock.biz: RM None
+2026-07-02 00:58:03,807 - INFO - Processing FI (14/136)
+2026-07-02 00:58:04,056 - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: FI"}}}
+2026-07-02 00:58:04,101 - WARNING - Alpha Vantage API key not configured
+2026-07-02 00:58:04,101 - ERROR - Error processing FI: All fetchers failed for ticker FI
+2026-07-02 00:58:04,101 - INFO - Processing YNDX (15/136)
+2026-07-02 00:58:04,805 - INFO - Processing 0762.HK (16/136)
+2026-07-02 00:58:05,319 - INFO - Processing GE (17/136)
+2026-07-02 00:58:05,883 - INFO - Processing SOI (18/136)
+2026-07-02 00:58:06,300 - INFO - Processing SNDK (19/136)
+2026-07-02 00:58:06,807 - INFO - Processing CIFR (20/136)
+2026-07-02 00:58:07,270 - INFO - Processing GDS (21/136)
+2026-07-02 00:58:07,825 - INFO - Processing GCL (22/136)
+2026-07-02 00:58:08,325 - INFO - Processing ADBE (23/136)
+2026-07-02 00:58:08,847 - INFO - Processing 3690.HK (24/136)
+2026-07-02 00:58:09,350 - INFO - Processing 0002.HK (25/136)
+2026-07-02 00:58:09,847 - INFO - Processing DRAM (26/136)
+2026-07-02 00:58:10,274 - INFO - Processing 1686.HK (27/136)
+2026-07-02 00:58:10,722 - INFO - Processing PSIX (28/136)
+2026-07-02 00:58:11,264 - INFO - Processing LITE (29/136)
+2026-07-02 00:58:11,720 - INFO - Processing RIOT (30/136)
+2026-07-02 00:58:12,226 - INFO - Processing EQT (31/136)
+2026-07-02 00:58:12,755 - INFO - Processing WYFI (32/136)
+2026-07-02 00:58:13,205 - INFO - Processing MOD (33/136)
+2026-07-02 00:58:13,745 - INFO - Processing BE (34/136)
+2026-07-02 00:58:14,358 - INFO - Processing NOW (35/136)
+2026-07-02 00:58:14,885 - INFO - Processing HOOD (36/136)
+2026-07-02 00:58:15,384 - INFO - Processing 2618.HK (37/136)
+2026-07-02 00:58:15,928 - INFO - Processing SNPS (38/136)
+2026-07-02 00:58:16,491 - INFO - Processing 00981.HK (39/136)
+2026-07-02 00:58:16,909 - INFO - Processing VST (40/136)
+2026-07-02 00:58:17,510 - INFO - Processing STX (41/136)
+2026-07-02 00:58:17,961 - INFO - Processing ANET (42/136)
+2026-07-02 00:58:18,453 - INFO - Processing 0968.HK (43/136)
+2026-07-02 00:58:18,977 - INFO - Processing GDX (44/136)
+2026-07-02 00:58:19,434 - INFO - Processing 2318.HK (45/136)
+2026-07-02 00:58:19,917 - INFO - Processing LBRT (46/136)
+2026-07-02 00:58:20,456 - INFO - Processing WMB (47/136)
+2026-07-02 00:58:20,982 - INFO - Processing FIS (48/136)
+2026-07-02 00:58:21,551 - INFO - Processing SQ (49/136)
+2026-07-02 00:58:21,984 - INFO - Processing ARM (50/136)
+2026-07-02 00:58:22,539 - INFO - Processing HPE (51/136)
+2026-07-02 00:58:23,195 - INFO - Processing APLD (52/136)
+2026-07-02 00:58:23,661 - INFO - Processing US (53/136)
+2026-07-02 00:58:24,069 - INFO - Processing CORZ (54/136)
+2026-07-02 00:58:24,673 - INFO - Processing AMZN (55/136)
+2026-07-02 00:58:25,188 - INFO - Processing BW (56/136)

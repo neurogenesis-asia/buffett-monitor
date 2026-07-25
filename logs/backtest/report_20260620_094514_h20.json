@@ -1,0 +1,388 @@
+{
+  "signal_label": [
+    {
+      "ml_rule_signal": "HOLD",
+      "count": 2,
+      "mean": -0.0022952913933643147,
+      "median": -0.0022952913933643147,
+      "hit_rate": 0.5
+    },
+    {
+      "ml_rule_signal": "SELL",
+      "count": 41,
+      "mean": 0.08554138653202477,
+      "median": 0.027889527572770592,
+      "hit_rate": 0.6585365853658537
+    },
+    {
+      "ml_rule_signal": "UNKNOWN",
+      "count": 5926,
+      "mean": 0.047872582307471795,
+      "median": 0.007565031090886132,
+      "hit_rate": 0.5899426257171785
+    }
+  ],
+  "quintile": [
+    {
+      "market": "us",
+      "snapshot_date": "2026-04-25",
+      "quintile": 1,
+      "n_tickers": 19,
+      "mean_fwd_return": 0.09507581954409976,
+      "median_fwd_return": 0.048427941152910194,
+      "hit_rate": 0.631578947368421,
+      "n_positive": 12
+    },
+    {
+      "market": "us",
+      "snapshot_date": "2026-04-25",
+      "quintile": 2,
+      "n_tickers": 2,
+      "mean_fwd_return": -0.019228116969151894,
+      "median_fwd_return": -0.019228116969151894,
+      "hit_rate": 0.0,
+      "n_positive": 0
+    },
+    {
+      "market": "us",
+      "snapshot_date": "2026-04-26",
+      "quintile": 1,
+      "n_tickers": 19,
+      "mean_fwd_return": 0.08977647567800191,
+      "median_fwd_return": 0.027889527572770592,
+      "hit_rate": 0.6842105263157895,
+      "n_positive": 13
+    },
+    {
+      "market": "us",
+      "snapshot_date": "2026-04-26",
+      "quintile": 2,
+      "n_tickers": 2,
+      "mean_fwd_return": 0.0027818878380062775,
+      "median_fwd_return": 0.0027818878380062775,
+      "hit_rate": 1.0,
+      "n_positive": 2
+    },
+    {
+      "market": "us",
+      "snapshot_date": "2026-04-28",
+      "quintile": 1,
+      "n_tickers": 19,
+      "mean_fwd_return": 0.10648496595497808,
+      "median_fwd_return": 0.08290964876286666,
+      "hit_rate": 0.6842105263157895,
+      "n_positive": 13
+    },
+    {
+      "market": "us",
+      "snapshot_date": "2026-04-28",
+      "quintile": 2,
+      "n_tickers": 2,
+      "mean_fwd_return": -0.021701485246471253,
+      "median_fwd_return": -0.021701485246471253,
+      "hit_rate": 0.5,
+      "n_positive": 1
+    },
+    {
+      "market": "us",
+      "snapshot_date": "2026-05-02",
+      "quintile": 1,
+      "n_tickers": 21,
+      "mean_fwd_return": 0.04171434114946668,
+      "median_fwd_return": 0.029553324239715684,
+      "hit_rate": 0.7142857142857143,
+      "n_positive": 15
+    },
+    {
+      "market": "us",
+      "snapshot_date": "2026-05-02",
+      "quintile": 2,
+      "n_tickers": 2,
+      "mean_fwd_return": -0.015946736132528005,
+      "median_fwd_return": -0.015946736132528005,
+      "hit_rate": 0.5,
+      "n_positive": 1
+    },
+    {
+      "market": "us",
+      "snapshot_date": "2026-05-09",
+      "quintile": 1,
+      "n_tickers": 19,
+      "mean_fwd_return": 0.04583224365299408,
+      "median_fwd_return": 0.011603440470801196,
+      "hit_rate": 0.631578947368421,
+      "n_positive": 12
+    },
+    {
+      "market": "us",
+      "snapshot_date": "2026-05-09",
+      "quintile": 2,
+      "n_tickers": 1,
+      "mean_fwd_return": -0.1393749713897705,
+      "median_fwd_return": -0.1393749713897705,
+      "hit_rate": 0.0,
+      "n_positive": 0
+    },
+    {
+      "market": "us",
+      "snapshot_date": "2026-05-16",
+      "quintile": 1,
+      "n_tickers": 3291,
+      "mean_fwd_return": 0.06399156379859093,
+      "median_fwd_return": 0.013011095415467855,
+      "hit_rate": 0.645092676997873,
+      "n_positive": 2123
+    },
+    {
+      "market": "us",
+      "snapshot_date": "2026-05-16",
+      "quintile": 2,
+      "n_tickers": 649,
+      "mean_fwd_return": 0.048906373966043935,
+      "median_fwd_return": 0.022991836502698426,
+      "hit_rate": 0.6579352850539292,
+      "n_positive": 427
+    },
+    {
+      "market": "us",
+      "snapshot_date": "2026-05-18",
+      "quintile": 1,
+      "n_tickers": 63,
+      "mean_fwd_return": 0.06370804046049713,
+      "median_fwd_return": 0.026425918083738287,
+      "hit_rate": 0.6507936507936508,
+      "n_positive": 41
+    },
+    {
+      "market": "us",
+      "snapshot_date": "2026-05-18",
+      "quintile": 2,
+      "n_tickers": 10,
+      "mean_fwd_return": -0.014854515566896143,
+      "median_fwd_return": -0.008281805979474699,
+      "hit_rate": 0.4,
+      "n_positive": 4
+    },
+    {
+      "market": "us",
+      "snapshot_date": "2026-05-19",
+      "quintile": 1,
+      "n_tickers": 209,
+      "mean_fwd_return": 0.024270925622970577,
+      "median_fwd_return": 0.006036259773603003,
+      "hit_rate": 0.5885167464114832,
+      "n_positive": 123
+    },
+    {
+      "market": "us",
+      "snapshot_date": "2026-05-19",
+      "quintile": 2,
+      "n_tickers": 26,
+      "mean_fwd_return": 0.023187306306920973,
+      "median_fwd_return": 0.023489822453157116,
+      "hit_rate": 0.6538461538461539,
+      "n_positive": 17
+    },
+    {
+      "market": "us",
+      "snapshot_date": "2026-05-20",
+      "quintile": 1,
+      "n_tickers": 176,
+      "mean_fwd_return": 0.002727191103587323,
+      "median_fwd_return": 0.0,
+      "hit_rate": 0.4375,
+      "n_positive": 77
+    },
+    {
+      "market": "us",
+      "snapshot_date": "2026-05-20",
+      "quintile": 2,
+      "n_tickers": 22,
+      "mean_fwd_return": 0.0014702708613496894,
+      "median_fwd_return": -3.0391661344497667e-05,
+      "hit_rate": 0.5,
+      "n_positive": 11
+    },
+    {
+      "market": "us",
+      "snapshot_date": "2026-05-21",
+      "quintile": 1,
+      "n_tickers": 219,
+      "mean_fwd_return": -0.009993785503226636,
+      "median_fwd_return": 0.0,
+      "hit_rate": 0.4703196347031963,
+      "n_positive": 103
+    },
+    {
+      "market": "us",
+      "snapshot_date": "2026-05-21",
+      "quintile": 2,
+      "n_tickers": 27,
+      "mean_fwd_return": -0.015283605491146893,
+      "median_fwd_return": -0.0032829009347481453,
+      "hit_rate": 0.48148148148148145,
+      "n_positive": 13
+    },
+    {
+      "market": "us",
+      "snapshot_date": "2026-05-23",
+      "quintile": 1,
+      "n_tickers": 541,
+      "mean_fwd_return": 0.014718386097540937,
+      "median_fwd_return": -0.0011165528902082889,
+      "hit_rate": 0.3900184842883549,
+      "n_positive": 211
+    },
+    {
+      "market": "us",
+      "snapshot_date": "2026-05-23",
+      "quintile": 2,
+      "n_tickers": 89,
+      "mean_fwd_return": -0.01040160509736968,
+      "median_fwd_return": 0.002484205360976599,
+      "hit_rate": 0.5280898876404494,
+      "n_positive": 47
+    },
+    {
+      "market": "us",
+      "snapshot_date": "2026-05-30",
+      "quintile": 1,
+      "n_tickers": 464,
+      "mean_fwd_return": 0.051345574427418064,
+      "median_fwd_return": -0.0042547571314778265,
+      "hit_rate": 0.4547413793103448,
+      "n_positive": 211
+    },
+    {
+      "market": "us",
+      "snapshot_date": "2026-05-30",
+      "quintile": 2,
+      "n_tickers": 74,
+      "mean_fwd_return": -0.007396829129239056,
+      "median_fwd_return": 0.008368726444874297,
+      "hit_rate": 0.5945945945945946,
+      "n_positive": 44
+    }
+  ],
+  "moat": [
+    {
+      "moat_strength": "NARROW",
+      "count": 5969,
+      "mean": 0.04811451315448218,
+      "median": 0.007620226974494493,
+      "hit_rate": 0.5903836488524041
+    }
+  ],
+  "spread": [],
+  "bm": [
+    {
+      "benchmark": "us",
+      "signal_date": "2024-01-02",
+      "horizon": 20,
+      "fwd_return": 0.02284994254123962
+    },
+    {
+      "benchmark": "us",
+      "signal_date": "2024-06-25",
+      "horizon": 20,
+      "fwd_return": 0.03065173511974284
+    },
+    {
+      "benchmark": "us",
+      "signal_date": "2024-12-18",
+      "horizon": 20,
+      "fwd_return": 0.007387283918678378
+    },
+    {
+      "benchmark": "us",
+      "signal_date": "2025-06-11",
+      "horizon": 20,
+      "fwd_return": 0.03012499504682231
+    },
+    {
+      "benchmark": "us",
+      "signal_date": "2025-12-04",
+      "horizon": 20,
+      "fwd_return": 0.011733122559214992
+    },
+    {
+      "benchmark": "us",
+      "signal_date": "2026-05-29",
+      "horizon": 20,
+      "fwd_return": -0.010332364798840366
+    },
+    {
+      "benchmark": "klse",
+      "signal_date": "2024-01-02",
+      "horizon": 20,
+      "fwd_return": -0.004746016665136965
+    },
+    {
+      "benchmark": "klse",
+      "signal_date": "2024-06-25",
+      "horizon": 20,
+      "fwd_return": 0.041126467761000374
+    },
+    {
+      "benchmark": "klse",
+      "signal_date": "2024-12-18",
+      "horizon": 20,
+      "fwd_return": 0.027954317339952794
+    },
+    {
+      "benchmark": "klse",
+      "signal_date": "2025-06-11",
+      "horizon": 20,
+      "fwd_return": 0.018463372284507784
+    },
+    {
+      "benchmark": "klse",
+      "signal_date": "2025-12-04",
+      "horizon": 20,
+      "fwd_return": 0.05796673133342467
+    },
+    {
+      "benchmark": "klse",
+      "signal_date": "2026-05-29",
+      "horizon": 20,
+      "fwd_return": -0.016772926662578458
+    },
+    {
+      "benchmark": "world",
+      "signal_date": "2024-01-02",
+      "horizon": 20,
+      "fwd_return": 0.009217148752574289
+    },
+    {
+      "benchmark": "world",
+      "signal_date": "2024-06-25",
+      "horizon": 20,
+      "fwd_return": 0.03090861224414998
+    },
+    {
+      "benchmark": "world",
+      "signal_date": "2024-12-18",
+      "horizon": 20,
+      "fwd_return": 0.008277202761092672
+    },
+    {
+      "benchmark": "world",
+      "signal_date": "2025-06-11",
+      "horizon": 20,
+      "fwd_return": 0.025110195792146905
+    },
+    {
+      "benchmark": "world",
+      "signal_date": "2025-12-04",
+      "horizon": 20,
+      "fwd_return": 0.014044186670315817
+    },
+    {
+      "benchmark": "world",
+      "signal_date": "2026-05-29",
+      "horizon": 20,
+      "fwd_return": 0.0014180941411467973
+    }
+  ],
+  "sharpe": {}
+}

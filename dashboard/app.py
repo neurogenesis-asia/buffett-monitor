@@ -1,0 +1,2355 @@
+#!/usr/bin/env python3
+"""
+Streamlit Dashboard for Stock Monitor.
+Provides 4-tab interface for monitoring stock investments.
+"""
+
+import streamlit as st
+import pandas as pd
+import sqlite3
+import re
+from datetime import date, datetime
+from pathlib import Path
+import sys
+
+# Add project root to path
+sys.path.insert(0, '.')
+
+from buffett.fetchers import fetch_fundamentals, fetch_malaysiastock_price, load_ticker_mapping
+from buffett.scorer import compute_intrinsic_value, compute_quant_score, decide_signal, calculate_graham_number
+from buffett.moat_llm import judge_moat
+from buffett.change_log import get_recent_changes as load_change_log
+from data.init_db import init_database
+from dashboard.components.portfolio_optimization import portfolio_optimization_dashboard
+from dashboard.components.week_high_low_radar import week_high_low_radar
+from dashboard.components.intelligence_dashboard import intelligence_dashboard
+
+# Page configuration
+st.set_page_config(
+    page_title="Stock Monitor",
+    page_icon="📊",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
+# Database path
+DB_PATH = "data/buffett.db"
+
+def display_watchlist(ai_stocks, fundamentals_df, signal_filter="All", sector_filter="All", min_score=0):
+    """Display the AI watchlist table with full signal data matching the Signals tab."""
+    # Load scores so we get signal / moat / quant_score (live in buffett_scores)
+    scores_df = load_latest_scores()
+    # Load universe to get sector/exchange/company fallback
+    universe_df = load_universe()
+    
+    # Prepare display data
+    watchlist_data = []
+    
+    for stock in ai_stocks:
+        ticker = stock["ticker"]
+        company = stock["company"]
+        
+        # Defaults
+        current_price = 0
+        pe_ratio = 0
+        pb_ratio = 0
+        dividend_yield = 0
+        roe_latest = 0
+        intrinsic_value = 0
+        margin_of_safety = 0
+        graham_number = 0
+        signal = "N/A"
+        moat_strength = "N/A"
+        quant_score = 0
+        sector = "-"
+        exchange = "UNKNOWN"
+        
+        # Pull fundamentals (price, pe, pb, roe, dividend, IV, MOS, Graham)
+        shares_outstanding = 0
+        if fundamentals_df is not None and not fundamentals_df.empty:
+            stock_data = fundamentals_df[fundamentals_df["ticker"] == ticker]
+            if not stock_data.empty:
+                row = stock_data.iloc[0]
+                current_price    = row.get("price", 0) or 0
+                pe_ratio         = row.get("pe_ratio", 0) or 0
+                pb_ratio         = row.get("pb_ratio", 0) or 0
+                dividend_yield   = row.get("dividend_yield", 0) or 0
+                roe_latest       = row.get("roe_latest", 0) or 0
+                intrinsic_value  = row.get("intrinsic_value", 0) or 0
+                margin_of_safety = row.get("margin_of_safety", 0) or 0
+                graham_number    = row.get("graham_number", 0) or 0
+                shares_outstanding = row.get("shares_outstanding", 0) or 0
+        
+        # Convert intrinsic_value from total-company value to per-share if shares known
+        iv_per_share = intrinsic_value
+        if shares_outstanding > 0 and intrinsic_value > 1000:
+            iv_per_share = intrinsic_value / shares_outstanding
+        
+        # Pull scores (signal, moat, quant_score) — these live in buffett_scores
+        if scores_df is not None and not scores_df.empty:
+            score_row = scores_df[scores_df["ticker"] == ticker]
+            if not score_row.empty:
+                srow = score_row.iloc[0]
+                signal       = srow.get("signal", "N/A") or "N/A"
+                moat_strength = srow.get("moat_strength", "N/A") or "N/A"
+                quant_score  = srow.get("quant_score", 0) or 0
+        
+        # Pull sector/exchange/company from universe (fallback to provided)
+        if universe_df is not None and not universe_df.empty:
+            u_row = universe_df[universe_df["ticker"] == ticker]
+            if not u_row.empty:
+                urow = u_row.iloc[0]
+                sector  = urow.get("sector", "-") or "-"
+                company_uni = urow.get("company_name", "")
+                if company_uni and not company:
+                    company = company_uni
+                # Try to read exchange from universe notes (mirrors signals_tab logic)
+                notes = urow.get("notes", "")
+                if notes and isinstance(notes, str):
+                    import re
+                    m = re.search(r'Market:\s*([^;]+)', notes)
+                    if m:
+                        exchange = m.group(1).strip()
+        
+        # Determine currency / exchange fallback based on ticker format
+        ticker_str = str(ticker)
+        if ticker_str.isdigit() or ticker_str.endswith(".KL"):
+            currency_symbol = "RM"
+            if exchange == "UNKNOWN":
+                exchange = "KLSE"
+        else:
+            currency_symbol = "USD"
+            if exchange == "UNKNOWN":
+                exchange = "US"
+        
+        watchlist_data.append({
+            "Ticker": ticker,
+            "Exchange": exchange,
+            "Company": (company[:30] + ("..." if len(company) > 30 else "")) if company else ticker,
+            "Sector": sector,
+            "Price": f"{currency_symbol} {current_price:.2f}" if current_price > 0 else "N/A",
+            "PE": f"{pe_ratio:.1f}" if pe_ratio > 0 else "N/A",
+            "PB": f"{pb_ratio:.2f}" if pb_ratio > 0 else "N/A",
+            "Div Yield": f"{dividend_yield*100:.1f}%" if dividend_yield > 0 else "N/A",
+            "ROE": f"{roe_latest*100:.1f}%" if roe_latest > 0 else "N/A",
+            "QS": f"{quant_score:.1f}" if quant_score > 0 else "N/A",
+            "Signal": signal,
+            "Moat": moat_strength,
+            "Graham": f"{currency_symbol} {graham_number:.2f}" if graham_number > 0 else "N/A",
+            "IV": f"{currency_symbol} {iv_per_share:.2f}" if iv_per_share > 0 else "N/A",
+            "MOS": f"{margin_of_safety*100:.1f}%" if margin_of_safety > 0 else "N/A",
+        })
+    
+    # Display the watchlist table
+    total_loaded = len(ai_stocks)
+    if watchlist_data:
+        # Apply user filters
+        filtered = list(watchlist_data)
+        if signal_filter != "All":
+            filtered = [s for s in filtered if s["Signal"] == signal_filter]
+        if sector_filter != "All":
+            filtered = [s for s in filtered if s["Sector"] == sector_filter]
+        if min_score > 0:
+            def _qs_num(s):
+                try:
+                    return float(s["QS"])
+                except (ValueError, TypeError):
+                    return 0
+            filtered = [s for s in filtered if _qs_num(s) >= min_score]
+        
+        # Show filter status
+        if len(filtered) != total_loaded:
+            st.info(f"📊 Showing **{len(filtered)} of {total_loaded}** stocks after filters (Signal: {signal_filter}, Sector: {sector_filter}, Min QS: {min_score})")
+        else:
+            st.info(f"📊 **{total_loaded} unique stocks** loaded from watchlist (deduplicated)")
+        
+        if not filtered:
+            st.warning("No stocks match the current filters.")
+            return
+        
+        # Sort by QS descending so strongest signals surface first
+        def _qs_sort_key(s):
+            try:
+                return -float(s["QS"])
+            except (ValueError, TypeError):
+                return 0
+        filtered_sorted = sorted(filtered, key=_qs_sort_key)
+        watchlist_df = pd.DataFrame(filtered_sorted)
+        
+        # Color coding for Signal, Moat, QS
+        def color_signal(val):
+            if val == "BUY":
+                return "color: #00cc66; font-weight: bold"
+            elif val == "SELL":
+                return "color: #ff4444; font-weight: bold"
+            elif val == "HOLD":
+                return "color: #ffaa00; font-weight: bold"
+            elif val == "AVOID":
+                return "color: #888888; font-weight: bold"
+            return ""
+        
+        def color_moat(val):
+            if val == "WIDE":
+                return "color: #00cc66; font-weight: bold"
+            elif val == "NARROW":
+                return "color: #ffaa00; font-weight: bold"
+            elif val == "NONE" or val == "NONE ":
+                return "color: #ff4444; font-weight: bold"
+            return ""
+        
+        def color_qs(val):
+            try:
+                v = float(val)
+            except (ValueError, TypeError):
+                return ""
+            if v >= 70:
+                return "color: #00cc66; font-weight: bold"
+            elif v >= 50:
+                return "color: #ffaa00; font-weight: bold"
+            elif v > 0:
+                return "color: #ff4444; font-weight: bold"
+            return ""
+        
+        def color_mos(val):
+            if val == "N/A":
+                return ""
+            try:
+                raw = str(val).replace("%", "").strip()
+                v = float(raw)
+            except (ValueError, TypeError):
+                return ""
+            if v >= 30:
+                return "color: #00cc66; font-weight: bold"
+            elif v >= 10:
+                return "color: #ffaa00; font-weight: bold"
+            elif v > 0:
+                return "color: #ff4444; font-weight: bold"
+            return ""
+        
+        styled = (
+            watchlist_df.style
+            .map(color_signal, subset=["Signal"])
+            .map(color_moat,   subset=["Moat"])
+            .map(color_qs,     subset=["QS"])
+            .map(color_mos,    subset=["MOS"])
+        )
+        
+        st.dataframe(
+            styled,
+            width="stretch",
+            hide_index=True,
+            height=600,
+        )
+        
+        # Summary stats (reflects filtered subset)
+        st.subheader("Watchlist Summary")
+        col1, col2, col3, col4, col5 = st.columns(5)
+        
+        with col1:
+            st.metric("Total Stocks", len(filtered))
+        
+        with col2:
+            priced = sum(1 for s in filtered if s["Price"] != "N/A")
+            st.metric("With Price Data", priced)
+        
+        with col3:
+            buy_count = sum(1 for s in filtered if s["Signal"] == "BUY")
+            st.metric("BUY Signals", buy_count)
+        
+        with col4:
+            sell_count = sum(1 for s in filtered if s["Signal"] == "SELL")
+            st.metric("SELL Signals", sell_count)
+        
+        with col5:
+            avg_qs = 0
+            qs_values = [float(s["QS"]) for s in filtered if s["QS"] != "N/A"]
+            if qs_values:
+                avg_qs = sum(qs_values) / len(qs_values)
+            st.metric("Avg QS", f"{avg_qs:.1f}")
+        
+        # Add a refresh button inline
+        if st.button("🔄 Refresh from Database", key="refresh_watchlist"):
+            st.rerun()
+    else:
+        st.info("No data to display in watchlist.")
+
+def ai_watchlist_tab():
+    """Display AI stock watchlist for monitoring investment opportunities."""
+    st.header("👁️ AI Watchlist")
+    st.markdown("Monitor AI-related stocks for investment opportunities based on hedge fund holdings and AI sector trends.")
+    
+    # Load the AI stocks list with deduplication and proper parsing
+    ai_stocks = []
+    seen_tickers = set()
+    try:
+        with open("/home/shalu/Downloads/List of AI stocks.txt", "r") as f:
+            raw = f.read()
+        
+        for line in raw.split("\n"):
+            line = line.strip()
+            if not line:
+                continue
+            
+            ticker = None
+            company = ""
+            
+            # Handle pipe-delimited format (e.g., "     1|CBRS   CEREBRAS SYSTEMS INC")
+            if "|" in line:
+                after_pipe = line.split("|", 1)[1].strip()
+                parts = after_pipe.split(None, 1)
+                if parts and parts[0].isalpha() and len(parts[0]) <= 5:
+                    ticker = parts[0].upper()
+                    company = parts[1].strip() if len(parts) > 1 else ticker
+            else:
+                # Handle space-delimited format (e.g., "NVDA  NVIDIA CORPORATION")
+                parts = line.split(None, 1)
+                if parts and parts[0].isalpha() and len(parts[0]) <= 5:
+                    ticker = parts[0].upper()
+                    company = parts[1].strip() if len(parts) > 1 else ticker
+            
+            if ticker and ticker not in seen_tickers:
+                seen_tickers.add(ticker)
+                ai_stocks.append({"ticker": ticker, "company": company})
+    except Exception as e:
+        st.error(f"Error loading AI stocks list: {e}")
+        return
+    
+    if not ai_stocks:
+        st.warning("No AI stocks found in the watchlist.")
+        return
+    
+    # Sort alphabetically
+    ai_stocks.sort(key=lambda x: x["ticker"])
+    
+    # Filters (mirror of signals_tab)
+    fc1, fc2, fc3 = st.columns(3)
+    with fc1:
+        signal_filter = st.selectbox(
+            "Filter by Signal",
+            ["All", "BUY", "HOLD", "SELL", "AVOID"],
+            key="ai_wl_signal_filter",
+        )
+    with fc2:
+        try:
+            sector_options = ["All"] + sorted(load_universe()['sector'].dropna().unique().tolist())
+        except Exception:
+            sector_options = ["All"]
+        sector_filter = st.selectbox(
+            "Filter by Sector",
+            sector_options,
+            key="ai_wl_sector_filter",
+        )
+    with fc3:
+        min_score = st.slider(
+            "Min Quantitative Score",
+            0, 100, 0,
+            key="ai_wl_min_score",
+        )
+    
+    # Load current fundamentals data for comparison
+    try:
+        fundamentals_df = load_latest_fundamentals()
+        display_watchlist(
+            ai_stocks,
+            fundamentals_df if not fundamentals_df.empty else None,
+            signal_filter=signal_filter,
+            sector_filter=sector_filter,
+            min_score=min_score,
+        )
+    except Exception as e:
+        st.error(f"Error loading fundamentals data: {e}")
+        display_watchlist(ai_stocks, None)
+
+def get_db_connection():
+    """Get a database connection."""
+    return sqlite3.connect(DB_PATH)
+
+
+def get_live_price(ticker: str) -> float:
+    """
+    Fetch live price for a ticker.
+    Uses multiple strategies:
+    1. Check if already in fundamentals table
+    2. Try malaysiastock.biz scraper for KLSE stocks
+    
+    Args:
+        ticker: Stock ticker (MAYBANK.KL, 1155, etc.)
+    
+    Returns:
+        Current price or 0.0 if not available
+    """
+    # Try to load from fundamentals first
+    conn = get_db_connection()
+    try:
+        query = """
+        SELECT price FROM buffett_fundamentals 
+        WHERE ticker = ? AND price > 0
+        ORDER BY snapshot_date DESC 
+        LIMIT 1
+        """
+        cursor = conn.cursor()
+        cursor.execute(query, (ticker,))
+        row = cursor.fetchone()
+        if row and row[0]:
+            return float(row[0])
+    finally:
+        conn.close()
+    
+    # For KLSE stocks, try malaysiastock scraper
+    mapping = load_ticker_mapping()
+    bursa_code = mapping.get(ticker)
+    
+    # If ticker is like 1155.KL, extract the code
+    if not bursa_code and ticker.endswith('.KL'):
+        code_part = ticker.replace('.KL', '')
+        if code_part.isdigit():
+            bursa_code = code_part
+    
+    if bursa_code:
+        try:
+            price = fetch_malaysiastock_price(bursa_code)
+            if price:
+                return price
+        except Exception as e:
+            st.warning(f"Failed to fetch price from MalaysiaStock.biz for {ticker}: {e}")
+    
+    return 0.0
+
+def load_universe():
+    """Load the stock universe from database."""
+    conn = get_db_connection()
+    try:
+        query = """
+            SELECT ticker, bursa_code, company_name, sector, index_membership, 
+                   fundamentals_flag, is_active, notes
+            FROM buffett_universe
+            WHERE is_active = 1
+            ORDER BY company_name
+        """
+        df = pd.read_sql_query(query, conn)
+        return df
+    finally:
+        conn.close()
+
+def load_latest_fundamentals(ticker=None):
+    """Load the latest fundamentals for all tickers or a specific ticker."""
+    conn = get_db_connection()
+    try:
+        if ticker:
+            query = """
+                SELECT * FROM buffett_fundamentals 
+                WHERE ticker = ? 
+                ORDER BY snapshot_date DESC 
+                LIMIT 1
+            """
+            params = (ticker,)
+        else:
+            query = """
+                SELECT f1.* FROM buffett_fundamentals f1
+                INNER JOIN (
+                    SELECT ticker, MAX(snapshot_date) as max_date
+                    FROM buffett_fundamentals
+                    GROUP BY ticker
+                ) f2 ON f1.ticker = f2.ticker AND f1.snapshot_date = f2.max_date
+                ORDER BY f1.ticker
+            """
+            params = ()
+        
+        df = pd.read_sql_query(query, conn, params=params)
+        return df
+    finally:
+        conn.close()
+
+def load_latest_scores():
+    """Load the latest scores for all tickers."""
+    conn = get_db_connection()
+    try:
+        query = """
+            SELECT s1.* FROM buffett_scores s1
+            INNER JOIN (
+                SELECT ticker, MAX(snapshot_date) as max_date
+                FROM buffett_scores
+                GROUP BY ticker
+            ) s2 ON s1.ticker = s2.ticker AND s1.snapshot_date = s2.max_date
+            ORDER BY s1.ticker
+        """
+        df = pd.read_sql_query(query, conn)
+        return df
+    finally:
+        conn.close()
+
+def load_holdings():
+    """Load user holdings."""
+    conn = get_db_connection()
+    try:
+        # Try joining by ticker, but also handle Bursa code lookups
+        query = """
+            SELECT 
+                h.id, 
+                h.ticker,
+                h.quantity, 
+                h.average_cost, 
+                h.purchase_date,
+                h.notes, 
+                h.is_active,
+                h.created_at,
+                h.updated_at,
+                COALESCE(u.company_name, 
+                         (SELECT company_name FROM buffett_universe WHERE bursa_code = h.ticker LIMIT 1),
+                         h.ticker) as company_name,
+                (SELECT ticker FROM buffett_universe WHERE bursa_code = h.ticker LIMIT 1) as mapped_ticker,
+                u.notes as universe_notes
+            FROM buffett_holdings h
+            LEFT JOIN buffett_universe u ON h.ticker = u.ticker OR h.ticker = u.bursa_code
+            WHERE h.is_active = 1
+            ORDER by h.ticker
+        """
+        df = pd.read_sql_query(query, conn)
+        
+        # For KLSE stocks stored as digits in holdings (e.g., 1155), 
+        # try to match with .KL suffix in universe table
+        def get_universe_notes_for_klse(row):
+            # If we already have universe_notes from the join, use it
+            if pd.notna(row['universe_notes']):
+                return row['universe_notes']
+            
+            # If ticker is all digits (KLSE stock stored as Bursa code),
+            # try to find matching record with .KL suffix
+            ticker = row['ticker']
+            if pd.notna(ticker) and str(ticker).isdigit():
+                klse_ticker = f"{ticker}.KL"
+                conn_inner = get_db_connection()
+                try:
+                    cursor = conn_inner.cursor()
+                    cursor.execute(
+                        "SELECT notes FROM buffett_universe WHERE ticker = ? AND is_active = 1",
+                        (klse_ticker,)
+                    )
+                    result = cursor.fetchone()
+                    if result and result[0]:
+                        return result[0]
+                finally:
+                    conn_inner.close()
+            return None
+        
+        # Apply the KLSE lookup for rows that didn't get universe_notes from the initial join
+        klse_notes = df.apply(get_universe_notes_for_klse, axis=1)
+        # Fill missing universe_notes with KLSE lookup results
+        df['universe_notes'] = df['universe_notes'].fillna(klse_notes)
+        
+        # Extract exchange from universe notes (format: "Market: NASDAQ; Currency: USD")
+        def extract_exchange(notes):
+            if pd.isna(notes) or not isinstance(notes, str):
+                return "UNKNOWN"
+            import re
+            match = re.search(r'Market:\s*([^;]+)', notes)
+            if match:
+                return match.group(1).strip()
+            return "UNKNOWN"
+        
+        df['exchange'] = df['universe_notes'].apply(extract_exchange)
+        
+        # Create a normalized ticker for price lookups
+        # Priority: mapped_ticker -> ticker (US stocks as-is) -> ticker + '.KL' (for Bursa codes)
+        def get_price_ticker(row):
+            mapped = row.get('mapped_ticker')
+            if mapped and pd.notna(mapped) and mapped != 'None':
+                return mapped
+            ticker = row['ticker']
+            if not ticker:
+                return ticker
+            # US stocks: keep as-is (e.g., AAPL, GOOG, AMD)
+            # KLSE stocks with .KL suffix: keep as-is
+            # Bursa codes (digits only): need to map to ticker
+            if ticker.isdigit():
+                return f"{ticker}.KL"
+            return ticker
+        
+        df['price_lookup_ticker'] = df.apply(get_price_ticker, axis=1)
+        
+        return df
+    finally:
+        conn.close()
+    """Load recent changes from the change log."""
+    conn = get_db_connection()
+    try:
+        if ticker:
+            query = """
+                SELECT * FROM buffett_change_log
+                WHERE ticker = ?
+                ORDER BY created_at DESC
+                LIMIT ?
+            """
+            params = (ticker, limit)
+        else:
+            query = """
+                SELECT * FROM buffett_change_log
+                ORDER BY created_at DESC
+                LIMIT ?
+            """
+            params = (limit,)
+        
+        df = pd.read_sql_query(query, conn, params=params)
+        return df
+    finally:
+        conn.close()
+
+def calculate_current_signal(ticker):
+    """Calculate current signal for a ticker based on latest data."""
+    try:
+        # Get latest fundamentals
+        fundamentals_df = load_latest_fundamentals(ticker)
+        if fundamentals_df.empty:
+            return None, "No data available"
+        
+        fundamentals = fundamentals_df.iloc[0].to_dict()
+        
+        # Calculate intrinsic value if needed
+        if fundamentals.get('intrinsic_value', 0) == 0:
+            eps = fundamentals.get('eps_ttm', 0)
+            shares = fundamentals.get('shares_outstanding', 0)
+            if eps > 0 and shares > 0:
+                fcf = eps * shares  # Simplified
+                iv = compute_intrinsic_value(fcf=fcf, growth_rate=0.05, discount_rate=0.10)
+                fundamentals['intrinsic_value'] = iv
+                
+                price = fundamentals.get('price', 0)
+                if iv > 0:
+                    fundamentals['margin_of_safety'] = (iv - price) / iv if price > 0 else 0
+        
+        # Calculate Graham number if needed
+        if fundamentals.get('graham_number', 0) == 0:
+            eps = fundamentals.get('eps_ttm', 0)
+            bvps = fundamentals.get('book_value_per_share', 0)
+            if eps > 0 and bvps > 0:
+                fundamentals['graham_number'] = calculate_graham_number(eps, bvps)
+        
+        # Get quantitative score
+        quant_score, _ = compute_quant_score(fundamentals)
+        
+        # Get moat judgment
+        moat_judgment = judge_moat(ticker, fundamentals)
+        
+        # Decide signal
+        signal = decide_signal(
+            quant_score=quant_score,
+            moat_strength=moat_judgment.get('moat_strength'),
+            fundamentals_flag=fundamentals.get('fundamentals_flag', 'NORMAL'),
+            price=fundamentals.get('price', 0),
+            intrinsic_value=fundamentals.get('intrinsic_value', 0)
+        )
+        
+        return signal, None
+    except Exception as e:
+        return None, str(e)
+
+def display_etf_watchlist(etf_stocks, fundamentals_df):
+    """Display the ETF watchlist table with current data."""
+    # Prepare display data
+    watchlist_data = []
+    
+    for etf in etf_stocks:
+        ticker = etf["ticker"]
+        company = etf["company"]
+        
+        # Get current data if available
+        current_price = 0
+        pe_ratio = 0
+        pb_ratio = 0
+        dividend_yield = 0
+        signal = "N/A"
+        
+        if fundamentals_df is not None:
+            stock_data = fundamentals_df[fundamentals_df["ticker"] == ticker]
+            if not stock_data.empty:
+                stock_data = stock_data.iloc[0]
+                current_price = stock_data.get("price", 0)
+                pe_ratio = stock_data.get("pe_ratio", 0)
+                pb_ratio = stock_data.get("pb_ratio", 0)
+                dividend_yield = stock_data.get("dividend_yield", 0)
+                signal = stock_data.get("signal", "N/A")
+        
+        # ETFs are typically USD denominated
+        currency_symbol = "USD"
+        
+        watchlist_data.append({
+            "Ticker": ticker,
+            "ETF Name": company[:40] + ("..." if len(company) > 40 else ""),
+            "Price": f"{currency_symbol} {current_price:.2f}" if current_price > 0 else "N/A",
+            "PE": f"{pe_ratio:.1f}" if pe_ratio > 0 else "N/A",
+            "PB": f"{pb_ratio:.2f}" if pb_ratio > 0 else "N/A",
+            "Div Yield": f"{dividend_yield*100:.1f}%" if dividend_yield > 0 else "N/A",
+            "Signal": signal,
+        })
+    
+    # Display the watchlist table
+    if watchlist_data:
+        watchlist_df = pd.DataFrame(watchlist_data)
+        st.dataframe(
+            watchlist_df,
+            width="stretch",
+            hide_index=True,
+        )
+        
+        # Summary stats
+        st.subheader("ETF Watchlist Summary")
+        col1, col2, col3, col4 = st.columns(4)
+        
+        with col1:
+            st.metric("Total ETFs", len(etf_stocks))
+        
+        with col2:
+            priced_etfs = [e for e in watchlist_data if e["Price"] != "N/A" and e["Price"] != ""]
+            st.metric("With Price Data", len(priced_etfs))
+        
+        with col3:
+            buy_signals = [e for e in watchlist_data if e["Signal"] == "BUY"]
+            st.metric("BUY Signals", len(buy_signals))
+        
+        with col4:
+            sell_signals = [e for e in watchlist_data if e["Signal"] == "SELL"]
+            st.metric("SELL Signals", len(sell_signals))
+    else:
+        st.info("No data to display in watchlist.")
+def holdings_tab():
+    """Display user holdings with add/edit/remove functionality."""
+    st.header("My Holdings")
+    
+    # Initialize session state for editing
+    if 'editing_holding' not in st.session_state:
+        st.session_state.editing_holding = None
+    if 'price_overrides' not in st.session_state:
+        st.session_state.price_overrides = {}
+    
+    # Load holdings
+    holdings_df = load_holdings()
+    
+    # Add new holding section
+    with st.expander("➕ Add New Holding", expanded=False):
+        with st.form("add_holding_form"):
+            col1, col2 = st.columns(2)
+            
+            with col1:
+                ticker = st.text_input("Stock Ticker (e.g., MAYBANK.KL)", placeholder="MAYBANK.KL").upper()
+                shares = st.number_input("Number of Shares", min_value=1, value=100, step=1)
+                avg_price = st.number_input("Average Purchase Price (RM)", min_value=0.01, value=10.0, step=0.01)
+            
+            with col2:
+                purchase_date = st.date_input("Purchase Date", value=date.today())
+                notes = st.text_area("Notes (optional)", placeholder="Any notes about this investment...")
+            
+            # Show current signal for this ticker if available
+            if ticker:
+                try:
+                    fundamentals_df = load_latest_fundamentals(ticker)
+                    if not fundamentals_df.empty:
+                        current_price = fundamentals_df.iloc[0].get('price', 0)
+                        signal, _ = calculate_current_signal(ticker)
+                        if current_price > 0:
+                            st.info(f"Current Price: RM {current_price:.2f} | Signal: {signal or 'N/A'}")
+                        else:
+                            st.warning("No price data available for this ticker")
+                    else:
+                        st.warning("No fundamental data found for this ticker")
+                except Exception as e:
+                    st.error(f"Error loading data: {str(e)}")
+            
+            submitted = st.form_submit_button("Add Holding", type="primary")
+            
+            if submitted and ticker and shares > 0 and avg_price > 0:
+                try:
+                    # Validate ticker exists in universe
+                    universe_df = load_universe()
+                    if ticker not in universe_df['ticker'].values:
+                        st.error(f"Ticker {ticker} not found in the monitored universe")
+                    else:
+                        # Add to database
+                        conn = get_db_connection()
+                        cursor = conn.cursor()
+                        cursor.execute("""
+                            INSERT OR REPLACE INTO buffett_holdings 
+                            (ticker, quantity, average_cost, purchase_date, notes, is_active, created_at)
+                            VALUES (?, ?, ?, ?, ?, 1, CURRENT_TIMESTAMP)
+                        """, (ticker, shares, avg_price, purchase_date.isoformat(), notes))
+                        conn.commit()
+                        conn.close()
+                        
+                        st.success(f"✅ Added {shares} shares of {ticker} at RM {avg_price:.2f}")
+                        st.balloons()
+                        st.rerun()
+                except Exception as e:
+                    st.error(f"Error adding holding: {str(e)}")
+    
+    st.markdown("---")
+    
+    # Manual Price Override Section
+    with st.expander("🔧 Manual Price Override", expanded=False):
+        st.info("Override fetched prices if needed. These overrides are session-only.")
+        universe_df = load_universe()
+        tickers = ["Select..."] + sorted(universe_df['ticker'].tolist())
+        
+        col1, col2 = st.columns([2, 1])
+        with col1:
+            selected_ticker = st.selectbox("Select ticker to override price", tickers)
+        with col2:
+            override_price = st.number_input("Manual Price (RM)", min_value=0.0, value=0.0, step=0.01, key="manual_price_input")
+        
+        if st.button("Apply Price Override", type="secondary"):
+            if selected_ticker != "Select..." and override_price > 0:
+                st.session_state.price_overrides[selected_ticker] = override_price
+                st.success(f"Price override applied: {selected_ticker} = RM {override_price:.2f}")
+                st.rerun()
+        
+        # Show active overrides
+        if st.session_state.price_overrides:
+            st.write("**Active Price Overrides:**")
+            for t, p in st.session_state.price_overrides.items():
+                col_a, col_b = st.columns([3, 1])
+                with col_a:
+                    st.write(f"  {t}: RM {p:.2f}")
+                with col_b:
+                    if st.button(f"Remove {t}", key=f"remove_{t}"):
+                        del st.session_state.price_overrides[t]
+                        st.rerun()
+    
+    st.markdown("---")
+
+    if holdings_df.empty:
+        st.info("No holdings found. Add some holdings to get started.")
+        return
+    
+    # Handle editing mode
+    if st.session_state.editing_holding:
+        edit_holding_form(st.session_state.editing_holding)
+    
+    # Get latest data for each holding
+    holdings_data = []
+    for _, holding in holdings_df.iterrows():
+        ticker = holding['ticker']
+        # Use mapped ticker for signal calculation (prefers full ticker format)
+        price_ticker = holding.get('price_lookup_ticker', ticker)
+        
+        signal, error = calculate_current_signal(price_ticker)
+        
+        # Get latest fundamentals for current price using mapped ticker
+        fundamentals_df = load_latest_fundamentals(price_ticker)
+        
+        # Check for manual price override first, then try scraper if no price in fundamentals
+        if ticker in st.session_state.price_overrides:
+            current_price = st.session_state.price_overrides[ticker]
+            price_source = "manual"
+        else:
+            # Try fundamentals first
+            current_price = fundamentals_df.iloc[0].get('price', 0) if not fundamentals_df.empty else 0
+            price_source = "auto"
+            
+            # If no price in fundamentals, try malaysiastock scraper for KLSE stocks
+            if current_price == 0:
+                # Get ticker mapping to find bursa code
+                mapping = load_ticker_mapping()
+                # Check if this holding has a mapped ticker
+                mapped_ticker = holding.get('mapped_ticker') or holding.get('price_lookup_ticker', ticker)
+                bursa_code = mapping.get(mapped_ticker)
+                
+                # If ticker is a bursa code directly
+                if not bursa_code and ticker.isdigit():
+                    bursa_code = ticker
+                
+                if bursa_code:
+                    try:
+                        scraped_price = fetch_malaysiastock_price(bursa_code)
+                        if scraped_price and scraped_price > 0:
+                            current_price = scraped_price
+                            price_source = "scraped"
+                    except Exception:
+                        pass  # Stay with 0 if scraping fails
+        
+        # Calculate current value and P/L
+        quantity = holding['quantity']
+        avg_cost = holding['average_cost']
+        current_value = quantity * current_price
+        cost_basis = quantity * avg_cost
+        pnl = current_value - cost_basis
+        pnl_pct = (pnl / cost_basis * 100) if cost_basis > 0 else 0
+        
+        # Determine currency based on ticker type
+        ticker_str = str(ticker)
+        if ticker_str.isdigit() or ticker_str.endswith('.KL'):
+            currency_symbol = "RM"
+            currency_name = "Ringgit"
+        else:
+            currency_symbol = "USD"
+            currency_name = "US Dollar"
+        
+        # Determine price display with source indicator
+        price_display = f"{currency_symbol} {current_price:.2f}"
+        if price_source == "manual":
+            price_display += " ⚙️"
+        elif price_source == "scraped":
+            price_display += " 📡"
+        
+        holdings_data.append({
+            'id': holding.get('id'),
+            'Ticker': ticker,
+            'Exchange': holding.get('exchange', 'UNKNOWN'),
+            'Company': holding['company_name'] or ticker,
+            'Quantity': quantity,
+            'Avg Cost': f"{currency_symbol} {avg_cost:.2f}",
+            'Current Price': price_display,
+            'Current Value': f"{currency_symbol} {current_value:,.2f}",
+            'P/L': f"{currency_symbol} {pnl:,.2f} ({pnl_pct:+.1f}%)",
+            'Signal': signal or 'ERROR',
+            'Notes': holding['notes'] or '',
+            '_raw_quantity': quantity,
+            '_raw_avg_cost': avg_cost,
+            '_raw_notes': holding.get('notes', ''),
+            '_holding_id': holding.get('id'),
+            '_currency': currency_symbol
+        })
+
+    if holdings_data:
+        st.subheader("Your Holdings")
+        
+        # Add legend for price sources
+        st.caption("Price sources: Auto (from yfinance) | ⚙️ Manual override | 📡 MalaysiaStock.biz scraper")
+        
+        # Create columns for table header
+        header_cols = st.columns([1, 2, 1, 1, 1, 1, 1, 2, 1, 1])
+        with header_cols[0]:
+            st.write("**Ticker**")
+        with header_cols[1]:
+            st.write("**Company**")
+        with header_cols[2]:
+            st.write("**Exchange**")
+        with header_cols[3]:
+            st.write("**Qty**")
+        with header_cols[4]:
+            st.write("**Avg Cost**")
+        with header_cols[5]:
+            st.write("**Price**")
+        with header_cols[6]:
+            st.write("**Value**")
+        with header_cols[7]:
+            st.write("**P/L**")
+        with header_cols[8]:
+            st.write("**Signal**")
+        with header_cols[9]:
+            st.write("**Actions**")
+        
+        st.divider()
+        
+        # Display each holding with edit/delete buttons
+        for i, holding in enumerate(holdings_data):
+            row_cols = st.columns([1, 2, 1, 1, 1, 1, 1, 2, 1, 1])
+            
+            with row_cols[0]:
+                st.write(holding['Ticker'])
+            with row_cols[1]:
+                st.write(holding['Company'][:25])
+            with row_cols[2]:
+                st.write(holding['Exchange'])
+            with row_cols[3]:
+                st.write(f"{holding['_raw_quantity']:,}")
+            with row_cols[4]:
+                st.write(holding['Avg Cost'])
+            with row_cols[5]:
+                st.write(holding['Current Price'])
+            with row_cols[6]:
+                st.write(holding['Current Value'])
+            with row_cols[7]:
+                # Color code P/L
+                pnl_text = holding['P/L']
+                if '+' in pnl_text:
+                    st.markdown(f"<span style='color: green;'>{pnl_text}</span>", unsafe_allow_html=True)
+                elif '-' in pnl_text and pnl_text.count('-') > 1:
+                    st.markdown(f"<span style='color: red;'>{pnl_text}</span>", unsafe_allow_html=True)
+                else:
+                    st.write(pnl_text)
+            with row_cols[8]:
+                signal = holding['Signal']
+                if signal == 'BUY':
+                    st.markdown("🟢 BUY")
+                elif signal == 'SELL':
+                    st.markdown("🔴 SELL")
+                elif signal == 'HOLD':
+                    st.markdown("🟡 HOLD")
+                else:
+                    st.write(signal)
+            with row_cols[9]:
+                edit_col, delete_col = st.columns(2)
+                with edit_col:
+                    if st.button("✏️", key=f"edit_{holding['Ticker']}_{i}", help="Edit holding"):
+                        st.session_state.editing_holding = holding
+                        st.rerun()
+                with delete_col:
+                    if st.button("🗑️", key=f"delete_{holding['Ticker']}_{i}", help="Delete holding"):
+                        delete_holding(holding['Ticker'])
+                        st.rerun()
+        
+        # Summary metrics
+        st.markdown("---")
+        col1, col2, col3, col4 = st.columns(4)
+        
+        # Helper function to extract numeric value from currency string
+        def parse_currency_value(currency_str):
+            # Remove currency symbols and commas, then convert to float
+            import re
+            # Match patterns like "RM 1,234.56" or "USD 1,234.56"
+            match = re.search(r'[RM|USD]\s*([\d,]+\.?\d*)', currency_str)
+            if match:
+                return float(match.group(1).replace(',', ''))
+            return 0.0
+        
+        total_value = sum([parse_currency_value(h['Current Value']) for h in holdings_data])
+        total_cost = sum([parse_currency_value(h['Avg Cost']) * float(h['_raw_quantity']) for h in holdings_data])
+        total_pnl = total_value - total_cost
+        total_pnl_pct = (total_pnl / total_cost * 100) if total_cost > 0 else 0
+        
+        with col1:
+            st.metric("Total Value", f"RM {total_value:,.2f}")
+        with col2:
+            st.metric("Total P/L", f"RM {total_pnl:,.2f}", f"{total_pnl_pct:+.1f}%")
+        with col3:
+            buy_signals = sum(1 for h in holdings_data if h['Signal'] == 'BUY')
+            st.metric("BUY Signals", buy_signals)
+        with col4:
+            sell_signals = sum(1 for h in holdings_data if h['Signal'] == 'SELL')
+            st.metric("SELL Signals", sell_signals)
+    else:
+        st.warning("Unable to load holdings data.")
+
+
+
+def signals_tab():
+    """Display signals for all stocks."""
+    st.header("Stock Signals")
+    
+    # Filters
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        signal_filter = st.selectbox(
+            "Filter by Signal",
+            ["All", "BUY", "HOLD", "SELL", "AVOID"]
+        )
+    with col2:
+        sector_filter = st.selectbox(
+            "Filter by Sector",
+            ["All"] + sorted(load_universe()['sector'].dropna().unique().tolist())
+        )
+    with col3:
+        min_score = st.slider("Min Quantitative Score", 0, 100, 0)
+    
+    # Load data
+    universe_df = load_universe()
+    fundamentals_df = load_latest_fundamentals()
+    scores_df = load_latest_scores()
+    
+    if fundamentals_df.empty:
+        st.warning("No fundamentals data available. Please run a scan first.")
+        return
+    
+    # Merge data
+    merged_df = universe_df.merge(fundamentals_df, on='ticker', how='left', suffixes=('', '_fund'))
+    merged_df = merged_df.merge(scores_df, on='ticker', how='left', suffixes=('', '_score'))
+    
+    # Apply filters
+    if signal_filter != "All":
+        merged_df = merged_df[merged_df['signal'] == signal_filter]
+    
+    if sector_filter != "All":
+        merged_df = merged_df[merged_df['sector'] == sector_filter]
+    
+    merged_df = merged_df[merged_df['quant_score'] >= min_score]
+    
+    # Sort by quant score descending
+    merged_df = merged_df.sort_values('quant_score', ascending=False)
+    
+    if merged_df.empty:
+        st.info("No stocks match the current filters.")
+        return
+    
+    # Prepare display data
+    display_data = []
+    for _, row in merged_df.iterrows():
+        ticker = row['ticker']
+        # Determine exchange and currency
+        ticker_str = str(ticker)
+        if ticker_str.isdigit() or ticker_str.endswith('.KL'):
+            currency_symbol = "RM"
+            currency_name = "Ringgit"
+            # For KLSE stocks, try to get exchange from universe notes
+            exchange = "KLSE"
+        else:
+            currency_symbol = "USD"
+            currency_name = "US Dollar"
+            # For US stocks, get exchange from universe notes if available
+            # We'll get this from the merged data if we joined with universe notes
+            
+        # Try to get exchange from universe notes if we have them in merged_df
+        exchange_from_notes = "UNKNOWN"
+        if 'notes' in row and pd.notna(row['notes']):
+            import re
+            match = re.search(r'Market:\s*([^;]+)', row['notes'])
+            if match:
+                exchange_from_notes = match.group(1).strip()
+        
+        # Use exchange from notes if available, otherwise fallback to ticker-based
+        exchange = exchange_from_notes if exchange_from_notes != "UNKNOWN" else exchange
+        
+        display_data.append({
+            'Ticker': ticker,
+            'Exchange': exchange,
+            'Company': row['company_name'] or ticker,
+            'Sector': row['sector'] or '-',
+            'Price': f"{currency_symbol} {row.get('price', 0):.2f}",
+            'PE': f"{row.get('pe_ratio', 0):.1f}",
+            'PB': f"{row.get('pb_ratio', 0):.2f}",
+            'ROE': f"{row.get('roe_latest', 0)*100:.1f}%" if row.get('roe_latest') else '-',
+            'QS': f"{row.get('quant_score', 0):.1f}",
+            'Signal': row.get('signal', '-'),
+            'Moat': row.get('moat_strength', '-'),
+            'Graham': f"{currency_symbol} {row.get('graham_number', 0):.2f}" if row.get('graham_number') else '-',
+            'IV': (f"{currency_symbol} {(row.get('intrinsic_value', 0) or 0) / row['shares_outstanding']:.2f}"
+                   if row.get('intrinsic_value') and row.get('shares_outstanding')
+                   else (f"{currency_symbol} {row.get('intrinsic_value', 0):.2f}" if row.get('intrinsic_value') else '-')),
+            'MOS': f"{row.get('margin_of_safety', 0)*100:.1f}%" if row.get('margin_of_safety') else '-'
+        })
+    
+    # Display signals table
+    if display_data:
+        signals_df = pd.DataFrame(display_data)
+        
+        # ----- Color coding (mirrors AI Watchlist) -----
+        def _color_signal(val):
+            if val == 'BUY':
+                return "color: #00cc66; font-weight: bold"
+            elif val == 'SELL':
+                return "color: #ff4444; font-weight: bold"
+            elif val == 'HOLD':
+                return "color: #ffaa00; font-weight: bold"
+            elif val == 'AVOID':
+                return "color: #888888; font-weight: bold"
+            return ""
+        
+        def _color_moat(val):
+            if val == 'WIDE':
+                return "color: #00cc66; font-weight: bold"
+            elif val == 'NARROW':
+                return "color: #ffaa00; font-weight: bold"
+            elif val in ('NONE', 'NONE '):
+                return "color: #ff4444; font-weight: bold"
+            return ""
+        
+        def _color_qs(val):
+            try:
+                v = float(val)
+            except (ValueError, TypeError):
+                return ""
+            if v >= 70:
+                return "color: #00cc66; font-weight: bold"
+            elif v >= 50:
+                return "color: #ffaa00; font-weight: bold"
+            elif v > 0:
+                return "color: #ff4444; font-weight: bold"
+            return ""
+        
+        def _color_mos(val):
+            if val in ('-', 'N/A', None):
+                return ""
+            try:
+                v = float(str(val).replace('%', '').strip())
+            except (ValueError, TypeError):
+                return ""
+            if v >= 30:
+                return "color: #00cc66; font-weight: bold"
+            elif v >= 10:
+                return "color: #ffaa00; font-weight: bold"
+            elif v > 0:
+                return "color: #ff4444; font-weight: bold"
+            return ""
+        
+        styled_df = (
+            signals_df.style
+            .map(_color_signal, subset=['Signal'])
+            .map(_color_moat,   subset=['Moat'])
+            .map(_color_qs,     subset=['QS'])
+            .map(_color_mos,    subset=['MOS'])
+        )
+        
+        st.dataframe(
+            styled_df,
+            width='stretch',
+            hide_index=True,
+            height=600
+        )
+        
+        # Summary stats
+        st.subheader("Signal Distribution")
+        signal_counts = merged_df['signal'].value_counts()
+        cols = st.columns(len(signal_counts))
+        for i, (signal, count) in enumerate(signal_counts.items()):
+            with cols[i]:
+                if signal == 'BUY':
+                    st.metric("🟢 BUY", count)
+                elif signal == 'SELL':
+                    st.metric("🔴 SELL", count)
+                elif signal == 'HOLD':
+                    st.metric("🟡 HOLD", count)
+                else:
+                    st.metric(f"⚪ {signal}", count)
+    else:
+        st.info("No data to display.")
+
+
+def change_log_tab():
+    """Display change log."""
+    st.header("Change Log")
+    
+    # Filters
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        ticker_options = ["All"] + sorted(load_universe()['ticker'].tolist())
+        ticker_filter = st.selectbox("Filter by Ticker", ticker_options)
+    with col2:
+        severity_filter = st.selectbox(
+            "Filter by Severity",
+            ["All", "INFO", "WARN", "ALERT"]
+        )
+    with col3:
+        limit = st.selectbox("Number of entries", [25, 50, 100, 200], index=1)
+    
+    # Load change log
+    ticker_param = None if ticker_filter == "All" else ticker_filter
+    changes_list = load_change_log(limit=limit, ticker=ticker_param)
+    changes_df = pd.DataFrame(changes_list) if changes_list else pd.DataFrame()
+    
+    if changes_df.empty:
+        st.info("No changes recorded yet.")
+        return
+    
+    # Apply severity filter
+    if severity_filter != "All":
+        changes_df = changes_df[changes_df['severity'] == severity_filter]
+    
+    if changes_df.empty:
+        st.info("No changes match the current filters.")
+        return
+    
+    # Prepare display data
+    display_data = []
+    for _, row in changes_df.iterrows():
+        # Format timestamp
+        try:
+            timestamp = pd.to_datetime(row['created_at']).strftime('%Y-%m-%d %H:%M')
+        except:
+            timestamp = str(row['created_at'])
+        
+        display_data.append({
+            'Time': timestamp,
+            'Ticker': row['ticker'],
+            'Field': row['field_name'],
+            'Old Value': str(row['old_value']) if row['old_value'] is not None else '-',
+            'New Value': str(row['new_value']) if row['new_value'] is not None else '-',
+            'Change Type': row['change_type'],
+            'Severity': row['severity']
+        })
+    
+    # Display changes table
+    if display_data:
+        changes_display_df = pd.DataFrame(display_data)
+        
+        # Color code by severity
+        def color_severity(val):
+            if val == 'ALERT':
+                return 'background-color: #ffebee; color: #c62828'
+            elif val == 'WARN':
+                return 'background-color: #fff8e1; color: #ef6c00'
+            elif val == 'INFO':
+                return 'background-color: #e3f2fd; color: #1565c0'
+            return ''
+
+        try:
+            # pandas >= 2.1 uses .map instead of .applymap
+            styled_df = changes_display_df.style.map(
+                color_severity, subset=['Severity']
+            )
+        except AttributeError:
+            # fallback for older pandas
+            styled_df = changes_display_df.style.apply(
+                lambda x: [color_severity(v) for v in x], subset=['Severity']
+            )
+        
+        st.dataframe(
+            styled_df,
+            width='stretch',
+            hide_index=True,
+            height=500
+        )
+        
+        # Summary
+        st.subheader("Change Summary")
+        col1, col2, col3, col4 = st.columns(4)
+        with col1:
+            st.metric("Total Changes", len(changes_display_df))
+        with col2:
+            alert_count = len(changes_display_df[changes_display_df['Severity'] == 'ALERT'])
+            st.metric("Alerts", alert_count)
+        with col3:
+            warn_count = len(changes_display_df[changes_display_df['Severity'] == 'WARN'])
+            st.metric("Warnings", warn_count)
+        with col4:
+            info_count = len(changes_display_df[changes_display_df['Severity'] == 'INFO'])
+            st.metric("Info", info_count)
+    else:
+        st.info("No changes to display.")
+
+
+def sell_calculator_tab():
+    """Display sell calculator for profit-taking decisions."""
+    st.header("Sell Calculator")
+    st.markdown("Calculate optimal sell points based on your investment goals and sound investing principles.")
+    
+    # Input section
+    st.subheader("Investment Details")
+    
+    col1, col2 = st.columns(2)
+    with col1:
+        ticker = st.text_input("Stock Ticker (e.g., MAYBANK.KL)", value="MAYBANK.KL").upper()
+        shares = st.number_input("Number of Shares", min_value=1, value=1000)
+        avg_price = st.number_input("Average Purchase Price (RM)", min_value=0.01, value=10.0, step=0.01)
+    
+    with col2:
+        target_return = st.number_input("Target Return (%)", min_value=0.0, value=50.0, step=1.0)
+        target_date = st.date_input("Target Date", value=date.today())
+        use_graham = st.checkbox("Use Graham Number as Sell Target", value=True)
+    
+    if ticker:
+        # Get current data
+        try:
+            fundamentals_df = load_latest_fundamentals(ticker)
+            if fundamentals_df.empty:
+                st.warning(f"No data found for {ticker}. Please check the ticker symbol.")
+                return
+            
+            fundamentals = fundamentals_df.iloc[0].to_dict()
+            current_price = fundamentals.get('price', 0)
+            
+            # Calculate current position
+            cost_basis = shares * avg_price
+            current_value = shares * current_price
+            current_pnl = current_value - cost_basis
+            current_pnl_pct = (current_pnl / cost_basis * 100) if cost_basis > 0 else 0
+            
+            # Display current status
+            st.subheader("Current Position")
+            col1, col2, col3, col4 = st.columns(4)
+            with col1:
+                st.metric("Current Price", f"RM {current_price:.2f}")
+            with col2:
+                st.metric("Current Value", f"RM {current_value:,.2f}")
+            with col3:
+                st.metric("P/L", f"RM {current_pnl:,.2f}", f"{current_pnl_pct:+.1f}%")
+            with col4:
+                st.metric("Cost Basis", f"RM {cost_basis:,.2f}")
+            
+            # Calculate targets
+            st.subheader("Sell Targets")
+            
+            target_price = avg_price * (1 + target_return / 100)
+            target_value = shares * target_price
+            
+            # Graham number target
+            graham_number = fundamentals.get('graham_number', 0)
+            if graham_number > 0:
+                graham_value = shares * graham_number
+                graham_return = ((graham_number - avg_price) / avg_price * 100) if avg_price > 0 else 0
+            
+            # Intrinsic value target
+            intrinsic_value = fundamentals.get('intrinsic_value', 0)
+            if intrinsic_value > 0:
+                iv_value = shares * intrinsic_value
+                iv_return = ((intrinsic_value - avg_price) / avg_price * 100) if avg_price > 0 else 0
+            
+            # Display targets in columns
+            target_cols = st.columns(3)
+            
+            with target_cols[0]:
+                st.metric(
+                    f"Target ({target_return}% return)",
+                    f"RM {target_price:.2f}",
+                    f"RM {target_value - cost_basis:,.2f}"
+                )
+            
+            with target_cols[1]:
+                if graham_number > 0:
+                    st.metric(
+                        "Graham Number",
+                        f"RM {graham_number:.2f}",
+                        f"RM {graham_value - cost_basis:,.2f} ({graham_return:+.1f}%)"
+                    )
+            
+            with target_cols[2]:
+                if intrinsic_value > 0:
+                    st.metric(
+                        "Intrinsic Value",
+                        f"RM {intrinsic_value:.2f}",
+                        f"RM {iv_value - cost_basis:,.2f} ({iv_return:+.1f}%)"
+                    )
+            
+            # Recommendation
+            st.subheader("Recommendation")
+            
+            # Get current signal
+            signal, error = calculate_current_signal(ticker)
+            
+            if error:
+                st.error(f"Error calculating signal: {error}")
+            else:
+                # Determine recommendation based on signal and targets
+                recommendation = "HOLD"
+                reason = ""
+                
+                if signal == "BUY":
+                    recommendation = "ACCUMULATE"
+                    reason = "Stock shows BUY signal - consider adding to position"
+                elif signal == "SELL":
+                    recommendation = "REDUCE"
+                    reason = "Stock shows SELL signal - consider reducing position"
+                elif signal == "AVOID":
+                    recommendation = "SELL"
+                    reason = "Stock shows AVOID signal - consider exiting position"
+                else:
+                    # Based on price targets
+                    if current_price >= target_price:
+                        recommendation = "SELL"
+                        reason = f"Current price has reached target return of {target_return}%"
+                    elif use_graham and graham_number > 0 and current_price >= graham_number:
+                        recommendation = "SELL"
+                        reason = "Current price has reached or exceeded Graham Number"
+                    elif intrinsic_value > 0 and current_price >= intrinsic_value:
+                        recommendation = "SELL"
+                        reason = "Current price has reached or exceeded Intrinsic Value"
+                    else:
+                        recommendation = "HOLD"
+                        reason = "Current price below all sell targets"
+                
+                # Display recommendation
+                if recommendation == "BUY" or recommendation == "ACCUMULATE":
+                    st.success(f"**{recommendation}** - {reason}")
+                elif recommendation == "SELL":
+                    st.error(f"**{recommendation}** - {reason}")
+                else:
+                    st.info(f"**{recommendation}** - {reason}")
+            
+            # Detailed calculations
+            with st.expander("See detailed calculations"):
+                st.write(f"**Cost Basis:** {shares} shares × RM {avg_price:.2f} = RM {cost_basis:,.2f}")
+                st.write(f"**Current Value:** {shares} shares × RM {current_price:.2f} = RM {current_value:,.2f}")
+                st.write(f"**Current P/L:** RM {current_value:,.2f} - RM {cost_basis:,.2f} = RM {current_pnl:,.2f} ({current_pnl_pct:+.1f}%)")
+                
+                st.write(f"**Target Price ({target_return}% return):** RM {avg_price:.2f} × (1 + {target_return}/100) = RM {target_price:.2f}")
+                st.write(f"**Target Value:** {shares} shares × RM {target_price:.2f} = RM {target_value:,.2f}")
+                
+                if graham_number > 0:
+                    st.write(f"**Graham Number:** RM {graham_number:.2f}")
+                    st.write(f"**Graham Value:** {shares} shares × RM {graham_number:.2f} = RM {graham_value:,.2f}")
+                    st.write(f"**Graham Return:** ({graham_number:.2f} - {avg_price:.2f}) / {avg_price:.2f} × 100 = {graham_return:+.1f}%")
+                
+                if intrinsic_value > 0:
+                    st.write(f"**Intrinsic Value:** RM {intrinsic_value:.2f}")
+                    st.write(f"**IV Value:** {shares} shares × RM {intrinsic_value:.2f} = RM {iv_value:,.2f}")
+                    st.write(f"**IV Return:** ({intrinsic_value:.2f} - {avg_price:.2f}) / {avg_price:.2f} × 100 = {iv_return:+.1f}%")
+        
+        except Exception as e:
+            st.error(f"Error loading data for {ticker}: {e}")
+            st.exception(e)
+
+
+def etf_watchlist_tab():
+    """Display ETF watchlist for monitoring investment opportunities."""
+    st.header("📊 ETF Watchlist")
+    st.markdown("Monitor AI/data center/semiconductor ETFs for investment opportunities.")
+    
+    # Load the ETF stocks list
+    etf_stocks = []
+    try:
+        with open("/home/shalu/Downloads/ETF list.txt", "r") as f:
+            lines = f.readlines()
+        
+        for line in lines:
+            line = line.strip()
+            # Skip line numbers, empty lines, and header/separator lines
+            if line and not line.startswith("     ") and not line.startswith("||") and "|" in line:
+                # Parse pipe-delimited format: || Ticker | ETF name | Exchange | Focus |
+                parts = [part.strip() for part in line.split("|") if part.strip()]
+                if len(parts) >= 2:
+                    ticker = parts[0]
+                    # Validate ticker: 2-5 uppercase letters
+                    if ticker.isalpha() and ticker.isupper() and 2 <= len(ticker) <= 5:
+                        company = parts[1] if len(parts) > 1 else ticker
+                        etf_stocks.append({"ticker": ticker, "company": company})
+    except Exception as e:
+        st.error(f"Error loading ETF list: {e}")
+        return
+    
+    if not etf_stocks:
+        st.warning("No ETFs found in the watchlist.")
+        return
+    
+    # Remove duplicates based on ticker
+    seen_tickers = set()
+    unique_etfs = []
+    for etf in etf_stocks:
+        if etf["ticker"] not in seen_tickers:
+            seen_tickers.add(etf["ticker"])
+            unique_etfs.append(etf)
+    
+    # Load current fundamentals data for comparison
+    try:
+        fundamentals_df = load_latest_fundamentals()
+        if fundamentals_df.empty:
+            st.warning("No fundamentals data available. Please run a scan first to get latest data.")
+            # Still show the watchlist but without current data
+            display_etf_watchlist(unique_etfs, None)
+            return
+    except Exception as e:
+        st.error(f"Error loading fundamentals data: {e}")
+        display_etf_watchlist(unique_etfs, None)
+        return
+    
+    # Display the watchlist with current data
+    display_etf_watchlist(unique_etfs, fundamentals_df)
+
+
+
+
+def bond_yield_tab():
+    """Display global bond yields for monitoring investment opportunities."""
+    st.header("📊 Global Bond Yield")
+    st.markdown("Monitor international government bond yields for investment opportunities and economic insights.")
+    
+    # Load bond yield data from database
+    try:
+        bond_data = load_bond_yield_data()
+    except Exception as e:
+        st.error(f"Error loading bond yield data: {e}")
+        bond_data = []
+    
+    if not bond_data:
+        st.warning("No bond yield data available. Please run the bond yield fetcher first.")
+        return
+    
+    # Display the bond yield table
+    display_bond_yield(bond_data)
+
+def display_bond_yield(bond_data):
+    """Display the bond yield table with current data."""
+    # Prepare display data
+    watchlist_data = []
+    
+    for bond in bond_data:
+        country = bond['country']
+        maturity = bond['maturity']
+        yield_pct = bond['yield_pct']
+        source = bond['source']
+        date_str = bond['date']
+        
+        watchlist_data.append({
+            "Country": country,
+            "Maturity": maturity,
+            "Yield (%)": f"{yield_pct:.2f}%",
+            "Source": source,
+            "Date": date_str
+        })
+    
+    # Display the bond yield table
+    if watchlist_data:
+        watchlist_df = pd.DataFrame(watchlist_data)
+        st.dataframe(
+            watchlist_df,
+            width="stretch",
+            hide_index=True,
+        )
+        
+        # Summary stats
+        st.subheader("Global Bond Yield Summary")
+        col1, col2, col3, col4 = st.columns(4)
+        
+        with col1:
+            st.metric("Total Records", len(bond_data))
+        
+        with col2:
+            unique_countries = len(set(b['country'] for b in bond_data))
+            st.metric("Countries", unique_countries)
+        
+        with col3:
+            avg_yield = sum(b['yield_pct'] for b in bond_data) / len(bond_data) if bond_data else 0
+            st.metric("Average Yield", f"{avg_yield:.2f}%")
+        
+        with col4:
+            latest_date = max(b['date'] for b in bond_data) if bond_data else "N/A"
+            st.metric("Latest Update", latest_date)
+    else:
+        st.info("No bond yield data to display.")
+
+
+def load_bond_yield_data():
+    """Load bond yield data from the database."""
+    import sqlite3
+    import os
+    
+    db_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'buffett.db')
+    if not os.path.exists(db_path):
+        # Try alternative path
+        db_path = "./buffett-monitor/data/buffett.db"
+    
+    if not os.path.exists(db_path):
+        st.error(f"Database file not found: {db_path}")
+        return []
+    
+    try:
+        conn = sqlite3.connect(db_path)
+        cursor = conn.cursor()
+        
+        # Get the latest bond yield data for each country/maturity combination
+        cursor.execute("""
+            SELECT country, maturity, yield_pct, date, source
+            FROM buffett_bond_yield b1
+            WHERE date = (
+                SELECT MAX(date) 
+                FROM buffett_bond_yield b2 
+                WHERE b1.country = b2.country 
+                AND b1.maturity = b2.maturity
+            )
+            ORDER BY country, maturity
+        """)
+        
+        rows = cursor.fetchall()
+        conn.close()
+        
+        # Convert to list of dictionaries
+        bond_data = []
+        for row in rows:
+            bond_data.append({
+                'country': row[0],
+                'maturity': row[1],
+                'yield_pct': row[2],
+                'date': row[3],
+                'source': row[4]
+            })
+        
+        return bond_data
+    except Exception as e:
+        st.error(f"Error loading bond yield data from database: {e}")
+        return []
+
+def parse_layer_markdown(file_path):
+    """Extract ALL markdown tables from a layer file as a list of DataFrames.
+
+    Returns a list of (section_name, DataFrame) tuples — section name is the
+    most recent heading above the table, useful as a sub-layer label.
+    """
+    import pandas as pd
+    import re
+    with open(file_path, 'r') as f:
+        lines = f.readlines()
+
+    # Walk line-by-line, track current heading, accumulate table rows.
+    tables = []
+    cur_section = file_path.rsplit('/', 1)[-1].rsplit('.', 1)[0]
+    cur_heading_level = 0
+    cur = []
+    in_table = False
+    for line in lines:
+        s = line.rstrip('\n')
+        stripped = s.strip()
+        # a markdown table row starts AND ends with a pipe, with >=2 pipes
+        if stripped.startswith('|') and stripped.endswith('|') and stripped.count('|') >= 3:
+            in_table = True
+            cur.append(s)
+        else:
+            if in_table:
+                # heading above the table — promote it as section name
+                if stripped.startswith('#') or stripped.startswith('**'):
+                    heading = stripped.lstrip('#').strip().strip('*').strip()
+                    if heading:
+                        cur_section = heading
+            in_table = False
+            if len(cur) >= 3:
+                tables.append((cur_section, _md_table_to_df(cur)))
+            cur = []
+            # capture standalone headings for next-table section
+            if stripped.startswith('#'):
+                cur_section = stripped.lstrip('#').strip().strip('*').strip()
+    if len(cur) >= 3:
+        tables.append((cur_section, _md_table_to_df(cur)))
+    return tables
+
+
+def _md_table_to_df(raw_lines):
+    """Convert raw markdown table lines to a DataFrame."""
+    import re
+    import pandas as pd
+    cleaned = [re.sub(r'^\s*\|\s*|\s*\|\s*$', '', l) for l in raw_lines]
+    data = [[c.strip() for c in l.split('|')] for l in cleaned]
+    if len(data) < 2:
+        return pd.DataFrame()
+    header = data[0]
+    # find separator row (---)
+    sep_idx = None
+    for i, row in enumerate(data[1:], 1):
+        if all(re.match(r'^[\s\-:]+$', c) for c in row) and len(row) == len(header):
+            sep_idx = i
+            break
+    rows = data[sep_idx+1:] if sep_idx is not None else data[1:]
+    if not rows:
+        return pd.DataFrame()
+    df = pd.DataFrame(rows, columns=header)
+    # Strip whitespace-only fake columns (caused by leading/trailing pipes)
+    df = df.loc[:, ~df.columns.str.match(r'^\s*$')]
+    return df
+
+
+# Canonical names of ticker columns across the five layer files
+TICKER_CANDIDATES = ['Ticker', 'Ticker (US)', 'Ticker / Listing', 'Listing',
+                     'Ticker(s)', 'Symbol', 'Ticker (HKEX)']
+COMPANY_CANDIDATES = ['Company', 'Company / Group']
+REGION_CANDIDATES = ['Region']
+
+# Map ticker suffix → region for non-US exchanges (US is the default when no suffix)
+_REGION_BY_SUFFIX = [
+    (re.compile(r'\.HK$'), 'HK'),
+    (re.compile(r'\.SH$'), 'China'),
+    (re.compile(r'\.SS$'), 'China'),
+    (re.compile(r'\.SZ$'), 'China'),
+    (re.compile(r'\.T$'), 'Japan'),
+    (re.compile(r'\.L$'), 'UK ADR'),
+    (re.compile(r'\.LON$'), 'UK ADR'),
+    (re.compile(r'\.TO$'), 'Canada'),
+    (re.compile(r'\.DE$'), 'Germany ADR'),
+]
+
+
+def _parse_ticker_token(s):
+    """Pull a single clean ticker token from a string like 'NVDA (NASDAQ)' or '0992.HK'."""
+    s = str(s).strip()
+    m = re.match(r'^([0-9]{4,6}\.[A-Z]{1,3}|[A-Z]{1,5}(?:\.[A-Z])?)\b', s)
+    return m.group(1) if m else None
+
+
+def _split_tickers(cell):
+    """Split a multi-ticker cell like '0992.HK (HKEX), LNVGY (ADR)' into a list of clean tickers."""
+    s = str(cell)
+    parts = re.split(r'[,/]', s)
+    out = []
+    for p in parts:
+        t = _parse_ticker_token(p)
+        if t and t not in out:
+            out.append(t)
+    return out
+
+
+def _region_from_ticker(ticker):
+    """Infer region from ticker suffix. Default to 'US'."""
+    for rx, region in _REGION_BY_SUFFIX:
+        if rx.search(ticker):
+            return region
+    return 'US'
+
+
+def _enrich_ticker_rows(combined_df):
+    """For each row, find the ticker source column with a non-empty value.
+
+    pd.concat() of differently-shaped tables leaves a 'Ticker' key on every
+    row (NaN for rows whose source table doesn't have that column), so a
+    pure column-name lookup is misleading. We must look per-row.
+    """
+    import pandas as pd
+    # Determine which of the candidate columns are actually present in this df
+    tk_candidates = [c for c in TICKER_CANDIDATES if c in combined_df.columns]
+
+    has_region = 'Region' in combined_df.columns
+
+    tks, all_tks, regions = [], [], []
+    for _, row in combined_df.iterrows():
+        # Pick the first ticker source where THIS row has a non-empty value
+        tk_col = None
+        cell = ''
+        for cand in tk_candidates:
+            val = row.get(cand)
+            if pd.notna(val) and str(val).strip():
+                tk_col = cand
+                cell = str(val).strip()
+                break
+
+        tokens = _split_tickers(cell) if cell else []
+        primary = tokens[0] if tokens else ''
+
+        tks.append(primary)
+        all_tks.append('|'.join(tokens))
+
+        # Region inference — try the row's own Region value first; then ticker suffix
+        reg = '-'
+        if has_region:
+            raw = row.get('Region')
+            if pd.notna(raw):
+                reg = str(raw).strip()
+        if not reg or reg == '-':
+            if primary:
+                reg = _region_from_ticker(primary)
+            else:
+                reg = '-'
+        else:
+            # Normalize common variants
+            if 'US' in reg:
+                reg = 'US'
+            elif 'HK' in reg:
+                reg = 'HK'
+            elif 'China' in reg:
+                reg = 'China'
+            else:
+                reg = _region_from_ticker(primary) if primary else reg
+
+        regions.append(reg)
+
+    combined_df['Ticker'] = tks
+    combined_df['AllTickers'] = all_tks
+    combined_df['Region'] = regions
+    return combined_df
+
+
+def _batch_fetch_yfinance(tickers, session_state_key='_ai_eco_cache', max_workers=8):
+    """Fetch live yfinance data for a list of tickers in parallel, with session_state cache."""
+    import concurrent.futures as cf
+    import yfinance as yf
+    cache = st.session_state.get(session_state_key, {})
+    todo = [t for t in tickers if t not in cache]
+    if todo:
+        def _fetch_one(t):
+            try:
+                info = yf.Ticker(t).info or {}
+                return t, {
+                    'price': info.get('currentPrice') or info.get('regularMarketPrice') or 0,
+                    'pe': info.get('trailingPE') or 0,
+                    'forward_pe': info.get('forwardPE') or 0,
+                    'pb': info.get('priceToBook') or 0,
+                    'roe': info.get('returnOnEquity') or 0,
+                    'market_cap': info.get('marketCap') or 0,
+                    'dividend_yield': info.get('dividendYield') or info.get('trailingAnnualDividendYield') or 0,
+                    'revenue_growth': info.get('revenueGrowth') or 0,
+                    'gross_margins': info.get('grossMargins') or 0,
+                    'debt_to_equity': info.get('debtToEquity') or 0,
+                    'beta': info.get('beta') or 0,
+                    '1y_return': info.get('52WeekChange') or 0,
+                }
+            except Exception:
+                return t, {}
+
+        with cf.ThreadPoolExecutor(max_workers=max_workers) as ex:
+            for t, payload in ex.map(_fetch_one, todo):
+                cache[t] = payload
+        st.session_state[session_state_key] = cache
+    return {t: cache.get(t, {}) for t in tickers}
+
+
+def fetch_stock_data(ticker):
+    """Fetch live price/PE/PB/ROE data for a ticker. DEPRECATED — kept for backward compat."""
+    try:
+        import yfinance as yf
+        info = yf.Ticker(ticker).info or {}
+        return {
+            'price': info.get('currentPrice') or info.get('regularMarketPrice') or 0,
+            'pe': info.get('trailingPE') or 0,
+            'pb': info.get('priceToBook') or 0,
+            'roe': info.get('returnOnEquity') or 0,
+            'market_cap': info.get('marketCap') or 0,
+            'dividend_yield': info.get('dividendYield') or 0,
+            'revenue_growth': info.get('revenueGrowth') or 0,
+            'debt_to_equity': info.get('debtToEquity') or 0,
+        }
+    except Exception:
+        return {'price': 0, 'pe': 0, 'pb': 0, 'roe': 0, 'market_cap': 0, 'dividend_yield': 0, 'revenue_growth': 0, 'debt_to_equity': 0}
+
+def layers_tab():
+    """Display the AI ecosystem layers tab - world-class stock analysis.
+
+    Pipeline:
+      1. Parse ALL markdown tables from each layer file (multi-table aware).
+      2. Extract ticker + region per row (region comes from existing 'Region'
+         column when present, else is inferred from ticker suffix).
+      3. Build a consolidated "self-describing" dataframe with one canonical
+         Ticker / Region / Company / Segment / Role / Notes per row.
+      4. Live-financial enrichment is OPT-IN (off by default): when toggled,
+         a thread-pool batch pulls yfinance data for all selected tickers in
+         parallel and is cached in session_state so toggling layer filters
+         does NOT re-fetch. Network/data coverage is sparse for HK/China —
+         those columns stay blank rather than showing misleading zeros.
+      5. Apply the same colour palette as the AI Watchlist / Signals tabs.
+    """
+    import re
+    st.subheader("🏗️ AI Ecosystem: $20T Industrial Cake")
+    st.markdown("*Nvidia CEO Jensen Huang's framework: Energy → Chips → Infrastructure → Models → Applications*")
+    st.divider()
+
+    layer_files = {
+        "⚡ Layer 1 - Energy": "/home/shalu/Downloads/layers/Layer 1  Energy Companies Powering the AI Infrastructure Buildout.md",
+        "💻 Layer 2 - Chips & Computers": "/home/shalu/Downloads/layers/Layer 2  Chips and Computers – Listed US and Hong Kong China Companies Powering AI Compute.md",
+        "🏢 Layer 3 - Infrastructure": "/home/shalu/Downloads/layers/Layer 3  AI Infrastructure – Data Centers, Land, and Power-Adjacent Real Assets.md",
+        "🧠 Layer 4 - AI Models": "/home/shalu/Downloads/layers/Layer 4  Model Layer – Listed US and Hong Kong China AI Model and Platform Companies.md",
+        "🚀 Layer 5 - Applications": "/home/shalu/Downloads/layers/Layer 5  Application Layer – Listed US and Hong Kong China AI-Enabled Companies.md",
+    }
+
+    # ----- Layer + region selection -----
+    fc1, fc2 = st.columns(2)
+    with fc1:
+        selected_layers = st.multiselect(
+            "Select Layers to View:",
+            options=list(layer_files.keys()),
+            default=list(layer_files.keys()),
+            key="ai_eco_layers",
+        )
+    with fc2:
+        fetch_live = st.toggle(
+            "🔄 Enrich with Live Market Data (yfinance)",
+            value=False,
+            key="ai_eco_fetch_live",
+            help="Pulls price, P/E, mkt cap, ROE, growth, etc via yfinance in parallel. Cached after first run.",
+        )
+
+    # Region multi-filter (US always available; others only if HK/China appear)
+    rc1, rc2, rc3 = st.columns(3)
+    region_enabled = {'US': rc1.checkbox("US", value=True, key="ai_eco_region_us"),
+                      'HK': rc2.checkbox("HK / Hong Kong", value=True, key="ai_eco_region_hk"),
+                      'China': rc3.checkbox("China A", value=True, key="ai_eco_region_cn")}
+
+    if not selected_layers:
+        st.info("Select at least one layer to view data.")
+        return
+
+    # ----- Parse every selected layer (multi-table aware) -----
+    rows = []
+    for layer_name, file_path in layer_files.items():
+        if layer_name not in selected_layers:
+            continue
+        try:
+            tables = parse_layer_markdown(file_path)
+        except Exception as e:
+            st.error(f"Failed to load {layer_name}: {e}")
+            continue
+        for sub_label, df in tables:
+            if df.empty:
+                continue
+            df = df.copy()
+            df['Layer'] = layer_name
+            df['SubLayer'] = sub_label
+            rows.append(df)
+
+    if not rows:
+        st.info("No data found in the selected layers.")
+        return
+
+    combined = pd.concat(rows, ignore_index=True, sort=False)
+    combined = _enrich_ticker_rows(combined)
+
+    # --- BEGIN: Add signal, moat, quant_score from scores table ---
+    scores_df = load_latest_scores()
+    if scores_df is not None and not scores_df.empty:
+        scores_df = scores_df[['ticker', 'signal', 'moat_strength', 'quant_score']]
+        scores_df = scores_df.rename(columns={
+            'signal': 'Signal',
+            'moat_strength': 'Moat',
+            'quant_score': 'QS'
+        })
+        combined = combined.merge(scores_df, left_on='Ticker', right_on='ticker', how='left')
+        if 'ticker' in combined.columns:
+            combined = combined.drop(columns=['ticker'])
+    # --- END: Add signal, moat, quant_score from scores table ---
+
+    # Apply region filter — '-' rows (pre-IPO / pipeline companies) are kept
+    unless_off = [r for r, on in region_enabled.items() if not on]
+    if unless_off:
+        combined = combined[~combined['Region'].isin(unless_off)]
+
+    if combined.empty:
+        st.info("No rows match the selected region filters.")
+        return
+
+    # Move known columns to the front
+    front_cols = ['Layer', 'SubLayer', 'Region', 'Company', 'Ticker', 'Signal', 'Moat', 'QS', 'AllTickers']
+    combined = combined[[c for c in front_cols if c in combined.columns]
+                         + [c for c in combined.columns if c not in front_cols]]
+
+    # ----- Summary metrics -----
+    col1, col2, col3, col4, col5 = st.columns(5)
+    with col1:
+        st.metric("Total Companies", len(combined))
+    with col2:
+        us_count = (combined['Region'] == 'US').sum()
+        st.metric("US Listed", int(us_count))
+    with col3:
+        hk_count = (combined['Region'] == 'HK').sum()
+        st.metric("HK Listed", int(hk_count))
+    with col4:
+        cn_count = (combined['Region'] == 'China').sum()
+        st.metric("China Listed", int(cn_count))
+    with col5:
+        st.metric("Active Layers", combined['Layer'].nunique())
+
+    # ----- Optional live enrichment -----
+    if fetch_live:
+        # Pick US tickers first (best yfinance coverage); then add others if user opted in
+        us_tickers = sorted(set(combined[combined['Region'] == 'US']['Ticker']))
+        other_tickers = sorted(set(combined[combined['Region'].isin(['HK', 'China'])]['Ticker']))
+        tickers_to_fetch = [t for t in us_tickers + other_tickers if t and t != '-']
+
+        if tickers_to_fetch:
+            with st.spinner(f"Fetching live data for {len(tickers_to_fetch)} tickers (cached after first run)…"):
+                live = _batch_fetch_yfinance(tickers_to_fetch, session_state_key='_ai_eco_cache')
+
+            def _fmt_int(v):
+                try:
+                    v = float(v)
+                except (ValueError, TypeError):
+                    return "N/A"
+                if v == 0:
+                    return "N/A"
+                if abs(v) >= 1e12:
+                    return f"{v/1e12:.2f}T"
+                if abs(v) >= 1e9:
+                    return f"{v/1e9:.2f}B"
+                if abs(v) >= 1e6:
+                    return f"{v/1e6:.2f}M"
+                return f"{v:,.0f}"
+
+            def _fmt_pct(v, dp=1):
+                try:
+                    v = float(v)
+                except (ValueError, TypeError):
+                    return "N/A"
+                if v == 0:
+                    return "N/A"
+                return f"{v*100:.{dp}f}%"
+
+            def _fmt_num(v, dp=1):
+                try:
+                    v = float(v)
+                except (ValueError, TypeError):
+                    return "N/A"
+                if v == 0:
+                    return "N/A"
+                return f"{v:.{dp}f}"
+
+            for col_name, key, fmt in [
+                ('Price', 'price', _fmt_num),
+                ('Mkt Cap', 'market_cap', _fmt_int),
+                ('P/E', 'pe', _fmt_num),
+                ('Fwd P/E', 'forward_pe', _fmt_num),
+                ('P/B', 'pb', _fmt_num),
+                ('ROE', 'roe', lambda v: _fmt_pct(v, 1)),
+                ('Div Yield', 'dividend_yield', lambda v: _fmt_pct(v, 2)),
+                ('Rev Growth', 'revenue_growth', lambda v: _fmt_pct(v, 1)),
+                ('Gross Margin', 'gross_margins', lambda v: _fmt_pct(v, 1)),
+                ('D/E', 'debt_to_equity', _fmt_num),
+                ('Beta', 'beta', _fmt_num),
+                ('52w Δ', '1y_return', lambda v: _fmt_pct(v, 1)),
+            ]:
+                combined[col_name] = combined['Ticker'].apply(lambda t: fmt(live.get(t, {}).get(key, 0)))
+
+            # Drop original (mostly empty) raw markdown columns from display
+            drop_cols = [c for c in combined.columns
+                         if c not in front_cols + ['Segment / Role', 'AI Exposure / Notes',
+                                                    'Price', 'Mkt Cap', 'P/E', 'Fwd P/E', 'P/B',
+                                                    'ROE', 'Div Yield', 'Rev Growth', 'Gross Margin',
+                                                    'D/E', 'Beta', '52w Δ']]
+            combined = combined.drop(columns=drop_cols)
+
+    st.divider()
+
+    # ----- Search box -----
+    search = st.text_input("🔍 Search Companies / Tickers / Notes:", placeholder="Type to filter…", key="ai_eco_search")
+    if search:
+        mask = combined.apply(lambda r: r.astype(str).str.contains(search, case=False, na=False).any(), axis=1)
+        combined = combined[mask]
+
+    if combined.empty:
+        st.warning("Nothing matches the search query.")
+        return
+
+    # ----- Colour formatters (mirror AI Watchlist / Signals tabs) -----
+    def _color_52w(val):
+        if val in ('N/A', None):
+            return ""
+        try:
+            v = float(str(val).replace('%', '').strip())
+        except (ValueError, TypeError):
+            return ""
+        if v >= 30:
+            return "color: #00cc66; font-weight: bold"
+        elif v >= 0:
+            return "color: #ffaa00"
+        elif v >= -20:
+            return "color: #ff4444"
+        return "color: #ff4444; font-weight: bold"
+
+    def _color_pe(val):
+        if val in ('N/A', None):
+            return ""
+        try:
+            v = float(val)
+        except (ValueError, TypeError):
+            return ""
+        if v <= 0:
+            return ""
+        if v < 15:
+            return "color: #00cc66; font-weight: bold"
+        elif v < 25:
+            return "color: #ffaa00"
+        else:
+            return "color: #ff4444"
+
+    def _color_growth(val):
+        if val in ('N/A', None):
+            return ""
+        try:
+            v = float(str(val).replace('%', '').strip())
+        except (ValueError, TypeError):
+            return ""
+        if v >= 20:
+            return "color: #00cc66; font-weight: bold"
+        elif v >= 5:
+            return "color: #ffaa00"
+        elif v > -10:
+            return "color: #ff4444"
+        return "color: #ff4444; font-weight: bold"
+
+    def _color_region(val):
+        return {
+            'US':     "color: #3366ff; font-weight: bold",
+            'HK':     "color: #cc33ff; font-weight: bold",
+            'China':  "color: #cc33ff; font-weight: bold",
+        }.get(val, "")
+
+    def _color_margin(val):
+        if val in ('N/A', None):
+            return ""
+        try:
+            v = float(str(val).replace('%', '').strip())
+        except (ValueError, TypeError):
+            return ""
+        if v >= 50:
+            return "color: #00cc66; font-weight: bold"
+        elif v >= 25:
+            return "color: #ffaa00"
+        elif v > 0:
+            return "color: #ff4444"
+        return ""
+
+    def _color_signal(val):
+        if val == "BUY":
+            return "color: #00cc66; font-weight: bold"
+        elif val == "SELL":
+            return "color: #ff4444; font-weight: bold"
+        elif val == "HOLD":
+            return "color: #ffaa00; font-weight: bold"
+        elif val == "AVOID":
+            return "color: #888888; font-weight: bold"
+        return ""
+
+    def _color_moat(val):
+        if val == "WIDE":
+            return "color: #00cc66; font-weight: bold"
+        elif val == "NARROW":
+            return "color: #ffaa00; font-weight: bold"
+        elif val == "NONE" or val == "NONE ":
+            return "color: #ff4444; font-weight: bold"
+        return ""
+
+    def _color_qs(val):
+        try:
+            v = float(val)
+        except (ValueError, TypeError):
+            return ""
+        if v >= 70:
+            return "color: #00cc66; font-weight: bold"
+        elif v >= 50:
+            return "color: #ffaa00; font-weight: bold"
+        elif v > 0:
+            return "color: #ff4444; font-weight: bold"
+        return ""
+
+    # Chain stylers — pandas' Styler.map() is per-subset, so we add one chain per subset.
+    styled = combined.style
+    try:
+        styled = styled.map(_color_region, subset=['Region'])
+        if 'P/E' in combined.columns:
+            styled = styled.map(_color_pe, subset=['P/E'])
+        if '52w Δ' in combined.columns:
+            styled = styled.map(_color_52w, subset=['52w Δ'])
+        if 'Rev Growth' in combined.columns:
+            styled = styled.map(_color_growth, subset=['Rev Growth'])
+        if 'Gross Margin' in combined.columns:
+            styled = styled.map(_color_margin, subset=['Gross Margin'])
+        if 'Signal' in combined.columns:
+            styled = styled.map(_color_signal, subset=['Signal'])
+        if 'Moat' in combined.columns:
+            styled = styled.map(_color_moat, subset=['Moat'])
+        if 'QS' in combined.columns:
+            styled = styled.map(_color_qs, subset=['QS'])
+    except Exception:
+        # If colour-mapping trips on a weird value, fall back to no colour.
+        styled = combined.style
+
+    st.dataframe(
+        styled,
+        use_container_width=True,
+        hide_index=True,
+        height=600,
+    )
+
+    # Download button
+    csv = combined.to_csv(index=False)
+    st.download_button(
+        "📥 Download Layer Data",
+        csv,
+        "ai_ecosystem_layers.csv",
+        "text/csv",
+        key="ai_eco_download",
+    )
+
+def main():
+    # Sidebar
+    st.sidebar.title("📊 Stock Monitor")
+    st.sidebar.markdown("---")
+    
+    # Refresh button
+    if st.sidebar.button("🔄 Refresh Data"):
+        st.rerun()
+    
+    # Last updated
+    st.sidebar.markdown(f"*Last updated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}*")
+    
+    # Main tabs
+    tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8, tab9, tab10, tab11 = st.tabs([
+        "📈 Holdings", "🎯 Signals", "📋 Change Log", "💰 Sell Calculator", 
+        "📊 Portfolio Optimization", "🧠 Intelligence", "📈 Week High/Low", 
+        "👁️ AI Watchlist", "📊 ETF Watchlist", "📊 Bond Yield", "🏗️ AI Ecosystem"
+    ])
+
+    with tab1:
+        holdings_tab()
+
+    with tab2:
+        signals_tab()
+
+    with tab3:
+        change_log_tab()
+
+    with tab4:
+        sell_calculator_tab()
+
+    with tab5:
+        portfolio_optimization_dashboard()
+
+    with tab6:
+        intelligence_dashboard()
+
+    with tab7:
+        week_high_low_radar()
+
+
+    with tab8:
+        ai_watchlist_tab()
+    with tab9:
+        etf_watchlist_tab()
+    with tab10:
+        bond_yield_tab()
+    
+    with tab11:
+        layers_tab()
+
+
+def edit_holding_form(holding):
+    """Display edit form for a holding."""
+    st.divider()
+    st.subheader(f"✏️ Edit: {holding['Ticker']}")
+
+    # Determine currency symbol from holding data
+    currency_symbol = holding.get('_currency', 'RM')  # Default to RM if not found
+
+    with st.form("edit_holding_form"):
+        col1, col2 = st.columns(2)
+
+        with col1:
+            # Ensure value is at least min_value (1) to avoid Streamlit error
+            current_qty = max(1, int(holding.get('_raw_quantity', 1) or 1))
+            new_quantity = st.number_input(
+                "Number of Shares",
+                min_value=1,
+                value=current_qty,
+                step=1
+            )
+            # Ensure value is at least min_value (0.01) to avoid Streamlit error  
+            current_cost = max(0.01, float(holding.get('_raw_avg_cost', 0.01) or 0.01))
+            new_avg_cost = st.number_input(
+                f"Average Purchase Price ({currency_symbol})",
+                min_value=0.01,
+                value=current_cost,
+                step=0.01
+            )
+        
+        with col2:
+            new_notes = st.text_area(
+                "Notes",
+                value=holding['_raw_notes'] or "",
+                placeholder="Any notes about this investment..."
+            )
+        
+        col_save, col_cancel = st.columns([1, 1])
+        with col_save:
+            save_btn = st.form_submit_button("💾 Save Changes", type="primary")
+        with col_cancel:
+            cancel_btn = st.form_submit_button("❌ Cancel")
+        
+        if save_btn:
+            try:
+                conn = get_db_connection()
+                cursor = conn.cursor()
+                cursor.execute("""
+                    UPDATE buffett_holdings 
+                    SET quantity = ?, average_cost = ?, notes = ?, updated_at = CURRENT_TIMESTAMP
+                    WHERE ticker = ? AND is_active = 1
+                """, (new_quantity, new_avg_cost, new_notes, holding['Ticker']))
+                conn.commit()
+                conn.close()
+                
+                st.session_state.editing_holding = None
+                st.success(f"✅ Updated {holding['Ticker']}")
+                st.rerun()
+            except Exception as e:
+                st.error(f"Error updating holding: {str(e)}")
+        
+        if cancel_btn:
+            st.session_state.editing_holding = None
+            st.rerun()
+
+
+def delete_holding(ticker):
+    """Soft-delete a holding (set is_active = 0)."""
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute("""
+            UPDATE buffett_holdings 
+            SET is_active = 0, updated_at = CURRENT_TIMESTAMP
+            WHERE ticker = ? AND is_active = 1
+        """, (ticker,))
+        conn.commit()
+        conn.close()
+        st.success(f"✅ Removed holding for {ticker}")
+    except Exception as e:
+        st.error(f"Error deleting holding: {str(e)}")
+
+
+
+if __name__ == "__main__":
+    main()

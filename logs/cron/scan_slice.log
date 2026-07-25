@@ -1,0 +1,26 @@
+2026-06-19 23:24:11,319 - INFO - scan_slice bucket=klse size=3
+2026-06-19 23:24:29,500 - INFO - scan_slice bucket=klse size=3 exit=0 dur=18.2s
+2026-06-19 23:26:22,577 - INFO - scan_slice bucket=us size=2
+2026-06-19 23:26:28,617 - INFO - scan_slice bucket=us size=2 exit=0 dur=6.1s
+2026-06-20 00:03:39,763 - INFO - scan_slice bucket=klse size=119
+2026-06-20 00:04:39,794 - INFO - scan_slice bucket=us size=4928
+2026-06-20 00:05:39,808 - INFO - scan_slice bucket=us size=3289
+2026-06-20 00:06:39,775 - INFO - scan_slice bucket=row size=137
+2026-06-20 00:07:33,910 - INFO - scan_slice bucket=row size=137 exit=0 dur=54.1s
+2026-06-20 00:09:35,249 - INFO - scan_slice bucket=klse size=119
+2026-06-20 00:10:36,426 - INFO - scan_slice bucket=klse size=119 exit=0 dur=61.2s
+2026-06-20 00:40:38,909 - INFO - scan_slice bucket=klse size=119
+2026-06-20 00:41:37,891 - INFO - scan_slice bucket=klse size=119 exit=0 dur=59.0s
+2026-06-21 16:28:39,572 - INFO - scan_slice bucket=klse size=5
+2026-06-21 16:29:00,023 - INFO - scan_slice bucket=klse size=5 exit=0 dur=20.5s
+2026-07-04 14:00:01,739 - INFO - scan_slice bucket=klse size=119
+2026-07-04 14:44:32,913 - INFO - scan_slice bucket=klse size=119 exit=0 dur=2671.2s
+2026-07-05 02:30:01,770 - INFO - scan_slice bucket=us size=4928
+2026-07-05 05:30:01,646 - INFO - scan_slice bucket=us size=3289
+2026-07-05 07:30:01,906 - INFO - scan_slice bucket=row size=137
+2026-07-05 08:38:38,584 - INFO - scan_slice bucket=row size=137 exit=0 dur=4116.7s
+2026-07-06 08:43:10,725 - INFO - scan_slice bucket=us size=3289 exit=0 dur=97989.1s
+2026-07-18 14:00:01,699 - INFO - scan_slice bucket=klse size=119
+2026-07-18 14:02:04,130 - INFO - scan_slice bucket=klse size=119 exit=0 dur=122.4s
+2026-07-25 14:00:02,010 - INFO - scan_slice bucket=klse size=119
+2026-07-25 14:02:14,946 - INFO - scan_slice bucket=klse size=119 exit=0 dur=132.9s

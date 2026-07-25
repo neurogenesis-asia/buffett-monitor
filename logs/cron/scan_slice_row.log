@@ -1,0 +1,1035 @@
+2026-06-20 00:06:39+0800  [scan_slice_row]  begin
+2026-06-20 00:06:39,775 - INFO - scan_slice bucket=row size=137
+Telegram credentials not configured
+Failed to initialize ML signal enhancer: 'SignalEnhancer' object has no attribute 'is_ready'
+Failed to initialize ML signal enhancer: 'SignalEnhancer' object has no attribute 'is_ready'
+2026-06-20 00:06:43,908 - __main__ - INFO - Starting manual Buffett Monitor scan...
+2026-06-20 00:06:43,908 - buffett.scanner - INFO - Starting weekly scan...
+2026-06-20 00:06:43,918 - buffett.scanner - INFO - Scanning 137 specified tickers...
+2026-06-20 00:06:44,479 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: ACHR.W"}}}
+2026-06-20 00:06:44,539 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:06:44,539 - buffett.scanner - ERROR - Error processing ACHR.W: All fetchers failed for ticker ACHR.W
+2026-06-20 00:06:44,809 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: AGM.A"}}}
+2026-06-20 00:06:44,863 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:06:44,864 - buffett.scanner - ERROR - Error processing AGM.A: All fetchers failed for ticker AGM.A
+2026-06-20 00:06:45,125 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: AIIA.R"}}}
+2026-06-20 00:06:45,184 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:06:45,184 - buffett.scanner - ERROR - Error processing AIIA.R: All fetchers failed for ticker AIIA.R
+2026-06-20 00:06:45,665 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: AIIA.U"}}}
+2026-06-20 00:06:45,719 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:06:45,719 - buffett.scanner - ERROR - Error processing AIIA.U: All fetchers failed for ticker AIIA.U
+2026-06-20 00:06:45,994 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: AKO.A"}}}
+2026-06-20 00:06:46,053 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:06:46,053 - buffett.scanner - ERROR - Error processing AKO.A: All fetchers failed for ticker AKO.A
+2026-06-20 00:06:46,331 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: AKO.B"}}}
+2026-06-20 00:06:46,386 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:06:46,387 - buffett.scanner - ERROR - Error processing AKO.B: All fetchers failed for ticker AKO.B
+2026-06-20 00:06:46,655 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: ALUB.U"}}}
+2026-06-20 00:06:46,725 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:06:46,725 - buffett.scanner - ERROR - Error processing ALUB.U: All fetchers failed for ticker ALUB.U
+2026-06-20 00:06:46,991 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: ALUB.W"}}}
+2026-06-20 00:06:47,062 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:06:47,062 - buffett.scanner - ERROR - Error processing ALUB.W: All fetchers failed for ticker ALUB.W
+2026-06-20 00:06:47,335 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: AMPX.W"}}}
+2026-06-20 00:06:47,392 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:06:47,392 - buffett.scanner - ERROR - Error processing AMPX.W: All fetchers failed for ticker AMPX.W
+2026-06-20 00:06:47,392 - buffett.scanner - INFO - Progress: 10/137
+2026-06-20 00:06:47,658 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: BBAI.W"}}}
+2026-06-20 00:06:47,720 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:06:47,720 - buffett.scanner - ERROR - Error processing BBAI.W: All fetchers failed for ticker BBAI.W
+2026-06-20 00:06:47,984 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: BBBY.W"}}}
+2026-06-20 00:06:48,037 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:06:48,038 - buffett.scanner - ERROR - Error processing BBBY.W: All fetchers failed for ticker BBBY.W
+2026-06-20 00:06:48,303 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: BCSS.U"}}}
+2026-06-20 00:06:48,362 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:06:48,362 - buffett.scanner - ERROR - Error processing BCSS.U: All fetchers failed for ticker BCSS.U
+2026-06-20 00:06:48,636 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: BCSS.W"}}}
+2026-06-20 00:06:48,704 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:06:48,704 - buffett.scanner - ERROR - Error processing BCSS.W: All fetchers failed for ticker BCSS.W
+2026-06-20 00:06:48,990 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: BEBE.U"}}}
+2026-06-20 00:06:49,054 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:06:49,055 - buffett.scanner - ERROR - Error processing BEBE.U: All fetchers failed for ticker BEBE.U
+2026-06-20 00:06:49,326 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: BEBE.W"}}}
+2026-06-20 00:06:49,386 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:06:49,386 - buffett.scanner - ERROR - Error processing BEBE.W: All fetchers failed for ticker BEBE.W
+2026-06-20 00:06:49,815 - buffett.scanner - INFO - BF.A: SELL signal (QS: 0.0, Moat: NARROW)
+2026-06-20 00:06:50,210 - buffett.scanner - INFO - BF.B: SELL signal (QS: 0.0, Moat: NARROW)
+2026-06-20 00:06:50,475 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: BH.A"}}}
+2026-06-20 00:06:50,538 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:06:50,538 - buffett.scanner - ERROR - Error processing BH.A: All fetchers failed for ticker BH.A
+2026-06-20 00:06:51,177 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: BIII.U"}}}
+2026-06-20 00:06:51,234 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:06:51,234 - buffett.scanner - ERROR - Error processing BIII.U: All fetchers failed for ticker BIII.U
+2026-06-20 00:06:51,235 - buffett.scanner - INFO - Progress: 20/137
+2026-06-20 00:06:51,500 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: BIII.W"}}}
+2026-06-20 00:06:51,556 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:06:51,556 - buffett.scanner - ERROR - Error processing BIII.W: All fetchers failed for ticker BIII.W
+2026-06-20 00:06:52,000 - buffett.scanner - INFO - BIO.B: SELL signal (QS: 0.0, Moat: NARROW)
+2026-06-20 00:06:52,268 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: BKKT.W"}}}
+2026-06-20 00:06:52,322 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:06:52,322 - buffett.scanner - ERROR - Error processing BKKT.W: All fetchers failed for ticker BKKT.W
+2026-06-20 00:06:52,587 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: BKSY.W"}}}
+2026-06-20 00:06:52,643 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:06:52,644 - buffett.scanner - ERROR - Error processing BKSY.W: All fetchers failed for ticker BKSY.W
+2026-06-20 00:06:53,078 - buffett.scanner - INFO - BRK.A: SELL signal (QS: 0.0, Moat: NARROW)
+2026-06-20 00:06:53,536 - buffett.scanner - INFO - BRK.B: SELL signal (QS: 0.0, Moat: NARROW)
+2026-06-20 00:06:53,803 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: BWIV.U"}}}
+2026-06-20 00:06:53,857 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:06:53,857 - buffett.scanner - ERROR - Error processing BWIV.U: All fetchers failed for ticker BWIV.U
+2026-06-20 00:06:54,128 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: BWIV.W"}}}
+2026-06-20 00:06:54,184 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:06:54,185 - buffett.scanner - ERROR - Error processing BWIV.W: All fetchers failed for ticker BWIV.W
+2026-06-20 00:06:54,444 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: CELG.R"}}}
+2026-06-20 00:06:54,498 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:06:54,499 - buffett.scanner - ERROR - Error processing CELG.R: All fetchers failed for ticker CELG.R
+2026-06-20 00:06:54,767 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: CIG.C"}}}
+2026-06-20 00:06:54,824 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:06:54,824 - buffett.scanner - ERROR - Error processing CIG.C: All fetchers failed for ticker CIG.C
+2026-06-20 00:06:54,824 - buffett.scanner - INFO - Progress: 30/137
+2026-06-20 00:06:55,082 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: CLBR.U"}}}
+2026-06-20 00:06:55,138 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:06:55,139 - buffett.scanner - ERROR - Error processing CLBR.U: All fetchers failed for ticker CLBR.U
+2026-06-20 00:06:55,407 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: CLBR.W"}}}
+2026-06-20 00:06:55,461 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:06:55,462 - buffett.scanner - ERROR - Error processing CLBR.W: All fetchers failed for ticker CLBR.W
+2026-06-20 00:06:55,735 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: COPL.U"}}}
+2026-06-20 00:06:55,799 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:06:55,800 - buffett.scanner - ERROR - Error processing COPL.U: All fetchers failed for ticker COPL.U
+2026-06-20 00:06:56,062 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: COPL.W"}}}
+2026-06-20 00:06:56,120 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:06:56,120 - buffett.scanner - ERROR - Error processing COPL.W: All fetchers failed for ticker COPL.W
+2026-06-20 00:06:56,574 - buffett.scanner - INFO - CRD.A: SELL signal (QS: 0.0, Moat: NARROW)
+2026-06-20 00:06:57,006 - buffett.scanner - INFO - CRD.B: SELL signal (QS: 0.0, Moat: NARROW)
+2026-06-20 00:06:57,269 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: CTEST.E"}}}
+2026-06-20 00:06:57,328 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:06:57,329 - buffett.scanner - ERROR - Error processing CTEST.E: All fetchers failed for ticker CTEST.E
+2026-06-20 00:06:57,595 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: CTEST.G"}}}
+2026-06-20 00:06:57,653 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:06:57,653 - buffett.scanner - ERROR - Error processing CTEST.G: All fetchers failed for ticker CTEST.G
+2026-06-20 00:06:57,927 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: CTEST.L"}}}
+2026-06-20 00:06:57,989 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:06:57,990 - buffett.scanner - ERROR - Error processing CTEST.L: All fetchers failed for ticker CTEST.L
+2026-06-20 00:06:58,464 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: CTEST.O"}}}
+2026-06-20 00:06:58,529 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:06:58,530 - buffett.scanner - ERROR - Error processing CTEST.O: All fetchers failed for ticker CTEST.O
+2026-06-20 00:06:58,530 - buffett.scanner - INFO - Progress: 40/137
+2026-06-20 00:06:58,985 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: CTEST.S"}}}
+2026-06-20 00:06:59,039 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:06:59,039 - buffett.scanner - ERROR - Error processing CTEST.S: All fetchers failed for ticker CTEST.S
+2026-06-20 00:06:59,299 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: CTEST.V"}}}
+2026-06-20 00:06:59,356 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:06:59,357 - buffett.scanner - ERROR - Error processing CTEST.V: All fetchers failed for ticker CTEST.V
+2026-06-20 00:06:59,625 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: DSX.W"}}}
+2026-06-20 00:06:59,678 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:06:59,679 - buffett.scanner - ERROR - Error processing DSX.W: All fetchers failed for ticker DSX.W
+2026-06-20 00:06:59,939 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: EVAC.U"}}}
+2026-06-20 00:06:59,996 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:06:59,997 - buffett.scanner - ERROR - Error processing EVAC.U: All fetchers failed for ticker EVAC.U
+2026-06-20 00:07:00,265 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: EVAC.W"}}}
+2026-06-20 00:07:00,323 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:00,323 - buffett.scanner - ERROR - Error processing EVAC.W: All fetchers failed for ticker EVAC.W
+2026-06-20 00:07:00,586 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: EVEX.W"}}}
+2026-06-20 00:07:00,651 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:00,651 - buffett.scanner - ERROR - Error processing EVEX.W: All fetchers failed for ticker EVEX.W
+2026-06-20 00:07:00,921 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: FCRS.U"}}}
+2026-06-20 00:07:00,975 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:00,976 - buffett.scanner - ERROR - Error processing FCRS.U: All fetchers failed for ticker FCRS.U
+2026-06-20 00:07:01,238 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: FCRS.W"}}}
+2026-06-20 00:07:01,291 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:01,292 - buffett.scanner - ERROR - Error processing FCRS.W: All fetchers failed for ticker FCRS.W
+2026-06-20 00:07:01,560 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: FTW.W"}}}
+2026-06-20 00:07:01,615 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:01,616 - buffett.scanner - ERROR - Error processing FTW.W: All fetchers failed for ticker FTW.W
+2026-06-20 00:07:01,881 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: GCTS.W"}}}
+2026-06-20 00:07:01,939 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:01,939 - buffett.scanner - ERROR - Error processing GCTS.W: All fetchers failed for ticker GCTS.W
+2026-06-20 00:07:01,939 - buffett.scanner - INFO - Progress: 50/137
+2026-06-20 00:07:02,379 - buffett.scanner - INFO - GEF.B: SELL signal (QS: 0.0, Moat: NARROW)
+2026-06-20 00:07:02,640 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: GLED.R"}}}
+2026-06-20 00:07:02,698 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:02,698 - buffett.scanner - ERROR - Error processing GLED.R: All fetchers failed for ticker GLED.R
+2026-06-20 00:07:02,967 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: GLED.U"}}}
+2026-06-20 00:07:03,021 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:03,022 - buffett.scanner - ERROR - Error processing GLED.U: All fetchers failed for ticker GLED.U
+2026-06-20 00:07:03,285 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: GME.W"}}}
+2026-06-20 00:07:03,342 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:03,342 - buffett.scanner - ERROR - Error processing GME.W: All fetchers failed for ticker GME.W
+2026-06-20 00:07:03,760 - buffett.scanner - INFO - GTN.A: SELL signal (QS: 0.0, Moat: NARROW)
+2026-06-20 00:07:04,022 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: GWH.W"}}}
+2026-06-20 00:07:04,085 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:04,086 - buffett.scanner - ERROR - Error processing GWH.W: All fetchers failed for ticker GWH.W
+2026-06-20 00:07:04,456 - buffett.scanner - INFO - HEI.A: SELL signal (QS: 0.0, Moat: NARROW)
+2026-06-20 00:07:04,716 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: HLLY.W"}}}
+2026-06-20 00:07:04,770 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:04,770 - buffett.scanner - ERROR - Error processing HLLY.W: All fetchers failed for ticker HLLY.W
+2026-06-20 00:07:05,044 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: HVT.A"}}}
+2026-06-20 00:07:05,100 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:05,100 - buffett.scanner - ERROR - Error processing HVT.A: All fetchers failed for ticker HVT.A
+2026-06-20 00:07:05,365 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: INFQ.W"}}}
+2026-06-20 00:07:05,419 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:05,420 - buffett.scanner - ERROR - Error processing INFQ.W: All fetchers failed for ticker INFQ.W
+2026-06-20 00:07:05,420 - buffett.scanner - INFO - Progress: 60/137
+2026-06-20 00:07:05,689 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: IONQ.W"}}}
+2026-06-20 00:07:05,744 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:05,744 - buffett.scanner - ERROR - Error processing IONQ.W: All fetchers failed for ticker IONQ.W
+2026-06-20 00:07:06,006 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: IRAB.U"}}}
+2026-06-20 00:07:06,062 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:06,062 - buffett.scanner - ERROR - Error processing IRAB.U: All fetchers failed for ticker IRAB.U
+2026-06-20 00:07:06,336 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: IRAB.W"}}}
+2026-06-20 00:07:06,391 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:06,392 - buffett.scanner - ERROR - Error processing IRAB.W: All fetchers failed for ticker IRAB.W
+2026-06-20 00:07:06,655 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: JACS.R"}}}
+2026-06-20 00:07:06,710 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:06,711 - buffett.scanner - ERROR - Error processing JACS.R: All fetchers failed for ticker JACS.R
+2026-06-20 00:07:06,972 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: JACS.U"}}}
+2026-06-20 00:07:07,029 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:07,029 - buffett.scanner - ERROR - Error processing JACS.U: All fetchers failed for ticker JACS.U
+2026-06-20 00:07:07,292 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: JENA.R"}}}
+2026-06-20 00:07:07,347 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:07,348 - buffett.scanner - ERROR - Error processing JENA.R: All fetchers failed for ticker JENA.R
+2026-06-20 00:07:07,612 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: JENA.U"}}}
+2026-06-20 00:07:07,670 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:07,671 - buffett.scanner - ERROR - Error processing JENA.U: All fetchers failed for ticker JENA.U
+2026-06-20 00:07:07,934 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: JOBY.W"}}}
+2026-06-20 00:07:07,987 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:07,987 - buffett.scanner - ERROR - Error processing JOBY.W: All fetchers failed for ticker JOBY.W
+2026-06-20 00:07:08,257 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: KCA.U"}}}
+2026-06-20 00:07:08,314 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:08,315 - buffett.scanner - ERROR - Error processing KCA.U: All fetchers failed for ticker KCA.U
+2026-06-20 00:07:08,573 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: KCAC.U"}}}
+2026-06-20 00:07:08,628 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:08,629 - buffett.scanner - ERROR - Error processing KCAC.U: All fetchers failed for ticker KCAC.U
+2026-06-20 00:07:08,629 - buffett.scanner - INFO - Progress: 70/137
+2026-06-20 00:07:08,902 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: KCAC.W"}}}
+2026-06-20 00:07:08,961 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:08,962 - buffett.scanner - ERROR - Error processing KCAC.W: All fetchers failed for ticker KCAC.W
+2026-06-20 00:07:09,223 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: KPET.U"}}}
+2026-06-20 00:07:09,281 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:09,282 - buffett.scanner - ERROR - Error processing KPET.U: All fetchers failed for ticker KPET.U
+2026-06-20 00:07:09,555 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: KRSP.U"}}}
+2026-06-20 00:07:09,662 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:09,663 - buffett.scanner - ERROR - Error processing KRSP.U: All fetchers failed for ticker KRSP.U
+2026-06-20 00:07:09,929 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: KRSP.W"}}}
+2026-06-20 00:07:09,994 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:09,994 - buffett.scanner - ERROR - Error processing KRSP.W: All fetchers failed for ticker KRSP.W
+2026-06-20 00:07:10,261 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: LANV.W"}}}
+2026-06-20 00:07:10,317 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:10,317 - buffett.scanner - ERROR - Error processing LANV.W: All fetchers failed for ticker LANV.W
+2026-06-20 00:07:10,794 - buffett.scanner - INFO - LEN.B: SELL signal (QS: 0.0, Moat: NARROW)
+2026-06-20 00:07:11,063 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: LVWR.W"}}}
+2026-06-20 00:07:11,121 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:11,122 - buffett.scanner - ERROR - Error processing LVWR.W: All fetchers failed for ticker LVWR.W
+2026-06-20 00:07:11,386 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: LZM.W"}}}
+2026-06-20 00:07:11,440 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:11,440 - buffett.scanner - ERROR - Error processing LZM.W: All fetchers failed for ticker LZM.W
+2026-06-20 00:07:11,708 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: MKC.V"}}}
+2026-06-20 00:07:11,765 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:11,766 - buffett.scanner - ERROR - Error processing MKC.V: All fetchers failed for ticker MKC.V
+2026-06-20 00:07:12,188 - buffett.scanner - INFO - MOG.A: SELL signal (QS: 0.0, Moat: NARROW)
+2026-06-20 00:07:12,189 - buffett.scanner - INFO - Progress: 80/137
+2026-06-20 00:07:12,448 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: MOG.B"}}}
+2026-06-20 00:07:12,501 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:12,501 - buffett.scanner - ERROR - Error processing MOG.B: All fetchers failed for ticker MOG.B
+2026-06-20 00:07:12,768 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: MTAL.U"}}}
+2026-06-20 00:07:12,824 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:12,824 - buffett.scanner - ERROR - Error processing MTAL.U: All fetchers failed for ticker MTAL.U
+2026-06-20 00:07:13,084 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: MTAL.W"}}}
+2026-06-20 00:07:13,141 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:13,141 - buffett.scanner - ERROR - Error processing MTAL.W: All fetchers failed for ticker MTAL.W
+2026-06-20 00:07:13,411 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: MTNE.U"}}}
+2026-06-20 00:07:13,472 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:13,472 - buffett.scanner - ERROR - Error processing MTNE.U: All fetchers failed for ticker MTNE.U
+2026-06-20 00:07:13,729 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: MZYX.U"}}}
+2026-06-20 00:07:13,783 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:13,784 - buffett.scanner - ERROR - Error processing MZYX.U: All fetchers failed for ticker MZYX.U
+2026-06-20 00:07:14,064 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: MZYX.W"}}}
+2026-06-20 00:07:14,119 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:14,119 - buffett.scanner - ERROR - Error processing MZYX.W: All fetchers failed for ticker MZYX.W
+2026-06-20 00:07:14,384 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: NE.A"}}}
+2026-06-20 00:07:14,437 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:14,438 - buffett.scanner - ERROR - Error processing NE.A: All fetchers failed for ticker NE.A
+2026-06-20 00:07:14,911 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: NE.W"}}}
+2026-06-20 00:07:14,970 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:14,971 - buffett.scanner - ERROR - Error processing NE.W: All fetchers failed for ticker NE.W
+2026-06-20 00:07:15,236 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: NPWR.W"}}}
+2026-06-20 00:07:15,291 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:15,292 - buffett.scanner - ERROR - Error processing NPWR.W: All fetchers failed for ticker NPWR.W
+2026-06-20 00:07:15,556 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: NTEST.A"}}}
+2026-06-20 00:07:15,612 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:15,613 - buffett.scanner - ERROR - Error processing NTEST.A: All fetchers failed for ticker NTEST.A
+2026-06-20 00:07:15,613 - buffett.scanner - INFO - Progress: 90/137
+2026-06-20 00:07:15,877 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: NTEST.B"}}}
+2026-06-20 00:07:15,936 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:15,937 - buffett.scanner - ERROR - Error processing NTEST.B: All fetchers failed for ticker NTEST.B
+2026-06-20 00:07:16,217 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: NTEST.C"}}}
+2026-06-20 00:07:16,273 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:16,274 - buffett.scanner - ERROR - Error processing NTEST.C: All fetchers failed for ticker NTEST.C
+2026-06-20 00:07:16,541 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: NWAX.U"}}}
+2026-06-20 00:07:16,598 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:16,599 - buffett.scanner - ERROR - Error processing NWAX.U: All fetchers failed for ticker NWAX.U
+2026-06-20 00:07:16,872 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: NWAX.W"}}}
+2026-06-20 00:07:16,926 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:16,927 - buffett.scanner - ERROR - Error processing NWAX.W: All fetchers failed for ticker NWAX.W
+2026-06-20 00:07:17,190 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: OPFI.W"}}}
+2026-06-20 00:07:17,243 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:17,243 - buffett.scanner - ERROR - Error processing OPFI.W: All fetchers failed for ticker OPFI.W
+2026-06-20 00:07:17,503 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: OTAI.U"}}}
+2026-06-20 00:07:17,558 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:17,559 - buffett.scanner - ERROR - Error processing OTAI.U: All fetchers failed for ticker OTAI.U
+2026-06-20 00:07:17,835 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: OXY.W"}}}
+2026-06-20 00:07:17,888 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:17,889 - buffett.scanner - ERROR - Error processing OXY.W: All fetchers failed for ticker OXY.W
+2026-06-20 00:07:18,145 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: PAII.U"}}}
+2026-06-20 00:07:18,201 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:18,202 - buffett.scanner - ERROR - Error processing PAII.U: All fetchers failed for ticker PAII.U
+2026-06-20 00:07:18,668 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: PAII.W"}}}
+2026-06-20 00:07:18,721 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:18,722 - buffett.scanner - ERROR - Error processing PAII.W: All fetchers failed for ticker PAII.W
+2026-06-20 00:07:18,985 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: PBR.A"}}}
+2026-06-20 00:07:19,063 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:19,064 - buffett.scanner - ERROR - Error processing PBR.A: All fetchers failed for ticker PBR.A
+2026-06-20 00:07:19,064 - buffett.scanner - INFO - Progress: 100/137
+2026-06-20 00:07:19,352 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: PEW.W"}}}
+2026-06-20 00:07:19,408 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:19,408 - buffett.scanner - ERROR - Error processing PEW.W: All fetchers failed for ticker PEW.W
+2026-06-20 00:07:19,861 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: PLUN.U"}}}
+2026-06-20 00:07:19,919 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:19,919 - buffett.scanner - ERROR - Error processing PLUN.U: All fetchers failed for ticker PLUN.U
+2026-06-20 00:07:20,185 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: PSQH.W"}}}
+2026-06-20 00:07:20,244 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:20,244 - buffett.scanner - ERROR - Error processing PSQH.W: All fetchers failed for ticker PSQH.W
+2026-06-20 00:07:20,508 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: QLEP.U"}}}
+2026-06-20 00:07:20,565 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:20,566 - buffett.scanner - ERROR - Error processing QLEP.U: All fetchers failed for ticker QLEP.U
+2026-06-20 00:07:20,876 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: QRED.R"}}}
+2026-06-20 00:07:20,930 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:20,931 - buffett.scanner - ERROR - Error processing QRED.R: All fetchers failed for ticker QRED.R
+2026-06-20 00:07:21,203 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: QRED.U"}}}
+2026-06-20 00:07:21,257 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:21,258 - buffett.scanner - ERROR - Error processing QRED.U: All fetchers failed for ticker QRED.U
+2026-06-20 00:07:21,524 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: RAC.U"}}}
+2026-06-20 00:07:21,578 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:21,579 - buffett.scanner - ERROR - Error processing RAC.U: All fetchers failed for ticker RAC.U
+2026-06-20 00:07:21,846 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: RAC.W"}}}
+2026-06-20 00:07:21,923 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:21,924 - buffett.scanner - ERROR - Error processing RAC.W: All fetchers failed for ticker RAC.W
+2026-06-20 00:07:22,196 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: SAC.U"}}}
+2026-06-20 00:07:22,251 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:22,252 - buffett.scanner - ERROR - Error processing SAC.U: All fetchers failed for ticker SAC.U
+2026-06-20 00:07:22,526 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: SAC.W"}}}
+2026-06-20 00:07:22,581 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:22,582 - buffett.scanner - ERROR - Error processing SAC.W: All fetchers failed for ticker SAC.W
+2026-06-20 00:07:22,582 - buffett.scanner - INFO - Progress: 110/137
+2026-06-20 00:07:22,846 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: SAGU.U"}}}
+2026-06-20 00:07:22,902 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:22,902 - buffett.scanner - ERROR - Error processing SAGU.U: All fetchers failed for ticker SAGU.U
+2026-06-20 00:07:23,169 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: SBXD.U"}}}
+2026-06-20 00:07:23,226 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:23,227 - buffett.scanner - ERROR - Error processing SBXD.U: All fetchers failed for ticker SBXD.U
+2026-06-20 00:07:23,498 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: SBXD.W"}}}
+2026-06-20 00:07:23,552 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:23,552 - buffett.scanner - ERROR - Error processing SBXD.W: All fetchers failed for ticker SBXD.W
+2026-06-20 00:07:23,823 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: SBXE.U"}}}
+2026-06-20 00:07:23,876 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:23,877 - buffett.scanner - ERROR - Error processing SBXE.U: All fetchers failed for ticker SBXE.U
+2026-06-20 00:07:24,138 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: SBXE.W"}}}
+2026-06-20 00:07:24,193 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:24,193 - buffett.scanner - ERROR - Error processing SBXE.W: All fetchers failed for ticker SBXE.W
+2026-06-20 00:07:24,459 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: SES.W"}}}
+2026-06-20 00:07:24,512 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:24,513 - buffett.scanner - ERROR - Error processing SES.W: All fetchers failed for ticker SES.W
+2026-06-20 00:07:24,776 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: SKYH.W"}}}
+2026-06-20 00:07:24,832 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:24,833 - buffett.scanner - ERROR - Error processing SKYH.W: All fetchers failed for ticker SKYH.W
+2026-06-20 00:07:25,197 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: SOUL.R"}}}
+2026-06-20 00:07:25,274 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:25,274 - buffett.scanner - ERROR - Error processing SOUL.R: All fetchers failed for ticker SOUL.R
+2026-06-20 00:07:25,538 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: SOUL.U"}}}
+2026-06-20 00:07:25,593 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:25,594 - buffett.scanner - ERROR - Error processing SOUL.U: All fetchers failed for ticker SOUL.U
+2026-06-20 00:07:25,857 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: TAP.A"}}}
+2026-06-20 00:07:25,911 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:25,911 - buffett.scanner - ERROR - Error processing TAP.A: All fetchers failed for ticker TAP.A
+2026-06-20 00:07:25,911 - buffett.scanner - INFO - Progress: 120/137
+2026-06-20 00:07:26,197 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: TE.W"}}}
+2026-06-20 00:07:26,253 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:26,254 - buffett.scanner - ERROR - Error processing TE.W: All fetchers failed for ticker TE.W
+2026-06-20 00:07:26,513 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: TRAD.R"}}}
+2026-06-20 00:07:26,568 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:26,568 - buffett.scanner - ERROR - Error processing TRAD.R: All fetchers failed for ticker TRAD.R
+2026-06-20 00:07:26,831 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: TRAD.U"}}}
+2026-06-20 00:07:26,886 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:26,887 - buffett.scanner - ERROR - Error processing TRAD.U: All fetchers failed for ticker TRAD.U
+2026-06-20 00:07:27,259 - buffett.scanner - INFO - UHAL.B: SELL signal (QS: 0.0, Moat: NARROW)
+2026-06-20 00:07:27,520 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: VACI.U"}}}
+2026-06-20 00:07:27,578 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:27,579 - buffett.scanner - ERROR - Error processing VACI.U: All fetchers failed for ticker VACI.U
+2026-06-20 00:07:27,843 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: VACI.W"}}}
+2026-06-20 00:07:27,898 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:27,898 - buffett.scanner - ERROR - Error processing VACI.W: All fetchers failed for ticker VACI.W
+2026-06-20 00:07:28,162 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: VAL.W"}}}
+2026-06-20 00:07:28,218 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:28,219 - buffett.scanner - ERROR - Error processing VAL.W: All fetchers failed for ticker VAL.W
+2026-06-20 00:07:28,483 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: VECA.U"}}}
+2026-06-20 00:07:28,541 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:28,541 - buffett.scanner - ERROR - Error processing VECA.U: All fetchers failed for ticker VECA.U
+2026-06-20 00:07:28,806 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: VLN.W"}}}
+2026-06-20 00:07:28,862 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:28,863 - buffett.scanner - ERROR - Error processing VLN.W: All fetchers failed for ticker VLN.W
+2026-06-20 00:07:29,227 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: WENC.U"}}}
+2026-06-20 00:07:29,286 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:29,286 - buffett.scanner - ERROR - Error processing WENC.U: All fetchers failed for ticker WENC.U
+2026-06-20 00:07:29,287 - buffett.scanner - INFO - Progress: 130/137
+2026-06-20 00:07:29,548 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: WPAC.R"}}}
+2026-06-20 00:07:29,604 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:29,604 - buffett.scanner - ERROR - Error processing WPAC.R: All fetchers failed for ticker WPAC.R
+2026-06-20 00:07:29,870 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: WPAC.U"}}}
+2026-06-20 00:07:29,927 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:29,928 - buffett.scanner - ERROR - Error processing WPAC.U: All fetchers failed for ticker WPAC.U
+2026-06-20 00:07:30,194 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: WSO.B"}}}
+2026-06-20 00:07:30,252 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:30,253 - buffett.scanner - ERROR - Error processing WSO.B: All fetchers failed for ticker WSO.B
+2026-06-20 00:07:30,514 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: XFLH.R"}}}
+2026-06-20 00:07:30,569 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:30,570 - buffett.scanner - ERROR - Error processing XFLH.R: All fetchers failed for ticker XFLH.R
+2026-06-20 00:07:31,057 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: XFLH.U"}}}
+2026-06-20 00:07:31,109 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:31,110 - buffett.scanner - ERROR - Error processing XFLH.U: All fetchers failed for ticker XFLH.U
+2026-06-20 00:07:31,378 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: YCY.U"}}}
+2026-06-20 00:07:31,436 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:31,436 - buffett.scanner - ERROR - Error processing YCY.U: All fetchers failed for ticker YCY.U
+2026-06-20 00:07:31,696 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: YCY.W"}}}
+2026-06-20 00:07:31,749 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:31,750 - buffett.scanner - ERROR - Error processing YCY.W: All fetchers failed for ticker YCY.W
+2026-06-20 00:07:32,016 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: ZXYZ.A"}}}
+2026-06-20 00:07:32,072 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-06-20 00:07:32,072 - buffett.scanner - ERROR - Error processing ZXYZ.A: All fetchers failed for ticker ZXYZ.A
+2026-06-20 00:07:32,072 - buffett.scanner - INFO - Scan complete. Successful: 13, Failed: 124
+2026-06-20 00:07:32,072 - buffett.scanner - INFO - Signals - BUY: 0, HOLD: 0, SELL: 13, AVOID: 0
+2026-06-20 00:07:32,074 - __main__ - INFO - Scan completed successfully
+Database initialized at /home/shalu/buffett-monitor/data/buffett.db
+Warning: No valid info returned for ACHR.W
+Warning: No valid info returned for AGM.A
+Warning: No valid info returned for AIIA.R
+Warning: No valid info returned for AIIA.U
+Warning: No valid info returned for AKO.A
+Warning: No valid info returned for AKO.B
+Warning: No valid info returned for ALUB.U
+Warning: No valid info returned for ALUB.W
+Warning: No valid info returned for AMPX.W
+Warning: No valid info returned for BBAI.W
+Warning: No valid info returned for BBBY.W
+Warning: No valid info returned for BCSS.U
+Warning: No valid info returned for BCSS.W
+Warning: No valid info returned for BEBE.U
+Warning: No valid info returned for BEBE.W
+Warning: No valid info returned for BH.A
+Warning: No valid info returned for BIII.U
+Warning: No valid info returned for BIII.W
+Warning: No valid info returned for BKKT.W
+Warning: No valid info returned for BKSY.W
+Warning: No valid info returned for BWIV.U
+Warning: No valid info returned for BWIV.W
+Warning: No valid info returned for CELG.R
+Warning: No valid info returned for CIG.C
+Warning: No valid info returned for CLBR.U
+Warning: No valid info returned for CLBR.W
+Warning: No valid info returned for COPL.U
+Warning: No valid info returned for COPL.W
+Warning: No valid info returned for CTEST.E
+Warning: No valid info returned for CTEST.G
+Warning: No valid info returned for CTEST.L
+Warning: No valid info returned for CTEST.O
+Warning: No valid info returned for CTEST.S
+Warning: No valid info returned for CTEST.V
+Warning: No valid info returned for DSX.W
+Warning: No valid info returned for EVAC.U
+Warning: No valid info returned for EVAC.W
+Warning: No valid info returned for EVEX.W
+Warning: No valid info returned for FCRS.U
+Warning: No valid info returned for FCRS.W
+Warning: No valid info returned for FTW.W
+Warning: No valid info returned for GCTS.W
+Warning: No valid info returned for GLED.R
+Warning: No valid info returned for GLED.U
+Warning: No valid info returned for GME.W
+Warning: No valid info returned for GWH.W
+Warning: No valid info returned for HLLY.W
+Warning: No valid info returned for HVT.A
+Warning: No valid info returned for INFQ.W
+Warning: No valid info returned for IONQ.W
+Warning: No valid info returned for IRAB.U
+Warning: No valid info returned for IRAB.W
+Warning: No valid info returned for JACS.R
+Warning: No valid info returned for JACS.U
+Warning: No valid info returned for JENA.R
+Warning: No valid info returned for JENA.U
+Warning: No valid info returned for JOBY.W
+Warning: No valid info returned for KCA.U
+Warning: No valid info returned for KCAC.U
+Warning: No valid info returned for KCAC.W
+Warning: No valid info returned for KPET.U
+Warning: No valid info returned for KRSP.U
+Warning: No valid info returned for KRSP.W
+Warning: No valid info returned for LANV.W
+Warning: No valid info returned for LVWR.W
+Warning: No valid info returned for LZM.W
+Warning: No valid info returned for MKC.V
+Warning: No valid info returned for MOG.B
+Warning: No valid info returned for MTAL.U
+Warning: No valid info returned for MTAL.W
+Warning: No valid info returned for MTNE.U
+Warning: No valid info returned for MZYX.U
+Warning: No valid info returned for MZYX.W
+Warning: No valid info returned for NE.A
+Warning: No valid info returned for NE.W
+Warning: No valid info returned for NPWR.W
+Warning: No valid info returned for NTEST.A
+Warning: No valid info returned for NTEST.B
+Warning: No valid info returned for NTEST.C
+Warning: No valid info returned for NWAX.U
+Warning: No valid info returned for NWAX.W
+Warning: No valid info returned for OPFI.W
+Warning: No valid info returned for OTAI.U
+Warning: No valid info returned for OXY.W
+Warning: No valid info returned for PAII.U
+Warning: No valid info returned for PAII.W
+Warning: No valid info returned for PBR.A
+Warning: No valid info returned for PEW.W
+Warning: No valid info returned for PLUN.U
+Warning: No valid info returned for PSQH.W
+Warning: No valid info returned for QLEP.U
+Warning: No valid info returned for QRED.R
+Warning: No valid info returned for QRED.U
+Warning: No valid info returned for RAC.U
+Warning: No valid info returned for RAC.W
+Warning: No valid info returned for SAC.U
+Warning: No valid info returned for SAC.W
+Warning: No valid info returned for SAGU.U
+Warning: No valid info returned for SBXD.U
+Warning: No valid info returned for SBXD.W
+Warning: No valid info returned for SBXE.U
+Warning: No valid info returned for SBXE.W
+Warning: No valid info returned for SES.W
+Warning: No valid info returned for SKYH.W
+Warning: No valid info returned for SOUL.R
+Warning: No valid info returned for SOUL.U
+Warning: No valid info returned for TAP.A
+Warning: No valid info returned for TE.W
+Warning: No valid info returned for TRAD.R
+Warning: No valid info returned for TRAD.U
+Warning: No valid info returned for VACI.U
+Warning: No valid info returned for VACI.W
+Warning: No valid info returned for VAL.W
+Warning: No valid info returned for VECA.U
+Warning: No valid info returned for VLN.W
+Warning: No valid info returned for WENC.U
+Warning: No valid info returned for WPAC.R
+Warning: No valid info returned for WPAC.U
+Warning: No valid info returned for WSO.B
+Warning: No valid info returned for XFLH.R
+Warning: No valid info returned for XFLH.U
+Warning: No valid info returned for YCY.U
+Warning: No valid info returned for YCY.W
+Warning: No valid info returned for ZXYZ.A
+
+=== BUFFETT MONITOR SCAN RESULTS ===
+Date: 2026-06-20
+Total tickers: 137
+Successful: 13
+Failed: 124
+Signals - BUY: 0, HOLD: 0, SELL: 13, AVOID: 0
+
+Errors (124):
+  - ACHR.W: All fetchers failed for ticker ACHR.W
+  - AGM.A: All fetchers failed for ticker AGM.A
+  - AIIA.R: All fetchers failed for ticker AIIA.R
+  - AIIA.U: All fetchers failed for ticker AIIA.U
+  - AKO.A: All fetchers failed for ticker AKO.A
+  - AKO.B: All fetchers failed for ticker AKO.B
+  - ALUB.U: All fetchers failed for ticker ALUB.U
+  - ALUB.W: All fetchers failed for ticker ALUB.W
+  - AMPX.W: All fetchers failed for ticker AMPX.W
+  - BBAI.W: All fetchers failed for ticker BBAI.W
+  ... and 114 more
+2026-06-20 00:07:33,910 - INFO - scan_slice bucket=row size=137 exit=0 dur=54.1s
+2026-06-20 06:28:56+0800  [scan_slice_row]  begin
+usage: run_scan_slice.py [-h] [--tickers-limit TICKERS_LIMIT]
+                         [--shard {am,nz}] [--db DB] [--backup]
+                         {klse,us,row,all}
+run_scan_slice.py: error: argument bucket: invalid choice: '/home/shalu/buffett-monitor/scripts/run_scan_slice.py' (choose from 'klse', 'us', 'row', 'all')
+2026-06-20 06:28:56+0800  [scan_slice_row]  ok (raw=2)
+2026-06-20 10:06:36+0800  [scan_slice_row]  begin
+usage: run_scan_slice.py [-h] [--tickers-limit TICKERS_LIMIT]
+                         [--shard {am,nz}] [--db DB] [--backup]
+                         {klse,us,row,all}
+run_scan_slice.py: error: argument bucket: invalid choice: '/home/shalu/buffett-monitor/scripts/run_scan_slice.py' (choose from 'klse', 'us', 'row', 'all')
+2026-06-20 10:06:36+0800  [scan_slice_row]  ok (raw=2)
+2026-06-20 10:11:45+0800  [scan_slice_row]  begin
+usage: run_scan_slice.py [-h] [--tickers-limit TICKERS_LIMIT]
+                         [--shard {am,nz}] [--db DB] [--backup]
+                         {klse,us,row,all}
+run_scan_slice.py: error: argument bucket: invalid choice: '/home/shalu/buffett-monitor/scripts/run_scan_slice.py' (choose from 'klse', 'us', 'row', 'all')
+2026-06-20 10:11:45+0800  [scan_slice_row]  ok (raw=2)
+2026-06-21 07:30:01+0800  [scan_slice_row]  begin
+usage: run_scan_slice.py [-h] [--tickers-limit TICKERS_LIMIT]
+                         [--shard {am,nz}] [--db DB] [--backup]
+                         {klse,us,row,all}
+run_scan_slice.py: error: argument bucket: invalid choice: '/home/shalu/buffett-monitor/scripts/run_scan_slice.py' (choose from 'klse', 'us', 'row', 'all')
+2026-06-21 07:30:01+0800  [scan_slice_row]  ok (raw=2)
+2026-07-05 07:30:01+0800  [scan_slice_row]  begin
+2026-07-05 07:30:01,906 - INFO - scan_slice bucket=row size=137
+Telegram credentials not configured
+2026-07-05 07:30:06,614 - __main__ - INFO - Starting manual Buffett Monitor scan...
+2026-07-05 07:30:06,614 - buffett.scanner - INFO - Starting weekly scan...
+2026-07-05 07:30:06,624 - buffett.scanner - INFO - Scanning 137 specified tickers...
+2026-07-05 07:30:36,628 - buffett.fetchers - WARNING - yfinance fetch failed for ACHR.W: Failed to perform, curl: (28) Connection timed out after 30000 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:30:36,628 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:30:36,629 - buffett.scanner - ERROR - Error processing ACHR.W: All fetchers failed for ticker ACHR.W
+2026-07-05 07:31:06,633 - buffett.fetchers - WARNING - yfinance fetch failed for AGM.A: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:31:06,633 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:31:06,633 - buffett.scanner - ERROR - Error processing AGM.A: All fetchers failed for ticker AGM.A
+2026-07-05 07:31:36,637 - buffett.fetchers - WARNING - yfinance fetch failed for AIIA.R: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:31:36,637 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:31:36,638 - buffett.scanner - ERROR - Error processing AIIA.R: All fetchers failed for ticker AIIA.R
+2026-07-05 07:32:06,641 - buffett.fetchers - WARNING - yfinance fetch failed for AIIA.U: Failed to perform, curl: (28) Connection timed out after 30000 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:32:06,641 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:32:06,641 - buffett.scanner - ERROR - Error processing AIIA.U: All fetchers failed for ticker AIIA.U
+2026-07-05 07:32:36,646 - buffett.fetchers - WARNING - yfinance fetch failed for AKO.A: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:32:36,646 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:32:36,647 - buffett.scanner - ERROR - Error processing AKO.A: All fetchers failed for ticker AKO.A
+2026-07-05 07:33:06,651 - buffett.fetchers - WARNING - yfinance fetch failed for AKO.B: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:33:06,651 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:33:06,652 - buffett.scanner - ERROR - Error processing AKO.B: All fetchers failed for ticker AKO.B
+2026-07-05 07:33:36,654 - buffett.fetchers - WARNING - yfinance fetch failed for ALUB.U: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:33:36,655 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:33:36,655 - buffett.scanner - ERROR - Error processing ALUB.U: All fetchers failed for ticker ALUB.U
+2026-07-05 07:34:06,659 - buffett.fetchers - WARNING - yfinance fetch failed for ALUB.W: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:34:06,659 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:34:06,659 - buffett.scanner - ERROR - Error processing ALUB.W: All fetchers failed for ticker ALUB.W
+2026-07-05 07:34:36,663 - buffett.fetchers - WARNING - yfinance fetch failed for AMPX.W: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:34:36,663 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:34:36,664 - buffett.scanner - ERROR - Error processing AMPX.W: All fetchers failed for ticker AMPX.W
+2026-07-05 07:34:36,664 - buffett.scanner - INFO - Progress: 10/137
+2026-07-05 07:35:06,667 - buffett.fetchers - WARNING - yfinance fetch failed for BBAI.W: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:35:06,667 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:35:06,667 - buffett.scanner - ERROR - Error processing BBAI.W: All fetchers failed for ticker BBAI.W
+2026-07-05 07:35:36,671 - buffett.fetchers - WARNING - yfinance fetch failed for BBBY.W: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:35:36,671 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:35:36,672 - buffett.scanner - ERROR - Error processing BBBY.W: All fetchers failed for ticker BBBY.W
+2026-07-05 07:36:06,676 - buffett.fetchers - WARNING - yfinance fetch failed for BCSS.U: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:36:06,676 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:36:06,676 - buffett.scanner - ERROR - Error processing BCSS.U: All fetchers failed for ticker BCSS.U
+2026-07-05 07:36:36,679 - buffett.fetchers - WARNING - yfinance fetch failed for BCSS.W: Failed to perform, curl: (28) Connection timed out after 30000 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:36:36,679 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:36:36,679 - buffett.scanner - ERROR - Error processing BCSS.W: All fetchers failed for ticker BCSS.W
+2026-07-05 07:37:06,683 - buffett.fetchers - WARNING - yfinance fetch failed for BEBE.U: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:37:06,683 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:37:06,684 - buffett.scanner - ERROR - Error processing BEBE.U: All fetchers failed for ticker BEBE.U
+2026-07-05 07:37:36,688 - buffett.fetchers - WARNING - yfinance fetch failed for BEBE.W: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:37:36,688 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:37:36,688 - buffett.scanner - ERROR - Error processing BEBE.W: All fetchers failed for ticker BEBE.W
+2026-07-05 07:38:06,691 - buffett.fetchers - WARNING - yfinance fetch failed for BF.A: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:38:06,691 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:38:06,692 - buffett.scanner - ERROR - Error processing BF.A: All fetchers failed for ticker BF.A
+2026-07-05 07:38:36,695 - buffett.fetchers - WARNING - yfinance fetch failed for BF.B: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:38:36,695 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:38:36,696 - buffett.scanner - ERROR - Error processing BF.B: All fetchers failed for ticker BF.B
+2026-07-05 07:39:06,700 - buffett.fetchers - WARNING - yfinance fetch failed for BH.A: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:39:06,700 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:39:06,701 - buffett.scanner - ERROR - Error processing BH.A: All fetchers failed for ticker BH.A
+2026-07-05 07:39:36,705 - buffett.fetchers - WARNING - yfinance fetch failed for BIII.U: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:39:36,705 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:39:36,705 - buffett.scanner - ERROR - Error processing BIII.U: All fetchers failed for ticker BIII.U
+2026-07-05 07:39:36,705 - buffett.scanner - INFO - Progress: 20/137
+2026-07-05 07:40:06,709 - buffett.fetchers - WARNING - yfinance fetch failed for BIII.W: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:40:06,709 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:40:06,709 - buffett.scanner - ERROR - Error processing BIII.W: All fetchers failed for ticker BIII.W
+2026-07-05 07:40:36,713 - buffett.fetchers - WARNING - yfinance fetch failed for BIO.B: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:40:36,713 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:40:36,714 - buffett.scanner - ERROR - Error processing BIO.B: All fetchers failed for ticker BIO.B
+2026-07-05 07:41:06,718 - buffett.fetchers - WARNING - yfinance fetch failed for BKKT.W: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:41:06,718 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:41:06,719 - buffett.scanner - ERROR - Error processing BKKT.W: All fetchers failed for ticker BKKT.W
+2026-07-05 07:41:36,723 - buffett.fetchers - WARNING - yfinance fetch failed for BKSY.W: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:41:36,723 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:41:36,723 - buffett.scanner - ERROR - Error processing BKSY.W: All fetchers failed for ticker BKSY.W
+2026-07-05 07:42:06,727 - buffett.fetchers - WARNING - yfinance fetch failed for BRK.A: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:42:06,728 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:42:06,728 - buffett.scanner - ERROR - Error processing BRK.A: All fetchers failed for ticker BRK.A
+2026-07-05 07:42:36,731 - buffett.fetchers - WARNING - yfinance fetch failed for BRK.B: Failed to perform, curl: (28) Connection timed out after 30000 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:42:36,731 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:42:36,732 - buffett.scanner - ERROR - Error processing BRK.B: All fetchers failed for ticker BRK.B
+2026-07-05 07:43:06,735 - buffett.fetchers - WARNING - yfinance fetch failed for BWIV.U: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:43:06,735 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:43:06,736 - buffett.scanner - ERROR - Error processing BWIV.U: All fetchers failed for ticker BWIV.U
+2026-07-05 07:43:36,740 - buffett.fetchers - WARNING - yfinance fetch failed for BWIV.W: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:43:36,740 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:43:36,741 - buffett.scanner - ERROR - Error processing BWIV.W: All fetchers failed for ticker BWIV.W
+2026-07-05 07:44:06,743 - buffett.fetchers - WARNING - yfinance fetch failed for CELG.R: Failed to perform, curl: (28) Connection timed out after 30000 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:44:06,743 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:44:06,743 - buffett.scanner - ERROR - Error processing CELG.R: All fetchers failed for ticker CELG.R
+2026-07-05 07:44:36,747 - buffett.fetchers - WARNING - yfinance fetch failed for CIG.C: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:44:36,747 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:44:36,748 - buffett.scanner - ERROR - Error processing CIG.C: All fetchers failed for ticker CIG.C
+2026-07-05 07:44:36,748 - buffett.scanner - INFO - Progress: 30/137
+2026-07-05 07:45:06,752 - buffett.fetchers - WARNING - yfinance fetch failed for CLBR.U: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:45:06,752 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:45:06,753 - buffett.scanner - ERROR - Error processing CLBR.U: All fetchers failed for ticker CLBR.U
+2026-07-05 07:45:36,756 - buffett.fetchers - WARNING - yfinance fetch failed for CLBR.W: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:45:36,756 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:45:36,756 - buffett.scanner - ERROR - Error processing CLBR.W: All fetchers failed for ticker CLBR.W
+2026-07-05 07:46:06,760 - buffett.fetchers - WARNING - yfinance fetch failed for COPL.U: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:46:06,760 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:46:06,761 - buffett.scanner - ERROR - Error processing COPL.U: All fetchers failed for ticker COPL.U
+2026-07-05 07:46:36,764 - buffett.fetchers - WARNING - yfinance fetch failed for COPL.W: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:46:36,764 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:46:36,765 - buffett.scanner - ERROR - Error processing COPL.W: All fetchers failed for ticker COPL.W
+2026-07-05 07:47:06,767 - buffett.fetchers - WARNING - yfinance fetch failed for CRD.A: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:47:06,767 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:47:06,768 - buffett.scanner - ERROR - Error processing CRD.A: All fetchers failed for ticker CRD.A
+2026-07-05 07:47:36,772 - buffett.fetchers - WARNING - yfinance fetch failed for CRD.B: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:47:36,772 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:47:36,772 - buffett.scanner - ERROR - Error processing CRD.B: All fetchers failed for ticker CRD.B
+2026-07-05 07:48:06,776 - buffett.fetchers - WARNING - yfinance fetch failed for CTEST.E: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:48:06,776 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:48:06,777 - buffett.scanner - ERROR - Error processing CTEST.E: All fetchers failed for ticker CTEST.E
+2026-07-05 07:48:36,779 - buffett.fetchers - WARNING - yfinance fetch failed for CTEST.G: Failed to perform, curl: (28) Connection timed out after 30000 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:48:36,779 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:48:36,780 - buffett.scanner - ERROR - Error processing CTEST.G: All fetchers failed for ticker CTEST.G
+2026-07-05 07:49:06,784 - buffett.fetchers - WARNING - yfinance fetch failed for CTEST.L: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:49:06,784 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:49:06,785 - buffett.scanner - ERROR - Error processing CTEST.L: All fetchers failed for ticker CTEST.L
+2026-07-05 07:49:36,789 - buffett.fetchers - WARNING - yfinance fetch failed for CTEST.O: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:49:36,789 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:49:36,790 - buffett.scanner - ERROR - Error processing CTEST.O: All fetchers failed for ticker CTEST.O
+2026-07-05 07:49:36,790 - buffett.scanner - INFO - Progress: 40/137
+2026-07-05 07:50:06,792 - buffett.fetchers - WARNING - yfinance fetch failed for CTEST.S: Failed to perform, curl: (28) Connection timed out after 30000 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:50:06,792 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:50:06,793 - buffett.scanner - ERROR - Error processing CTEST.S: All fetchers failed for ticker CTEST.S
+2026-07-05 07:50:36,796 - buffett.fetchers - WARNING - yfinance fetch failed for CTEST.V: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:50:36,796 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:50:36,797 - buffett.scanner - ERROR - Error processing CTEST.V: All fetchers failed for ticker CTEST.V
+2026-07-05 07:51:06,801 - buffett.fetchers - WARNING - yfinance fetch failed for DSX.W: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:51:06,801 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:51:06,801 - buffett.scanner - ERROR - Error processing DSX.W: All fetchers failed for ticker DSX.W
+2026-07-05 07:51:36,804 - buffett.fetchers - WARNING - yfinance fetch failed for EVAC.U: Failed to perform, curl: (28) Connection timed out after 30000 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:51:36,804 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:51:36,805 - buffett.scanner - ERROR - Error processing EVAC.U: All fetchers failed for ticker EVAC.U
+2026-07-05 07:52:06,808 - buffett.fetchers - WARNING - yfinance fetch failed for EVAC.W: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:52:06,809 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:52:06,809 - buffett.scanner - ERROR - Error processing EVAC.W: All fetchers failed for ticker EVAC.W
+2026-07-05 07:52:36,813 - buffett.fetchers - WARNING - yfinance fetch failed for EVEX.W: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:52:36,814 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:52:36,814 - buffett.scanner - ERROR - Error processing EVEX.W: All fetchers failed for ticker EVEX.W
+2026-07-05 07:53:06,816 - buffett.fetchers - WARNING - yfinance fetch failed for FCRS.U: Failed to perform, curl: (28) Connection timed out after 30000 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:53:06,816 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:53:06,817 - buffett.scanner - ERROR - Error processing FCRS.U: All fetchers failed for ticker FCRS.U
+2026-07-05 07:53:36,821 - buffett.fetchers - WARNING - yfinance fetch failed for FCRS.W: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:53:36,821 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:53:36,822 - buffett.scanner - ERROR - Error processing FCRS.W: All fetchers failed for ticker FCRS.W
+2026-07-05 07:54:06,825 - buffett.fetchers - WARNING - yfinance fetch failed for FTW.W: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:54:06,825 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:54:06,826 - buffett.scanner - ERROR - Error processing FTW.W: All fetchers failed for ticker FTW.W
+2026-07-05 07:54:36,829 - buffett.fetchers - WARNING - yfinance fetch failed for GCTS.W: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:54:36,829 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:54:36,829 - buffett.scanner - ERROR - Error processing GCTS.W: All fetchers failed for ticker GCTS.W
+2026-07-05 07:54:36,829 - buffett.scanner - INFO - Progress: 50/137
+2026-07-05 07:55:06,833 - buffett.fetchers - WARNING - yfinance fetch failed for GEF.B: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:55:06,834 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:55:06,834 - buffett.scanner - ERROR - Error processing GEF.B: All fetchers failed for ticker GEF.B
+2026-07-05 07:55:36,838 - buffett.fetchers - WARNING - yfinance fetch failed for GLED.R: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:55:36,838 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:55:36,839 - buffett.scanner - ERROR - Error processing GLED.R: All fetchers failed for ticker GLED.R
+2026-07-05 07:56:06,842 - buffett.fetchers - WARNING - yfinance fetch failed for GLED.U: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:56:06,842 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:56:06,843 - buffett.scanner - ERROR - Error processing GLED.U: All fetchers failed for ticker GLED.U
+2026-07-05 07:56:36,846 - buffett.fetchers - WARNING - yfinance fetch failed for GME.W: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:56:36,846 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:56:36,847 - buffett.scanner - ERROR - Error processing GME.W: All fetchers failed for ticker GME.W
+2026-07-05 07:57:06,851 - buffett.fetchers - WARNING - yfinance fetch failed for GTN.A: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:57:06,851 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:57:06,852 - buffett.scanner - ERROR - Error processing GTN.A: All fetchers failed for ticker GTN.A
+2026-07-05 07:57:36,854 - buffett.fetchers - WARNING - yfinance fetch failed for GWH.W: Failed to perform, curl: (28) Connection timed out after 30000 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:57:36,854 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:57:36,855 - buffett.scanner - ERROR - Error processing GWH.W: All fetchers failed for ticker GWH.W
+2026-07-05 07:58:06,858 - buffett.fetchers - WARNING - yfinance fetch failed for HEI.A: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:58:06,859 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:58:06,859 - buffett.scanner - ERROR - Error processing HEI.A: All fetchers failed for ticker HEI.A
+2026-07-05 07:58:36,862 - buffett.fetchers - WARNING - yfinance fetch failed for HLLY.W: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:58:36,863 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:58:36,863 - buffett.scanner - ERROR - Error processing HLLY.W: All fetchers failed for ticker HLLY.W
+2026-07-05 07:59:06,866 - buffett.fetchers - WARNING - yfinance fetch failed for HVT.A: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:59:06,866 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:59:06,867 - buffett.scanner - ERROR - Error processing HVT.A: All fetchers failed for ticker HVT.A
+2026-07-05 07:59:36,871 - buffett.fetchers - WARNING - yfinance fetch failed for INFQ.W: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 07:59:36,872 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 07:59:36,872 - buffett.scanner - ERROR - Error processing INFQ.W: All fetchers failed for ticker INFQ.W
+2026-07-05 07:59:36,872 - buffett.scanner - INFO - Progress: 60/137
+2026-07-05 08:00:06,876 - buffett.fetchers - WARNING - yfinance fetch failed for IONQ.W: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:00:06,876 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:00:06,877 - buffett.scanner - ERROR - Error processing IONQ.W: All fetchers failed for ticker IONQ.W
+2026-07-05 08:00:36,879 - buffett.fetchers - WARNING - yfinance fetch failed for IRAB.U: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:00:36,880 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:00:36,880 - buffett.scanner - ERROR - Error processing IRAB.U: All fetchers failed for ticker IRAB.U
+2026-07-05 08:01:06,884 - buffett.fetchers - WARNING - yfinance fetch failed for IRAB.W: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:01:06,884 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:01:06,885 - buffett.scanner - ERROR - Error processing IRAB.W: All fetchers failed for ticker IRAB.W
+2026-07-05 08:01:36,889 - buffett.fetchers - WARNING - yfinance fetch failed for JACS.R: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:01:36,889 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:01:36,889 - buffett.scanner - ERROR - Error processing JACS.R: All fetchers failed for ticker JACS.R
+2026-07-05 08:02:06,891 - buffett.fetchers - WARNING - yfinance fetch failed for JACS.U: Failed to perform, curl: (28) Connection timed out after 30000 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:02:06,891 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:02:06,892 - buffett.scanner - ERROR - Error processing JACS.U: All fetchers failed for ticker JACS.U
+2026-07-05 08:02:36,897 - buffett.fetchers - WARNING - yfinance fetch failed for JENA.R: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:02:36,897 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:02:36,897 - buffett.scanner - ERROR - Error processing JENA.R: All fetchers failed for ticker JENA.R
+2026-07-05 08:03:06,901 - buffett.fetchers - WARNING - yfinance fetch failed for JENA.U: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:03:06,901 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:03:06,902 - buffett.scanner - ERROR - Error processing JENA.U: All fetchers failed for ticker JENA.U
+2026-07-05 08:03:36,904 - buffett.fetchers - WARNING - yfinance fetch failed for JOBY.W: Failed to perform, curl: (28) Connection timed out after 30000 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:03:36,904 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:03:36,905 - buffett.scanner - ERROR - Error processing JOBY.W: All fetchers failed for ticker JOBY.W
+2026-07-05 08:04:06,908 - buffett.fetchers - WARNING - yfinance fetch failed for KCA.U: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:04:06,909 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:04:06,909 - buffett.scanner - ERROR - Error processing KCA.U: All fetchers failed for ticker KCA.U
+2026-07-05 08:04:36,913 - buffett.fetchers - WARNING - yfinance fetch failed for KCAC.U: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:04:36,913 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:04:36,914 - buffett.scanner - ERROR - Error processing KCAC.U: All fetchers failed for ticker KCAC.U
+2026-07-05 08:04:36,914 - buffett.scanner - INFO - Progress: 70/137
+2026-07-05 08:05:06,916 - buffett.fetchers - WARNING - yfinance fetch failed for KCAC.W: Failed to perform, curl: (28) Connection timed out after 30000 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:05:06,916 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:05:06,917 - buffett.scanner - ERROR - Error processing KCAC.W: All fetchers failed for ticker KCAC.W
+2026-07-05 08:05:36,921 - buffett.fetchers - WARNING - yfinance fetch failed for KPET.U: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:05:36,921 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:05:36,922 - buffett.scanner - ERROR - Error processing KPET.U: All fetchers failed for ticker KPET.U
+2026-07-05 08:06:06,926 - buffett.fetchers - WARNING - yfinance fetch failed for KRSP.U: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:06:06,926 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:06:06,927 - buffett.scanner - ERROR - Error processing KRSP.U: All fetchers failed for ticker KRSP.U
+2026-07-05 08:06:36,929 - buffett.fetchers - WARNING - yfinance fetch failed for KRSP.W: Failed to perform, curl: (28) Connection timed out after 30000 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:06:36,929 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:06:36,930 - buffett.scanner - ERROR - Error processing KRSP.W: All fetchers failed for ticker KRSP.W
+2026-07-05 08:07:06,934 - buffett.fetchers - WARNING - yfinance fetch failed for LANV.W: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:07:06,934 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:07:06,934 - buffett.scanner - ERROR - Error processing LANV.W: All fetchers failed for ticker LANV.W
+2026-07-05 08:07:36,938 - buffett.fetchers - WARNING - yfinance fetch failed for LEN.B: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:07:36,938 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:07:36,939 - buffett.scanner - ERROR - Error processing LEN.B: All fetchers failed for ticker LEN.B
+2026-07-05 08:08:06,941 - buffett.fetchers - WARNING - yfinance fetch failed for LVWR.W: Failed to perform, curl: (28) Connection timed out after 30000 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:08:06,941 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:08:06,942 - buffett.scanner - ERROR - Error processing LVWR.W: All fetchers failed for ticker LVWR.W
+2026-07-05 08:08:36,945 - buffett.fetchers - WARNING - yfinance fetch failed for LZM.W: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:08:36,946 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:08:36,946 - buffett.scanner - ERROR - Error processing LZM.W: All fetchers failed for ticker LZM.W
+2026-07-05 08:09:06,950 - buffett.fetchers - WARNING - yfinance fetch failed for MKC.V: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:09:06,950 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:09:06,950 - buffett.scanner - ERROR - Error processing MKC.V: All fetchers failed for ticker MKC.V
+2026-07-05 08:09:36,953 - buffett.fetchers - WARNING - yfinance fetch failed for MOG.A: Failed to perform, curl: (28) Connection timed out after 30000 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:09:36,953 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:09:36,954 - buffett.scanner - ERROR - Error processing MOG.A: All fetchers failed for ticker MOG.A
+2026-07-05 08:09:36,954 - buffett.scanner - INFO - Progress: 80/137
+2026-07-05 08:10:06,958 - buffett.fetchers - WARNING - yfinance fetch failed for MOG.B: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:10:06,958 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:10:06,959 - buffett.scanner - ERROR - Error processing MOG.B: All fetchers failed for ticker MOG.B
+2026-07-05 08:10:36,962 - buffett.fetchers - WARNING - yfinance fetch failed for MTAL.U: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:10:36,963 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:10:36,963 - buffett.scanner - ERROR - Error processing MTAL.U: All fetchers failed for ticker MTAL.U
+2026-07-05 08:11:06,965 - buffett.fetchers - WARNING - yfinance fetch failed for MTAL.W: Failed to perform, curl: (28) Connection timed out after 30000 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:11:06,965 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:11:06,966 - buffett.scanner - ERROR - Error processing MTAL.W: All fetchers failed for ticker MTAL.W
+2026-07-05 08:11:36,970 - buffett.fetchers - WARNING - yfinance fetch failed for MTNE.U: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:11:36,970 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:11:36,970 - buffett.scanner - ERROR - Error processing MTNE.U: All fetchers failed for ticker MTNE.U
+2026-07-05 08:12:06,974 - buffett.fetchers - WARNING - yfinance fetch failed for MZYX.U: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:12:06,974 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:12:06,975 - buffett.scanner - ERROR - Error processing MZYX.U: All fetchers failed for ticker MZYX.U
+2026-07-05 08:12:36,977 - buffett.fetchers - WARNING - yfinance fetch failed for MZYX.W: Failed to perform, curl: (28) Connection timed out after 30000 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:12:36,978 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:12:36,978 - buffett.scanner - ERROR - Error processing MZYX.W: All fetchers failed for ticker MZYX.W
+2026-07-05 08:13:06,982 - buffett.fetchers - WARNING - yfinance fetch failed for NE.A: Failed to perform, curl: (28) Connection timed out after 30002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:13:06,982 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:13:06,983 - buffett.scanner - ERROR - Error processing NE.A: All fetchers failed for ticker NE.A
+2026-07-05 08:13:36,986 - buffett.fetchers - WARNING - yfinance fetch failed for NE.W: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:13:36,986 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:13:36,987 - buffett.scanner - ERROR - Error processing NE.W: All fetchers failed for ticker NE.W
+2026-07-05 08:14:06,989 - buffett.fetchers - WARNING - yfinance fetch failed for NPWR.W: Failed to perform, curl: (28) Connection timed out after 30000 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:14:06,989 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:14:06,990 - buffett.scanner - ERROR - Error processing NPWR.W: All fetchers failed for ticker NPWR.W
+2026-07-05 08:14:36,993 - buffett.fetchers - WARNING - yfinance fetch failed for NTEST.A: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:14:36,993 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:14:36,993 - buffett.scanner - ERROR - Error processing NTEST.A: All fetchers failed for ticker NTEST.A
+2026-07-05 08:14:36,993 - buffett.scanner - INFO - Progress: 90/137
+2026-07-05 08:15:06,996 - buffett.fetchers - WARNING - yfinance fetch failed for NTEST.B: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:15:06,997 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:15:06,997 - buffett.scanner - ERROR - Error processing NTEST.B: All fetchers failed for ticker NTEST.B
+2026-07-05 08:15:37,000 - buffett.fetchers - WARNING - yfinance fetch failed for NTEST.C: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:15:37,000 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:15:37,001 - buffett.scanner - ERROR - Error processing NTEST.C: All fetchers failed for ticker NTEST.C
+2026-07-05 08:16:07,004 - buffett.fetchers - WARNING - yfinance fetch failed for NWAX.U: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:16:07,004 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:16:07,005 - buffett.scanner - ERROR - Error processing NWAX.U: All fetchers failed for ticker NWAX.U
+2026-07-05 08:16:37,008 - buffett.fetchers - WARNING - yfinance fetch failed for NWAX.W: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:16:37,008 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:16:37,008 - buffett.scanner - ERROR - Error processing NWAX.W: All fetchers failed for ticker NWAX.W
+2026-07-05 08:17:07,011 - buffett.fetchers - WARNING - yfinance fetch failed for OPFI.W: Failed to perform, curl: (28) Connection timed out after 30000 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:17:07,011 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:17:07,011 - buffett.scanner - ERROR - Error processing OPFI.W: All fetchers failed for ticker OPFI.W
+2026-07-05 08:17:37,014 - buffett.fetchers - WARNING - yfinance fetch failed for OTAI.U: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:17:37,014 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:17:37,015 - buffett.scanner - ERROR - Error processing OTAI.U: All fetchers failed for ticker OTAI.U
+2026-07-05 08:18:07,018 - buffett.fetchers - WARNING - yfinance fetch failed for OXY.W: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:18:07,018 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:18:07,019 - buffett.scanner - ERROR - Error processing OXY.W: All fetchers failed for ticker OXY.W
+2026-07-05 08:18:37,021 - buffett.fetchers - WARNING - yfinance fetch failed for PAII.U: Failed to perform, curl: (28) Connection timed out after 30000 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:18:37,021 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:18:37,021 - buffett.scanner - ERROR - Error processing PAII.U: All fetchers failed for ticker PAII.U
+2026-07-05 08:19:07,024 - buffett.fetchers - WARNING - yfinance fetch failed for PAII.W: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:19:07,024 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:19:07,025 - buffett.scanner - ERROR - Error processing PAII.W: All fetchers failed for ticker PAII.W
+2026-07-05 08:19:37,029 - buffett.fetchers - WARNING - yfinance fetch failed for PBR.A: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:19:37,029 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:19:37,029 - buffett.scanner - ERROR - Error processing PBR.A: All fetchers failed for ticker PBR.A
+2026-07-05 08:19:37,029 - buffett.scanner - INFO - Progress: 100/137
+2026-07-05 08:20:07,032 - buffett.fetchers - WARNING - yfinance fetch failed for PEW.W: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:20:07,032 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:20:07,033 - buffett.scanner - ERROR - Error processing PEW.W: All fetchers failed for ticker PEW.W
+2026-07-05 08:20:37,035 - buffett.fetchers - WARNING - yfinance fetch failed for PLUN.U: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:20:37,035 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:20:37,036 - buffett.scanner - ERROR - Error processing PLUN.U: All fetchers failed for ticker PLUN.U
+2026-07-05 08:21:07,039 - buffett.fetchers - WARNING - yfinance fetch failed for PSQH.W: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:21:07,039 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:21:07,039 - buffett.scanner - ERROR - Error processing PSQH.W: All fetchers failed for ticker PSQH.W
+2026-07-05 08:21:37,042 - buffett.fetchers - WARNING - yfinance fetch failed for QLEP.U: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:21:37,042 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:21:37,043 - buffett.scanner - ERROR - Error processing QLEP.U: All fetchers failed for ticker QLEP.U
+2026-07-05 08:22:07,045 - buffett.fetchers - WARNING - yfinance fetch failed for QRED.R: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:22:07,046 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:22:07,046 - buffett.scanner - ERROR - Error processing QRED.R: All fetchers failed for ticker QRED.R
+2026-07-05 08:22:37,049 - buffett.fetchers - WARNING - yfinance fetch failed for QRED.U: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:22:37,049 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:22:37,050 - buffett.scanner - ERROR - Error processing QRED.U: All fetchers failed for ticker QRED.U
+2026-07-05 08:23:07,053 - buffett.fetchers - WARNING - yfinance fetch failed for RAC.U: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:23:07,053 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:23:07,054 - buffett.scanner - ERROR - Error processing RAC.U: All fetchers failed for ticker RAC.U
+2026-07-05 08:23:37,057 - buffett.fetchers - WARNING - yfinance fetch failed for RAC.W: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:23:37,057 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:23:37,057 - buffett.scanner - ERROR - Error processing RAC.W: All fetchers failed for ticker RAC.W
+2026-07-05 08:24:07,060 - buffett.fetchers - WARNING - yfinance fetch failed for SAC.U: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:24:07,060 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:24:07,061 - buffett.scanner - ERROR - Error processing SAC.U: All fetchers failed for ticker SAC.U
+2026-07-05 08:24:37,064 - buffett.fetchers - WARNING - yfinance fetch failed for SAC.W: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:24:37,064 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:24:37,064 - buffett.scanner - ERROR - Error processing SAC.W: All fetchers failed for ticker SAC.W
+2026-07-05 08:24:37,064 - buffett.scanner - INFO - Progress: 110/137
+2026-07-05 08:25:07,067 - buffett.fetchers - WARNING - yfinance fetch failed for SAGU.U: Failed to perform, curl: (28) Connection timed out after 30000 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:25:07,067 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:25:07,067 - buffett.scanner - ERROR - Error processing SAGU.U: All fetchers failed for ticker SAGU.U
+2026-07-05 08:25:37,070 - buffett.fetchers - WARNING - yfinance fetch failed for SBXD.U: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:25:37,070 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:25:37,071 - buffett.scanner - ERROR - Error processing SBXD.U: All fetchers failed for ticker SBXD.U
+2026-07-05 08:26:07,074 - buffett.fetchers - WARNING - yfinance fetch failed for SBXD.W: Failed to perform, curl: (28) Connection timed out after 30000 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:26:07,074 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:26:07,074 - buffett.scanner - ERROR - Error processing SBXD.W: All fetchers failed for ticker SBXD.W
+2026-07-05 08:26:37,077 - buffett.fetchers - WARNING - yfinance fetch failed for SBXE.U: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:26:37,077 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:26:37,077 - buffett.scanner - ERROR - Error processing SBXE.U: All fetchers failed for ticker SBXE.U
+2026-07-05 08:27:07,079 - buffett.fetchers - WARNING - yfinance fetch failed for SBXE.W: Failed to perform, curl: (28) Connection timed out after 30000 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:27:07,079 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:27:07,080 - buffett.scanner - ERROR - Error processing SBXE.W: All fetchers failed for ticker SBXE.W
+2026-07-05 08:27:37,083 - buffett.fetchers - WARNING - yfinance fetch failed for SES.W: Failed to perform, curl: (28) Connection timed out after 30000 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:27:37,083 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:27:37,083 - buffett.scanner - ERROR - Error processing SES.W: All fetchers failed for ticker SES.W
+2026-07-05 08:28:07,085 - buffett.fetchers - WARNING - yfinance fetch failed for SKYH.W: Failed to perform, curl: (28) Connection timed out after 30000 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:28:07,086 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:28:07,086 - buffett.scanner - ERROR - Error processing SKYH.W: All fetchers failed for ticker SKYH.W
+2026-07-05 08:28:37,088 - buffett.fetchers - WARNING - yfinance fetch failed for SOUL.R: Failed to perform, curl: (28) Connection timed out after 30000 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:28:37,088 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:28:37,089 - buffett.scanner - ERROR - Error processing SOUL.R: All fetchers failed for ticker SOUL.R
+2026-07-05 08:29:07,091 - buffett.fetchers - WARNING - yfinance fetch failed for SOUL.U: Failed to perform, curl: (28) Connection timed out after 30000 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:29:07,092 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:29:07,092 - buffett.scanner - ERROR - Error processing SOUL.U: All fetchers failed for ticker SOUL.U
+2026-07-05 08:29:37,099 - buffett.fetchers - WARNING - yfinance fetch failed for TAP.A: Failed to perform, curl: (28) Connection timed out after 30000 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:29:37,099 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:29:37,100 - buffett.scanner - ERROR - Error processing TAP.A: All fetchers failed for ticker TAP.A
+2026-07-05 08:29:37,100 - buffett.scanner - INFO - Progress: 120/137
+2026-07-05 08:30:07,102 - buffett.fetchers - WARNING - yfinance fetch failed for TE.W: Failed to perform, curl: (28) Connection timed out after 30000 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:30:07,102 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:30:07,103 - buffett.scanner - ERROR - Error processing TE.W: All fetchers failed for ticker TE.W
+2026-07-05 08:30:37,105 - buffett.fetchers - WARNING - yfinance fetch failed for TRAD.R: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:30:37,106 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:30:37,106 - buffett.scanner - ERROR - Error processing TRAD.R: All fetchers failed for ticker TRAD.R
+2026-07-05 08:31:07,109 - buffett.fetchers - WARNING - yfinance fetch failed for TRAD.U: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:31:07,109 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:31:07,110 - buffett.scanner - ERROR - Error processing TRAD.U: All fetchers failed for ticker TRAD.U
+2026-07-05 08:31:37,113 - buffett.fetchers - WARNING - yfinance fetch failed for UHAL.B: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:31:37,113 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:31:37,113 - buffett.scanner - ERROR - Error processing UHAL.B: All fetchers failed for ticker UHAL.B
+2026-07-05 08:32:07,115 - buffett.fetchers - WARNING - yfinance fetch failed for VACI.U: Failed to perform, curl: (28) Connection timed out after 30000 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:32:07,116 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:32:07,116 - buffett.scanner - ERROR - Error processing VACI.U: All fetchers failed for ticker VACI.U
+2026-07-05 08:32:37,120 - buffett.fetchers - WARNING - yfinance fetch failed for VACI.W: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:32:37,120 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:32:37,120 - buffett.scanner - ERROR - Error processing VACI.W: All fetchers failed for ticker VACI.W
+2026-07-05 08:33:07,123 - buffett.fetchers - WARNING - yfinance fetch failed for VAL.W: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:33:07,124 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:33:07,124 - buffett.scanner - ERROR - Error processing VAL.W: All fetchers failed for ticker VAL.W
+2026-07-05 08:33:37,127 - buffett.fetchers - WARNING - yfinance fetch failed for VECA.U: Failed to perform, curl: (28) Connection timed out after 30000 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:33:37,127 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:33:37,127 - buffett.scanner - ERROR - Error processing VECA.U: All fetchers failed for ticker VECA.U
+2026-07-05 08:34:07,130 - buffett.fetchers - WARNING - yfinance fetch failed for VLN.W: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:34:07,130 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:34:07,131 - buffett.scanner - ERROR - Error processing VLN.W: All fetchers failed for ticker VLN.W
+2026-07-05 08:34:37,134 - buffett.fetchers - WARNING - yfinance fetch failed for WENC.U: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:34:37,134 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:34:37,134 - buffett.scanner - ERROR - Error processing WENC.U: All fetchers failed for ticker WENC.U
+2026-07-05 08:34:37,134 - buffett.scanner - INFO - Progress: 130/137
+2026-07-05 08:35:07,137 - buffett.fetchers - WARNING - yfinance fetch failed for WPAC.R: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:35:07,137 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:35:07,138 - buffett.scanner - ERROR - Error processing WPAC.R: All fetchers failed for ticker WPAC.R
+2026-07-05 08:35:37,141 - buffett.fetchers - WARNING - yfinance fetch failed for WPAC.U: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:35:37,141 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:35:37,141 - buffett.scanner - ERROR - Error processing WPAC.U: All fetchers failed for ticker WPAC.U
+2026-07-05 08:36:07,144 - buffett.fetchers - WARNING - yfinance fetch failed for WSO.B: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:36:07,145 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:36:07,145 - buffett.scanner - ERROR - Error processing WSO.B: All fetchers failed for ticker WSO.B
+2026-07-05 08:36:37,147 - buffett.fetchers - WARNING - yfinance fetch failed for XFLH.R: Failed to perform, curl: (28) Connection timed out after 30000 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:36:37,147 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:36:37,148 - buffett.scanner - ERROR - Error processing XFLH.R: All fetchers failed for ticker XFLH.R
+2026-07-05 08:37:07,150 - buffett.fetchers - WARNING - yfinance fetch failed for XFLH.U: Failed to perform, curl: (28) Connection timed out after 30000 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:37:07,150 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:37:07,151 - buffett.scanner - ERROR - Error processing XFLH.U: All fetchers failed for ticker XFLH.U
+2026-07-05 08:37:37,154 - buffett.fetchers - WARNING - yfinance fetch failed for YCY.U: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:37:37,154 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:37:37,154 - buffett.scanner - ERROR - Error processing YCY.U: All fetchers failed for ticker YCY.U
+2026-07-05 08:38:07,157 - buffett.fetchers - WARNING - yfinance fetch failed for YCY.W: Failed to perform, curl: (28) Connection timed out after 30000 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:38:07,157 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:38:07,157 - buffett.scanner - ERROR - Error processing YCY.W: All fetchers failed for ticker YCY.W
+2026-07-05 08:38:37,160 - buffett.fetchers - WARNING - yfinance fetch failed for ZXYZ.A: Failed to perform, curl: (28) Connection timed out after 30001 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-07-05 08:38:37,161 - buffett.fetchers - WARNING - Alpha Vantage API key not configured
+2026-07-05 08:38:37,161 - buffett.scanner - ERROR - Error processing ZXYZ.A: All fetchers failed for ticker ZXYZ.A
+2026-07-05 08:38:37,161 - buffett.scanner - INFO - Scan complete. Successful: 0, Failed: 137
+2026-07-05 08:38:37,161 - buffett.scanner - INFO - Signals - BUY: 0, HOLD: 0, SELL: 0, AVOID: 0
+2026-07-05 08:38:37,161 - __main__ - INFO - Scan completed successfully
+Database initialized at /home/shalu/buffett-monitor/data/buffett.db
+
+=== BUFFETT MONITOR SCAN RESULTS ===
+Date: 2026-07-05
+Total tickers: 137
+Successful: 0
+Failed: 137
+Signals - BUY: 0, HOLD: 0, SELL: 0, AVOID: 0
+
+Errors (137):
+  - ACHR.W: All fetchers failed for ticker ACHR.W
+  - AGM.A: All fetchers failed for ticker AGM.A
+  - AIIA.R: All fetchers failed for ticker AIIA.R
+  - AIIA.U: All fetchers failed for ticker AIIA.U
+  - AKO.A: All fetchers failed for ticker AKO.A
+  - AKO.B: All fetchers failed for ticker AKO.B
+  - ALUB.U: All fetchers failed for ticker ALUB.U
+  - ALUB.W: All fetchers failed for ticker ALUB.W
+  - AMPX.W: All fetchers failed for ticker AMPX.W
+  - BBAI.W: All fetchers failed for ticker BBAI.W
+  ... and 127 more
+2026-07-05 08:38:38,584 - INFO - scan_slice bucket=row size=137 exit=0 dur=4116.7s
+2026-07-05 08:38:38+0800  [scan_slice_row]  ok (raw=0)

@@ -1,0 +1,401 @@
+ticker,exchange,company_name
+NVDA,NASDAQ,NVIDIA Corporation
+GOOGL,NASDAQ,Alphabet Inc.
+GOOG,NASDAQ,Alphabet Inc.
+AAPL,NASDAQ,Apple Inc.
+MSFT,NASDAQ,Microsoft Corporation
+AMZN,NASDAQ,"Amazon.com, Inc."
+AVGO,NASDAQ,Broadcom Inc.
+TSLA,NASDAQ,"Tesla, Inc."
+META,NASDAQ,"Meta Platforms, Inc."
+WMT,NASDAQ,Walmart Inc.
+MU,NASDAQ,"Micron Technology, Inc."
+AMD,NASDAQ,"Advanced Micro Devices, Inc."
+INTC,NASDAQ,Intel Corporation
+ASML,NASDAQ,ASML Holding N.V.
+COST,NASDAQ,Costco Wholesale Corporation
+CSCO,NASDAQ,"Cisco Systems, Inc."
+NFLX,NASDAQ,"Netflix, Inc."
+LRCX,NASDAQ,Lam Research Corporation
+AMAT,NASDAQ,"Applied Materials, Inc."
+PLTR,NASDAQ,Palantir Technologies Inc.
+TXN,NASDAQ,Texas Instruments Incorporated
+LIN,NASDAQ,Linde plc
+KLAC,NASDAQ,KLA Corporation
+ARM,NASDAQ,Arm Holdings plc
+QCOM,NASDAQ,QUALCOMM Incorporated
+TMUS,NASDAQ,"T-Mobile US, Inc."
+PEP,NASDAQ,"PepsiCo, Inc."
+SNDK,NASDAQ,Sandisk Corporation
+ADI,NASDAQ,"Analog Devices, Inc."
+AMGN,NASDAQ,Amgen Inc.
+STX,NASDAQ,Seagate Technology Holdings plc
+PANW,NASDAQ,"Palo Alto Networks, Inc."
+GILD,NASDAQ,"Gilead Sciences, Inc."
+WDC,NASDAQ,Western Digital Corporation
+APP,NASDAQ,AppLovin Corporation
+ISRG,NASDAQ,"Intuitive Surgical, Inc."
+IBKR,NASDAQ,"Interactive Brokers Group, Inc."
+MRVL,NASDAQ,"Marvell Technology, Inc."
+CRWD,NASDAQ,"CrowdStrike Holdings, Inc."
+HON,NASDAQ,Honeywell International Inc.
+PDD,NASDAQ,PDD Holdings Inc.
+SHOP,NASDAQ,Shopify Inc.
+BKNG,NASDAQ,Booking Holdings Inc.
+SBUX,NASDAQ,Starbucks Corporation
+VRTX,NASDAQ,Vertex Pharmaceuticals Incorporated
+INTU,NASDAQ,Intuit Inc.
+CEG,NASDAQ,Constellation Energy Corporation
+EQIX,NASDAQ,"Equinix, Inc."
+CME,NASDAQ,CME Group Inc.
+SNY,NASDAQ,Sanofi
+CDNS,NASDAQ,"Cadence Design Systems, Inc."
+SNPS,NASDAQ,"Synopsys, Inc."
+ADBE,NASDAQ,Adobe Inc.
+MAR,NASDAQ,"Marriott International, Inc."
+CMCSA,NASDAQ,Comcast Corporation
+ADP,NASDAQ,"Automatic Data Processing, Inc."
+MNST,NASDAQ,Monster Beverage Corporation
+FTNT,NASDAQ,"Fortinet, Inc."
+CSX,NASDAQ,CSX Corporation
+ABNB,NASDAQ,"Airbnb, Inc."
+MELI,NASDAQ,"MercadoLibre, Inc."
+MDLZ,NASDAQ,"Mondelez International, Inc."
+MPWR,NASDAQ,"Monolithic Power Systems, Inc."
+ORLY,NASDAQ,"O'Reilly Automotive, Inc."
+LITE,NASDAQ,Lumentum Holdings Inc.
+REGN,NASDAQ,"Regeneron Pharmaceuticals, Inc."
+NTES,NASDAQ,"NetEase, Inc."
+NXPI,NASDAQ,NXP Semiconductors N.V.
+AEP,NASDAQ,"American Electric Power Company, Inc."
+ROST,NASDAQ,"Ross Stores, Inc."
+HOOD,NASDAQ,"Robinhood Markets, Inc."
+DDOG,NASDAQ,"Datadog, Inc."
+WBD,NASDAQ,"Warner Bros. Discovery, Inc."
+RKLB,NASDAQ,Rocket Lab Corporation
+DASH,NASDAQ,"DoorDash, Inc."
+CTAS,NASDAQ,Cintas Corporation
+MSTR,NASDAQ,Strategy Inc
+BKR,NASDAQ,Baker Hughes Company
+PCAR,NASDAQ,PACCAR Inc
+CRWV,NASDAQ,"CoreWeave, Inc."
+FANG,NASDAQ,"Diamondback Energy, Inc."
+TER,NASDAQ,"Teradyne, Inc."
+COIN,NASDAQ,"Coinbase Global, Inc."
+MCHP,NASDAQ,Microchip Technology Incorporated
+FLEX,NASDAQ,Flex Ltd.
+NDAQ,NASDAQ,"Nasdaq, Inc."
+ARGX,NASDAQ,argenx SE
+EA,NASDAQ,Electronic Arts Inc.
+XEL,NASDAQ,Xcel Energy Inc.
+FAST,NASDAQ,Fastenal Company
+ADSK,NASDAQ,"Autodesk, Inc."
+FER,NASDAQ,Ferrovial N.V.
+EBAY,NASDAQ,eBay Inc.
+BIDU,NASDAQ,"Baidu, Inc."
+EXC,NASDAQ,Exelon Corporation
+NBIS,NASDAQ,NBIS
+FITB,NASDAQ,Fifth Third Bancorp
+JD,NASDAQ,"JD.com, Inc."
+IDXX,NASDAQ,"IDEXX Laboratories, Inc."
+TTWO,NASDAQ,"Take-Two Interactive Software, Inc."
+CCEP,NASDAQ,Coca-Cola Europacific Partners PLC
+ERIC,NASDAQ,Telefonaktiebolaget LM Ericsson (publ)
+PYPL,NASDAQ,"PayPal Holdings, Inc."
+ON,NASDAQ,ON Semiconductor Corporation
+KDP,NASDAQ,Keurig Dr Pepper Inc.
+ODFL,NASDAQ,"Old Dominion Freight Line, Inc."
+ALNY,NASDAQ,"Alnylam Pharmaceuticals, Inc."
+GFS,NASDAQ,GLOBALFOUNDRIES Inc.
+TRI,NASDAQ,Thomson Reuters Corporation
+ESLT,NASDAQ,Elbit Systems Ltd.
+SATS,NASDAQ,EchoStar Corporation
+CRDO,NASDAQ,Credo Technology Group Holding Ltd
+VOD,NASDAQ,Vodafone Group Public Limited Company
+ALAB,NASDAQ,"Astera Labs, Inc."
+STLD,NASDAQ,"Steel Dynamics, Inc."
+PAYX,NASDAQ,"Paychex, Inc."
+ACGL,NASDAQ,Arch Capital Group Ltd.
+MDLN,NASDAQ,Medline Inc.
+ROP,NASDAQ,"Roper Technologies, Inc."
+TCOM,NASDAQ,Trip.com Group Limited
+ONC,NASDAQ,BeOne Medicines AG
+KMB,NASDAQ,Kimberly-Clark Corporation
+CASY,NASDAQ,"Casey's General Stores, Inc."
+HBAN,NASDAQ,Huntington Bancshares Incorporated
+CPRT,NASDAQ,"Copart, Inc."
+AXON,NASDAQ,"Axon Enterprise, Inc."
+UAL,NASDAQ,"United Airlines Holdings, Inc."
+SYM,NASDAQ,Symbotic Inc.
+RVMD,NASDAQ,"Revolution Medicines, Inc."
+ZM,NASDAQ,"Zoom Communications, Inc."
+NTRS,NASDAQ,Northern Trust Corporation
+RPRX,NASDAQ,Royalty Pharma plc
+BIIB,NASDAQ,Biogen Inc.
+WDAY,NASDAQ,"Workday, Inc."
+FISV,NASDAQ,"Fiserv, Inc."
+NTRA,NASDAQ,"Natera, Inc."
+RYAAY,NASDAQ,Ryanair Holdings plc
+PSNYW,NASDAQ,Polestar Automotive Holding UK PLC
+GEHC,NASDAQ,GE HealthCare Technologies Inc.
+FOXA,NASDAQ,Fox Corporation
+KHC,NASDAQ,The Kraft Heinz Company
+ASTS,NASDAQ,"AST SpaceMobile, Inc."
+FTAI,NASDAQ,FTAI Aviation Ltd.
+MTSI,NASDAQ,"MACOM Technology Solutions Holdings, Inc."
+EXPE,NASDAQ,"Expedia Group, Inc."
+STRL,NASDAQ,"Sterling Infrastructure, Inc."
+VRSN,NASDAQ,"VeriSign, Inc."
+TSEM,NASDAQ,Tower Semiconductor Ltd.
+INSM,NASDAQ,Insmed Incorporated
+CINF,NASDAQ,Cincinnati Financial Corporation
+FOX,NASDAQ,Fox Corporation
+MDB,NASDAQ,"MongoDB, Inc."
+UTHR,NASDAQ,United Therapeutics Corporation
+FSLR,NASDAQ,"First Solar, Inc."
+TW,NASDAQ,Tradeweb Markets Inc.
+WTW,NASDAQ,Willis Towers Watson Public Limited Company
+BNTX,NASDAQ,BioNTech SE
+ZS,NASDAQ,"Zscaler, Inc."
+DXCM,NASDAQ,"DexCom, Inc."
+LPLA,NASDAQ,LPL Financial Holdings Inc.
+SBAC,NASDAQ,SBA Communications Corporation
+EXE,NASDAQ,Expand Energy Corporation
+NTAP,NASDAQ,"NetApp, Inc."
+FWONK,NASDAQ,Formula One Group
+CTSH,NASDAQ,Cognizant Technology Solutions Corporation
+JBHT,NASDAQ,"J.B. Hunt Transport Services, Inc."
+ULTA,NASDAQ,"Ulta Beauty, Inc."
+FCNCA,NASDAQ,"First Citizens BancShares, Inc."
+TROW,NASDAQ,"T. Rowe Price Group, Inc."
+ILMN,NASDAQ,"Illumina, Inc."
+WWD,NASDAQ,"Woodward, Inc."
+VRSK,NASDAQ,"Verisk Analytics, Inc."
+AFRM,NASDAQ,"Affirm Holdings, Inc."
+SITM,NASDAQ,SiTime Corporation
+PFG,NASDAQ,"Principal Financial Group, Inc."
+ENTG,NASDAQ,"Entegris, Inc."
+TEAM,NASDAQ,Atlassian Corporation
+MRNA,NASDAQ,"Moderna, Inc."
+AKAM,NASDAQ,"Akamai Technologies, Inc."
+ROIV,NASDAQ,Roivant Sciences Ltd.
+CHTR,NASDAQ,"Charter Communications, Inc."
+FWONA,NASDAQ,Formula One Group
+RGLD,NASDAQ,"Royal Gold, Inc."
+MKSI,NASDAQ,MKS Inc.
+SOFI,NASDAQ,"SoFi Technologies, Inc."
+FFIV,NASDAQ,"F5, Inc."
+IREN,NASDAQ,IREN Limited
+INCY,NASDAQ,Incyte Corporation
+VTRS,NASDAQ,Viatris Inc.
+CHRW,NASDAQ,"C.H. Robinson Worldwide, Inc."
+SMCI,NASDAQ,"Super Micro Computer, Inc."
+FUTU,NASDAQ,Futu Holdings Limited
+EVRG,NASDAQ,"Evergy, Inc."
+LI,NASDAQ,Li Auto Inc.
+NXT,NASDAQ,Nextpower Inc.
+RIVN,NASDAQ,"Rivian Automotive, Inc."
+LNT,NASDAQ,Alliant Energy Corporation
+ROKU,NASDAQ,"Roku, Inc."
+AMKR,NASDAQ,"Amkor Technology, Inc."
+CG,NASDAQ,The Carlyle Group Inc.
+WMG,NASDAQ,Warner Music Group Corp.
+DLTR,NASDAQ,"Dollar Tree, Inc."
+VNOM,NASDAQ,"Viper Energy, Inc."
+LSCC,NASDAQ,Lattice Semiconductor Corporation
+TLN,NASDAQ,Talen Energy Corporation
+TPG,NASDAQ,TPG Inc.
+NWS,NASDAQ,News Corporation
+PTC,NASDAQ,PTC Inc.
+GMAB,NASDAQ,Genmab A/S
+EWBC,NASDAQ,"East West Bancorp, Inc."
+TTMI,NASDAQ,"TTM Technologies, Inc."
+KSPI,NASDAQ,Joint Stock Company Kaspi.kz
+TSCO,NASDAQ,Tractor Supply Company
+SSNC,NASDAQ,"SS&C Technologies Holdings, Inc."
+LGN,NASDAQ,Legence Corp.
+NDSN,NASDAQ,Nordson Corporation
+NBIX,NASDAQ,"Neurocrine Biosciences, Inc."
+PAA,NASDAQ,"Plains All American Pipeline, L.P."
+NVMI,NASDAQ,Nova Ltd.
+HST,NASDAQ,"Host Hotels & Resorts, Inc."
+LAMR,NASDAQ,Lamar Advertising Company
+ASND,NASDAQ,Ascendis Pharma A/S
+HTHT,NASDAQ,H World Group Limited
+ARXS,NASDAQ,"Arxis, Inc."
+GRAB,NASDAQ,Grab Holdings Limited
+LOGI,NASDAQ,Logitech International S.A.
+LULU,NASDAQ,lululemon athletica inc.
+LECO,NASDAQ,"Lincoln Electric Holdings, Inc."
+AAOI,NASDAQ,"Applied Optoelectronics, Inc."
+SMMT,NASDAQ,Summit Therapeutics Inc.
+NWSA,NASDAQ,News Corporation
+REG,NASDAQ,Regency Centers Corporation
+AUR,NASDAQ,"Aurora Innovation, Inc."
+WSE,NASDAQ,Wise Group plc Class A Ordinary Shares
+JAZZ,NASDAQ,Jazz Pharmaceuticals plc
+OKTA,NASDAQ,"Okta, Inc."
+SOLS,NASDAQ,"Solstice Advanced Materials, Inc."
+PAYP,NASDAQ,PayPay Corporation
+GLPI,NASDAQ,"Gaming and Leisure Properties, Inc."
+RMBS,NASDAQ,Rambus Inc.
+TIGO,NASDAQ,Millicom International Cellular S.A.
+ARCC,NASDAQ,Ares Capital Corporation
+HAS,NASDAQ,"Hasbro, Inc."
+IESC,NASDAQ,"IES Holdings, Inc."
+GEN,NASDAQ,Gen Digital Inc.
+CSGP,NASDAQ,"CoStar Group, Inc."
+TRMB,NASDAQ,Trimble Inc.
+APA,NASDAQ,APA Corporation
+VICR,NASDAQ,Vicor Corporation
+GH,NASDAQ,"Guardant Health, Inc."
+RGC,NASDAQ,Regencell Bioscience Holdings Limited
+BBIO,NASDAQ,"BridgeBio Pharma, Inc."
+AEIS,NASDAQ,"Advanced Energy Industries, Inc."
+ENLT,NASDAQ,Enlight Renewable Energy Ltd
+CDW,NASDAQ,CDW Corporation
+IONS,NASDAQ,"Ionis Pharmaceuticals, Inc."
+SANM,NASDAQ,Sanmina Corporation
+APLD,NASDAQ,Applied Digital Corporation
+VIAV,NASDAQ,Viavi Solutions Inc.
+DKNG,NASDAQ,DraftKings Inc.
+AGNC,NASDAQ,AGNC Investment Corp.
+EXEL,NASDAQ,"Exelixis, Inc."
+CHKP,NASDAQ,Check Point Software Technologies Ltd.
+TXRH,NASDAQ,"Texas Roadhouse, Inc."
+PSKY,NASDAQ,Paramount Skydance Corporation
+ALGN,NASDAQ,"Align Technology, Inc."
+SMTC,NASDAQ,Semtech Corporation
+MEDP,NASDAQ,"Medpace Holdings, Inc."
+NTNX,NASDAQ,"Nutanix, Inc."
+ZBRA,NASDAQ,Zebra Technologies Corporation
+HUT,NASDAQ,Hut 8 Corp.
+COO,NASDAQ,"The Cooper Companies, Inc."
+MDGL,NASDAQ,"Madrigal Pharmaceuticals, Inc."
+FIVE,NASDAQ,"Five Below, Inc."
+SAIA,NASDAQ,"Saia, Inc."
+AXSM,NASDAQ,"Axsome Therapeutics, Inc."
+ERIE,NASDAQ,Erie Indemnity Company
+COKE,NASDAQ,"Coca-Cola Consolidated, Inc."
+LFUS,NASDAQ,"Littelfuse, Inc."
+DRS,NASDAQ,"Leonardo DRS, Inc."
+SEIC,NASDAQ,SEI Investments Company
+WULF,NASDAQ,TeraWulf Inc.
+POWL,NASDAQ,"Powell Industries, Inc."
+ARWR,NASDAQ,"Arrowhead Pharmaceuticals, Inc."
+PODD,NASDAQ,Insulet Corporation
+CGNX,NASDAQ,Cognex Corporation
+BTSG,NASDAQ,"BrightSpring Health Services, Inc."
+AAON,NASDAQ,"AAON, Inc."
+KTOS,NASDAQ,"Kratos Defense & Security Solutions, Inc."
+GSAT,NASDAQ,"Globalstar, Inc."
+DPZ,NASDAQ,"Domino's Pizza, Inc."
+JKHY,NASDAQ,"Jack Henry & Associates, Inc."
+ENSG,NASDAQ,"The Ensign Group, Inc."
+BMRN,NASDAQ,BioMarin Pharmaceutical Inc.
+FORM,NASDAQ,"FormFactor, Inc."
+FCFS,NASDAQ,"FirstCash Holdings, Inc."
+CYTK,NASDAQ,"Cytokinetics, Incorporated"
+WYNN,NASDAQ,"Wynn Resorts, Limited"
+SFD,NASDAQ,"Smithfield Foods, Inc."
+WTFC,NASDAQ,Wintrust Financial Corporation
+BSY,NASDAQ,"Bentley Systems, Incorporated"
+SWKS,NASDAQ,"Skyworks Solutions, Inc."
+TTD,NASDAQ,"The Trade Desk, Inc."
+UMBF,NASDAQ,UMB Financial Corporation
+LINE,NASDAQ,"Lineage, Inc."
+ABVX,NASDAQ,ABIVAX Société Anonyme
+XP,NASDAQ,XP Inc.
+VSAT,NASDAQ,"Viasat, Inc."
+ICLR,NASDAQ,ICON Public Limited Company
+VFS,NASDAQ,VinFast Auto Ltd.
+SNEX,NASDAQ,StoneX Group Inc.
+BPOP,NASDAQ,"Popular, Inc."
+MASI,NASDAQ,Masimo Corporation
+ONB,NASDAQ,Old National Bancorp
+CART,NASDAQ,Maplebear Inc.
+PRAX,NASDAQ,"Praxis Precision Medicines, Inc."
+MWH,NASDAQ,"SOLV Energy, Inc."
+RIOT,NASDAQ,"Riot Platforms, Inc."
+KRYS,NASDAQ,"Krystal Biotech, Inc."
+ZG,NASDAQ,"Zillow Group, Inc."
+Z,NASDAQ,"Zillow Group, Inc."
+LLYVK,NASDAQ,"Liberty Live Holdings, Inc."
+ZION,NASDAQ,"Zions Bancorporation, National Association"
+BILI,NASDAQ,Bilibili Inc.
+SIRI,NASDAQ,Sirius XM Holdings Inc.
+DOCU,NASDAQ,"DocuSign, Inc."
+LLYVA,NASDAQ,"Liberty Live Holdings, Inc."
+FIGR,NASDAQ,"Figure Technology Solutions, Inc."
+FRHC,NASDAQ,Freedom Holdings Corp.
+GDS,NASDAQ,GDS Holdings Limited
+SIMO,NASDAQ,Silicon Motion Technology Corporation
+XE,NASDAQ,"X-Energy, Inc."
+IBRX,NASDAQ,"ImmunityBio, Inc."
+HALO,NASDAQ,"Halozyme Therapeutics, Inc."
+CRUS,NASDAQ,"Cirrus Logic, Inc."
+COLB,NASDAQ,"Columbia Banking System, Inc."
+AVAV,NASDAQ,"AeroVironment, Inc."
+TEM,NASDAQ,"Tempus AI, Inc."
+AAL,NASDAQ,American Airlines Group Inc.
+ALGM,NASDAQ,"Allegro MicroSystems, Inc."
+MTCH,NASDAQ,"Match Group, Inc."
+SFM,NASDAQ,"Sprouts Farmers Market, Inc."
+NUVL,NASDAQ,"Nuvalent, Inc."
+FROG,NASDAQ,JFrog Ltd.
+CIFR,NASDAQ,Cipher Digital Inc.
+CAMT,NASDAQ,Camtek Ltd.
+CHRD,NASDAQ,Chord Energy Corporation
+MXL,NASDAQ,"MaxLinear, Inc."
+MANH,NASDAQ,"Manhattan Associates, Inc."
+HSIC,NASDAQ,"Henry Schein, Inc."
+QRVO,NASDAQ,"Qorvo, Inc."
+BOKF,NASDAQ,BOK Financial Corporation
+MBLY,NASDAQ,Mobileye Global Inc.
+AXTI,NASDAQ,"AXT, Inc."
+PCVX,NASDAQ,"Vaxcyte, Inc."
+WFRD,NASDAQ,Weatherford International plc
+CELH,NASDAQ,"Celsius Holdings, Inc."
+TTEK,NASDAQ,"Tetra Tech, Inc."
+CBSH,NASDAQ,"Commerce Bancshares, Inc."
+TECH,NASDAQ,Bio-Techne Corporation
+SSRM,NASDAQ,SSR Mining Inc.
+VLY,NASDAQ,Valley National Bancorp
+ROAD,NASDAQ,"Construction Partners, Inc."
+CORZ,NASDAQ,"Core Scientific, Inc."
+SLAB,NASDAQ,Silicon Laboratories Inc.
+GGAL,NASDAQ,Grupo Financiero Galicia S.A.
+MIDD,NASDAQ,The Middleby Corporation
+MYRG,NASDAQ,MYR Group Inc.
+AUGO,NASDAQ,Aura Minerals Inc.
+STEP,NASDAQ,StepStone Group Inc.
+PLXS,NASDAQ,Plexus Corp.
+LKQ,NASDAQ,LKQ Corporation
+CHYM,NASDAQ,"Chime Financial, Inc."
+IDCC,NASDAQ,"InterDigital, Inc."
+PPC,NASDAQ,Pilgrim's Pride Corporation
+QMMM,NASDAQ,QMMM Holdings Limited
+KYMR,NASDAQ,"Kymera Therapeutics, Inc."
+BRKR,NASDAQ,Bruker Corporation
+HQY,NASDAQ,"HealthEquity, Inc."
+MORN,NASDAQ,"Morningstar, Inc."
+POOL,NASDAQ,Pool Corporation
+DOX,NASDAQ,Amdocs Limited
+AVT,NASDAQ,"Avnet, Inc."
+SAIL,NASDAQ,"SailPoint, Inc."
+TGTX,NASDAQ,"TG Therapeutics, Inc."
+CBC,NASDAQ,"Central Bancompany, Inc."
+RGEN,NASDAQ,Repligen Corporation
+MIRM,NASDAQ,"Mirum Pharmaceuticals, Inc."
+SYRE,NASDAQ,"Spyre Therapeutics, Inc."
+BZ,NASDAQ,Kanzhun Limited
+EQPT,NASDAQ,EquipmentShare.com Inc.
+PTGX,NASDAQ,"Protagonist Therapeutics, Inc."
+ALKS,NASDAQ,Alkermes plc
+CGON,NASDAQ,"CG Oncology, Inc."
+FLY,NASDAQ,Firefly Aerospace Inc.
+PTCT,NASDAQ,"PTC Therapeutics, Inc."
+RYTM,NASDAQ,"Rhythm Pharmaceuticals, Inc."
+LNTH,NASDAQ,"Lantheus Holdings, Inc."
+APGE,NASDAQ,"Apogee Therapeutics, Inc."
+BLTE,NASDAQ,"Belite Bio, Inc"

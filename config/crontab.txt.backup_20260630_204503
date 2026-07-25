@@ -1,0 +1,68 @@
+# Buffett Monitor cron schedule
+# Source of truth for all scheduled jobs.
+# Job runner: /home/shalu/buffett-monitor/scripts/run_pipeline.sh
+# Each job logs to: /home/shalu/buffett-monitor/logs/cron/<job>.log
+# Heartbeats: /home/shalu/buffett-monitor/logs/heartbeat/<job>.json
+#
+# Time zone: Asia/Kuala_Lumpur (MY, UTC+8). cron uses local time.
+# US market window: 22:30–05:00 MY.
+#
+SHELL=/bin/bash
+PATH=/home/shalu/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+# ============================================================================
+# HIGH FREQUENCY (every few minutes)
+# ============================================================================
+
+# every 5 min — dashboard uptime
+*/5 * * * *   /home/shalu/buffett-monitor/scripts/run_pipeline.sh dashboard_keepalive >> /home/shalu/buffett-monitor/logs/cron/cron.log 2>&1
+
+# every 30 min — US market hours only (intraday alert monitor)
+# US market is 22:30 MY prev day through 05:00 MY next day, Mon-Fri.
+*/30 22-23 * * 0-4   /home/shalu/buffett-monitor/scripts/run_pipeline.sh intraday_alerts >> /home/shalu/buffett-monitor/logs/cron/cron.log 2>&1
+*/30 0-4 * * 1-5     /home/shalu/buffett-monitor/scripts/run_pipeline.sh intraday_alerts >> /home/shalu/buffett-monitor/logs/cron/cron.log 2>&1
+
+# ============================================================================
+# WEEKEND — universe refresh (replaces full weekly_scan which was too slow)
+# ============================================================================
+# Saturday 14:00 MY — Malaysia weekend, US weekend: run KLSE (119 tickers, fast)
+0 14 * * 6    /home/shalu/buffett-monitor/scripts/run_pipeline.sh scan_slice_klse >> /home/shalu/buffett-monitor/logs/cron/cron.log 2>&1
+
+# Sunday ~02:30 MY — US pre-open slow refresh, half A-M (4928 tickers, ~38min)
+30 2 * * 0    /home/shalu/buffett-monitor/scripts/run_pipeline.sh scan_slice_us_am >> /home/shalu/buffett-monitor/logs/cron/cron.log 2>&1
+
+# Sunday ~05:30 MY — continuing US letters N-Z (3289 tickers, ~25min)
+30 5 * * 0    /home/shalu/buffett-monitor/scripts/run_pipeline.sh scan_slice_us_nz >> /home/shalu/buffett-monitor/logs/cron/cron.log 2>&1
+
+# Sunday ~07:30 MY — Rest of World (137 tickers)
+30 7 * * 0    /home/shalu/buffett-monitor/scripts/run_pipeline.sh scan_slice_row >> /home/shalu/buffett-monitor/logs/cron/cron.log 2>&1
+
+# ============================================================================
+# WEEKLY ANALYTICS PIPELINE (Monday mornings, US-time friendly)
+# ============================================================================
+# Sunday 14:00 — market regime detection (US pre-open)
+0 14 * * 0    /home/shalu/buffett-monitor/scripts/run_pipeline.sh market_regime >> /home/shalu/buffett-monitor/logs/cron/cron.log 2>&1
+# Sunday 14:15 MY -- refill forward-return truth (from yfinance)
+15 14 * * 0   /home/shalu/buffett-monitor/scripts/run_pipeline.sh harvest >> /home/shalu/buffett-monitor/logs/cron/cron.log 2>&1
+30 14 * * 0    /home/shalu/buffett-monitor/scripts/run_pipeline.sh backtest >> /home/shalu/buffett-monitor/logs/cron/cron.log 2>&1
+
+# Monday 02:00 — collect forward returns for the just-finished week
+0 2 * * 1     /home/shalu/buffett-monitor/scripts/run_pipeline.sh forward_returns >> /home/shalu/buffett-monitor/logs/cron/cron.log 2>&1
+
+# Monday 02:30 — label signal outcomes against ground truth
+30 2 * * 1    /home/shalu/buffett-monitor/scripts/run_pipeline.sh label_outcomes >> /home/shalu/buffett-monitor/logs/cron/cron.log 2>&1
+
+# Monday 03:00 — ML retrain on labels
+0 3 * * 1     /home/shalu/buffett-monitor/scripts/run_pipeline.sh ml_retrain >> /home/shalu/buffett-monitor/logs/cron/cron.log 2>&1
+
+# Monday 13:00 — week high / low scan (post-NASDAQ-close in MY tz)
+0 13 * * 1    /home/shalu/buffett-monitor/scripts/run_pipeline.sh week_high_low_scan >> /home/shalu/buffett-monitor/logs/cron/cron.log 2>&1
+
+# ============================================================================
+# DAILY HEALTH
+# ============================================================================
+# Daily 23:30 MY — health check (writes problems JSON to logs/cron/health_check.log)
+30 23 * * *   /home/shalu/buffett-monitor/scripts/run_pipeline.sh health_check >> /home/shalu/buffett-monitor/logs/cron/cron.log 2>&1
+
+# Daily 23:45 MY — same context posted to your Telegram chat
+45 23 * * *   /home/shalu/buffett-monitor/scripts/run_pipeline.sh health_notify >> /home/shalu/buffett-monitor/logs/cron/cron.log 2>&1

@@ -1,0 +1,4 @@
+LOG: Intraday price alert monitor started at 2026-06-26 17:00:15.330079.
+STATUS: Market status was CLOSED/AFTER HOURS, so the monitor skipped the alert check.
+TELEGRAM: Credentials not configured; alerts not sent.
+NOTE: Use --force to run outside regular market hours if needed.

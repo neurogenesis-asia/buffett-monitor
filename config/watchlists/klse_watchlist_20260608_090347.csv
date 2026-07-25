@@ -1,0 +1,6 @@
+ticker,signal_type,detection_date,price_at_signal,signal_priority,ml_confidence,enhancement_used
+0041.KL,HIGH_12W,2026-06-01,0.01,61.0,,0
+0041.KL,HIGH_4W,2026-06-01,0.01,59.0,,0
+0041.KL,HIGH_2W,2026-06-01,0.01,57.0,,0
+0182.KL,LOW_4W,2026-06-01,0.03,54.0,,0
+0182.KL,LOW_2W,2026-06-01,0.03,52.0,,0

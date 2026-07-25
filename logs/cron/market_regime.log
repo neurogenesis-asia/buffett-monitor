@@ -1,0 +1,328 @@
+2026-06-19 22:05:07+0800  [market_regime]  begin
+2026-06-19 22:05:08,012 - INFO - ============================================================
+2026-06-19 22:05:08,012 - INFO - MARKET REGIME DETECTOR
+2026-06-19 22:05:08,012 - INFO - Started at 2026-06-19 22:05:08.012233
+2026-06-19 22:05:08,012 - INFO - ============================================================
+2026-06-19 22:05:08,012 - INFO - Fetching market data...
+2026-06-19 22:05:08,585 - INFO - 
+Detected Regime: 🌤️ 🌤️ Weak Bull
+2026-06-19 22:05:08,585 - INFO -   Confidence: 55%
+2026-06-19 22:05:08,585 - INFO -   Reason: Uptrend intact but mixed momentum (20d: 1.0%)
+2026-06-19 22:05:08,585 - INFO - 
+Market Indicators:
+2026-06-19 22:05:08,585 - INFO -   VIX: 16.9
+2026-06-19 22:05:08,585 - INFO -   SPY 20d Return: +1.0%
+2026-06-19 22:05:08,585 - INFO -   SPY 60d Return: +14.6%
+2026-06-19 22:05:08,585 - INFO -   SPY Ann. Vol (20d): 16.4%
+2026-06-19 22:05:08,585 - INFO -   Price vs SMA50: +2.6%
+2026-06-19 22:05:08,585 - INFO -   Price vs SMA200: +9.1%
+2026-06-19 22:05:08,585 - INFO - 
+Signal Adaptations:
+2026-06-19 22:05:08,585 - INFO -   QS Buy Threshold: 60 → 55
+2026-06-19 22:05:08,585 - INFO -   QS Sell Threshold: 20 → 20
+2026-06-19 22:05:08,585 - INFO -   Position Size Multiplier: 1.0x
+2026-06-19 22:05:08,585 - INFO -   Signal Confidence: 70%
+2026-06-19 22:05:08,598 - INFO - 
+Regime stored in database (ID: 3)
+2026-06-19 22:05:08,598 - INFO - ============================================================
+2026-06-19 22:05:08,598 - INFO - Regime detection complete
+2026-06-19 22:05:08,598 - INFO - ============================================================
+2026-06-19 22:05:08+0800  [market_regime]  FAIL: exit 1
+2026-06-19 22:12:35+0800  [market_regime]  begin
+2026-06-19 22:12:36,515 - INFO - ============================================================
+2026-06-19 22:12:36,515 - INFO - MARKET REGIME DETECTOR
+2026-06-19 22:12:36,515 - INFO - Started at 2026-06-19 22:12:36.515672
+2026-06-19 22:12:36,515 - INFO - ============================================================
+2026-06-19 22:12:36,516 - INFO - Fetching market data...
+2026-06-19 22:12:37,049 - INFO - 
+Detected Regime: 🌤️ 🌤️ Weak Bull
+2026-06-19 22:12:37,049 - INFO -   Confidence: 55%
+2026-06-19 22:12:37,049 - INFO -   Reason: Uptrend intact but mixed momentum (20d: 1.0%)
+2026-06-19 22:12:37,049 - INFO - 
+Market Indicators:
+2026-06-19 22:12:37,049 - INFO -   VIX: 16.8
+2026-06-19 22:12:37,050 - INFO -   SPY 20d Return: +1.0%
+2026-06-19 22:12:37,050 - INFO -   SPY 60d Return: +14.6%
+2026-06-19 22:12:37,050 - INFO -   SPY Ann. Vol (20d): 16.4%
+2026-06-19 22:12:37,050 - INFO -   Price vs SMA50: +2.6%
+2026-06-19 22:12:37,050 - INFO -   Price vs SMA200: +9.1%
+2026-06-19 22:12:37,050 - INFO - 
+Signal Adaptations:
+2026-06-19 22:12:37,050 - INFO -   QS Buy Threshold: 60 → 55
+2026-06-19 22:12:37,050 - INFO -   QS Sell Threshold: 20 → 20
+2026-06-19 22:12:37,050 - INFO -   Position Size Multiplier: 1.0x
+2026-06-19 22:12:37,050 - INFO -   Signal Confidence: 70%
+2026-06-19 22:12:37,066 - INFO - 
+Regime stored in database (ID: 7)
+2026-06-19 22:12:37,066 - INFO - ============================================================
+2026-06-19 22:12:37,066 - INFO - Regime detection complete
+2026-06-19 22:12:37,066 - INFO - ============================================================
+2026-06-19 22:18:36+0800  [market_regime]  begin
+2026-06-19 22:18:37,205 - INFO - ============================================================
+2026-06-19 22:18:37,205 - INFO - MARKET REGIME DETECTOR
+2026-06-19 22:18:37,205 - INFO - Started at 2026-06-19 22:18:37.205415
+2026-06-19 22:18:37,205 - INFO - ============================================================
+2026-06-19 22:18:37,206 - INFO - Fetching market data...
+2026-06-19 22:18:37,972 - INFO - 
+Detected Regime: 🌤️ 🌤️ Weak Bull
+2026-06-19 22:18:37,972 - INFO -   Confidence: 55%
+2026-06-19 22:18:37,972 - INFO -   Reason: Uptrend intact but mixed momentum (20d: 1.0%)
+2026-06-19 22:18:37,972 - INFO - 
+Market Indicators:
+2026-06-19 22:18:37,972 - INFO -   VIX: 16.9
+2026-06-19 22:18:37,972 - INFO -   SPY 20d Return: +1.0%
+2026-06-19 22:18:37,972 - INFO -   SPY 60d Return: +14.6%
+2026-06-19 22:18:37,972 - INFO -   SPY Ann. Vol (20d): 16.4%
+2026-06-19 22:18:37,972 - INFO -   Price vs SMA50: +2.6%
+2026-06-19 22:18:37,973 - INFO -   Price vs SMA200: +9.1%
+2026-06-19 22:18:37,973 - INFO - 
+Signal Adaptations:
+2026-06-19 22:18:37,973 - INFO -   QS Buy Threshold: 60 → 55
+2026-06-19 22:18:37,973 - INFO -   QS Sell Threshold: 20 → 20
+2026-06-19 22:18:37,973 - INFO -   Position Size Multiplier: 1.0x
+2026-06-19 22:18:37,973 - INFO -   Signal Confidence: 70%
+2026-06-19 22:18:37,989 - INFO - 
+Regime stored in database (ID: 8)
+2026-06-19 22:18:37,989 - INFO - ============================================================
+2026-06-19 22:18:37,989 - INFO - Regime detection complete
+2026-06-19 22:18:37,989 - INFO - ============================================================
+2026-06-19 22:26:34+0800  [market_regime]  begin
+2026-06-19 22:26:35,471 - INFO - ============================================================
+2026-06-19 22:26:35,471 - INFO - MARKET REGIME DETECTOR
+2026-06-19 22:26:35,471 - INFO - Started at 2026-06-19 22:26:35.471305
+2026-06-19 22:26:35,471 - INFO - ============================================================
+2026-06-19 22:26:35,472 - INFO - Fetching market data...
+2026-06-19 22:26:35,977 - INFO - 
+Detected Regime: 🌤️ 🌤️ Weak Bull
+2026-06-19 22:26:35,977 - INFO -   Confidence: 55%
+2026-06-19 22:26:35,977 - INFO -   Reason: Uptrend intact but mixed momentum (20d: 1.0%)
+2026-06-19 22:26:35,977 - INFO - 
+Market Indicators:
+2026-06-19 22:26:35,977 - INFO -   VIX: 16.9
+2026-06-19 22:26:35,977 - INFO -   SPY 20d Return: +1.0%
+2026-06-19 22:26:35,977 - INFO -   SPY 60d Return: +14.6%
+2026-06-19 22:26:35,977 - INFO -   SPY Ann. Vol (20d): 16.4%
+2026-06-19 22:26:35,977 - INFO -   Price vs SMA50: +2.6%
+2026-06-19 22:26:35,977 - INFO -   Price vs SMA200: +9.1%
+2026-06-19 22:26:35,977 - INFO - 
+Signal Adaptations:
+2026-06-19 22:26:35,977 - INFO -   QS Buy Threshold: 60 → 55
+2026-06-19 22:26:35,977 - INFO -   QS Sell Threshold: 20 → 20
+2026-06-19 22:26:35,977 - INFO -   Position Size Multiplier: 1.0x
+2026-06-19 22:26:35,977 - INFO -   Signal Confidence: 70%
+2026-06-19 22:26:35,993 - INFO - 
+Regime stored in database (ID: 9)
+2026-06-19 22:26:35,994 - INFO - ============================================================
+2026-06-19 22:26:35,994 - INFO - Regime detection complete
+2026-06-19 22:26:35,994 - INFO - ============================================================
+2026-06-19 22:26:36+0800  [market_regime]  ok (raw=1)
+2026-06-20 00:07:33+0800  [market_regime]  begin
+2026-06-20 00:07:34,603 - INFO - ============================================================
+2026-06-20 00:07:34,603 - INFO - MARKET REGIME DETECTOR
+2026-06-20 00:07:34,603 - INFO - Started at 2026-06-20 00:07:34.603956
+2026-06-20 00:07:34,604 - INFO - ============================================================
+2026-06-20 00:07:34,604 - INFO - Fetching market data...
+2026-06-20 00:07:35,140 - INFO - 
+Detected Regime: 🌤️ 🌤️ Weak Bull
+2026-06-20 00:07:35,140 - INFO -   Confidence: 55%
+2026-06-20 00:07:35,140 - INFO -   Reason: Uptrend intact but mixed momentum (20d: 1.0%)
+2026-06-20 00:07:35,140 - INFO - 
+Market Indicators:
+2026-06-20 00:07:35,140 - INFO -   VIX: 16.8
+2026-06-20 00:07:35,140 - INFO -   SPY 20d Return: +1.0%
+2026-06-20 00:07:35,140 - INFO -   SPY 60d Return: +14.6%
+2026-06-20 00:07:35,140 - INFO -   SPY Ann. Vol (20d): 16.4%
+2026-06-20 00:07:35,140 - INFO -   Price vs SMA50: +2.6%
+2026-06-20 00:07:35,140 - INFO -   Price vs SMA200: +9.1%
+2026-06-20 00:07:35,140 - INFO - 
+Signal Adaptations:
+2026-06-20 00:07:35,140 - INFO -   QS Buy Threshold: 60 → 55
+2026-06-20 00:07:35,140 - INFO -   QS Sell Threshold: 20 → 20
+2026-06-20 00:07:35,140 - INFO -   Position Size Multiplier: 1.0x
+2026-06-20 00:07:35,140 - INFO -   Signal Confidence: 70%
+2026-06-20 00:07:35,153 - INFO - 
+Regime stored in database (ID: 10)
+2026-06-20 00:07:35,153 - INFO - ============================================================
+2026-06-20 00:07:35,153 - INFO - Regime detection complete
+2026-06-20 00:07:35,153 - INFO - ============================================================
+2026-06-20 00:07:35+0800  [market_regime]  ok (raw=1)
+2026-06-20 00:41:37+0800  [market_regime]  begin
+2026-06-20 00:41:38,515 - INFO - ============================================================
+2026-06-20 00:41:38,515 - INFO - MARKET REGIME DETECTOR
+2026-06-20 00:41:38,515 - INFO - Started at 2026-06-20 00:41:38.515555
+2026-06-20 00:41:38,515 - INFO - ============================================================
+2026-06-20 00:41:38,516 - INFO - Fetching market data...
+2026-06-20 00:41:39,036 - INFO - 
+Detected Regime: 🌤️ 🌤️ Weak Bull
+2026-06-20 00:41:39,036 - INFO -   Confidence: 55%
+2026-06-20 00:41:39,036 - INFO -   Reason: Uptrend intact but mixed momentum (20d: 1.0%)
+2026-06-20 00:41:39,036 - INFO - 
+Market Indicators:
+2026-06-20 00:41:39,036 - INFO -   VIX: 16.8
+2026-06-20 00:41:39,036 - INFO -   SPY 20d Return: +1.0%
+2026-06-20 00:41:39,036 - INFO -   SPY 60d Return: +14.6%
+2026-06-20 00:41:39,036 - INFO -   SPY Ann. Vol (20d): 16.4%
+2026-06-20 00:41:39,036 - INFO -   Price vs SMA50: +2.6%
+2026-06-20 00:41:39,036 - INFO -   Price vs SMA200: +9.1%
+2026-06-20 00:41:39,036 - INFO - 
+Signal Adaptations:
+2026-06-20 00:41:39,036 - INFO -   QS Buy Threshold: 60 → 55
+2026-06-20 00:41:39,036 - INFO -   QS Sell Threshold: 20 → 20
+2026-06-20 00:41:39,036 - INFO -   Position Size Multiplier: 1.0x
+2026-06-20 00:41:39,036 - INFO -   Signal Confidence: 70%
+2026-06-20 00:41:39,053 - INFO - 
+Regime stored in database (ID: 11)
+2026-06-20 00:41:39,053 - INFO - ============================================================
+2026-06-20 00:41:39,053 - INFO - Regime detection complete
+2026-06-20 00:41:39,053 - INFO - ============================================================
+2026-06-20 00:41:39+0800  [market_regime]  ok (raw=1)
+2026-06-20 06:28:56+0800  [market_regime]  begin
+2026-06-20 06:28:56,930 - INFO - ============================================================
+2026-06-20 06:28:56,930 - INFO - MARKET REGIME DETECTOR
+2026-06-20 06:28:56,930 - INFO - Started at 2026-06-20 06:28:56.930446
+2026-06-20 06:28:56,930 - INFO - ============================================================
+2026-06-20 06:28:56,931 - INFO - Fetching market data...
+2026-06-20 06:28:57,439 - INFO - 
+Detected Regime: 🌤️ 🌤️ Weak Bull
+2026-06-20 06:28:57,440 - INFO -   Confidence: 55%
+2026-06-20 06:28:57,440 - INFO -   Reason: Uptrend intact but mixed momentum (20d: 1.0%)
+2026-06-20 06:28:57,440 - INFO - 
+Market Indicators:
+2026-06-20 06:28:57,440 - INFO -   VIX: 16.8
+2026-06-20 06:28:57,440 - INFO -   SPY 20d Return: +1.0%
+2026-06-20 06:28:57,440 - INFO -   SPY 60d Return: +14.6%
+2026-06-20 06:28:57,440 - INFO -   SPY Ann. Vol (20d): 16.4%
+2026-06-20 06:28:57,440 - INFO -   Price vs SMA50: +2.6%
+2026-06-20 06:28:57,440 - INFO -   Price vs SMA200: +9.1%
+2026-06-20 06:28:57,440 - INFO - 
+Signal Adaptations:
+2026-06-20 06:28:57,440 - INFO -   QS Buy Threshold: 60 → 55
+2026-06-20 06:28:57,440 - INFO -   QS Sell Threshold: 20 → 20
+2026-06-20 06:28:57,440 - INFO -   Position Size Multiplier: 1.0x
+2026-06-20 06:28:57,440 - INFO -   Signal Confidence: 70%
+2026-06-20 06:28:57,452 - INFO - 
+Regime stored in database (ID: 12)
+2026-06-20 06:28:57,452 - INFO - ============================================================
+2026-06-20 06:28:57,453 - INFO - Regime detection complete
+2026-06-20 06:28:57,453 - INFO - ============================================================
+2026-06-20 06:28:57+0800  [market_regime]  ok (raw=0)
+2026-06-20 10:06:36+0800  [market_regime]  begin
+2026-06-20 10:06:37,092 - INFO - ============================================================
+2026-06-20 10:06:37,093 - INFO - MARKET REGIME DETECTOR
+2026-06-20 10:06:37,093 - INFO - Started at 2026-06-20 10:06:37.093042
+2026-06-20 10:06:37,093 - INFO - ============================================================
+2026-06-20 10:06:37,093 - INFO - Fetching market data...
+2026-06-20 10:06:37,633 - INFO - 
+Detected Regime: 🌤️ 🌤️ Weak Bull
+2026-06-20 10:06:37,634 - INFO -   Confidence: 55%
+2026-06-20 10:06:37,634 - INFO -   Reason: Uptrend intact but mixed momentum (20d: 1.0%)
+2026-06-20 10:06:37,634 - INFO - 
+Market Indicators:
+2026-06-20 10:06:37,634 - INFO -   VIX: 16.8
+2026-06-20 10:06:37,634 - INFO -   SPY 20d Return: +1.0%
+2026-06-20 10:06:37,634 - INFO -   SPY 60d Return: +14.6%
+2026-06-20 10:06:37,634 - INFO -   SPY Ann. Vol (20d): 16.4%
+2026-06-20 10:06:37,634 - INFO -   Price vs SMA50: +2.6%
+2026-06-20 10:06:37,634 - INFO -   Price vs SMA200: +9.1%
+2026-06-20 10:06:37,634 - INFO - 
+Signal Adaptations:
+2026-06-20 10:06:37,634 - INFO -   QS Buy Threshold: 60 → 55
+2026-06-20 10:06:37,634 - INFO -   QS Sell Threshold: 20 → 20
+2026-06-20 10:06:37,634 - INFO -   Position Size Multiplier: 1.0x
+2026-06-20 10:06:37,634 - INFO -   Signal Confidence: 70%
+2026-06-20 10:06:37,650 - INFO - 
+Regime stored in database (ID: 13)
+2026-06-20 10:06:37,650 - INFO - ============================================================
+2026-06-20 10:06:37,650 - INFO - Regime detection complete
+2026-06-20 10:06:37,650 - INFO - ============================================================
+2026-06-20 10:06:37+0800  [market_regime]  ok (raw=0)
+2026-06-20 10:11:45+0800  [market_regime]  begin
+2026-06-20 10:11:46,038 - INFO - ============================================================
+2026-06-20 10:11:46,038 - INFO - MARKET REGIME DETECTOR
+2026-06-20 10:11:46,038 - INFO - Started at 2026-06-20 10:11:46.038741
+2026-06-20 10:11:46,038 - INFO - ============================================================
+2026-06-20 10:11:46,039 - INFO - Fetching market data...
+2026-06-20 10:11:46,579 - INFO - 
+Detected Regime: 🌤️ 🌤️ Weak Bull
+2026-06-20 10:11:46,580 - INFO -   Confidence: 55%
+2026-06-20 10:11:46,580 - INFO -   Reason: Uptrend intact but mixed momentum (20d: 1.0%)
+2026-06-20 10:11:46,580 - INFO - 
+Market Indicators:
+2026-06-20 10:11:46,580 - INFO -   VIX: 16.8
+2026-06-20 10:11:46,580 - INFO -   SPY 20d Return: +1.0%
+2026-06-20 10:11:46,580 - INFO -   SPY 60d Return: +14.6%
+2026-06-20 10:11:46,580 - INFO -   SPY Ann. Vol (20d): 16.4%
+2026-06-20 10:11:46,580 - INFO -   Price vs SMA50: +2.6%
+2026-06-20 10:11:46,580 - INFO -   Price vs SMA200: +9.1%
+2026-06-20 10:11:46,580 - INFO - 
+Signal Adaptations:
+2026-06-20 10:11:46,580 - INFO -   QS Buy Threshold: 60 → 55
+2026-06-20 10:11:46,580 - INFO -   QS Sell Threshold: 20 → 20
+2026-06-20 10:11:46,580 - INFO -   Position Size Multiplier: 1.0x
+2026-06-20 10:11:46,580 - INFO -   Signal Confidence: 70%
+2026-06-20 10:11:46,593 - INFO - 
+Regime stored in database (ID: 14)
+2026-06-20 10:11:46,593 - INFO - ============================================================
+2026-06-20 10:11:46,593 - INFO - Regime detection complete
+2026-06-20 10:11:46,593 - INFO - ============================================================
+2026-06-20 10:11:46+0800  [market_regime]  ok (raw=0)
+2026-06-21 14:00:01+0800  [market_regime]  begin
+2026-06-21 14:00:02,332 - INFO - ============================================================
+2026-06-21 14:00:02,333 - INFO - MARKET REGIME DETECTOR
+2026-06-21 14:00:02,333 - INFO - Started at 2026-06-21 14:00:02.333152
+2026-06-21 14:00:02,333 - INFO - ============================================================
+2026-06-21 14:00:02,333 - INFO - Fetching market data...
+2026-06-21 14:00:03,033 - INFO - 
+Detected Regime: 🌤️ 🌤️ Weak Bull
+2026-06-21 14:00:03,034 - INFO -   Confidence: 55%
+2026-06-21 14:00:03,034 - INFO -   Reason: Uptrend intact but mixed momentum (20d: 1.0%)
+2026-06-21 14:00:03,034 - INFO - 
+Market Indicators:
+2026-06-21 14:00:03,034 - INFO -   VIX: 16.4
+2026-06-21 14:00:03,034 - INFO -   SPY 20d Return: +1.0%
+2026-06-21 14:00:03,034 - INFO -   SPY 60d Return: +14.6%
+2026-06-21 14:00:03,034 - INFO -   SPY Ann. Vol (20d): 16.4%
+2026-06-21 14:00:03,034 - INFO -   Price vs SMA50: +2.6%
+2026-06-21 14:00:03,034 - INFO -   Price vs SMA200: +9.1%
+2026-06-21 14:00:03,034 - INFO - 
+Signal Adaptations:
+2026-06-21 14:00:03,034 - INFO -   QS Buy Threshold: 60 → 55
+2026-06-21 14:00:03,034 - INFO -   QS Sell Threshold: 20 → 20
+2026-06-21 14:00:03,034 - INFO -   Position Size Multiplier: 1.0x
+2026-06-21 14:00:03,034 - INFO -   Signal Confidence: 70%
+2026-06-21 14:00:03,051 - INFO - 
+Regime stored in database (ID: 15)
+2026-06-21 14:00:03,051 - INFO - ============================================================
+2026-06-21 14:00:03,051 - INFO - Regime detection complete
+2026-06-21 14:00:03,051 - INFO - ============================================================
+2026-06-21 14:00:03+0800  [market_regime]  ok (raw=0)
+2026-07-05 14:00:01+0800  [market_regime]  begin
+2026-07-05 14:00:02,659 - INFO - ============================================================
+2026-07-05 14:00:02,659 - INFO - MARKET REGIME DETECTOR
+2026-07-05 14:00:02,659 - INFO - Started at 2026-07-05 14:00:02.659701
+2026-07-05 14:00:02,659 - INFO - ============================================================
+2026-07-05 14:00:02,660 - INFO - Fetching market data...
+2026-07-05 14:00:32,692 - ERROR - $SPY: possibly delisted; no price data found  (1d 2025-05-31 14:00:02.660433 -> 2026-07-05 14:00:02.660433)
+2026-07-05 14:00:32,701 - ERROR - 
+1 Failed download:
+2026-07-05 14:00:32,701 - ERROR - ['SPY']: possibly delisted; no price data found  (1d 2025-05-31 14:00:02.660433 -> 2026-07-05 14:00:02.660433)
+2026-07-05 14:01:02,738 - ERROR - $^VIX: possibly delisted; no price data found  (1d 2025-05-31 14:00:02.660433 -> 2026-07-05 14:00:02.660433)
+2026-07-05 14:01:02,744 - ERROR - 
+1 Failed download:
+2026-07-05 14:01:02,744 - ERROR - ['^VIX']: possibly delisted; no price data found  (1d 2025-05-31 14:00:02.660433 -> 2026-07-05 14:00:02.660433)
+2026-07-05 14:01:02,750 - INFO - 
+Detected Regime: ➡️ ➡️ Sideways
+2026-07-05 14:01:02,750 - INFO -   Confidence: 0%
+2026-07-05 14:01:02,750 - INFO -   Reason: No market data available
+2026-07-05 14:01:02,750 - INFO - 
+Signal Adaptations:
+2026-07-05 14:01:02,750 - INFO -   QS Buy Threshold: 60 → 60
+2026-07-05 14:01:02,750 - INFO -   QS Sell Threshold: 20 → 20
+2026-07-05 14:01:02,750 - INFO -   Position Size Multiplier: 0.8x
+2026-07-05 14:01:02,750 - INFO -   Signal Confidence: 50%
+2026-07-05 14:01:02,771 - INFO - 
+Regime stored in database (ID: 17)
+2026-07-05 14:01:02,771 - INFO - ============================================================
+2026-07-05 14:01:02,772 - INFO - Regime detection complete
+2026-07-05 14:01:02,772 - INFO - ============================================================
+2026-07-05 14:01:02+0800  [market_regime]  ok (raw=0)

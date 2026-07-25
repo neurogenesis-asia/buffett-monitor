@@ -1,0 +1,236 @@
+Telegram credentials not configured
+2026-04-26 18:44:46,327 - __main__ - INFO - Starting weekly scan...
+Database initialized at data/buffett.db
+2026-04-26 18:44:46,328 - __main__ - INFO - Scanning 55 tickers...
+Warning: No valid info returned for AAPG
+Alpha Vantage fallback not implemented for AAPG
+i3investor scraper not fully implemented for AAPG - needs Bursa code mapping
+2026-04-26 18:44:46,690 - __main__ - ERROR - Error processing AAPG: All fetchers failed for ticker AAPG
+2026-04-26 18:44:47,496 - ml.signal_enhancer - ERROR - Error enhancing signal for AAPL: 'close'
+2026-04-26 18:44:47,547 - __main__ - INFO - AAPL: SELL signal (QS: 14.3, Moat: NARROW)
+2026-04-26 18:44:48,508 - ml.signal_enhancer - ERROR - Error enhancing signal for ACHR: 'close'
+2026-04-26 18:44:48,559 - __main__ - INFO - ACHR: SELL signal (QS: 14.3, Moat: NARROW)
+2026-04-26 18:44:49,546 - ml.signal_enhancer - ERROR - Error enhancing signal for AI: 'close'
+2026-04-26 18:44:49,599 - __main__ - INFO - AI: SELL signal (QS: 14.3, Moat: NARROW)
+2026-04-26 18:44:50,598 - ml.signal_enhancer - ERROR - Error enhancing signal for AMD: 'close'
+2026-04-26 18:44:50,650 - __main__ - INFO - AMD: SELL signal (QS: 14.3, Moat: NARROW)
+2026-04-26 18:44:51,576 - ml.signal_enhancer - ERROR - Error enhancing signal for ARM: 'close'
+2026-04-26 18:44:51,630 - __main__ - INFO - ARM: SELL signal (QS: 14.3, Moat: NARROW)
+2026-04-26 18:44:52,637 - ml.signal_enhancer - ERROR - Error enhancing signal for ASML: 'close'
+2026-04-26 18:44:52,690 - __main__ - INFO - ASML: SELL signal (QS: 14.3, Moat: NARROW)
+2026-04-26 18:44:53,604 - ml.signal_enhancer - ERROR - Error enhancing signal for CRSP: 'close'
+2026-04-26 18:44:53,658 - __main__ - INFO - CRSP: SELL signal (QS: 14.3, Moat: NARROW)
+2026-04-26 18:44:54,693 - ml.signal_enhancer - ERROR - Error enhancing signal for GOOGL: 'close'
+2026-04-26 18:44:54,746 - __main__ - INFO - GOOGL: SELL signal (QS: 28.6, Moat: NARROW)
+2026-04-26 18:44:54,747 - __main__ - INFO - Progress: 10/55
+2026-04-26 18:44:56,021 - ml.signal_enhancer - ERROR - Error enhancing signal for IBM: 'close'
+2026-04-26 18:44:56,071 - __main__ - INFO - IBM: SELL signal (QS: 14.3, Moat: NARROW)
+2026-04-26 18:44:56,930 - ml.signal_enhancer - ERROR - Error enhancing signal for INR: 'close'
+2026-04-26 18:44:56,981 - __main__ - INFO - INR: SELL signal (QS: 42.9, Moat: NARROW)
+2026-04-26 18:44:57,987 - ml.signal_enhancer - ERROR - Error enhancing signal for INTC: 'close'
+2026-04-26 18:44:58,040 - __main__ - INFO - INTC: SELL signal (QS: 14.3, Moat: NARROW)
+2026-04-26 18:44:59,167 - ml.signal_enhancer - ERROR - Error enhancing signal for MSFT: 'close'
+2026-04-26 18:44:59,220 - __main__ - INFO - MSFT: SELL signal (QS: 14.3, Moat: NARROW)
+2026-04-26 18:44:59,527 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: MTSR.CVR"}}}
+Warning: No valid info returned for MTSR.CVR
+Alpha Vantage fallback not implemented for MTSR.CVR
+i3investor scraper not fully implemented for MTSR.CVR - needs Bursa code mapping
+2026-04-26 18:44:59,578 - __main__ - ERROR - Error processing MTSR.CVR: All fetchers failed for ticker MTSR.CVR
+2026-04-26 18:45:00,398 - ml.signal_enhancer - ERROR - Error enhancing signal for MU: 'close'
+2026-04-26 18:45:00,450 - __main__ - INFO - MU: SELL signal (QS: 28.6, Moat: NARROW)
+2026-04-26 18:45:01,528 - ml.signal_enhancer - ERROR - Error enhancing signal for NVDA: 'close'
+2026-04-26 18:45:01,579 - __main__ - INFO - NVDA: SELL signal (QS: 28.6, Moat: NARROW)
+2026-04-26 18:45:02,772 - ml.signal_enhancer - ERROR - Error enhancing signal for PATH: 'close'
+2026-04-26 18:45:02,825 - __main__ - INFO - PATH: SELL signal (QS: 14.3, Moat: NARROW)
+2026-04-26 18:45:03,929 - ml.signal_enhancer - ERROR - Error enhancing signal for QCOM: 'close'
+2026-04-26 18:45:03,982 - __main__ - INFO - QCOM: SELL signal (QS: 28.6, Moat: NARROW)
+2026-04-26 18:45:04,959 - ml.signal_enhancer - ERROR - Error enhancing signal for RXRX: 'close'
+2026-04-26 18:45:05,012 - __main__ - INFO - RXRX: SELL signal (QS: 14.3, Moat: NARROW)
+2026-04-26 18:45:05,012 - __main__ - INFO - Progress: 20/55
+2026-04-26 18:45:05,997 - ml.signal_enhancer - ERROR - Error enhancing signal for TSLA: 'close'
+2026-04-26 18:45:06,047 - __main__ - INFO - TSLA: SELL signal (QS: 14.3, Moat: NARROW)
+Warning: No valid info returned for VG
+Alpha Vantage fallback not implemented for VG
+i3investor scraper not fully implemented for VG - needs Bursa code mapping
+2026-04-26 18:45:06,407 - __main__ - ERROR - Error processing VG: All fetchers failed for ticker VG
+2026-04-26 18:45:06,663 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: 5238"}}}
+Warning: No valid info returned for 5238
+Alpha Vantage fallback not implemented for 5238
+i3investor scraper not fully implemented for 5238 - needs Bursa code mapping
+2026-04-26 18:45:06,707 - __main__ - ERROR - Error processing 5238: All fetchers failed for ticker 5238
+2026-04-26 18:45:07,012 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: 5099"}}}
+Warning: No valid info returned for 5099
+Alpha Vantage fallback not implemented for 5099
+i3investor scraper not fully implemented for 5099 - needs Bursa code mapping
+2026-04-26 18:45:07,059 - __main__ - ERROR - Error processing 5099: All fetchers failed for ticker 5099
+2026-04-26 18:45:07,311 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: 4197"}}}
+Warning: No valid info returned for 4197
+Alpha Vantage fallback not implemented for 4197
+i3investor scraper not fully implemented for 4197 - needs Bursa code mapping
+2026-04-26 18:45:07,354 - __main__ - ERROR - Error processing 4197: All fetchers failed for ticker 4197
+2026-04-26 18:45:07,607 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: 3689"}}}
+Warning: No valid info returned for 3689
+Alpha Vantage fallback not implemented for 3689
+i3investor scraper not fully implemented for 3689 - needs Bursa code mapping
+2026-04-26 18:45:07,652 - __main__ - ERROR - Error processing 3689: All fetchers failed for ticker 3689
+2026-04-26 18:45:07,904 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: 3662"}}}
+Warning: No valid info returned for 3662
+Alpha Vantage fallback not implemented for 3662
+i3investor scraper not fully implemented for 3662 - needs Bursa code mapping
+2026-04-26 18:45:07,946 - __main__ - ERROR - Error processing 3662: All fetchers failed for ticker 3662
+2026-04-26 18:45:08,200 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: 5183"}}}
+Warning: No valid info returned for 5183
+Alpha Vantage fallback not implemented for 5183
+i3investor scraper not fully implemented for 5183 - needs Bursa code mapping
+2026-04-26 18:45:08,249 - __main__ - ERROR - Error processing 5183: All fetchers failed for ticker 5183
+2026-04-26 18:45:08,500 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: 3026"}}}
+Warning: No valid info returned for 3026
+Alpha Vantage fallback not implemented for 3026
+i3investor scraper not fully implemented for 3026 - needs Bursa code mapping
+2026-04-26 18:45:08,545 - __main__ - ERROR - Error processing 3026: All fetchers failed for ticker 3026
+2026-04-26 18:45:08,796 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: 5249"}}}
+Warning: No valid info returned for 5249
+Alpha Vantage fallback not implemented for 5249
+i3investor scraper not fully implemented for 5249 - needs Bursa code mapping
+2026-04-26 18:45:08,839 - __main__ - ERROR - Error processing 5249: All fetchers failed for ticker 5249
+2026-04-26 18:45:08,839 - __main__ - INFO - Progress: 30/55
+2026-04-26 18:45:09,087 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: 5347"}}}
+Warning: No valid info returned for 5347
+Alpha Vantage fallback not implemented for 5347
+i3investor scraper not fully implemented for 5347 - needs Bursa code mapping
+2026-04-26 18:45:09,131 - __main__ - ERROR - Error processing 5347: All fetchers failed for ticker 5347
+Warning: No valid info returned for 7113
+Alpha Vantage fallback not implemented for 7113
+i3investor scraper not fully implemented for 7113 - needs Bursa code mapping
+2026-04-26 18:45:09,206 - __main__ - ERROR - Error processing 7113: All fetchers failed for ticker 7113
+2026-04-26 18:45:09,456 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: 7113WA"}}}
+Warning: No valid info returned for 7113WA
+Alpha Vantage fallback not implemented for 7113WA
+i3investor scraper not fully implemented for 7113WA - needs Bursa code mapping
+2026-04-26 18:45:09,502 - __main__ - ERROR - Error processing 7113WA: All fetchers failed for ticker 7113WA
+2026-04-26 18:45:09,751 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: 6742"}}}
+Warning: No valid info returned for 6742
+Alpha Vantage fallback not implemented for 6742
+i3investor scraper not fully implemented for 6742 - needs Bursa code mapping
+2026-04-26 18:45:09,794 - __main__ - ERROR - Error processing 6742: All fetchers failed for ticker 6742
+2026-04-26 18:45:10,282 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: 6742UW"}}}
+Warning: No valid info returned for 6742UW
+Alpha Vantage fallback not implemented for 6742UW
+i3investor scraper not fully implemented for 6742UW - needs Bursa code mapping
+2026-04-26 18:45:10,324 - __main__ - ERROR - Error processing 6742UW: All fetchers failed for ticker 6742UW
+Warning: No valid info returned for 7095
+Alpha Vantage fallback not implemented for 7095
+i3investor scraper not fully implemented for 7095 - needs Bursa code mapping
+2026-04-26 18:45:10,398 - __main__ - ERROR - Error processing 7095: All fetchers failed for ticker 7095
+2026-04-26 18:45:10,653 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: 5296"}}}
+Warning: No valid info returned for 5296
+Alpha Vantage fallback not implemented for 5296
+i3investor scraper not fully implemented for 5296 - needs Bursa code mapping
+2026-04-26 18:45:10,697 - __main__ - ERROR - Error processing 5296: All fetchers failed for ticker 5296
+2026-04-26 18:45:10,953 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: 3867"}}}
+Warning: No valid info returned for 3867
+Alpha Vantage fallback not implemented for 3867
+i3investor scraper not fully implemented for 3867 - needs Bursa code mapping
+2026-04-26 18:45:10,996 - __main__ - ERROR - Error processing 3867: All fetchers failed for ticker 3867
+2026-04-26 18:45:11,250 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: 1155"}}}
+Warning: No valid info returned for 1155
+Alpha Vantage fallback not implemented for 1155
+i3investor scraper not fully implemented for 1155 - needs Bursa code mapping
+2026-04-26 18:45:11,295 - __main__ - ERROR - Error processing 1155: All fetchers failed for ticker 1155
+2026-04-26 18:45:11,548 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: 5337"}}}
+Warning: No valid info returned for 5337
+Alpha Vantage fallback not implemented for 5337
+i3investor scraper not fully implemented for 5337 - needs Bursa code mapping
+2026-04-26 18:45:11,599 - __main__ - ERROR - Error processing 5337: All fetchers failed for ticker 5337
+2026-04-26 18:45:11,599 - __main__ - INFO - Progress: 40/55
+Warning: No valid info returned for 1818
+Alpha Vantage fallback not implemented for 1818
+i3investor scraper not fully implemented for 1818 - needs Bursa code mapping
+2026-04-26 18:45:11,670 - __main__ - ERROR - Error processing 1818: All fetchers failed for ticker 1818
+Warning: No valid info returned for 5326
+Alpha Vantage fallback not implemented for 5326
+i3investor scraper not fully implemented for 5326 - needs Bursa code mapping
+2026-04-26 18:45:11,741 - __main__ - ERROR - Error processing 5326: All fetchers failed for ticker 5326
+2026-04-26 18:45:11,994 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: 7013"}}}
+Warning: No valid info returned for 7013
+Alpha Vantage fallback not implemented for 7013
+i3investor scraper not fully implemented for 7013 - needs Bursa code mapping
+2026-04-26 18:45:12,038 - __main__ - ERROR - Error processing 7013: All fetchers failed for ticker 7013
+2026-04-26 18:45:12,818 - ml.signal_enhancer - ERROR - Error enhancing signal for CALM: 'close'
+2026-04-26 18:45:13,898 - ml.signal_enhancer - ERROR - Error enhancing signal for GOOG: 'close'
+2026-04-26 18:45:13,946 - __main__ - INFO - GOOG: SELL signal (QS: 28.6, Moat: NARROW)
+2026-04-26 18:45:14,914 - ml.signal_enhancer - ERROR - Error enhancing signal for WRBY: 'close'
+2026-04-26 18:45:14,965 - __main__ - INFO - WRBY: SELL signal (QS: 14.3, Moat: NARROW)
+2026-04-26 18:45:16,544 - yfinance - ERROR - $MAYBANK.KL: possibly delisted; no price data found  (period=100d) (Yahoo error = "No data found, symbol may be delisted")
+2026-04-26 18:45:16,553 - yfinance - ERROR - 
+1 Failed download:
+2026-04-26 18:45:16,553 - yfinance - ERROR - ['MAYBANK.KL']: possibly delisted; no price data found  (period=100d) (Yahoo error = "No data found, symbol may be delisted")
+2026-04-26 18:45:16,556 - __main__ - WARNING - MAYBANK.KL: No price data available for ML enhancement
+2026-04-26 18:45:16,609 - __main__ - INFO - MAYBANK.KL: SELL signal (QS: 57.1, Moat: NARROW)
+2026-04-26 18:45:17,367 - ml.signal_enhancer - ERROR - Error enhancing signal for PBBANK.KL: 'close'
+2026-04-26 18:45:17,418 - __main__ - INFO - PBBANK.KL: SELL signal (QS: 42.9, Moat: NARROW)
+2026-04-26 18:45:18,988 - yfinance - ERROR - $TENAGA.KL: possibly delisted; no price data found  (period=100d) (Yahoo error = "No data found, symbol may be delisted")
+2026-04-26 18:45:18,997 - yfinance - ERROR - 
+1 Failed download:
+2026-04-26 18:45:18,997 - yfinance - ERROR - ['TENAGA.KL']: possibly delisted; no price data found  (period=100d) (Yahoo error = "No data found, symbol may be delisted")
+2026-04-26 18:45:19,001 - __main__ - WARNING - TENAGA.KL: No price data available for ML enhancement
+2026-04-26 18:45:19,051 - __main__ - INFO - TENAGA.KL: SELL signal (QS: 14.3, Moat: NARROW)
+2026-04-26 18:45:20,380 - yfinance - ERROR - $CIMB.KL: possibly delisted; no price data found  (period=100d) (Yahoo error = "No data found, symbol may be delisted")
+2026-04-26 18:45:20,390 - yfinance - ERROR - 
+1 Failed download:
+2026-04-26 18:45:20,390 - yfinance - ERROR - ['CIMB.KL']: possibly delisted; no price data found  (period=100d) (Yahoo error = "No data found, symbol may be delisted")
+2026-04-26 18:45:20,394 - __main__ - WARNING - CIMB.KL: No price data available for ML enhancement
+2026-04-26 18:45:20,448 - __main__ - INFO - CIMB.KL: SELL signal (QS: 57.1, Moat: NARROW)
+2026-04-26 18:45:20,448 - __main__ - INFO - Progress: 50/55
+Warning: No valid info returned for 0021.KL
+Alpha Vantage fallback not implemented for DIGI.KL
+i3investor scraper not fully implemented for DIGI.KL - needs Bursa code mapping
+2026-04-26 18:45:20,590 - __main__ - ERROR - Error processing DIGI.KL: All fetchers failed for ticker DIGI.KL
+2026-04-26 18:45:21,858 - yfinance - ERROR - $GENTING.KL: possibly delisted; no price data found  (period=100d) (Yahoo error = "No data found, symbol may be delisted")
+2026-04-26 18:45:21,859 - yfinance - ERROR - 
+1 Failed download:
+2026-04-26 18:45:21,859 - yfinance - ERROR - ['GENTING.KL']: possibly delisted; no price data found  (period=100d) (Yahoo error = "No data found, symbol may be delisted")
+2026-04-26 18:45:21,862 - __main__ - WARNING - GENTING.KL: No price data available for ML enhancement
+2026-04-26 18:45:21,914 - __main__ - INFO - GENTING.KL: SELL signal (QS: 42.9, Moat: NARROW)
+2026-04-26 18:45:23,297 - yfinance - ERROR - $HARTA.KL: possibly delisted; no price data found  (period=100d) (Yahoo error = "No data found, symbol may be delisted")
+2026-04-26 18:45:23,298 - yfinance - ERROR - 
+1 Failed download:
+2026-04-26 18:45:23,298 - yfinance - ERROR - ['HARTA.KL']: possibly delisted; no price data found  (period=100d) (Yahoo error = "No data found, symbol may be delisted")
+2026-04-26 18:45:23,302 - __main__ - WARNING - HARTA.KL: No price data available for ML enhancement
+2026-04-26 18:45:23,356 - __main__ - INFO - HARTA.KL: SELL signal (QS: 42.9, Moat: NARROW)
+2026-04-26 18:45:24,773 - yfinance - ERROR - $IOI.KL: possibly delisted; no price data found  (period=100d) (Yahoo error = "No data found, symbol may be delisted")
+2026-04-26 18:45:24,773 - yfinance - ERROR - 
+1 Failed download:
+2026-04-26 18:45:24,774 - yfinance - ERROR - ['IOI.KL']: possibly delisted; no price data found  (period=100d) (Yahoo error = "No data found, symbol may be delisted")
+2026-04-26 18:45:24,778 - __main__ - WARNING - IOI.KL: No price data available for ML enhancement
+2026-04-26 18:45:24,830 - __main__ - INFO - IOI.KL: SELL signal (QS: 28.6, Moat: NARROW)
+Warning: No valid info returned for KLK.KL
+Alpha Vantage fallback not implemented for KLK.KL
+i3investor scraper not fully implemented for KLK.KL - needs Bursa code mapping
+2026-04-26 18:45:24,967 - __main__ - ERROR - Error processing KLK.KL: All fetchers failed for ticker KLK.KL
+2026-04-26 18:45:26,202 - yfinance - ERROR - $MAXIS.KL: possibly delisted; no price data found  (period=100d) (Yahoo error = "No data found, symbol may be delisted")
+2026-04-26 18:45:26,207 - yfinance - ERROR - 
+1 Failed download:
+2026-04-26 18:45:26,207 - yfinance - ERROR - ['MAXIS.KL']: possibly delisted; no price data found  (period=100d) (Yahoo error = "No data found, symbol may be delisted")
+2026-04-26 18:45:26,210 - __main__ - WARNING - MAXIS.KL: No price data available for ML enhancement
+2026-04-26 18:45:26,257 - __main__ - INFO - MAXIS.KL: SELL signal (QS: 14.3, Moat: NARROW)
+2026-04-26 18:45:26,257 - __main__ - INFO - Scan complete. Successful: 29, Failed: 26
+2026-04-26 18:45:26,257 - __main__ - INFO - Signals - BUY: 0, HOLD: 1, SELL: 28, AVOID: 0
+
+=== SCAN SUMMARY ===
+scan_date: 2026-04-26
+total_tickers: 55
+successful: 29
+failed: 26
+buy_signals: 0
+hold_signals: 1
+sell_signals: 28
+avoid_signals: 0
+summary_by_signal: {}
+
+Errors (26):
+  - AAPG: All fetchers failed for ticker AAPG
+  - MTSR.CVR: All fetchers failed for ticker MTSR.CVR
+  - VG: All fetchers failed for ticker VG
+  - 5238: All fetchers failed for ticker 5238
+  - 5099: All fetchers failed for ticker 5099

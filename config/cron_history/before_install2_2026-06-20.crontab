@@ -1,0 +1,42 @@
+# Buffett Monitor cron schedule
+# Source of truth for all scheduled jobs.
+# Job runner: /home/shalu/buffett-monitor/scripts/run_pipeline.sh
+# Each job logs to: /home/shalu/buffett-monitor/logs/cron/<job>.log
+# Heartbeats: /home/shalu/buffett-monitor/logs/heartbeat/<job>.json
+#
+
+# Required env: project at /home/shalu/buffett-monitor, BM_STRICT unset
+# to tolerate legacy scripts that exit non-zero on success.
+SHELL=/bin/bash
+PATH=/home/shalu/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+# ----- every 5 minutes -----
+*/5 * * * *   /home/shalu/buffett-monitor/scripts/run_pipeline.sh dashboard_keepalive >> /home/shalu/buffett-monitor/logs/cron/cron.log 2>&1
+
+# ----- every 30 min, US market window (14-21 UTC), Mon-Fri -----
+*/30 * * * *  /home/shalu/buffett-monitor/scripts/run_pipeline.sh intraday_alerts >> /home/shalu/buffett-monitor/logs/cron/cron.log 2>&1
+
+# ----- weekly: sunday 14:00 local, US pre-open -- market regime -----
+0 14 * * 0    /home/shalu/buffett-monitor/scripts/run_pipeline.sh market_regime >> /home/shalu/buffett-monitor/logs/cron/cron.log 2>&1
+
+# ----- weekly: monday 02:00 local -- collect forward returns -----
+0 2 * * 1     cd /home/shalu/buffett-monitor && ./scripts/run_pipeline.sh forward_returns >> /home/shalu/buffett-monitor/logs/cron/cron.log 2>&1
+
+# ----- weekly: monday 02:30 local -- label outcomes -----
+30 2 * * 1    /home/shalu/buffett-monitor/scripts/run_pipeline.sh label_outcomes >> /home/shalu/buffett-monitor/logs/cron/cron.log 2>&1
+
+# ----- weekly: monday 03:00 local -- ML retrain -----
+0 3 * * 1     /home/shalu/buffett-monitor/scripts/run_pipeline.sh ml_retrain >> /home/shalu/buffett-monitor/logs/cron/cron.log 2>&1
+
+# ----- weekly: monday 14:00 local (after NASDAQ close) -- week high/low scan -----
+# Note: this only handles the historical scan. Full 8473-stock full scan is
+# currently NOT scheduled because it takes hours. Run manually:
+#   /home/shalu/buffett-monitor/scripts/run_scan_now.py --backup
+0 14 * * 1    /home/shalu/buffett-monitor/scripts/run_pipeline.sh week_high_low_scan >> /home/shalu/buffett-monitor/logs/cron/cron.log 2>&1
+
+# ----- daily 23:30 local -- health check -----
+30 23 * * *   /home/shalu/buffett-monitor/scripts/run_pipeline.sh health_check >> /home/shalu/buffett-monitor/logs/cron/cron.log 2>&1
+
+# ----- weekly: sunday 03:00 local -- clean up stale trash dir + pycache -----
+# 0 3 * * 0    /home/shalu/.hermes/scripts/clean_trash_dbs.sh >> /home/shalu/buffett-monitor/logs/cron/cron.log 2>&1
+# disabled — leaving .trash_cleanup_2026-06-19 untouched for user review

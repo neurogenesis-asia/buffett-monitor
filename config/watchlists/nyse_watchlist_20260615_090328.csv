@@ -1,0 +1,2 @@
+ticker,signal_type,detection_date,price_at_signal,signal_priority,ml_confidence,enhancement_used
+BCS,HIGH_2W,2026-06-08,25.47,57.0,,0

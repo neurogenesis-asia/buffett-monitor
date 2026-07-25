@@ -1,0 +1,181 @@
+{
+  "signal_label": [
+    {
+      "ml_rule_signal": "HOLD",
+      "count": 2,
+      "mean": -0.0022952913933643147,
+      "median": -0.0022952913933643147,
+      "hit_rate": 0.5
+    },
+    {
+      "ml_rule_signal": "SELL",
+      "count": 41,
+      "mean": 0.08554138653202477,
+      "median": 0.027889527572770592,
+      "hit_rate": 0.6585365853658537
+    }
+  ],
+  "quintile": [
+    {
+      "market": "us",
+      "snapshot_date": "2026-04-25",
+      "quintile": 1,
+      "n_tickers": 19,
+      "mean_fwd_return": 0.09507581954409976,
+      "median_fwd_return": 0.048427941152910194,
+      "hit_rate": 0.631578947368421,
+      "n_positive": 12
+    },
+    {
+      "market": "us",
+      "snapshot_date": "2026-04-25",
+      "quintile": 2,
+      "n_tickers": 2,
+      "mean_fwd_return": -0.019228116969151894,
+      "median_fwd_return": -0.019228116969151894,
+      "hit_rate": 0.0,
+      "n_positive": 0
+    },
+    {
+      "market": "us",
+      "snapshot_date": "2026-04-26",
+      "quintile": 1,
+      "n_tickers": 19,
+      "mean_fwd_return": 0.08977647567800191,
+      "median_fwd_return": 0.027889527572770592,
+      "hit_rate": 0.6842105263157895,
+      "n_positive": 13
+    },
+    {
+      "market": "us",
+      "snapshot_date": "2026-04-26",
+      "quintile": 2,
+      "n_tickers": 2,
+      "mean_fwd_return": 0.0027818878380062775,
+      "median_fwd_return": 0.0027818878380062775,
+      "hit_rate": 1.0,
+      "n_positive": 2
+    }
+  ],
+  "moat": [
+    {
+      "moat_strength": "NARROW",
+      "count": 43,
+      "mean": 0.08145595965177412,
+      "median": 0.026360816425324174,
+      "hit_rate": 0.6511627906976745
+    }
+  ],
+  "spread": [],
+  "bm": [
+    {
+      "benchmark": "us",
+      "signal_date": "2024-01-02",
+      "horizon": 20,
+      "fwd_return": 0.02284994254123962
+    },
+    {
+      "benchmark": "us",
+      "signal_date": "2024-06-25",
+      "horizon": 20,
+      "fwd_return": 0.03065173511974284
+    },
+    {
+      "benchmark": "us",
+      "signal_date": "2024-12-18",
+      "horizon": 20,
+      "fwd_return": 0.007387283918678378
+    },
+    {
+      "benchmark": "us",
+      "signal_date": "2025-06-11",
+      "horizon": 20,
+      "fwd_return": 0.03012499504682231
+    },
+    {
+      "benchmark": "us",
+      "signal_date": "2025-12-04",
+      "horizon": 20,
+      "fwd_return": 0.011733122559214992
+    },
+    {
+      "benchmark": "us",
+      "signal_date": "2026-05-29",
+      "horizon": 20,
+      "fwd_return": -0.010332364798840366
+    },
+    {
+      "benchmark": "klse",
+      "signal_date": "2024-01-02",
+      "horizon": 20,
+      "fwd_return": -0.004746016665136965
+    },
+    {
+      "benchmark": "klse",
+      "signal_date": "2024-06-25",
+      "horizon": 20,
+      "fwd_return": 0.041126467761000374
+    },
+    {
+      "benchmark": "klse",
+      "signal_date": "2024-12-18",
+      "horizon": 20,
+      "fwd_return": 0.027954317339952794
+    },
+    {
+      "benchmark": "klse",
+      "signal_date": "2025-06-11",
+      "horizon": 20,
+      "fwd_return": 0.018463372284507784
+    },
+    {
+      "benchmark": "klse",
+      "signal_date": "2025-12-04",
+      "horizon": 20,
+      "fwd_return": 0.05796673133342467
+    },
+    {
+      "benchmark": "klse",
+      "signal_date": "2026-05-29",
+      "horizon": 20,
+      "fwd_return": -0.016772926662578458
+    },
+    {
+      "benchmark": "world",
+      "signal_date": "2024-01-02",
+      "horizon": 20,
+      "fwd_return": 0.009217148752574289
+    },
+    {
+      "benchmark": "world",
+      "signal_date": "2024-06-25",
+      "horizon": 20,
+      "fwd_return": 0.03090861224414998
+    },
+    {
+      "benchmark": "world",
+      "signal_date": "2024-12-18",
+      "horizon": 20,
+      "fwd_return": 0.008277202761092672
+    },
+    {
+      "benchmark": "world",
+      "signal_date": "2025-06-11",
+      "horizon": 20,
+      "fwd_return": 0.025110195792146905
+    },
+    {
+      "benchmark": "world",
+      "signal_date": "2025-12-04",
+      "horizon": 20,
+      "fwd_return": 0.014044186670315817
+    },
+    {
+      "benchmark": "world",
+      "signal_date": "2026-05-29",
+      "horizon": 20,
+      "fwd_return": 0.0014180941411467973
+    }
+  ],
+  "sharpe": {}
+}

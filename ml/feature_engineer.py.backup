@@ -1,0 +1,239 @@
+#!/usr/bin/env python3
+"""
+Feature Engineering for ML Signal Enhancement
+Generates technical, fundamental, and market features for week high/low signals
+"""
+
+import pandas as pd
+import numpy as np
+import yfinance as yf
+from typing import Dict, Any, Optional
+import logging
+
+logger = logging.getLogger(__name__)
+
+class FeatureEngineer:
+    """Engineers features for ML signal enhancement"""
+    
+    def __init__(self):
+        self.feature_names = []
+    
+    def engineer_features(self, 
+                         ticker: str,
+                         price_df: pd.DataFrame,
+                         fundamentals: Dict[str, Any],
+                         rule_based_signal: str,
+                         lookback_period: int = 100) -> Optional[Dict[str, float]]:
+        """
+        Engineer features for a given ticker
+        
+        Args:
+            ticker: Stock ticker symbol
+            price_df: Historical price data (OHLCV)
+            fundamentals: Fundamental data dictionary
+            rule_based_signal: Original rule-based signal
+            lookback_period: Number of days to look back for features
+            
+        Returns:
+            Dictionary of feature names and values, or None if failed
+        """
+        try:
+            if price_df.empty or len(price_df) < 20:
+                logger.warning(f"{ticker}: Insufficient price data for feature engineering")
+                return None
+            
+            # Ensure we have required columns
+            required_cols = ['Open', 'High', 'Low', 'Close', 'Volume']
+            if not all(col in price_df.columns for col in required_cols):
+                # Handle MultiIndex columns from yfinance
+                if isinstance(price_df.columns, pd.MultiIndex):
+                    price_df.columns = price_df.columns.get_level_values(0)
+                else:
+                    logger.warning(f"{ticker}: Missing required price columns")
+                    return None
+            
+            features = {}
+            
+            # === PRICE FEATURES ===
+            close = price_df['Close']
+            high = price_df['High']
+            low = price_df['Low']
+            volume = price_df['Volume']
+            
+            # Returns
+            features['return_1d'] = close.pct_change(1).iloc[-1]
+            features['return_5d'] = close.pct_change(5).iloc[-1]
+            features['return_10d'] = close.pct_change(10).iloc[-1]
+            features['return_20d'] = close.pct_change(20).iloc[-1]
+            
+            # Moving averages
+            for period in [5, 10, 20, 50]:
+                if len(close) >= period:
+                    sma = close.rolling(period).mean().iloc[-1]
+                    features[f'sma_{period}'] = sma
+                    features[f'price_to_sma_{period}'] = close.iloc[-1] / sma if sma != 0 else 1.0
+            
+            # Exponential moving averages
+            for period in [12, 26]:
+                if len(close) >= period:
+                    ema = close.ewm(span=period).mean().iloc[-1]
+                    features[f'ema_{period}'] = ema
+                    features[f'price_to_ema_{period}'] = close.iloc[-1] / ema if ema != 0 else 1.0
+            
+            # MACD
+            if len(close) >= 26:
+                ema_12 = close.ewm(span=12).mean()
+                ema_26 = close.ewm(span=26).mean()
+                macd = ema_12 - ema_26
+                signal_line = macd.ewm(span=9).mean()
+                features['macd'] = macd.iloc[-1]
+                features['macd_signal'] = signal_line.iloc[-1]
+                features['macd_histogram'] = (macd - signal_line).iloc[-1]
+            
+            # RSI
+            if len(close) >= 14:
+                delta = close.diff()
+                gain = (delta.where(delta > 0, 0)).rolling(14).mean()
+                loss = (-delta.where(delta < 0, 0)).rolling(14).mean()
+                rs = gain / loss
+                rsi = 100 - (100 / (1 + rs))
+                features['rsi'] = rsi.iloc[-1] if not pd.isna(rsi.iloc[-1]) else 50.0
+            
+            # Bollinger Bands
+            if len(close) >= 20:
+                sma_20 = close.rolling(20).mean()
+                std_20 = close.rolling(20).std()
+                upper_band = sma_20 + (std_20 * 2)
+                lower_band = sma_20 - (std_20 * 2)
+                features['bb_position'] = (close.iloc[-1] - lower_band.iloc[-1]) / (upper_band.iloc[-1] - lower_band.iloc[-1]) if (upper_band.iloc[-1] - lower_band.iloc[-1]) != 0 else 0.5
+                features['bb_width'] = (upper_band.iloc[-1] - lower_band.iloc[-1]) / sma_20.iloc[-1] if sma_20.iloc[-1] != 0 else 0.0
+            
+            # ATR (Average True Range)
+            if len(high) >= 14:
+                tr1 = high - low
+                tr2 = abs(high - close.shift())
+                tr3 = abs(low - close.shift())
+                tr = pd.concat([tr1, tr2, tr3], axis=1).max(axis=1)
+                atr = tr.rolling(14).mean()
+                features['atr'] = atr.iloc[-1]
+                features['atr_percent'] = atr.iloc[-1] / close.iloc[-1] if close.iloc[-1] != 0 else 0.0
+            
+            # Volume features
+            if len(volume) >= 20:
+                vol_sma = volume.rolling(20).mean()
+                features['volume_ratio'] = volume.iloc[-1] / vol_sma.iloc[-1] if vol_sma.iloc[-1] != 0 else 1.0
+                features['volume_trend'] = volume.rolling(5).mean().iloc[-1] / volume.rolling(20).mean().iloc[-1] if volume.rolling(20).mean().iloc[-1] != 0 else 1.0
+            
+            # Price position relative to recent highs/lows
+            if len(high) >= 20:
+                features['price_vs_20d_high'] = close.iloc[-1] / high.rolling(20).max().iloc[-1] if high.rolling(20).max().iloc[-1] != 0 else 1.0
+                features['price_vs_20d_low'] = close.iloc[-1] / low.rolling(20).min().iloc[-1] if low.rolling(20).min().iloc[-1] != 0 else 1.0
+            
+            # === FUNDAMENTAL FEATURES ===
+            # Valuation ratios
+            for ratio in ['pe_ratio', 'pb_ratio', 'ps_ratio', 'dividend_yield']:
+                val = fundamentals.get(ratio, 0) or 0
+                features[f'fund_{ratio}'] = float(val) if val else 0.0
+            
+            # Profitability
+            for metric in ['roe', 'roa', 'roic', 'profit_margin', 'operating_margin']:
+                val = fundamentals.get(metric, 0) or 0
+                features[f'fund_{metric}'] = float(val) if val else 0.0
+            
+            # Financial health
+            for metric in ['debt_to_equity', 'current_ratio', 'quick_ratio']:
+                val = fundamentals.get(metric, 0) or 0
+                features[f'fund_{metric}'] = float(val) if val else 0.0
+            
+            # Growth
+            for metric in ['revenue_growth', 'earnings_growth', 'book_value_growth']:
+                val = fundamentals.get(metric, 0) or 0
+                features[f'fund_{metric}'] = float(val) if val else 0.0
+            
+            # Market cap (log scale)
+            market_cap = fundamentals.get('market_cap', 0) or 0
+            features['fund_market_cap_log'] = np.log10(market_cap) if market_cap > 0 else 0
+            
+            # === SIGNAL CONTEXT FEATURES ===
+            # Encode rule-based signal
+            signal_mapping = {
+                'STRONG_BUY': 2.0,
+                'BUY': 1.0,
+                'NEUTRAL': 0.0,
+                'SELL': -1.0,
+                'STRONG_SELL': -2.0
+            }
+            features['rule_based_signal_encoded'] = signal_mapping.get(rule_based_signal, 0.0)
+            
+            # Signal strength features (if available from week high/low)
+            # These would be passed in from the scanner context
+            
+            # === MARKET CONTEXT FEATURES ===
+            # Sector encoding (simplified)
+            sector = fundamentals.get('sector', 'UNKNOWN')
+            # Simple hash-based encoding for sectors
+            features['sector_hash'] = hash(sector) % 100 / 100.0  # 0-1 range
+            
+            # Clean features: replace inf/nan with 0
+            cleaned_features = {}
+            for key, value in features.items():
+                if pd.isna(value) or np.isinf(value):
+                    cleaned_features[key] = 0.0
+                else:
+                    cleaned_features[key] = float(value)
+            
+            # Store feature names for consistency
+            self.feature_names = list(cleaned_features.keys())
+            
+            logger.debug(f"{ticker}: Engineered {len(cleaned_features)} features")
+            return cleaned_features
+            
+        except Exception as e:
+            logger.error(f"{ticker}: Error engineering features: {e}")
+            return None
+    
+    def get_feature_names(self) -> list:
+        """Get list of feature names in order"""
+        return self.feature_names.copy()
+
+
+if __name__ == "__main__":
+    # Test the feature engineer
+    import sys
+    import os
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    
+    # Create sample data for testing
+    dates = pd.date_range(end=pd.Timestamp.now(), periods=100, freq='D')
+    sample_data = pd.DataFrame({
+        'Open': np.random.uniform(95, 105, 100),
+        'High': np.random.uniform(100, 110, 100),
+        'Low': np.random.uniform(90, 100, 100),
+        'Close': np.random.uniform(95, 105, 100),
+        'Volume': np.random.randint(1000000, 5000000, 100)
+    }, index=dates)
+    
+    sample_fundamentals = {
+        'pe_ratio': 15.5,
+        'pb_ratio': 2.1,
+        'dividend_yield': 0.03,
+        'roe': 0.12,
+        'debt_to_equity': 0.4,
+        'market_cap': 5000000000,
+        'sector': 'Technology'
+    }
+    
+    engineer = FeatureEngineer()
+    features = engineer.engineer_features(
+        ticker='TEST',
+        price_df=sample_data,
+        fundamentals=sample_fundamentals,
+        rule_based_signal='BUY'
+    )
+    
+    if features:
+        print(f"Generated {len(features)} features:")
+        for name, value in sorted(features.items()):
+            print(f"  {name}: {value:.4f}")
+    else:
+        print("Feature engineering failed")

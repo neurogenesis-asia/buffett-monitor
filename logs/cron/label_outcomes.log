@@ -1,0 +1,42 @@
+2026-06-19 22:05:17+0800  [label_outcomes]  begin
+2026-06-19 22:05:17,903 - INFO - Found 43 signals to label
+2026-06-19 22:05:17,903 - INFO - Labeled 0 signals
+2026-06-19 22:05:17+0800  [label_outcomes]  FAIL: exit 1
+2026-06-19 22:12:46+0800  [label_outcomes]  begin
+2026-06-19 22:12:46,036 - INFO - Found 43 signals to label
+2026-06-19 22:12:46,036 - INFO - Labeled 0 signals
+2026-06-19 22:18:46+0800  [label_outcomes]  begin
+2026-06-19 22:18:46,842 - INFO - Found 43 signals to label
+2026-06-19 22:18:46,843 - INFO - Labeled 0 signals
+2026-06-19 22:26:45+0800  [label_outcomes]  begin
+2026-06-19 22:26:45,044 - INFO - Found 43 signals to label
+2026-06-19 22:26:45,044 - INFO - Labeled 0 signals
+2026-06-19 22:26:45+0800  [label_outcomes]  ok (raw=1)
+2026-06-20 00:07:44+0800  [label_outcomes]  begin
+2026-06-20 00:07:44,352 - INFO - Found 43 signals to label
+2026-06-20 00:07:44,352 - INFO - Labeled 0 signals
+2026-06-20 00:07:44+0800  [label_outcomes]  ok (raw=1)
+2026-06-20 00:41:47+0800  [label_outcomes]  begin
+2026-06-20 00:41:47,689 - INFO - Found 43 signals to label
+2026-06-20 00:41:47,689 - INFO - Labeled 0 signals
+2026-06-20 00:41:47+0800  [label_outcomes]  ok (raw=1)
+2026-06-20 06:29:05+0800  [label_outcomes]  begin
+2026-06-20 06:29:06,008 - INFO - Found 43 signals to label
+2026-06-20 06:29:06,008 - INFO - Labeled 0 signals
+2026-06-20 06:29:06+0800  [label_outcomes]  ok (raw=0)
+2026-06-20 10:08:07+0800  [label_outcomes]  begin
+2026-06-20 10:08:07,938 - INFO - Found 5969 signals to label
+2026-06-20 10:08:07,940 - INFO - Labeled 0 signals
+2026-06-20 10:08:07+0800  [label_outcomes]  ok (raw=0)
+2026-06-20 10:13:16+0800  [label_outcomes]  begin
+2026-06-20 10:13:16,902 - INFO - Found 5969 signals to label
+2026-06-20 10:13:16,904 - INFO - Labeled 0 signals
+2026-06-20 10:13:16+0800  [label_outcomes]  ok (raw=0)
+2026-06-22 02:30:01+0800  [label_outcomes]  begin
+2026-06-22 02:30:01,500 - INFO - Found 6006 signals to label
+2026-06-22 02:30:01,502 - INFO - Labeled 0 signals
+2026-06-22 02:30:01+0800  [label_outcomes]  ok (raw=0)
+2026-07-06 02:30:01+0800  [label_outcomes]  begin
+2026-07-06 02:30:01,149 - INFO - Found 6318 signals with at least one forward return
+2026-07-06 02:30:01,184 - INFO - Updated labels: 20d=6318, 60d=65, 252d=0
+2026-07-06 02:30:01+0800  [label_outcomes]  ok (raw=0)

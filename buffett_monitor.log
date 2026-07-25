@@ -1,0 +1,18 @@
+2026-04-22 14:45:34,243 - __main__ - INFO - Starting Buffett Monitor scheduler...
+2026-04-22 14:45:34,252 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-04-22 14:45:34,252 - __main__ - INFO - Scheduled weekly scan with cron expression: 0 9 * * 1
+2026-04-22 14:45:34,252 - __main__ - INFO - Press Ctrl+C to exit
+2026-04-22 14:45:34,253 - apscheduler.scheduler - INFO - Added job "Weekly Buffett Monitor Scan" to job store "default"
+2026-04-22 14:45:34,253 - apscheduler.scheduler - INFO - Scheduler started
+2026-04-22 16:38:12,329 - __main__ - INFO - Starting Buffett Monitor scheduler...
+2026-04-22 16:38:12,331 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-04-22 16:38:12,331 - __main__ - INFO - Scheduled weekly scan with cron expression: 0 9 * * 1
+2026-04-22 16:38:12,331 - __main__ - INFO - Press Ctrl+C to exit
+2026-04-22 16:38:12,331 - apscheduler.scheduler - INFO - Added job "Weekly Buffett Monitor Scan" to job store "default"
+2026-04-22 16:38:12,331 - apscheduler.scheduler - INFO - Scheduler started
+2026-04-22 19:29:07,506 - __main__ - INFO - Starting Buffett Monitor scheduler...
+2026-04-22 19:29:07,508 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-04-22 19:29:07,508 - __main__ - INFO - Scheduled weekly scan with cron expression: 0 9 * * 1
+2026-04-22 19:29:07,508 - __main__ - INFO - Press Ctrl+C to exit
+2026-04-22 19:29:07,508 - apscheduler.scheduler - INFO - Added job "Weekly Buffett Monitor Scan" to job store "default"
+2026-04-22 19:29:07,508 - apscheduler.scheduler - INFO - Scheduler started

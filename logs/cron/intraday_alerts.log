@@ -1,0 +1,2741 @@
+2026-06-19 22:05:17+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-19 22:05:18,710 - INFO - ============================================================
+2026-06-19 22:05:18,710 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-19 22:05:18,710 - INFO - Started at 2026-06-19 22:05:18.710455
+2026-06-19 22:05:18,710 - INFO - ============================================================
+2026-06-19 22:05:18,710 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-19 22:05:18,710 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-19 22:05:18+0800  [intraday_alerts]  FAIL: exit 1
+2026-06-19 22:12:46+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-19 22:12:46,861 - INFO - ============================================================
+2026-06-19 22:12:46,861 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-19 22:12:46,861 - INFO - Started at 2026-06-19 22:12:46.861596
+2026-06-19 22:12:46,861 - INFO - ============================================================
+2026-06-19 22:12:46,861 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-19 22:12:46,861 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-19 22:18:46+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-19 22:18:47,678 - INFO - ============================================================
+2026-06-19 22:18:47,678 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-19 22:18:47,679 - INFO - Started at 2026-06-19 22:18:47.678994
+2026-06-19 22:18:47,679 - INFO - ============================================================
+2026-06-19 22:18:47,679 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-19 22:18:47,679 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-19 22:18:47+0800  [intraday_alerts]  WARN exit 1
+2026-06-19 22:26:45+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-19 22:26:45,891 - INFO - ============================================================
+2026-06-19 22:26:45,891 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-19 22:26:45,891 - INFO - Started at 2026-06-19 22:26:45.891304
+2026-06-19 22:26:45,891 - INFO - ============================================================
+2026-06-19 22:26:45,891 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-19 22:26:45,891 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-19 22:26:46+0800  [intraday_alerts]  WARN exit 1
+2026-06-19 23:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-19 23:00:02,478 - INFO - ============================================================
+2026-06-19 23:00:02,478 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-19 23:00:02,478 - INFO - Started at 2026-06-19 23:00:02.478724
+2026-06-19 23:00:02,478 - INFO - ============================================================
+2026-06-19 23:00:02,478 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-19 23:00:02,478 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-19 23:00:02+0800  [intraday_alerts]  WARN exit 1
+2026-06-19 23:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-19 23:30:02,421 - INFO - ============================================================
+2026-06-19 23:30:02,421 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-19 23:30:02,421 - INFO - Started at 2026-06-19 23:30:02.421351
+2026-06-19 23:30:02,421 - INFO - ============================================================
+2026-06-19 23:30:02,421 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-19 23:30:02,421 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-19 23:30:02+0800  [intraday_alerts]  WARN exit 1
+2026-06-20 00:00:01+0800  [intraday_alerts]  begin
+2026-06-20 00:00:01+0800  [intraday_alerts]  skip: outside US market window (UTC 16, dow 6)
+2026-06-20 00:00:01+0800  [intraday_alerts]  skipped
+2026-06-20 00:03:08+0800  [intraday_alerts]  begin
+2026-06-20 00:03:08+0800  [intraday_alerts]  skip: outside US market window (UTC 16, dow 6)
+2026-06-20 00:03:08+0800  [intraday_alerts]  skipped
+2026-06-20 00:30:01+0800  [intraday_alerts]  begin
+2026-06-20 00:30:01+0800  [intraday_alerts]  skip: outside US market window (UTC 16, dow 6)
+2026-06-20 00:30:01+0800  [intraday_alerts]  skipped
+2026-06-20 06:29:19+0800  [intraday_alerts]  begin
+2026-06-20 06:29:19+0800  [intraday_alerts]  skip: outside US market window (UTC 22, dow 6)
+2026-06-20 06:29:19+0800  [intraday_alerts]  skipped
+2026-06-20 10:08:21+0800  [intraday_alerts]  begin
+2026-06-20 10:08:21+0800  [intraday_alerts]  skip: outside US market window (UTC 02, dow 6)
+2026-06-20 10:08:21+0800  [intraday_alerts]  skipped
+2026-06-20 10:13:29+0800  [intraday_alerts]  begin
+2026-06-20 10:13:29+0800  [intraday_alerts]  skip: outside US market window (UTC 02, dow 6)
+2026-06-20 10:13:29+0800  [intraday_alerts]  skipped
+2026-06-21 22:00:01+0800  [intraday_alerts]  begin
+2026-06-21 22:00:01+0800  [intraday_alerts]  skip: outside US market window (UTC 14, dow 7)
+2026-06-21 22:00:01+0800  [intraday_alerts]  skipped
+2026-06-21 22:30:01+0800  [intraday_alerts]  begin
+2026-06-21 22:30:01+0800  [intraday_alerts]  skip: outside US market window (UTC 14, dow 7)
+2026-06-21 22:30:02+0800  [intraday_alerts]  skipped
+2026-06-21 23:00:01+0800  [intraday_alerts]  begin
+2026-06-21 23:00:01+0800  [intraday_alerts]  skip: outside US market window (UTC 15, dow 7)
+2026-06-21 23:00:01+0800  [intraday_alerts]  skipped
+2026-06-21 23:30:01+0800  [intraday_alerts]  begin
+2026-06-21 23:30:01+0800  [intraday_alerts]  skip: outside US market window (UTC 15, dow 7)
+2026-06-21 23:30:01+0800  [intraday_alerts]  skipped
+2026-06-22 00:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-22 00:00:01,805 - INFO - ============================================================
+2026-06-22 00:00:01,805 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-22 00:00:01,805 - INFO - Started at 2026-06-22 00:00:01.805476
+2026-06-22 00:00:01,805 - INFO - ============================================================
+2026-06-22 00:00:01,805 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-22 00:00:01,805 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-22 00:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-22 00:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-22 00:30:02,141 - INFO - ============================================================
+2026-06-22 00:30:02,141 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-22 00:30:02,142 - INFO - Started at 2026-06-22 00:30:02.142012
+2026-06-22 00:30:02,142 - INFO - ============================================================
+2026-06-22 00:30:02,142 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-22 00:30:02,142 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-22 00:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-22 01:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-22 01:00:02,446 - INFO - ============================================================
+2026-06-22 01:00:02,446 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-22 01:00:02,446 - INFO - Started at 2026-06-22 01:00:02.446935
+2026-06-22 01:00:02,446 - INFO - ============================================================
+2026-06-22 01:00:02,447 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-22 01:00:02,447 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-22 01:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-22 01:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-22 01:30:02,773 - INFO - ============================================================
+2026-06-22 01:30:02,773 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-22 01:30:02,773 - INFO - Started at 2026-06-22 01:30:02.773347
+2026-06-22 01:30:02,773 - INFO - ============================================================
+2026-06-22 01:30:02,773 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-22 01:30:02,773 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-22 01:30:03+0800  [intraday_alerts]  ok (raw=0)
+2026-06-22 02:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-22 02:00:02,239 - INFO - ============================================================
+2026-06-22 02:00:02,239 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-22 02:00:02,239 - INFO - Started at 2026-06-22 02:00:02.239805
+2026-06-22 02:00:02,239 - INFO - ============================================================
+2026-06-22 02:00:02,239 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-22 02:00:02,239 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-22 02:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-22 02:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-22 02:30:02,265 - INFO - ============================================================
+2026-06-22 02:30:02,265 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-22 02:30:02,265 - INFO - Started at 2026-06-22 02:30:02.265830
+2026-06-22 02:30:02,265 - INFO - ============================================================
+2026-06-22 02:30:02,265 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-22 02:30:02,265 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-22 02:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-22 03:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-22 03:00:02,744 - INFO - ============================================================
+2026-06-22 03:00:02,744 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-22 03:00:02,744 - INFO - Started at 2026-06-22 03:00:02.744674
+2026-06-22 03:00:02,744 - INFO - ============================================================
+2026-06-22 03:00:02,744 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-22 03:00:02,744 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-22 03:00:03+0800  [intraday_alerts]  ok (raw=0)
+2026-06-22 03:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-22 03:30:02,742 - INFO - ============================================================
+2026-06-22 03:30:02,742 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-22 03:30:02,742 - INFO - Started at 2026-06-22 03:30:02.742292
+2026-06-22 03:30:02,742 - INFO - ============================================================
+2026-06-22 03:30:02,742 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-22 03:30:02,742 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-22 03:30:03+0800  [intraday_alerts]  ok (raw=0)
+2026-06-22 04:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-22 04:00:02,141 - INFO - ============================================================
+2026-06-22 04:00:02,141 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-22 04:00:02,141 - INFO - Started at 2026-06-22 04:00:02.141960
+2026-06-22 04:00:02,142 - INFO - ============================================================
+2026-06-22 04:00:02,142 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-22 04:00:02,142 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-22 04:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-22 04:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-22 04:30:02,495 - INFO - ============================================================
+2026-06-22 04:30:02,495 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-22 04:30:02,495 - INFO - Started at 2026-06-22 04:30:02.495808
+2026-06-22 04:30:02,495 - INFO - ============================================================
+2026-06-22 04:30:02,495 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-22 04:30:02,495 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-22 04:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-22 22:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-22 22:00:02,167 - INFO - ============================================================
+2026-06-22 22:00:02,167 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-22 22:00:02,167 - INFO - Started at 2026-06-22 22:00:02.167356
+2026-06-22 22:00:02,167 - INFO - ============================================================
+2026-06-22 22:00:02,167 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-22 22:00:02,167 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-22 22:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-22 22:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-22 22:30:02,541 - INFO - ============================================================
+2026-06-22 22:30:02,541 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-22 22:30:02,541 - INFO - Started at 2026-06-22 22:30:02.541364
+2026-06-22 22:30:02,541 - INFO - ============================================================
+2026-06-22 22:30:02,541 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-22 22:30:02,541 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-22 22:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-22 23:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-22 23:00:01,872 - INFO - ============================================================
+2026-06-22 23:00:01,872 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-22 23:00:01,872 - INFO - Started at 2026-06-22 23:00:01.872761
+2026-06-22 23:00:01,872 - INFO - ============================================================
+2026-06-22 23:00:01,872 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-22 23:00:01,872 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-22 23:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-22 23:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-22 23:30:02,225 - INFO - ============================================================
+2026-06-22 23:30:02,225 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-22 23:30:02,226 - INFO - Started at 2026-06-22 23:30:02.225983
+2026-06-22 23:30:02,226 - INFO - ============================================================
+2026-06-22 23:30:02,226 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-22 23:30:02,226 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-22 23:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-23 00:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-23 00:00:02,624 - INFO - ============================================================
+2026-06-23 00:00:02,624 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-23 00:00:02,625 - INFO - Started at 2026-06-23 00:00:02.624984
+2026-06-23 00:00:02,625 - INFO - ============================================================
+2026-06-23 00:00:02,625 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-23 00:00:02,625 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-23 00:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-23 00:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-23 00:30:01,964 - INFO - ============================================================
+2026-06-23 00:30:01,964 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-23 00:30:01,964 - INFO - Started at 2026-06-23 00:30:01.964386
+2026-06-23 00:30:01,964 - INFO - ============================================================
+2026-06-23 00:30:01,964 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-23 00:30:01,964 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-23 00:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-23 01:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-23 01:00:02,307 - INFO - ============================================================
+2026-06-23 01:00:02,307 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-23 01:00:02,307 - INFO - Started at 2026-06-23 01:00:02.307213
+2026-06-23 01:00:02,307 - INFO - ============================================================
+2026-06-23 01:00:02,307 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-23 01:00:02,307 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-23 01:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-23 01:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-23 01:30:02,684 - INFO - ============================================================
+2026-06-23 01:30:02,684 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-23 01:30:02,684 - INFO - Started at 2026-06-23 01:30:02.684922
+2026-06-23 01:30:02,684 - INFO - ============================================================
+2026-06-23 01:30:02,685 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-23 01:30:02,685 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-23 01:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-23 02:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-23 02:00:01,989 - INFO - ============================================================
+2026-06-23 02:00:01,989 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-23 02:00:01,989 - INFO - Started at 2026-06-23 02:00:01.989327
+2026-06-23 02:00:01,989 - INFO - ============================================================
+2026-06-23 02:00:01,989 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-23 02:00:01,989 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-23 02:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-23 02:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-23 02:30:02,596 - INFO - ============================================================
+2026-06-23 02:30:02,596 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-23 02:30:02,596 - INFO - Started at 2026-06-23 02:30:02.596470
+2026-06-23 02:30:02,596 - INFO - ============================================================
+2026-06-23 02:30:02,596 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-23 02:30:02,596 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-23 02:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-23 03:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-23 03:00:01,961 - INFO - ============================================================
+2026-06-23 03:00:01,961 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-23 03:00:01,961 - INFO - Started at 2026-06-23 03:00:01.961877
+2026-06-23 03:00:01,961 - INFO - ============================================================
+2026-06-23 03:00:01,961 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-23 03:00:01,961 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-23 03:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-23 03:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-23 03:30:02,421 - INFO - ============================================================
+2026-06-23 03:30:02,421 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-23 03:30:02,421 - INFO - Started at 2026-06-23 03:30:02.421942
+2026-06-23 03:30:02,421 - INFO - ============================================================
+2026-06-23 03:30:02,422 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-23 03:30:02,422 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-23 03:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-23 04:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-23 04:00:03,024 - INFO - ============================================================
+2026-06-23 04:00:03,024 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-23 04:00:03,025 - INFO - Started at 2026-06-23 04:00:03.025014
+2026-06-23 04:00:03,025 - INFO - ============================================================
+2026-06-23 04:00:03,025 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-23 04:00:03,025 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-23 04:00:03+0800  [intraday_alerts]  ok (raw=0)
+2026-06-23 04:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-23 04:30:02,353 - INFO - ============================================================
+2026-06-23 04:30:02,353 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-23 04:30:02,353 - INFO - Started at 2026-06-23 04:30:02.353486
+2026-06-23 04:30:02,353 - INFO - ============================================================
+2026-06-23 04:30:02,353 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-23 04:30:02,353 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-23 04:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-23 22:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-23 22:00:02,248 - INFO - ============================================================
+2026-06-23 22:00:02,248 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-23 22:00:02,248 - INFO - Started at 2026-06-23 22:00:02.248802
+2026-06-23 22:00:02,248 - INFO - ============================================================
+2026-06-23 22:00:02,248 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-23 22:00:02,248 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-23 22:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-23 22:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-23 22:30:02,590 - INFO - ============================================================
+2026-06-23 22:30:02,590 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-23 22:30:02,590 - INFO - Started at 2026-06-23 22:30:02.590839
+2026-06-23 22:30:02,590 - INFO - ============================================================
+2026-06-23 22:30:02,590 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-23 22:30:02,590 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-23 22:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-23 23:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-23 23:00:01,952 - INFO - ============================================================
+2026-06-23 23:00:01,952 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-23 23:00:01,952 - INFO - Started at 2026-06-23 23:00:01.952554
+2026-06-23 23:00:01,952 - INFO - ============================================================
+2026-06-23 23:00:01,952 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-23 23:00:01,952 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-23 23:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-23 23:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-23 23:30:02,302 - INFO - ============================================================
+2026-06-23 23:30:02,302 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-23 23:30:02,302 - INFO - Started at 2026-06-23 23:30:02.302350
+2026-06-23 23:30:02,302 - INFO - ============================================================
+2026-06-23 23:30:02,302 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-23 23:30:02,302 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-23 23:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-24 00:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-24 00:00:02,684 - INFO - ============================================================
+2026-06-24 00:00:02,685 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-24 00:00:02,685 - INFO - Started at 2026-06-24 00:00:02.685047
+2026-06-24 00:00:02,685 - INFO - ============================================================
+2026-06-24 00:00:02,685 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-24 00:00:02,685 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-24 00:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-24 00:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-24 00:30:02,014 - INFO - ============================================================
+2026-06-24 00:30:02,014 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-24 00:30:02,015 - INFO - Started at 2026-06-24 00:30:02.015018
+2026-06-24 00:30:02,015 - INFO - ============================================================
+2026-06-24 00:30:02,015 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-24 00:30:02,015 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-24 00:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-24 01:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-24 01:00:02,357 - INFO - ============================================================
+2026-06-24 01:00:02,358 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-24 01:00:02,358 - INFO - Started at 2026-06-24 01:00:02.358099
+2026-06-24 01:00:02,358 - INFO - ============================================================
+2026-06-24 01:00:02,358 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-24 01:00:02,358 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-24 01:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-24 01:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-24 01:30:02,679 - INFO - ============================================================
+2026-06-24 01:30:02,679 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-24 01:30:02,679 - INFO - Started at 2026-06-24 01:30:02.679635
+2026-06-24 01:30:02,679 - INFO - ============================================================
+2026-06-24 01:30:02,679 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-24 01:30:02,679 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-24 01:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-24 02:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-24 02:00:02,008 - INFO - ============================================================
+2026-06-24 02:00:02,008 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-24 02:00:02,008 - INFO - Started at 2026-06-24 02:00:02.008117
+2026-06-24 02:00:02,008 - INFO - ============================================================
+2026-06-24 02:00:02,008 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-24 02:00:02,008 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-24 02:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-24 02:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-24 02:30:02,362 - INFO - ============================================================
+2026-06-24 02:30:02,362 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-24 02:30:02,362 - INFO - Started at 2026-06-24 02:30:02.362803
+2026-06-24 02:30:02,362 - INFO - ============================================================
+2026-06-24 02:30:02,362 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-24 02:30:02,362 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-24 02:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-24 03:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-24 03:00:02,694 - INFO - ============================================================
+2026-06-24 03:00:02,694 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-24 03:00:02,694 - INFO - Started at 2026-06-24 03:00:02.694685
+2026-06-24 03:00:02,694 - INFO - ============================================================
+2026-06-24 03:00:02,694 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-24 03:00:02,694 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-24 03:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-24 03:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-24 03:30:02,036 - INFO - ============================================================
+2026-06-24 03:30:02,036 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-24 03:30:02,036 - INFO - Started at 2026-06-24 03:30:02.036197
+2026-06-24 03:30:02,036 - INFO - ============================================================
+2026-06-24 03:30:02,036 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-24 03:30:02,036 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-24 03:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-24 04:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-24 04:00:02,388 - INFO - ============================================================
+2026-06-24 04:00:02,388 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-24 04:00:02,388 - INFO - Started at 2026-06-24 04:00:02.388422
+2026-06-24 04:00:02,388 - INFO - ============================================================
+2026-06-24 04:00:02,388 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-24 04:00:02,388 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-24 04:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-24 04:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-24 04:30:02,738 - INFO - ============================================================
+2026-06-24 04:30:02,738 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-24 04:30:02,738 - INFO - Started at 2026-06-24 04:30:02.738165
+2026-06-24 04:30:02,738 - INFO - ============================================================
+2026-06-24 04:30:02,738 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-24 04:30:02,738 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-24 04:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-24 22:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-24 22:00:02,760 - INFO - ============================================================
+2026-06-24 22:00:02,760 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-24 22:00:02,760 - INFO - Started at 2026-06-24 22:00:02.760659
+2026-06-24 22:00:02,760 - INFO - ============================================================
+2026-06-24 22:00:02,760 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-24 22:00:02,760 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-24 22:00:03+0800  [intraday_alerts]  ok (raw=0)
+2026-06-24 22:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-24 22:30:02,146 - INFO - ============================================================
+2026-06-24 22:30:02,146 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-24 22:30:02,146 - INFO - Started at 2026-06-24 22:30:02.146584
+2026-06-24 22:30:02,146 - INFO - ============================================================
+2026-06-24 22:30:02,146 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-24 22:30:02,146 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-24 22:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-24 23:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-24 23:00:02,513 - INFO - ============================================================
+2026-06-24 23:00:02,513 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-24 23:00:02,513 - INFO - Started at 2026-06-24 23:00:02.513335
+2026-06-24 23:00:02,513 - INFO - ============================================================
+2026-06-24 23:00:02,513 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-24 23:00:02,513 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-24 23:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-24 23:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-24 23:30:01,897 - INFO - ============================================================
+2026-06-24 23:30:01,897 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-24 23:30:01,897 - INFO - Started at 2026-06-24 23:30:01.897704
+2026-06-24 23:30:01,897 - INFO - ============================================================
+2026-06-24 23:30:01,897 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-24 23:30:01,897 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-24 23:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-25 00:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-25 00:00:02,307 - INFO - ============================================================
+2026-06-25 00:00:02,307 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-25 00:00:02,307 - INFO - Started at 2026-06-25 00:00:02.307267
+2026-06-25 00:00:02,307 - INFO - ============================================================
+2026-06-25 00:00:02,307 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-25 00:00:02,307 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-25 00:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-25 00:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-25 00:30:02,667 - INFO - ============================================================
+2026-06-25 00:30:02,667 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-25 00:30:02,667 - INFO - Started at 2026-06-25 00:30:02.667846
+2026-06-25 00:30:02,667 - INFO - ============================================================
+2026-06-25 00:30:02,667 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-25 00:30:02,667 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-25 00:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-25 01:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-25 01:00:02,009 - INFO - ============================================================
+2026-06-25 01:00:02,009 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-25 01:00:02,010 - INFO - Started at 2026-06-25 01:00:02.010001
+2026-06-25 01:00:02,010 - INFO - ============================================================
+2026-06-25 01:00:02,010 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-25 01:00:02,010 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-25 01:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-25 01:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-25 01:30:02,356 - INFO - ============================================================
+2026-06-25 01:30:02,356 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-25 01:30:02,356 - INFO - Started at 2026-06-25 01:30:02.356296
+2026-06-25 01:30:02,356 - INFO - ============================================================
+2026-06-25 01:30:02,356 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-25 01:30:02,356 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-25 01:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-25 02:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-25 02:00:02,694 - INFO - ============================================================
+2026-06-25 02:00:02,695 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-25 02:00:02,695 - INFO - Started at 2026-06-25 02:00:02.695087
+2026-06-25 02:00:02,695 - INFO - ============================================================
+2026-06-25 02:00:02,695 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-25 02:00:02,695 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-25 02:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-25 02:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-25 02:30:02,019 - INFO - ============================================================
+2026-06-25 02:30:02,019 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-25 02:30:02,019 - INFO - Started at 2026-06-25 02:30:02.019385
+2026-06-25 02:30:02,019 - INFO - ============================================================
+2026-06-25 02:30:02,019 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-25 02:30:02,019 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-25 02:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-25 03:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-25 03:00:02,382 - INFO - ============================================================
+2026-06-25 03:00:02,382 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-25 03:00:02,382 - INFO - Started at 2026-06-25 03:00:02.382848
+2026-06-25 03:00:02,382 - INFO - ============================================================
+2026-06-25 03:00:02,382 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-25 03:00:02,382 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-25 03:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-25 03:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-25 03:30:02,734 - INFO - ============================================================
+2026-06-25 03:30:02,734 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-25 03:30:02,734 - INFO - Started at 2026-06-25 03:30:02.734782
+2026-06-25 03:30:02,734 - INFO - ============================================================
+2026-06-25 03:30:02,734 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-25 03:30:02,734 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-25 03:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-25 04:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-25 04:00:02,080 - INFO - ============================================================
+2026-06-25 04:00:02,080 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-25 04:00:02,081 - INFO - Started at 2026-06-25 04:00:02.080993
+2026-06-25 04:00:02,081 - INFO - ============================================================
+2026-06-25 04:00:02,081 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-25 04:00:02,081 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-25 04:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-25 04:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-25 04:30:02,446 - INFO - ============================================================
+2026-06-25 04:30:02,446 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-25 04:30:02,446 - INFO - Started at 2026-06-25 04:30:02.446650
+2026-06-25 04:30:02,446 - INFO - ============================================================
+2026-06-25 04:30:02,446 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-25 04:30:02,446 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-25 04:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-25 22:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-25 22:00:02,138 - INFO - ============================================================
+2026-06-25 22:00:02,138 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-25 22:00:02,138 - INFO - Started at 2026-06-25 22:00:02.138743
+2026-06-25 22:00:02,138 - INFO - ============================================================
+2026-06-25 22:00:02,138 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-25 22:00:02,138 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-25 22:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-25 22:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-25 22:30:02,551 - INFO - ============================================================
+2026-06-25 22:30:02,551 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-25 22:30:02,551 - INFO - Started at 2026-06-25 22:30:02.551349
+2026-06-25 22:30:02,551 - INFO - ============================================================
+2026-06-25 22:30:02,551 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-25 22:30:02,551 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-25 22:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-25 23:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-25 23:00:02,211 - INFO - ============================================================
+2026-06-25 23:00:02,211 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-25 23:00:02,212 - INFO - Started at 2026-06-25 23:00:02.212027
+2026-06-25 23:00:02,212 - INFO - ============================================================
+2026-06-25 23:00:02,212 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-25 23:00:02,212 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-25 23:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-25 23:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-25 23:30:02,537 - INFO - ============================================================
+2026-06-25 23:30:02,537 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-25 23:30:02,537 - INFO - Started at 2026-06-25 23:30:02.537390
+2026-06-25 23:30:02,537 - INFO - ============================================================
+2026-06-25 23:30:02,537 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-25 23:30:02,537 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-25 23:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-26 00:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-26 00:00:01,895 - INFO - ============================================================
+2026-06-26 00:00:01,895 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-26 00:00:01,895 - INFO - Started at 2026-06-26 00:00:01.895455
+2026-06-26 00:00:01,895 - INFO - ============================================================
+2026-06-26 00:00:01,895 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-26 00:00:01,895 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-26 00:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-26 00:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-26 00:30:02,203 - INFO - ============================================================
+2026-06-26 00:30:02,203 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-26 00:30:02,203 - INFO - Started at 2026-06-26 00:30:02.203585
+2026-06-26 00:30:02,203 - INFO - ============================================================
+2026-06-26 00:30:02,203 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-26 00:30:02,203 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-26 00:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-26 01:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-26 01:00:02,473 - INFO - ============================================================
+2026-06-26 01:00:02,473 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-26 01:00:02,474 - INFO - Started at 2026-06-26 01:00:02.474003
+2026-06-26 01:00:02,474 - INFO - ============================================================
+2026-06-26 01:00:02,474 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-26 01:00:02,474 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-26 01:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-26 01:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-26 01:30:02,753 - INFO - ============================================================
+2026-06-26 01:30:02,753 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-26 01:30:02,753 - INFO - Started at 2026-06-26 01:30:02.753979
+2026-06-26 01:30:02,754 - INFO - ============================================================
+2026-06-26 01:30:02,754 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-26 01:30:02,754 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-26 01:30:03+0800  [intraday_alerts]  ok (raw=0)
+2026-06-26 02:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-26 02:00:02,407 - INFO - ============================================================
+2026-06-26 02:00:02,407 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-26 02:00:02,407 - INFO - Started at 2026-06-26 02:00:02.407305
+2026-06-26 02:00:02,407 - INFO - ============================================================
+2026-06-26 02:00:02,407 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-26 02:00:02,407 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-26 02:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-26 02:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-26 02:30:02,854 - INFO - ============================================================
+2026-06-26 02:30:02,854 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-26 02:30:02,854 - INFO - Started at 2026-06-26 02:30:02.854286
+2026-06-26 02:30:02,854 - INFO - ============================================================
+2026-06-26 02:30:02,854 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-26 02:30:02,854 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-26 02:30:03+0800  [intraday_alerts]  ok (raw=0)
+2026-06-26 03:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-26 03:00:02,294 - INFO - ============================================================
+2026-06-26 03:00:02,294 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-26 03:00:02,294 - INFO - Started at 2026-06-26 03:00:02.294681
+2026-06-26 03:00:02,294 - INFO - ============================================================
+2026-06-26 03:00:02,294 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-26 03:00:02,294 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-26 03:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-26 03:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-26 03:30:02,884 - INFO - ============================================================
+2026-06-26 03:30:02,884 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-26 03:30:02,884 - INFO - Started at 2026-06-26 03:30:02.884265
+2026-06-26 03:30:02,884 - INFO - ============================================================
+2026-06-26 03:30:02,884 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-26 03:30:02,884 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-26 03:30:03+0800  [intraday_alerts]  ok (raw=0)
+2026-06-26 04:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-26 04:00:02,205 - INFO - ============================================================
+2026-06-26 04:00:02,205 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-26 04:00:02,205 - INFO - Started at 2026-06-26 04:00:02.205897
+2026-06-26 04:00:02,205 - INFO - ============================================================
+2026-06-26 04:00:02,205 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-26 04:00:02,205 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-26 04:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-26 04:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-26 04:30:02,579 - INFO - ============================================================
+2026-06-26 04:30:02,579 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-26 04:30:02,579 - INFO - Started at 2026-06-26 04:30:02.579529
+2026-06-26 04:30:02,579 - INFO - ============================================================
+2026-06-26 04:30:02,579 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-26 04:30:02,579 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-26 04:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-29 22:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-29 22:00:01,905 - INFO - ============================================================
+2026-06-29 22:00:01,905 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-29 22:00:01,905 - INFO - Started at 2026-06-29 22:00:01.905668
+2026-06-29 22:00:01,905 - INFO - ============================================================
+2026-06-29 22:00:01,905 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-29 22:00:01,905 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-29 22:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-29 22:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-29 22:30:02,227 - INFO - ============================================================
+2026-06-29 22:30:02,227 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-29 22:30:02,228 - INFO - Started at 2026-06-29 22:30:02.228002
+2026-06-29 22:30:02,228 - INFO - ============================================================
+2026-06-29 22:30:02,228 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-29 22:30:02,228 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-29 22:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-29 23:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-29 23:00:02,548 - INFO - ============================================================
+2026-06-29 23:00:02,548 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-29 23:00:02,548 - INFO - Started at 2026-06-29 23:00:02.548650
+2026-06-29 23:00:02,548 - INFO - ============================================================
+2026-06-29 23:00:02,548 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-29 23:00:02,548 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-29 23:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-29 23:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-29 23:30:01,882 - INFO - ============================================================
+2026-06-29 23:30:01,882 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-29 23:30:01,882 - INFO - Started at 2026-06-29 23:30:01.882627
+2026-06-29 23:30:01,882 - INFO - ============================================================
+2026-06-29 23:30:01,882 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-29 23:30:01,882 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-29 23:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-30 00:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-30 00:00:02,237 - INFO - ============================================================
+2026-06-30 00:00:02,237 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-30 00:00:02,237 - INFO - Started at 2026-06-30 00:00:02.237892
+2026-06-30 00:00:02,237 - INFO - ============================================================
+2026-06-30 00:00:02,237 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-30 00:00:02,237 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-30 00:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-30 00:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-30 00:30:02,547 - INFO - ============================================================
+2026-06-30 00:30:02,547 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-30 00:30:02,547 - INFO - Started at 2026-06-30 00:30:02.547628
+2026-06-30 00:30:02,547 - INFO - ============================================================
+2026-06-30 00:30:02,547 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-30 00:30:02,547 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-30 00:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-30 01:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-30 01:00:01,920 - INFO - ============================================================
+2026-06-30 01:00:01,920 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-30 01:00:01,921 - INFO - Started at 2026-06-30 01:00:01.921019
+2026-06-30 01:00:01,921 - INFO - ============================================================
+2026-06-30 01:00:01,921 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-30 01:00:01,921 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-30 01:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-30 01:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-30 01:30:02,230 - INFO - ============================================================
+2026-06-30 01:30:02,230 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-30 01:30:02,230 - INFO - Started at 2026-06-30 01:30:02.230513
+2026-06-30 01:30:02,230 - INFO - ============================================================
+2026-06-30 01:30:02,230 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-30 01:30:02,230 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-30 01:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-30 02:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-30 02:00:02,499 - INFO - ============================================================
+2026-06-30 02:00:02,499 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-30 02:00:02,499 - INFO - Started at 2026-06-30 02:00:02.499822
+2026-06-30 02:00:02,499 - INFO - ============================================================
+2026-06-30 02:00:02,499 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-30 02:00:02,499 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-30 02:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-30 02:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-30 02:30:03,038 - INFO - ============================================================
+2026-06-30 02:30:03,038 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-30 02:30:03,038 - INFO - Started at 2026-06-30 02:30:03.038318
+2026-06-30 02:30:03,038 - INFO - ============================================================
+2026-06-30 02:30:03,038 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-30 02:30:03,038 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-30 02:30:03+0800  [intraday_alerts]  ok (raw=0)
+2026-06-30 03:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-30 03:00:02,541 - INFO - ============================================================
+2026-06-30 03:00:02,541 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-30 03:00:02,541 - INFO - Started at 2026-06-30 03:00:02.541401
+2026-06-30 03:00:02,541 - INFO - ============================================================
+2026-06-30 03:00:02,541 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-30 03:00:02,541 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-30 03:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-30 03:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-30 03:30:01,915 - INFO - ============================================================
+2026-06-30 03:30:01,915 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-30 03:30:01,915 - INFO - Started at 2026-06-30 03:30:01.915678
+2026-06-30 03:30:01,915 - INFO - ============================================================
+2026-06-30 03:30:01,915 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-30 03:30:01,915 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-30 03:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-30 04:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-30 04:00:02,324 - INFO - ============================================================
+2026-06-30 04:00:02,324 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-30 04:00:02,324 - INFO - Started at 2026-06-30 04:00:02.324772
+2026-06-30 04:00:02,324 - INFO - ============================================================
+2026-06-30 04:00:02,324 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-30 04:00:02,324 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-30 04:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-30 04:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-30 04:30:02,666 - INFO - ============================================================
+2026-06-30 04:30:02,666 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-30 04:30:02,666 - INFO - Started at 2026-06-30 04:30:02.666800
+2026-06-30 04:30:02,666 - INFO - ============================================================
+2026-06-30 04:30:02,666 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-30 04:30:02,666 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-30 04:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-30 22:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-30 22:00:02,887 - INFO - ============================================================
+2026-06-30 22:00:02,887 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-30 22:00:02,887 - INFO - Started at 2026-06-30 22:00:02.887535
+2026-06-30 22:00:02,887 - INFO - ============================================================
+2026-06-30 22:00:02,887 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-30 22:00:02,887 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-30 22:00:03+0800  [intraday_alerts]  ok (raw=0)
+2026-06-30 22:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-30 22:30:02,433 - INFO - ============================================================
+2026-06-30 22:30:02,433 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-30 22:30:02,433 - INFO - Started at 2026-06-30 22:30:02.433447
+2026-06-30 22:30:02,433 - INFO - ============================================================
+2026-06-30 22:30:02,433 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-30 22:30:02,433 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-30 22:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-30 23:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-30 23:00:01,971 - INFO - ============================================================
+2026-06-30 23:00:01,971 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-30 23:00:01,971 - INFO - Started at 2026-06-30 23:00:01.971607
+2026-06-30 23:00:01,971 - INFO - ============================================================
+2026-06-30 23:00:01,971 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-30 23:00:01,971 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-30 23:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-06-30 23:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-06-30 23:30:02,456 - INFO - ============================================================
+2026-06-30 23:30:02,457 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-06-30 23:30:02,457 - INFO - Started at 2026-06-30 23:30:02.457069
+2026-06-30 23:30:02,457 - INFO - ============================================================
+2026-06-30 23:30:02,457 - INFO - Market status: CLOSED/AFTER HOURS
+2026-06-30 23:30:02,457 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-06-30 23:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-01 00:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-01 00:00:01,936 - INFO - ============================================================
+2026-07-01 00:00:01,936 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-01 00:00:01,936 - INFO - Started at 2026-07-01 00:00:01.936416
+2026-07-01 00:00:01,936 - INFO - ============================================================
+2026-07-01 00:00:01,936 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-01 00:00:01,936 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-01 00:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-01 00:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-01 00:30:02,433 - INFO - ============================================================
+2026-07-01 00:30:02,433 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-01 00:30:02,433 - INFO - Started at 2026-07-01 00:30:02.433517
+2026-07-01 00:30:02,433 - INFO - ============================================================
+2026-07-01 00:30:02,433 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-01 00:30:02,433 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-01 00:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-01 01:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-01 01:00:02,006 - INFO - ============================================================
+2026-07-01 01:00:02,006 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-01 01:00:02,006 - INFO - Started at 2026-07-01 01:00:02.006503
+2026-07-01 01:00:02,006 - INFO - ============================================================
+2026-07-01 01:00:02,006 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-01 01:00:02,006 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-01 01:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-01 01:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-01 01:30:02,547 - INFO - ============================================================
+2026-07-01 01:30:02,547 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-01 01:30:02,547 - INFO - Started at 2026-07-01 01:30:02.547809
+2026-07-01 01:30:02,547 - INFO - ============================================================
+2026-07-01 01:30:02,547 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-01 01:30:02,547 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-01 01:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-01 02:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-01 02:00:02,083 - INFO - ============================================================
+2026-07-01 02:00:02,083 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-01 02:00:02,083 - INFO - Started at 2026-07-01 02:00:02.083527
+2026-07-01 02:00:02,083 - INFO - ============================================================
+2026-07-01 02:00:02,083 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-01 02:00:02,083 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-01 02:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-01 02:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-01 02:30:03,057 - INFO - ============================================================
+2026-07-01 02:30:03,057 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-01 02:30:03,057 - INFO - Started at 2026-07-01 02:30:03.057352
+2026-07-01 02:30:03,057 - INFO - ============================================================
+2026-07-01 02:30:03,057 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-01 02:30:03,057 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-01 02:30:03+0800  [intraday_alerts]  ok (raw=0)
+2026-07-01 03:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-01 03:00:02,752 - INFO - ============================================================
+2026-07-01 03:00:02,752 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-01 03:00:02,752 - INFO - Started at 2026-07-01 03:00:02.752952
+2026-07-01 03:00:02,752 - INFO - ============================================================
+2026-07-01 03:00:02,753 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-01 03:00:02,753 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-01 03:00:03+0800  [intraday_alerts]  ok (raw=0)
+2026-07-01 03:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-01 03:30:02,299 - INFO - ============================================================
+2026-07-01 03:30:02,299 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-01 03:30:02,299 - INFO - Started at 2026-07-01 03:30:02.299743
+2026-07-01 03:30:02,299 - INFO - ============================================================
+2026-07-01 03:30:02,299 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-01 03:30:02,299 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-01 03:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-01 04:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-01 04:00:02,891 - INFO - ============================================================
+2026-07-01 04:00:02,891 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-01 04:00:02,891 - INFO - Started at 2026-07-01 04:00:02.891576
+2026-07-01 04:00:02,891 - INFO - ============================================================
+2026-07-01 04:00:02,891 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-01 04:00:02,891 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-01 04:00:03+0800  [intraday_alerts]  ok (raw=0)
+2026-07-01 04:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-01 04:30:02,462 - INFO - ============================================================
+2026-07-01 04:30:02,462 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-01 04:30:02,463 - INFO - Started at 2026-07-01 04:30:02.463008
+2026-07-01 04:30:02,463 - INFO - ============================================================
+2026-07-01 04:30:02,463 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-01 04:30:02,463 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-01 04:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-01 22:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-01 22:00:02,439 - INFO - ============================================================
+2026-07-01 22:00:02,439 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-01 22:00:02,439 - INFO - Started at 2026-07-01 22:00:02.439327
+2026-07-01 22:00:02,439 - INFO - ============================================================
+2026-07-01 22:00:02,439 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-01 22:00:02,439 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-01 22:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-01 22:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-01 22:30:02,793 - INFO - ============================================================
+2026-07-01 22:30:02,793 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-01 22:30:02,793 - INFO - Started at 2026-07-01 22:30:02.793362
+2026-07-01 22:30:02,793 - INFO - ============================================================
+2026-07-01 22:30:02,793 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-01 22:30:02,793 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-01 22:30:03+0800  [intraday_alerts]  ok (raw=0)
+2026-07-01 23:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-01 23:00:02,162 - INFO - ============================================================
+2026-07-01 23:00:02,162 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-01 23:00:02,162 - INFO - Started at 2026-07-01 23:00:02.162139
+2026-07-01 23:00:02,162 - INFO - ============================================================
+2026-07-01 23:00:02,162 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-01 23:00:02,162 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-01 23:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-01 23:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-01 23:30:02,973 - INFO - ============================================================
+2026-07-01 23:30:02,973 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-01 23:30:02,973 - INFO - Started at 2026-07-01 23:30:02.973754
+2026-07-01 23:30:02,973 - INFO - ============================================================
+2026-07-01 23:30:02,973 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-01 23:30:02,973 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-01 23:30:03+0800  [intraday_alerts]  ok (raw=0)
+2026-07-02 00:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-02 00:00:02,398 - INFO - ============================================================
+2026-07-02 00:00:02,398 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-02 00:00:02,398 - INFO - Started at 2026-07-02 00:00:02.398529
+2026-07-02 00:00:02,398 - INFO - ============================================================
+2026-07-02 00:00:02,398 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-02 00:00:02,398 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-02 00:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-02 00:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-02 00:30:02,809 - INFO - ============================================================
+2026-07-02 00:30:02,809 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-02 00:30:02,809 - INFO - Started at 2026-07-02 00:30:02.809934
+2026-07-02 00:30:02,809 - INFO - ============================================================
+2026-07-02 00:30:02,810 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-02 00:30:02,810 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-02 00:30:03+0800  [intraday_alerts]  ok (raw=0)
+2026-07-02 01:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-02 01:00:02,955 - INFO - ============================================================
+2026-07-02 01:00:02,955 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-02 01:00:02,955 - INFO - Started at 2026-07-02 01:00:02.955431
+2026-07-02 01:00:02,955 - INFO - ============================================================
+2026-07-02 01:00:02,955 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-02 01:00:02,955 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-02 01:00:03+0800  [intraday_alerts]  ok (raw=0)
+2026-07-02 01:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-02 01:30:02,380 - INFO - ============================================================
+2026-07-02 01:30:02,380 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-02 01:30:02,380 - INFO - Started at 2026-07-02 01:30:02.380253
+2026-07-02 01:30:02,380 - INFO - ============================================================
+2026-07-02 01:30:02,380 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-02 01:30:02,380 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-02 01:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-02 02:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-02 02:00:02,807 - INFO - ============================================================
+2026-07-02 02:00:02,807 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-02 02:00:02,808 - INFO - Started at 2026-07-02 02:00:02.808024
+2026-07-02 02:00:02,808 - INFO - ============================================================
+2026-07-02 02:00:02,808 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-02 02:00:02,808 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-02 02:00:03+0800  [intraday_alerts]  ok (raw=0)
+2026-07-02 02:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-02 02:30:02,927 - INFO - ============================================================
+2026-07-02 02:30:02,928 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-02 02:30:02,928 - INFO - Started at 2026-07-02 02:30:02.928054
+2026-07-02 02:30:02,928 - INFO - ============================================================
+2026-07-02 02:30:02,928 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-02 02:30:02,928 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-02 02:30:03+0800  [intraday_alerts]  ok (raw=0)
+2026-07-02 03:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-02 03:00:02,591 - INFO - ============================================================
+2026-07-02 03:00:02,591 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-02 03:00:02,591 - INFO - Started at 2026-07-02 03:00:02.591474
+2026-07-02 03:00:02,591 - INFO - ============================================================
+2026-07-02 03:00:02,591 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-02 03:00:02,591 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-02 03:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-02 03:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-02 03:30:02,065 - INFO - ============================================================
+2026-07-02 03:30:02,065 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-02 03:30:02,065 - INFO - Started at 2026-07-02 03:30:02.065919
+2026-07-02 03:30:02,065 - INFO - ============================================================
+2026-07-02 03:30:02,066 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-02 03:30:02,066 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-02 03:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-02 04:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-02 04:00:02,408 - INFO - ============================================================
+2026-07-02 04:00:02,408 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-02 04:00:02,408 - INFO - Started at 2026-07-02 04:00:02.408736
+2026-07-02 04:00:02,408 - INFO - ============================================================
+2026-07-02 04:00:02,408 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-02 04:00:02,408 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-02 04:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-02 04:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-02 04:30:02,922 - INFO - ============================================================
+2026-07-02 04:30:02,922 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-02 04:30:02,922 - INFO - Started at 2026-07-02 04:30:02.922948
+2026-07-02 04:30:02,922 - INFO - ============================================================
+2026-07-02 04:30:02,923 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-02 04:30:02,923 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-02 04:30:03+0800  [intraday_alerts]  ok (raw=0)
+2026-07-02 22:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-02 22:00:02,034 - INFO - ============================================================
+2026-07-02 22:00:02,035 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-02 22:00:02,035 - INFO - Started at 2026-07-02 22:00:02.035062
+2026-07-02 22:00:02,035 - INFO - ============================================================
+2026-07-02 22:00:02,035 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-02 22:00:02,035 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-02 22:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-02 22:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-02 22:30:02,455 - INFO - ============================================================
+2026-07-02 22:30:02,455 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-02 22:30:02,456 - INFO - Started at 2026-07-02 22:30:02.456008
+2026-07-02 22:30:02,456 - INFO - ============================================================
+2026-07-02 22:30:02,456 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-02 22:30:02,456 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-02 22:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-02 23:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-02 23:00:01,813 - INFO - ============================================================
+2026-07-02 23:00:01,813 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-02 23:00:01,813 - INFO - Started at 2026-07-02 23:00:01.813701
+2026-07-02 23:00:01,813 - INFO - ============================================================
+2026-07-02 23:00:01,813 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-02 23:00:01,813 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-02 23:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-02 23:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-02 23:30:02,174 - INFO - ============================================================
+2026-07-02 23:30:02,174 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-02 23:30:02,174 - INFO - Started at 2026-07-02 23:30:02.174793
+2026-07-02 23:30:02,174 - INFO - ============================================================
+2026-07-02 23:30:02,174 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-02 23:30:02,174 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-02 23:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-03 00:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-03 00:00:04,978 - INFO - ============================================================
+2026-07-03 00:00:04,978 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-03 00:00:04,978 - INFO - Started at 2026-07-03 00:00:04.978199
+2026-07-03 00:00:04,978 - INFO - ============================================================
+2026-07-03 00:00:04,978 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-03 00:00:04,978 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-03 00:00:05+0800  [intraday_alerts]  ok (raw=0)
+2026-07-03 00:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-03 00:30:02,448 - INFO - ============================================================
+2026-07-03 00:30:02,448 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-03 00:30:02,448 - INFO - Started at 2026-07-03 00:30:02.448208
+2026-07-03 00:30:02,448 - INFO - ============================================================
+2026-07-03 00:30:02,448 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-03 00:30:02,448 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-03 00:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-03 01:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-03 01:00:02,738 - INFO - ============================================================
+2026-07-03 01:00:02,738 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-03 01:00:02,739 - INFO - Started at 2026-07-03 01:00:02.739017
+2026-07-03 01:00:02,739 - INFO - ============================================================
+2026-07-03 01:00:02,739 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-03 01:00:02,739 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-03 01:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-03 01:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-03 01:30:02,030 - INFO - ============================================================
+2026-07-03 01:30:02,030 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-03 01:30:02,030 - INFO - Started at 2026-07-03 01:30:02.030675
+2026-07-03 01:30:02,030 - INFO - ============================================================
+2026-07-03 01:30:02,030 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-03 01:30:02,030 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-03 01:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-03 02:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-03 02:00:02,317 - INFO - ============================================================
+2026-07-03 02:00:02,317 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-03 02:00:02,317 - INFO - Started at 2026-07-03 02:00:02.317400
+2026-07-03 02:00:02,317 - INFO - ============================================================
+2026-07-03 02:00:02,317 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-03 02:00:02,317 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-03 02:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-03 02:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-03 02:30:02,649 - INFO - ============================================================
+2026-07-03 02:30:02,649 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-03 02:30:02,649 - INFO - Started at 2026-07-03 02:30:02.649355
+2026-07-03 02:30:02,649 - INFO - ============================================================
+2026-07-03 02:30:02,649 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-03 02:30:02,649 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-03 02:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-03 03:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-03 03:00:01,956 - INFO - ============================================================
+2026-07-03 03:00:01,956 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-03 03:00:01,956 - INFO - Started at 2026-07-03 03:00:01.956853
+2026-07-03 03:00:01,956 - INFO - ============================================================
+2026-07-03 03:00:01,956 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-03 03:00:01,956 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-03 03:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-03 03:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-03 03:30:02,289 - INFO - ============================================================
+2026-07-03 03:30:02,289 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-03 03:30:02,289 - INFO - Started at 2026-07-03 03:30:02.289871
+2026-07-03 03:30:02,289 - INFO - ============================================================
+2026-07-03 03:30:02,289 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-03 03:30:02,289 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-03 03:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-03 04:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-03 04:00:02,575 - INFO - ============================================================
+2026-07-03 04:00:02,575 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-03 04:00:02,575 - INFO - Started at 2026-07-03 04:00:02.575516
+2026-07-03 04:00:02,575 - INFO - ============================================================
+2026-07-03 04:00:02,575 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-03 04:00:02,575 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-03 04:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-03 04:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-03 04:30:01,892 - INFO - ============================================================
+2026-07-03 04:30:01,892 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-03 04:30:01,892 - INFO - Started at 2026-07-03 04:30:01.892854
+2026-07-03 04:30:01,892 - INFO - ============================================================
+2026-07-03 04:30:01,892 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-03 04:30:01,892 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-03 04:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-05 22:00:01+0800  [intraday_alerts]  begin
+2026-07-05 22:00:01+0800  [intraday_alerts]  skip: outside US market window (UTC 14, dow 7)
+2026-07-05 22:00:01+0800  [intraday_alerts]  skipped
+2026-07-05 22:30:01+0800  [intraday_alerts]  begin
+2026-07-05 22:30:01+0800  [intraday_alerts]  skip: outside US market window (UTC 14, dow 7)
+2026-07-05 22:30:01+0800  [intraday_alerts]  skipped
+2026-07-05 23:00:01+0800  [intraday_alerts]  begin
+2026-07-05 23:00:01+0800  [intraday_alerts]  skip: outside US market window (UTC 15, dow 7)
+2026-07-05 23:00:01+0800  [intraday_alerts]  skipped
+2026-07-05 23:30:01+0800  [intraday_alerts]  begin
+2026-07-05 23:30:01+0800  [intraday_alerts]  skip: outside US market window (UTC 15, dow 7)
+2026-07-05 23:30:01+0800  [intraday_alerts]  skipped
+2026-07-06 00:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-06 00:00:02,068 - INFO - ============================================================
+2026-07-06 00:00:02,068 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-06 00:00:02,068 - INFO - Started at 2026-07-06 00:00:02.068598
+2026-07-06 00:00:02,068 - INFO - ============================================================
+2026-07-06 00:00:02,068 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-06 00:00:02,068 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-06 00:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-06 00:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-06 00:30:02,411 - INFO - ============================================================
+2026-07-06 00:30:02,411 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-06 00:30:02,411 - INFO - Started at 2026-07-06 00:30:02.411391
+2026-07-06 00:30:02,411 - INFO - ============================================================
+2026-07-06 00:30:02,411 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-06 00:30:02,411 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-06 00:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-06 01:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-06 01:00:02,726 - INFO - ============================================================
+2026-07-06 01:00:02,726 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-06 01:00:02,726 - INFO - Started at 2026-07-06 01:00:02.726295
+2026-07-06 01:00:02,726 - INFO - ============================================================
+2026-07-06 01:00:02,726 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-06 01:00:02,726 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-06 01:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-06 01:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-06 01:30:02,055 - INFO - ============================================================
+2026-07-06 01:30:02,055 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-06 01:30:02,055 - INFO - Started at 2026-07-06 01:30:02.055347
+2026-07-06 01:30:02,055 - INFO - ============================================================
+2026-07-06 01:30:02,055 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-06 01:30:02,055 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-06 01:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-06 02:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-06 02:00:02,528 - INFO - ============================================================
+2026-07-06 02:00:02,528 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-06 02:00:02,528 - INFO - Started at 2026-07-06 02:00:02.528453
+2026-07-06 02:00:02,528 - INFO - ============================================================
+2026-07-06 02:00:02,528 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-06 02:00:02,528 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-06 02:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-06 02:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-06 02:30:01,867 - INFO - ============================================================
+2026-07-06 02:30:01,867 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-06 02:30:01,867 - INFO - Started at 2026-07-06 02:30:01.867593
+2026-07-06 02:30:01,867 - INFO - ============================================================
+2026-07-06 02:30:01,867 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-06 02:30:01,867 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-06 02:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-06 03:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-06 03:00:02,309 - INFO - ============================================================
+2026-07-06 03:00:02,309 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-06 03:00:02,309 - INFO - Started at 2026-07-06 03:00:02.309528
+2026-07-06 03:00:02,309 - INFO - ============================================================
+2026-07-06 03:00:02,309 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-06 03:00:02,309 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-06 03:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-06 03:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-06 03:30:02,656 - INFO - ============================================================
+2026-07-06 03:30:02,656 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-06 03:30:02,656 - INFO - Started at 2026-07-06 03:30:02.656561
+2026-07-06 03:30:02,656 - INFO - ============================================================
+2026-07-06 03:30:02,656 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-06 03:30:02,656 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-06 03:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-06 04:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-06 04:00:01,997 - INFO - ============================================================
+2026-07-06 04:00:01,997 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-06 04:00:01,998 - INFO - Started at 2026-07-06 04:00:01.998020
+2026-07-06 04:00:01,998 - INFO - ============================================================
+2026-07-06 04:00:01,998 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-06 04:00:01,998 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-06 04:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-06 04:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-06 04:30:02,333 - INFO - ============================================================
+2026-07-06 04:30:02,333 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-06 04:30:02,333 - INFO - Started at 2026-07-06 04:30:02.333101
+2026-07-06 04:30:02,333 - INFO - ============================================================
+2026-07-06 04:30:02,333 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-06 04:30:02,333 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-06 04:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-06 22:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-06 22:00:03,645 - INFO - ============================================================
+2026-07-06 22:00:03,645 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-06 22:00:03,645 - INFO - Started at 2026-07-06 22:00:03.645284
+2026-07-06 22:00:03,645 - INFO - ============================================================
+2026-07-06 22:00:03,645 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-06 22:00:03,645 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-06 22:00:03+0800  [intraday_alerts]  ok (raw=0)
+2026-07-06 22:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-06 22:30:01,948 - INFO - ============================================================
+2026-07-06 22:30:01,948 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-06 22:30:01,948 - INFO - Started at 2026-07-06 22:30:01.948972
+2026-07-06 22:30:01,949 - INFO - ============================================================
+2026-07-06 22:30:01,949 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-06 22:30:01,949 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-06 22:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-06 23:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-06 23:00:02,249 - INFO - ============================================================
+2026-07-06 23:00:02,249 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-06 23:00:02,249 - INFO - Started at 2026-07-06 23:00:02.249480
+2026-07-06 23:00:02,249 - INFO - ============================================================
+2026-07-06 23:00:02,249 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-06 23:00:02,249 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-06 23:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-06 23:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-06 23:30:02,532 - INFO - ============================================================
+2026-07-06 23:30:02,532 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-06 23:30:02,532 - INFO - Started at 2026-07-06 23:30:02.532097
+2026-07-06 23:30:02,532 - INFO - ============================================================
+2026-07-06 23:30:02,532 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-06 23:30:02,532 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-06 23:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-07 00:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-07 00:00:02,154 - INFO - ============================================================
+2026-07-07 00:00:02,154 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-07 00:00:02,154 - INFO - Started at 2026-07-07 00:00:02.154654
+2026-07-07 00:00:02,154 - INFO - ============================================================
+2026-07-07 00:00:02,154 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-07 00:00:02,154 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-07 00:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-07 00:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-07 00:30:02,457 - INFO - ============================================================
+2026-07-07 00:30:02,457 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-07 00:30:02,457 - INFO - Started at 2026-07-07 00:30:02.457134
+2026-07-07 00:30:02,457 - INFO - ============================================================
+2026-07-07 00:30:02,457 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-07 00:30:02,457 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-07 00:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-07 01:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-07 01:00:02,745 - INFO - ============================================================
+2026-07-07 01:00:02,745 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-07 01:00:02,745 - INFO - Started at 2026-07-07 01:00:02.745861
+2026-07-07 01:00:02,745 - INFO - ============================================================
+2026-07-07 01:00:02,745 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-07 01:00:02,745 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-07 01:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-07 01:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-07 01:30:02,039 - INFO - ============================================================
+2026-07-07 01:30:02,039 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-07 01:30:02,039 - INFO - Started at 2026-07-07 01:30:02.039720
+2026-07-07 01:30:02,039 - INFO - ============================================================
+2026-07-07 01:30:02,039 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-07 01:30:02,039 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-07 01:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-07 22:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-07 22:00:02,218 - INFO - ============================================================
+2026-07-07 22:00:02,218 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-07 22:00:02,218 - INFO - Started at 2026-07-07 22:00:02.218825
+2026-07-07 22:00:02,218 - INFO - ============================================================
+2026-07-07 22:00:02,218 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-07 22:00:02,218 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-07 22:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-07 22:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-07 22:30:02,555 - INFO - ============================================================
+2026-07-07 22:30:02,555 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-07 22:30:02,555 - INFO - Started at 2026-07-07 22:30:02.555165
+2026-07-07 22:30:02,555 - INFO - ============================================================
+2026-07-07 22:30:02,555 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-07 22:30:02,555 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-07 22:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-07 23:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-07 23:00:01,880 - INFO - ============================================================
+2026-07-07 23:00:01,880 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-07 23:00:01,880 - INFO - Started at 2026-07-07 23:00:01.880142
+2026-07-07 23:00:01,880 - INFO - ============================================================
+2026-07-07 23:00:01,880 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-07 23:00:01,880 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-07 23:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-07 23:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-07 23:30:02,220 - INFO - ============================================================
+2026-07-07 23:30:02,220 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-07 23:30:02,220 - INFO - Started at 2026-07-07 23:30:02.220521
+2026-07-07 23:30:02,220 - INFO - ============================================================
+2026-07-07 23:30:02,220 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-07 23:30:02,220 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-07 23:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-08 00:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-08 00:00:02,344 - INFO - ============================================================
+2026-07-08 00:00:02,344 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-08 00:00:02,344 - INFO - Started at 2026-07-08 00:00:02.344543
+2026-07-08 00:00:02,344 - INFO - ============================================================
+2026-07-08 00:00:02,344 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-08 00:00:02,344 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-08 00:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-08 00:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-08 00:30:02,644 - INFO - ============================================================
+2026-07-08 00:30:02,644 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-08 00:30:02,644 - INFO - Started at 2026-07-08 00:30:02.644121
+2026-07-08 00:30:02,644 - INFO - ============================================================
+2026-07-08 00:30:02,644 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-08 00:30:02,644 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-08 00:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-08 01:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-08 01:00:01,946 - INFO - ============================================================
+2026-07-08 01:00:01,946 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-08 01:00:01,946 - INFO - Started at 2026-07-08 01:00:01.946825
+2026-07-08 01:00:01,946 - INFO - ============================================================
+2026-07-08 01:00:01,946 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-08 01:00:01,946 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-08 01:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-08 01:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-08 01:30:02,245 - INFO - ============================================================
+2026-07-08 01:30:02,245 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-08 01:30:02,245 - INFO - Started at 2026-07-08 01:30:02.245833
+2026-07-08 01:30:02,245 - INFO - ============================================================
+2026-07-08 01:30:02,245 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-08 01:30:02,245 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-08 01:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-08 02:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-08 02:00:02,556 - INFO - ============================================================
+2026-07-08 02:00:02,556 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-08 02:00:02,556 - INFO - Started at 2026-07-08 02:00:02.556456
+2026-07-08 02:00:02,556 - INFO - ============================================================
+2026-07-08 02:00:02,556 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-08 02:00:02,556 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-08 02:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-08 02:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-08 02:30:02,196 - INFO - ============================================================
+2026-07-08 02:30:02,196 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-08 02:30:02,196 - INFO - Started at 2026-07-08 02:30:02.196904
+2026-07-08 02:30:02,196 - INFO - ============================================================
+2026-07-08 02:30:02,196 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-08 02:30:02,197 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-08 02:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-08 03:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-08 03:00:02,798 - INFO - ============================================================
+2026-07-08 03:00:02,798 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-08 03:00:02,799 - INFO - Started at 2026-07-08 03:00:02.798995
+2026-07-08 03:00:02,799 - INFO - ============================================================
+2026-07-08 03:00:02,799 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-08 03:00:02,799 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-08 03:00:03+0800  [intraday_alerts]  ok (raw=0)
+2026-07-08 03:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-08 03:30:02,209 - INFO - ============================================================
+2026-07-08 03:30:02,209 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-08 03:30:02,209 - INFO - Started at 2026-07-08 03:30:02.209219
+2026-07-08 03:30:02,209 - INFO - ============================================================
+2026-07-08 03:30:02,209 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-08 03:30:02,209 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-08 03:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-08 04:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-08 04:00:02,618 - INFO - ============================================================
+2026-07-08 04:00:02,618 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-08 04:00:02,618 - INFO - Started at 2026-07-08 04:00:02.618156
+2026-07-08 04:00:02,618 - INFO - ============================================================
+2026-07-08 04:00:02,618 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-08 04:00:02,618 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-08 04:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-08 04:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-08 04:30:02,029 - INFO - ============================================================
+2026-07-08 04:30:02,029 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-08 04:30:02,029 - INFO - Started at 2026-07-08 04:30:02.029107
+2026-07-08 04:30:02,029 - INFO - ============================================================
+2026-07-08 04:30:02,029 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-08 04:30:02,029 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-08 04:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-08 22:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-08 22:00:01,852 - INFO - ============================================================
+2026-07-08 22:00:01,852 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-08 22:00:01,852 - INFO - Started at 2026-07-08 22:00:01.852531
+2026-07-08 22:00:01,852 - INFO - ============================================================
+2026-07-08 22:00:01,852 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-08 22:00:01,852 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-08 22:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-08 22:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-08 22:30:02,237 - INFO - ============================================================
+2026-07-08 22:30:02,238 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-08 22:30:02,238 - INFO - Started at 2026-07-08 22:30:02.238078
+2026-07-08 22:30:02,238 - INFO - ============================================================
+2026-07-08 22:30:02,238 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-08 22:30:02,238 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-08 22:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-08 23:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-08 23:00:02,553 - INFO - ============================================================
+2026-07-08 23:00:02,553 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-08 23:00:02,553 - INFO - Started at 2026-07-08 23:00:02.553193
+2026-07-08 23:00:02,553 - INFO - ============================================================
+2026-07-08 23:00:02,553 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-08 23:00:02,553 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-08 23:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-08 23:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-08 23:30:01,867 - INFO - ============================================================
+2026-07-08 23:30:01,867 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-08 23:30:01,867 - INFO - Started at 2026-07-08 23:30:01.867107
+2026-07-08 23:30:01,867 - INFO - ============================================================
+2026-07-08 23:30:01,867 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-08 23:30:01,867 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-08 23:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-09 00:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-09 00:00:02,176 - INFO - ============================================================
+2026-07-09 00:00:02,176 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-09 00:00:02,176 - INFO - Started at 2026-07-09 00:00:02.176655
+2026-07-09 00:00:02,176 - INFO - ============================================================
+2026-07-09 00:00:02,176 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-09 00:00:02,176 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-09 00:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-09 00:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-09 00:30:02,522 - INFO - ============================================================
+2026-07-09 00:30:02,522 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-09 00:30:02,522 - INFO - Started at 2026-07-09 00:30:02.522501
+2026-07-09 00:30:02,522 - INFO - ============================================================
+2026-07-09 00:30:02,522 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-09 00:30:02,522 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-09 00:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-09 01:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-09 01:00:01,852 - INFO - ============================================================
+2026-07-09 01:00:01,852 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-09 01:00:01,852 - INFO - Started at 2026-07-09 01:00:01.852885
+2026-07-09 01:00:01,852 - INFO - ============================================================
+2026-07-09 01:00:01,852 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-09 01:00:01,852 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-09 01:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-09 01:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-09 01:30:02,176 - INFO - ============================================================
+2026-07-09 01:30:02,176 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-09 01:30:02,176 - INFO - Started at 2026-07-09 01:30:02.176955
+2026-07-09 01:30:02,177 - INFO - ============================================================
+2026-07-09 01:30:02,177 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-09 01:30:02,177 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-09 01:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-09 02:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-09 02:00:02,509 - INFO - ============================================================
+2026-07-09 02:00:02,509 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-09 02:00:02,509 - INFO - Started at 2026-07-09 02:00:02.509381
+2026-07-09 02:00:02,509 - INFO - ============================================================
+2026-07-09 02:00:02,509 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-09 02:00:02,509 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-09 02:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-09 02:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-09 02:30:02,540 - INFO - ============================================================
+2026-07-09 02:30:02,540 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-09 02:30:02,541 - INFO - Started at 2026-07-09 02:30:02.541015
+2026-07-09 02:30:02,541 - INFO - ============================================================
+2026-07-09 02:30:02,541 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-09 02:30:02,541 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-09 02:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-09 03:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-09 03:00:02,052 - INFO - ============================================================
+2026-07-09 03:00:02,052 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-09 03:00:02,052 - INFO - Started at 2026-07-09 03:00:02.052222
+2026-07-09 03:00:02,052 - INFO - ============================================================
+2026-07-09 03:00:02,052 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-09 03:00:02,052 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-09 03:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-09 03:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-09 03:30:02,406 - INFO - ============================================================
+2026-07-09 03:30:02,407 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-09 03:30:02,407 - INFO - Started at 2026-07-09 03:30:02.407061
+2026-07-09 03:30:02,407 - INFO - ============================================================
+2026-07-09 03:30:02,407 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-09 03:30:02,407 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-09 03:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-09 04:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-09 04:00:02,787 - INFO - ============================================================
+2026-07-09 04:00:02,787 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-09 04:00:02,787 - INFO - Started at 2026-07-09 04:00:02.787659
+2026-07-09 04:00:02,787 - INFO - ============================================================
+2026-07-09 04:00:02,787 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-09 04:00:02,787 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-09 04:00:03+0800  [intraday_alerts]  ok (raw=0)
+2026-07-09 04:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-09 04:30:02,191 - INFO - ============================================================
+2026-07-09 04:30:02,191 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-09 04:30:02,191 - INFO - Started at 2026-07-09 04:30:02.191440
+2026-07-09 04:30:02,191 - INFO - ============================================================
+2026-07-09 04:30:02,191 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-09 04:30:02,191 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-09 04:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-09 22:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-09 22:00:02,739 - INFO - ============================================================
+2026-07-09 22:00:02,739 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-09 22:00:02,739 - INFO - Started at 2026-07-09 22:00:02.739914
+2026-07-09 22:00:02,739 - INFO - ============================================================
+2026-07-09 22:00:02,739 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-09 22:00:02,740 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-09 22:00:03+0800  [intraday_alerts]  ok (raw=0)
+2026-07-09 22:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-09 22:30:02,080 - INFO - ============================================================
+2026-07-09 22:30:02,080 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-09 22:30:02,080 - INFO - Started at 2026-07-09 22:30:02.080214
+2026-07-09 22:30:02,080 - INFO - ============================================================
+2026-07-09 22:30:02,080 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-09 22:30:02,080 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-09 22:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-09 23:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-09 23:00:02,441 - INFO - ============================================================
+2026-07-09 23:00:02,441 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-09 23:00:02,441 - INFO - Started at 2026-07-09 23:00:02.441242
+2026-07-09 23:00:02,441 - INFO - ============================================================
+2026-07-09 23:00:02,441 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-09 23:00:02,441 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-09 23:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-09 23:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-09 23:30:01,871 - INFO - ============================================================
+2026-07-09 23:30:01,871 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-09 23:30:01,871 - INFO - Started at 2026-07-09 23:30:01.871835
+2026-07-09 23:30:01,871 - INFO - ============================================================
+2026-07-09 23:30:01,871 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-09 23:30:01,871 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-09 23:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-10 00:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-10 00:00:02,057 - INFO - ============================================================
+2026-07-10 00:00:02,057 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-10 00:00:02,057 - INFO - Started at 2026-07-10 00:00:02.057146
+2026-07-10 00:00:02,057 - INFO - ============================================================
+2026-07-10 00:00:02,057 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-10 00:00:02,057 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-10 00:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-10 00:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-10 00:30:02,407 - INFO - ============================================================
+2026-07-10 00:30:02,407 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-10 00:30:02,407 - INFO - Started at 2026-07-10 00:30:02.407438
+2026-07-10 00:30:02,407 - INFO - ============================================================
+2026-07-10 00:30:02,407 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-10 00:30:02,407 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-10 00:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-10 01:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-10 01:00:02,775 - INFO - ============================================================
+2026-07-10 01:00:02,775 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-10 01:00:02,776 - INFO - Started at 2026-07-10 01:00:02.775987
+2026-07-10 01:00:02,776 - INFO - ============================================================
+2026-07-10 01:00:02,776 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-10 01:00:02,776 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-10 01:00:03+0800  [intraday_alerts]  ok (raw=0)
+2026-07-10 01:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-10 01:30:02,075 - INFO - ============================================================
+2026-07-10 01:30:02,075 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-10 01:30:02,075 - INFO - Started at 2026-07-10 01:30:02.075426
+2026-07-10 01:30:02,075 - INFO - ============================================================
+2026-07-10 01:30:02,075 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-10 01:30:02,075 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-10 01:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-10 02:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-10 02:00:02,412 - INFO - ============================================================
+2026-07-10 02:00:02,412 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-10 02:00:02,412 - INFO - Started at 2026-07-10 02:00:02.412349
+2026-07-10 02:00:02,412 - INFO - ============================================================
+2026-07-10 02:00:02,412 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-10 02:00:02,412 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-10 02:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-10 02:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-10 02:30:02,765 - INFO - ============================================================
+2026-07-10 02:30:02,765 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-10 02:30:02,765 - INFO - Started at 2026-07-10 02:30:02.765381
+2026-07-10 02:30:02,765 - INFO - ============================================================
+2026-07-10 02:30:02,765 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-10 02:30:02,765 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-10 02:30:03+0800  [intraday_alerts]  ok (raw=0)
+2026-07-10 03:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-10 03:00:02,085 - INFO - ============================================================
+2026-07-10 03:00:02,085 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-10 03:00:02,085 - INFO - Started at 2026-07-10 03:00:02.085494
+2026-07-10 03:00:02,085 - INFO - ============================================================
+2026-07-10 03:00:02,085 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-10 03:00:02,085 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-10 03:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-10 03:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-10 03:30:02,426 - INFO - ============================================================
+2026-07-10 03:30:02,426 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-10 03:30:02,426 - INFO - Started at 2026-07-10 03:30:02.426787
+2026-07-10 03:30:02,426 - INFO - ============================================================
+2026-07-10 03:30:02,426 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-10 03:30:02,426 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-10 03:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-10 04:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-10 04:00:02,767 - INFO - ============================================================
+2026-07-10 04:00:02,767 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-10 04:00:02,767 - INFO - Started at 2026-07-10 04:00:02.767857
+2026-07-10 04:00:02,767 - INFO - ============================================================
+2026-07-10 04:00:02,767 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-10 04:00:02,767 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-10 04:00:03+0800  [intraday_alerts]  ok (raw=0)
+2026-07-10 04:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-10 04:30:02,100 - INFO - ============================================================
+2026-07-10 04:30:02,100 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-10 04:30:02,100 - INFO - Started at 2026-07-10 04:30:02.100270
+2026-07-10 04:30:02,100 - INFO - ============================================================
+2026-07-10 04:30:02,100 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-10 04:30:02,100 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-10 04:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-13 22:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-13 22:00:02,074 - INFO - ============================================================
+2026-07-13 22:00:02,075 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-13 22:00:02,075 - INFO - Started at 2026-07-13 22:00:02.075089
+2026-07-13 22:00:02,075 - INFO - ============================================================
+2026-07-13 22:00:02,075 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-13 22:00:02,075 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-13 22:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-13 22:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-13 22:30:02,414 - INFO - ============================================================
+2026-07-13 22:30:02,414 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-13 22:30:02,414 - INFO - Started at 2026-07-13 22:30:02.414527
+2026-07-13 22:30:02,414 - INFO - ============================================================
+2026-07-13 22:30:02,414 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-13 22:30:02,414 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-13 22:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-13 23:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-13 23:00:02,740 - INFO - ============================================================
+2026-07-13 23:00:02,740 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-13 23:00:02,740 - INFO - Started at 2026-07-13 23:00:02.740706
+2026-07-13 23:00:02,740 - INFO - ============================================================
+2026-07-13 23:00:02,740 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-13 23:00:02,740 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-13 23:00:03+0800  [intraday_alerts]  ok (raw=0)
+2026-07-13 23:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-13 23:30:02,081 - INFO - ============================================================
+2026-07-13 23:30:02,081 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-13 23:30:02,082 - INFO - Started at 2026-07-13 23:30:02.081998
+2026-07-13 23:30:02,082 - INFO - ============================================================
+2026-07-13 23:30:02,082 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-13 23:30:02,082 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-13 23:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-14 00:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-14 00:00:02,396 - INFO - ============================================================
+2026-07-14 00:00:02,396 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-14 00:00:02,396 - INFO - Started at 2026-07-14 00:00:02.396287
+2026-07-14 00:00:02,396 - INFO - ============================================================
+2026-07-14 00:00:02,396 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-14 00:00:02,396 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-14 00:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-14 00:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-14 00:30:02,732 - INFO - ============================================================
+2026-07-14 00:30:02,732 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-14 00:30:02,732 - INFO - Started at 2026-07-14 00:30:02.732234
+2026-07-14 00:30:02,732 - INFO - ============================================================
+2026-07-14 00:30:02,732 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-14 00:30:02,732 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-14 00:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-14 01:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-14 01:00:02,054 - INFO - ============================================================
+2026-07-14 01:00:02,054 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-14 01:00:02,054 - INFO - Started at 2026-07-14 01:00:02.054650
+2026-07-14 01:00:02,054 - INFO - ============================================================
+2026-07-14 01:00:02,054 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-14 01:00:02,054 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-14 01:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-14 01:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-14 01:30:02,380 - INFO - ============================================================
+2026-07-14 01:30:02,380 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-14 01:30:02,380 - INFO - Started at 2026-07-14 01:30:02.380666
+2026-07-14 01:30:02,380 - INFO - ============================================================
+2026-07-14 01:30:02,380 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-14 01:30:02,380 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-14 01:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-14 02:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-14 02:00:02,704 - INFO - ============================================================
+2026-07-14 02:00:02,704 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-14 02:00:02,704 - INFO - Started at 2026-07-14 02:00:02.704803
+2026-07-14 02:00:02,704 - INFO - ============================================================
+2026-07-14 02:00:02,704 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-14 02:00:02,704 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-14 02:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-14 02:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-14 02:30:02,616 - INFO - ============================================================
+2026-07-14 02:30:02,616 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-14 02:30:02,616 - INFO - Started at 2026-07-14 02:30:02.616464
+2026-07-14 02:30:02,616 - INFO - ============================================================
+2026-07-14 02:30:02,616 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-14 02:30:02,616 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-14 02:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-14 03:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-14 03:00:02,008 - INFO - ============================================================
+2026-07-14 03:00:02,008 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-14 03:00:02,009 - INFO - Started at 2026-07-14 03:00:02.009010
+2026-07-14 03:00:02,009 - INFO - ============================================================
+2026-07-14 03:00:02,009 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-14 03:00:02,009 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-14 03:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-14 03:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-14 03:30:02,355 - INFO - ============================================================
+2026-07-14 03:30:02,355 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-14 03:30:02,355 - INFO - Started at 2026-07-14 03:30:02.355286
+2026-07-14 03:30:02,355 - INFO - ============================================================
+2026-07-14 03:30:02,355 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-14 03:30:02,355 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-14 03:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-14 04:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-14 04:00:02,678 - INFO - ============================================================
+2026-07-14 04:00:02,678 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-14 04:00:02,678 - INFO - Started at 2026-07-14 04:00:02.678128
+2026-07-14 04:00:02,678 - INFO - ============================================================
+2026-07-14 04:00:02,678 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-14 04:00:02,678 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-14 04:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-14 04:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-14 04:30:02,020 - INFO - ============================================================
+2026-07-14 04:30:02,020 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-14 04:30:02,020 - INFO - Started at 2026-07-14 04:30:02.020703
+2026-07-14 04:30:02,020 - INFO - ============================================================
+2026-07-14 04:30:02,020 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-14 04:30:02,020 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-14 04:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-14 22:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-14 22:00:02,003 - INFO - ============================================================
+2026-07-14 22:00:02,003 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-14 22:00:02,003 - INFO - Started at 2026-07-14 22:00:02.003345
+2026-07-14 22:00:02,003 - INFO - ============================================================
+2026-07-14 22:00:02,003 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-14 22:00:02,003 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-14 22:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-14 22:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-14 22:30:02,322 - INFO - ============================================================
+2026-07-14 22:30:02,322 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-14 22:30:02,322 - INFO - Started at 2026-07-14 22:30:02.322112
+2026-07-14 22:30:02,322 - INFO - ============================================================
+2026-07-14 22:30:02,322 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-14 22:30:02,322 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-14 22:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-14 23:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-14 23:00:02,659 - INFO - ============================================================
+2026-07-14 23:00:02,659 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-14 23:00:02,659 - INFO - Started at 2026-07-14 23:00:02.659876
+2026-07-14 23:00:02,659 - INFO - ============================================================
+2026-07-14 23:00:02,659 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-14 23:00:02,659 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-14 23:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-14 23:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-14 23:30:02,035 - INFO - ============================================================
+2026-07-14 23:30:02,035 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-14 23:30:02,035 - INFO - Started at 2026-07-14 23:30:02.035314
+2026-07-14 23:30:02,035 - INFO - ============================================================
+2026-07-14 23:30:02,035 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-14 23:30:02,035 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-14 23:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-15 00:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-15 00:00:02,221 - INFO - ============================================================
+2026-07-15 00:00:02,221 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-15 00:00:02,221 - INFO - Started at 2026-07-15 00:00:02.221845
+2026-07-15 00:00:02,221 - INFO - ============================================================
+2026-07-15 00:00:02,221 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-15 00:00:02,221 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-15 00:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-15 00:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-15 00:30:02,550 - INFO - ============================================================
+2026-07-15 00:30:02,550 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-15 00:30:02,550 - INFO - Started at 2026-07-15 00:30:02.550445
+2026-07-15 00:30:02,550 - INFO - ============================================================
+2026-07-15 00:30:02,550 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-15 00:30:02,550 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-15 00:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-15 01:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-15 01:00:01,862 - INFO - ============================================================
+2026-07-15 01:00:01,862 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-15 01:00:01,862 - INFO - Started at 2026-07-15 01:00:01.862574
+2026-07-15 01:00:01,862 - INFO - ============================================================
+2026-07-15 01:00:01,862 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-15 01:00:01,862 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-15 01:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-15 01:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-15 01:30:02,222 - INFO - ============================================================
+2026-07-15 01:30:02,222 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-15 01:30:02,222 - INFO - Started at 2026-07-15 01:30:02.222408
+2026-07-15 01:30:02,222 - INFO - ============================================================
+2026-07-15 01:30:02,222 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-15 01:30:02,222 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-15 01:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-15 02:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-15 02:00:02,557 - INFO - ============================================================
+2026-07-15 02:00:02,557 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-15 02:00:02,557 - INFO - Started at 2026-07-15 02:00:02.557373
+2026-07-15 02:00:02,557 - INFO - ============================================================
+2026-07-15 02:00:02,557 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-15 02:00:02,557 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-15 02:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-15 02:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-15 02:30:01,890 - INFO - ============================================================
+2026-07-15 02:30:01,890 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-15 02:30:01,890 - INFO - Started at 2026-07-15 02:30:01.890800
+2026-07-15 02:30:01,890 - INFO - ============================================================
+2026-07-15 02:30:01,890 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-15 02:30:01,890 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-15 02:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-15 03:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-15 03:00:02,256 - INFO - ============================================================
+2026-07-15 03:00:02,256 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-15 03:00:02,256 - INFO - Started at 2026-07-15 03:00:02.256861
+2026-07-15 03:00:02,256 - INFO - ============================================================
+2026-07-15 03:00:02,256 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-15 03:00:02,256 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-15 03:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-15 03:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-15 03:30:02,605 - INFO - ============================================================
+2026-07-15 03:30:02,605 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-15 03:30:02,605 - INFO - Started at 2026-07-15 03:30:02.605549
+2026-07-15 03:30:02,605 - INFO - ============================================================
+2026-07-15 03:30:02,605 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-15 03:30:02,605 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-15 03:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-15 04:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-15 04:00:01,978 - INFO - ============================================================
+2026-07-15 04:00:01,978 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-15 04:00:01,978 - INFO - Started at 2026-07-15 04:00:01.978341
+2026-07-15 04:00:01,978 - INFO - ============================================================
+2026-07-15 04:00:01,978 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-15 04:00:01,978 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-15 04:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-15 04:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-15 04:30:02,336 - INFO - ============================================================
+2026-07-15 04:30:02,336 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-15 04:30:02,336 - INFO - Started at 2026-07-15 04:30:02.336746
+2026-07-15 04:30:02,336 - INFO - ============================================================
+2026-07-15 04:30:02,336 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-15 04:30:02,336 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-15 04:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-15 22:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-15 22:00:02,567 - INFO - ============================================================
+2026-07-15 22:00:02,567 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-15 22:00:02,567 - INFO - Started at 2026-07-15 22:00:02.567444
+2026-07-15 22:00:02,567 - INFO - ============================================================
+2026-07-15 22:00:02,567 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-15 22:00:02,567 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-15 22:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-15 22:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-15 22:30:01,938 - INFO - ============================================================
+2026-07-15 22:30:01,938 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-15 22:30:01,938 - INFO - Started at 2026-07-15 22:30:01.938319
+2026-07-15 22:30:01,938 - INFO - ============================================================
+2026-07-15 22:30:01,938 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-15 22:30:01,938 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-15 22:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-15 23:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-15 23:00:02,294 - INFO - ============================================================
+2026-07-15 23:00:02,294 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-15 23:00:02,294 - INFO - Started at 2026-07-15 23:00:02.294764
+2026-07-15 23:00:02,294 - INFO - ============================================================
+2026-07-15 23:00:02,294 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-15 23:00:02,294 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-15 23:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-15 23:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-15 23:30:02,636 - INFO - ============================================================
+2026-07-15 23:30:02,636 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-15 23:30:02,636 - INFO - Started at 2026-07-15 23:30:02.636275
+2026-07-15 23:30:02,636 - INFO - ============================================================
+2026-07-15 23:30:02,636 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-15 23:30:02,636 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-15 23:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-16 00:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-16 00:00:01,879 - INFO - ============================================================
+2026-07-16 00:00:01,879 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-16 00:00:01,879 - INFO - Started at 2026-07-16 00:00:01.879559
+2026-07-16 00:00:01,879 - INFO - ============================================================
+2026-07-16 00:00:01,879 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-16 00:00:01,879 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-16 00:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-16 00:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-16 00:30:02,203 - INFO - ============================================================
+2026-07-16 00:30:02,203 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-16 00:30:02,203 - INFO - Started at 2026-07-16 00:30:02.203455
+2026-07-16 00:30:02,203 - INFO - ============================================================
+2026-07-16 00:30:02,203 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-16 00:30:02,203 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-16 00:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-16 01:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-16 01:00:02,535 - INFO - ============================================================
+2026-07-16 01:00:02,535 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-16 01:00:02,535 - INFO - Started at 2026-07-16 01:00:02.535324
+2026-07-16 01:00:02,535 - INFO - ============================================================
+2026-07-16 01:00:02,535 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-16 01:00:02,535 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-16 01:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-16 01:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-16 01:30:01,892 - INFO - ============================================================
+2026-07-16 01:30:01,892 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-16 01:30:01,892 - INFO - Started at 2026-07-16 01:30:01.892513
+2026-07-16 01:30:01,892 - INFO - ============================================================
+2026-07-16 01:30:01,892 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-16 01:30:01,892 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-16 01:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-16 02:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-16 02:00:02,216 - INFO - ============================================================
+2026-07-16 02:00:02,216 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-16 02:00:02,216 - INFO - Started at 2026-07-16 02:00:02.216742
+2026-07-16 02:00:02,216 - INFO - ============================================================
+2026-07-16 02:00:02,216 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-16 02:00:02,216 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-16 02:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-16 02:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-16 02:30:02,574 - INFO - ============================================================
+2026-07-16 02:30:02,575 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-16 02:30:02,575 - INFO - Started at 2026-07-16 02:30:02.575039
+2026-07-16 02:30:02,575 - INFO - ============================================================
+2026-07-16 02:30:02,575 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-16 02:30:02,575 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-16 02:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-16 03:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-16 03:00:01,909 - INFO - ============================================================
+2026-07-16 03:00:01,909 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-16 03:00:01,909 - INFO - Started at 2026-07-16 03:00:01.909185
+2026-07-16 03:00:01,909 - INFO - ============================================================
+2026-07-16 03:00:01,909 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-16 03:00:01,909 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-16 03:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-16 03:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-16 03:30:02,283 - INFO - ============================================================
+2026-07-16 03:30:02,283 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-16 03:30:02,283 - INFO - Started at 2026-07-16 03:30:02.283343
+2026-07-16 03:30:02,283 - INFO - ============================================================
+2026-07-16 03:30:02,283 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-16 03:30:02,283 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-16 03:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-16 04:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-16 04:00:02,657 - INFO - ============================================================
+2026-07-16 04:00:02,657 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-16 04:00:02,657 - INFO - Started at 2026-07-16 04:00:02.657241
+2026-07-16 04:00:02,657 - INFO - ============================================================
+2026-07-16 04:00:02,657 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-16 04:00:02,657 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-16 04:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-16 04:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-16 04:30:02,035 - INFO - ============================================================
+2026-07-16 04:30:02,035 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-16 04:30:02,035 - INFO - Started at 2026-07-16 04:30:02.035527
+2026-07-16 04:30:02,035 - INFO - ============================================================
+2026-07-16 04:30:02,035 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-16 04:30:02,035 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-16 04:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-16 22:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-16 22:00:02,098 - INFO - ============================================================
+2026-07-16 22:00:02,098 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-16 22:00:02,098 - INFO - Started at 2026-07-16 22:00:02.098210
+2026-07-16 22:00:02,098 - INFO - ============================================================
+2026-07-16 22:00:02,098 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-16 22:00:02,098 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-16 22:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-16 22:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-16 22:30:02,441 - INFO - ============================================================
+2026-07-16 22:30:02,445 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-16 22:30:02,445 - INFO - Started at 2026-07-16 22:30:02.445224
+2026-07-16 22:30:02,445 - INFO - ============================================================
+2026-07-16 22:30:02,445 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-16 22:30:02,445 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-16 22:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-16 23:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-16 23:00:02,777 - INFO - ============================================================
+2026-07-16 23:00:02,777 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-16 23:00:02,777 - INFO - Started at 2026-07-16 23:00:02.777489
+2026-07-16 23:00:02,777 - INFO - ============================================================
+2026-07-16 23:00:02,777 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-16 23:00:02,777 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-16 23:00:03+0800  [intraday_alerts]  ok (raw=0)
+2026-07-16 23:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-16 23:30:02,122 - INFO - ============================================================
+2026-07-16 23:30:02,123 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-16 23:30:02,123 - INFO - Started at 2026-07-16 23:30:02.123090
+2026-07-16 23:30:02,123 - INFO - ============================================================
+2026-07-16 23:30:02,123 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-16 23:30:02,123 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-16 23:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-17 00:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-17 00:00:02,353 - INFO - ============================================================
+2026-07-17 00:00:02,353 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-17 00:00:02,353 - INFO - Started at 2026-07-17 00:00:02.353588
+2026-07-17 00:00:02,353 - INFO - ============================================================
+2026-07-17 00:00:02,353 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-17 00:00:02,353 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-17 00:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-17 00:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-17 00:30:02,692 - INFO - ============================================================
+2026-07-17 00:30:02,692 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-17 00:30:02,692 - INFO - Started at 2026-07-17 00:30:02.692202
+2026-07-17 00:30:02,692 - INFO - ============================================================
+2026-07-17 00:30:02,692 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-17 00:30:02,692 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-17 00:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-17 01:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-17 01:00:02,023 - INFO - ============================================================
+2026-07-17 01:00:02,027 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-17 01:00:02,027 - INFO - Started at 2026-07-17 01:00:02.027078
+2026-07-17 01:00:02,027 - INFO - ============================================================
+2026-07-17 01:00:02,027 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-17 01:00:02,027 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-17 01:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-17 01:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-17 01:30:02,364 - INFO - ============================================================
+2026-07-17 01:30:02,364 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-17 01:30:02,364 - INFO - Started at 2026-07-17 01:30:02.364231
+2026-07-17 01:30:02,364 - INFO - ============================================================
+2026-07-17 01:30:02,364 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-17 01:30:02,364 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-17 01:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-17 02:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-17 02:00:02,699 - INFO - ============================================================
+2026-07-17 02:00:02,699 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-17 02:00:02,700 - INFO - Started at 2026-07-17 02:00:02.700027
+2026-07-17 02:00:02,700 - INFO - ============================================================
+2026-07-17 02:00:02,700 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-17 02:00:02,700 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-17 02:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-17 02:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-17 02:30:02,051 - INFO - ============================================================
+2026-07-17 02:30:02,051 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-17 02:30:02,051 - INFO - Started at 2026-07-17 02:30:02.051138
+2026-07-17 02:30:02,051 - INFO - ============================================================
+2026-07-17 02:30:02,051 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-17 02:30:02,051 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-17 02:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-17 03:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-17 03:00:02,374 - INFO - ============================================================
+2026-07-17 03:00:02,375 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-17 03:00:02,375 - INFO - Started at 2026-07-17 03:00:02.375050
+2026-07-17 03:00:02,375 - INFO - ============================================================
+2026-07-17 03:00:02,375 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-17 03:00:02,375 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-17 03:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-17 03:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-17 03:30:02,735 - INFO - ============================================================
+2026-07-17 03:30:02,735 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-17 03:30:02,735 - INFO - Started at 2026-07-17 03:30:02.735232
+2026-07-17 03:30:02,735 - INFO - ============================================================
+2026-07-17 03:30:02,735 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-17 03:30:02,735 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-17 03:30:03+0800  [intraday_alerts]  ok (raw=0)
+2026-07-17 04:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-17 04:00:02,072 - INFO - ============================================================
+2026-07-17 04:00:02,072 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-17 04:00:02,073 - INFO - Started at 2026-07-17 04:00:02.073021
+2026-07-17 04:00:02,073 - INFO - ============================================================
+2026-07-17 04:00:02,073 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-17 04:00:02,073 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-17 04:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-17 04:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-17 04:30:02,409 - INFO - ============================================================
+2026-07-17 04:30:02,409 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-17 04:30:02,409 - INFO - Started at 2026-07-17 04:30:02.409821
+2026-07-17 04:30:02,409 - INFO - ============================================================
+2026-07-17 04:30:02,409 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-17 04:30:02,409 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-17 04:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-20 22:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-20 22:00:03,483 - INFO - ============================================================
+2026-07-20 22:00:03,484 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-20 22:00:03,484 - INFO - Started at 2026-07-20 22:00:03.484084
+2026-07-20 22:00:03,484 - INFO - ============================================================
+2026-07-20 22:00:03,484 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-20 22:00:03,484 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-20 22:00:03+0800  [intraday_alerts]  ok (raw=0)
+2026-07-20 22:30:02+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-20 22:30:02,792 - INFO - ============================================================
+2026-07-20 22:30:02,792 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-20 22:30:02,792 - INFO - Started at 2026-07-20 22:30:02.792583
+2026-07-20 22:30:02,792 - INFO - ============================================================
+2026-07-20 22:30:02,792 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-20 22:30:02,792 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-20 22:30:03+0800  [intraday_alerts]  ok (raw=0)
+2026-07-20 23:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-20 23:00:02,092 - INFO - ============================================================
+2026-07-20 23:00:02,092 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-20 23:00:02,092 - INFO - Started at 2026-07-20 23:00:02.092964
+2026-07-20 23:00:02,093 - INFO - ============================================================
+2026-07-20 23:00:02,093 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-20 23:00:02,093 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-20 23:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-20 23:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-20 23:30:03,791 - INFO - ============================================================
+2026-07-20 23:30:03,791 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-20 23:30:03,791 - INFO - Started at 2026-07-20 23:30:03.791653
+2026-07-20 23:30:03,791 - INFO - ============================================================
+2026-07-20 23:30:03,791 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-20 23:30:03,791 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-20 23:30:04+0800  [intraday_alerts]  ok (raw=0)
+2026-07-21 00:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-21 00:00:02,127 - INFO - ============================================================
+2026-07-21 00:00:02,127 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-21 00:00:02,127 - INFO - Started at 2026-07-21 00:00:02.127416
+2026-07-21 00:00:02,127 - INFO - ============================================================
+2026-07-21 00:00:02,127 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-21 00:00:02,127 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-21 00:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-21 00:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-21 00:30:02,649 - INFO - ============================================================
+2026-07-21 00:30:02,649 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-21 00:30:02,649 - INFO - Started at 2026-07-21 00:30:02.649476
+2026-07-21 00:30:02,649 - INFO - ============================================================
+2026-07-21 00:30:02,649 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-21 00:30:02,649 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-21 00:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-21 01:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-21 01:00:02,139 - INFO - ============================================================
+2026-07-21 01:00:02,139 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-21 01:00:02,139 - INFO - Started at 2026-07-21 01:00:02.139202
+2026-07-21 01:00:02,139 - INFO - ============================================================
+2026-07-21 01:00:02,139 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-21 01:00:02,139 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-21 01:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-21 01:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-21 01:30:02,707 - INFO - ============================================================
+2026-07-21 01:30:02,707 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-21 01:30:02,707 - INFO - Started at 2026-07-21 01:30:02.707696
+2026-07-21 01:30:02,707 - INFO - ============================================================
+2026-07-21 01:30:02,707 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-21 01:30:02,707 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-21 01:30:03+0800  [intraday_alerts]  ok (raw=0)
+2026-07-21 02:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-21 02:00:02,184 - INFO - ============================================================
+2026-07-21 02:00:02,184 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-21 02:00:02,184 - INFO - Started at 2026-07-21 02:00:02.184607
+2026-07-21 02:00:02,184 - INFO - ============================================================
+2026-07-21 02:00:02,184 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-21 02:00:02,184 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-21 02:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-21 02:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-21 02:30:02,722 - INFO - ============================================================
+2026-07-21 02:30:02,722 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-21 02:30:02,722 - INFO - Started at 2026-07-21 02:30:02.722104
+2026-07-21 02:30:02,722 - INFO - ============================================================
+2026-07-21 02:30:02,722 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-21 02:30:02,722 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-21 02:30:03+0800  [intraday_alerts]  ok (raw=0)
+2026-07-21 03:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-21 03:00:02,213 - INFO - ============================================================
+2026-07-21 03:00:02,213 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-21 03:00:02,213 - INFO - Started at 2026-07-21 03:00:02.213442
+2026-07-21 03:00:02,213 - INFO - ============================================================
+2026-07-21 03:00:02,213 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-21 03:00:02,213 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-21 03:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-21 03:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-21 03:30:02,725 - INFO - ============================================================
+2026-07-21 03:30:02,725 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-21 03:30:02,725 - INFO - Started at 2026-07-21 03:30:02.725544
+2026-07-21 03:30:02,725 - INFO - ============================================================
+2026-07-21 03:30:02,725 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-21 03:30:02,725 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-21 03:30:03+0800  [intraday_alerts]  ok (raw=0)
+2026-07-21 04:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-21 04:00:02,222 - INFO - ============================================================
+2026-07-21 04:00:02,222 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-21 04:00:02,222 - INFO - Started at 2026-07-21 04:00:02.222268
+2026-07-21 04:00:02,222 - INFO - ============================================================
+2026-07-21 04:00:02,222 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-21 04:00:02,222 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-21 04:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-21 04:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-21 04:30:02,730 - INFO - ============================================================
+2026-07-21 04:30:02,731 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-21 04:30:02,731 - INFO - Started at 2026-07-21 04:30:02.731098
+2026-07-21 04:30:02,731 - INFO - ============================================================
+2026-07-21 04:30:02,731 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-21 04:30:02,731 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-21 04:30:03+0800  [intraday_alerts]  ok (raw=0)
+2026-07-21 22:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-21 22:00:02,146 - INFO - ============================================================
+2026-07-21 22:00:02,146 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-21 22:00:02,146 - INFO - Started at 2026-07-21 22:00:02.146468
+2026-07-21 22:00:02,146 - INFO - ============================================================
+2026-07-21 22:00:02,146 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-21 22:00:02,146 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-21 22:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-21 22:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-21 22:30:02,472 - INFO - ============================================================
+2026-07-21 22:30:02,472 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-21 22:30:02,472 - INFO - Started at 2026-07-21 22:30:02.472182
+2026-07-21 22:30:02,472 - INFO - ============================================================
+2026-07-21 22:30:02,472 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-21 22:30:02,472 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-21 22:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-21 23:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-21 23:00:02,773 - INFO - ============================================================
+2026-07-21 23:00:02,773 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-21 23:00:02,773 - INFO - Started at 2026-07-21 23:00:02.773168
+2026-07-21 23:00:02,773 - INFO - ============================================================
+2026-07-21 23:00:02,773 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-21 23:00:02,773 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-21 23:00:03+0800  [intraday_alerts]  ok (raw=0)
+2026-07-21 23:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-21 23:30:02,137 - INFO - ============================================================
+2026-07-21 23:30:02,137 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-21 23:30:02,137 - INFO - Started at 2026-07-21 23:30:02.137204
+2026-07-21 23:30:02,137 - INFO - ============================================================
+2026-07-21 23:30:02,137 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-21 23:30:02,137 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-21 23:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-22 00:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-22 00:00:02,268 - INFO - ============================================================
+2026-07-22 00:00:02,272 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-22 00:00:02,272 - INFO - Started at 2026-07-22 00:00:02.272048
+2026-07-22 00:00:02,272 - INFO - ============================================================
+2026-07-22 00:00:02,272 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-22 00:00:02,272 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-22 00:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-22 00:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-22 00:30:02,610 - INFO - ============================================================
+2026-07-22 00:30:02,610 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-22 00:30:02,610 - INFO - Started at 2026-07-22 00:30:02.610716
+2026-07-22 00:30:02,610 - INFO - ============================================================
+2026-07-22 00:30:02,610 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-22 00:30:02,610 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-22 00:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-22 01:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-22 01:00:01,923 - INFO - ============================================================
+2026-07-22 01:00:01,923 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-22 01:00:01,923 - INFO - Started at 2026-07-22 01:00:01.923656
+2026-07-22 01:00:01,923 - INFO - ============================================================
+2026-07-22 01:00:01,923 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-22 01:00:01,923 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-22 01:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-22 01:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-22 01:30:02,252 - INFO - ============================================================
+2026-07-22 01:30:02,252 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-22 01:30:02,252 - INFO - Started at 2026-07-22 01:30:02.252625
+2026-07-22 01:30:02,252 - INFO - ============================================================
+2026-07-22 01:30:02,252 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-22 01:30:02,252 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-22 01:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-22 02:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-22 02:00:02,565 - INFO - ============================================================
+2026-07-22 02:00:02,565 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-22 02:00:02,565 - INFO - Started at 2026-07-22 02:00:02.565743
+2026-07-22 02:00:02,565 - INFO - ============================================================
+2026-07-22 02:00:02,565 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-22 02:00:02,565 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-22 02:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-22 02:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-22 02:30:01,889 - INFO - ============================================================
+2026-07-22 02:30:01,889 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-22 02:30:01,889 - INFO - Started at 2026-07-22 02:30:01.889408
+2026-07-22 02:30:01,889 - INFO - ============================================================
+2026-07-22 02:30:01,889 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-22 02:30:01,889 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-22 02:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-22 03:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-22 03:00:02,198 - INFO - ============================================================
+2026-07-22 03:00:02,198 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-22 03:00:02,198 - INFO - Started at 2026-07-22 03:00:02.198830
+2026-07-22 03:00:02,198 - INFO - ============================================================
+2026-07-22 03:00:02,198 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-22 03:00:02,198 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-22 03:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-22 03:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-22 03:30:02,513 - INFO - ============================================================
+2026-07-22 03:30:02,513 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-22 03:30:02,513 - INFO - Started at 2026-07-22 03:30:02.513356
+2026-07-22 03:30:02,513 - INFO - ============================================================
+2026-07-22 03:30:02,513 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-22 03:30:02,513 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-22 03:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-22 04:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-22 04:00:01,837 - INFO - ============================================================
+2026-07-22 04:00:01,837 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-22 04:00:01,837 - INFO - Started at 2026-07-22 04:00:01.837856
+2026-07-22 04:00:01,837 - INFO - ============================================================
+2026-07-22 04:00:01,837 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-22 04:00:01,837 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-22 04:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-22 04:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-22 04:30:02,152 - INFO - ============================================================
+2026-07-22 04:30:02,152 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-22 04:30:02,152 - INFO - Started at 2026-07-22 04:30:02.152338
+2026-07-22 04:30:02,152 - INFO - ============================================================
+2026-07-22 04:30:02,152 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-22 04:30:02,152 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-22 04:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-22 22:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-22 22:00:02,225 - INFO - ============================================================
+2026-07-22 22:00:02,225 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-22 22:00:02,225 - INFO - Started at 2026-07-22 22:00:02.225806
+2026-07-22 22:00:02,225 - INFO - ============================================================
+2026-07-22 22:00:02,225 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-22 22:00:02,225 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-22 22:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-22 22:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-22 22:30:02,559 - INFO - ============================================================
+2026-07-22 22:30:02,559 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-22 22:30:02,559 - INFO - Started at 2026-07-22 22:30:02.559302
+2026-07-22 22:30:02,559 - INFO - ============================================================
+2026-07-22 22:30:02,559 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-22 22:30:02,559 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-22 22:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-22 23:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-22 23:00:01,886 - INFO - ============================================================
+2026-07-22 23:00:01,886 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-22 23:00:01,886 - INFO - Started at 2026-07-22 23:00:01.886474
+2026-07-22 23:00:01,886 - INFO - ============================================================
+2026-07-22 23:00:01,886 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-22 23:00:01,886 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-22 23:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-22 23:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-22 23:30:02,229 - INFO - ============================================================
+2026-07-22 23:30:02,229 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-22 23:30:02,229 - INFO - Started at 2026-07-22 23:30:02.229887
+2026-07-22 23:30:02,229 - INFO - ============================================================
+2026-07-22 23:30:02,229 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-22 23:30:02,229 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-22 23:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-23 00:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-23 00:00:02,069 - INFO - ============================================================
+2026-07-23 00:00:02,069 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-23 00:00:02,069 - INFO - Started at 2026-07-23 00:00:02.069683
+2026-07-23 00:00:02,069 - INFO - ============================================================
+2026-07-23 00:00:02,069 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-23 00:00:02,069 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-23 00:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-23 00:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-23 00:30:02,425 - INFO - ============================================================
+2026-07-23 00:30:02,425 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-23 00:30:02,425 - INFO - Started at 2026-07-23 00:30:02.425349
+2026-07-23 00:30:02,425 - INFO - ============================================================
+2026-07-23 00:30:02,425 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-23 00:30:02,425 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-23 00:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-23 01:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-23 01:00:02,738 - INFO - ============================================================
+2026-07-23 01:00:02,738 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-23 01:00:02,738 - INFO - Started at 2026-07-23 01:00:02.738448
+2026-07-23 01:00:02,738 - INFO - ============================================================
+2026-07-23 01:00:02,738 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-23 01:00:02,738 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-23 01:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-23 01:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-23 01:30:02,082 - INFO - ============================================================
+2026-07-23 01:30:02,082 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-23 01:30:02,082 - INFO - Started at 2026-07-23 01:30:02.082193
+2026-07-23 01:30:02,082 - INFO - ============================================================
+2026-07-23 01:30:02,082 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-23 01:30:02,082 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-23 01:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-23 02:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-23 02:00:02,439 - INFO - ============================================================
+2026-07-23 02:00:02,440 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-23 02:00:02,440 - INFO - Started at 2026-07-23 02:00:02.440041
+2026-07-23 02:00:02,440 - INFO - ============================================================
+2026-07-23 02:00:02,440 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-23 02:00:02,440 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-23 02:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-23 02:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-23 02:30:02,049 - INFO - ============================================================
+2026-07-23 02:30:02,050 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-23 02:30:02,050 - INFO - Started at 2026-07-23 02:30:02.050289
+2026-07-23 02:30:02,050 - INFO - ============================================================
+2026-07-23 02:30:02,050 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-23 02:30:02,050 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-23 02:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-23 03:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-23 03:00:02,380 - INFO - ============================================================
+2026-07-23 03:00:02,384 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-23 03:00:02,384 - INFO - Started at 2026-07-23 03:00:02.384805
+2026-07-23 03:00:02,384 - INFO - ============================================================
+2026-07-23 03:00:02,384 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-23 03:00:02,384 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-23 03:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-23 03:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-23 03:30:02,712 - INFO - ============================================================
+2026-07-23 03:30:02,712 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-23 03:30:02,712 - INFO - Started at 2026-07-23 03:30:02.712724
+2026-07-23 03:30:02,712 - INFO - ============================================================
+2026-07-23 03:30:02,712 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-23 03:30:02,712 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-23 03:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-23 04:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-23 04:00:02,032 - INFO - ============================================================
+2026-07-23 04:00:02,033 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-23 04:00:02,033 - INFO - Started at 2026-07-23 04:00:02.033032
+2026-07-23 04:00:02,033 - INFO - ============================================================
+2026-07-23 04:00:02,033 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-23 04:00:02,033 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-23 04:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-23 04:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-23 04:30:02,376 - INFO - ============================================================
+2026-07-23 04:30:02,376 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-23 04:30:02,377 - INFO - Started at 2026-07-23 04:30:02.376987
+2026-07-23 04:30:02,377 - INFO - ============================================================
+2026-07-23 04:30:02,377 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-23 04:30:02,377 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-23 04:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-23 22:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-23 22:00:02,497 - INFO - ============================================================
+2026-07-23 22:00:02,497 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-23 22:00:02,497 - INFO - Started at 2026-07-23 22:00:02.497688
+2026-07-23 22:00:02,497 - INFO - ============================================================
+2026-07-23 22:00:02,497 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-23 22:00:02,497 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-23 22:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-23 22:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-23 22:30:01,819 - INFO - ============================================================
+2026-07-23 22:30:01,819 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-23 22:30:01,819 - INFO - Started at 2026-07-23 22:30:01.819543
+2026-07-23 22:30:01,819 - INFO - ============================================================
+2026-07-23 22:30:01,819 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-23 22:30:01,819 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-23 22:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-23 23:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-23 23:00:02,125 - INFO - ============================================================
+2026-07-23 23:00:02,125 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-23 23:00:02,125 - INFO - Started at 2026-07-23 23:00:02.125367
+2026-07-23 23:00:02,125 - INFO - ============================================================
+2026-07-23 23:00:02,125 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-23 23:00:02,125 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-23 23:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-23 23:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-23 23:30:02,457 - INFO - ============================================================
+2026-07-23 23:30:02,457 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-23 23:30:02,457 - INFO - Started at 2026-07-23 23:30:02.457236
+2026-07-23 23:30:02,457 - INFO - ============================================================
+2026-07-23 23:30:02,457 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-23 23:30:02,457 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-23 23:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-24 00:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-24 00:00:02,647 - INFO - ============================================================
+2026-07-24 00:00:02,647 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-24 00:00:02,647 - INFO - Started at 2026-07-24 00:00:02.647177
+2026-07-24 00:00:02,647 - INFO - ============================================================
+2026-07-24 00:00:02,647 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-24 00:00:02,647 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-24 00:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-24 00:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-24 00:30:01,954 - INFO - ============================================================
+2026-07-24 00:30:01,955 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-24 00:30:01,955 - INFO - Started at 2026-07-24 00:30:01.955069
+2026-07-24 00:30:01,955 - INFO - ============================================================
+2026-07-24 00:30:01,955 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-24 00:30:01,955 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-24 00:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-24 01:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-24 01:00:02,265 - INFO - ============================================================
+2026-07-24 01:00:02,265 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-24 01:00:02,265 - INFO - Started at 2026-07-24 01:00:02.265971
+2026-07-24 01:00:02,266 - INFO - ============================================================
+2026-07-24 01:00:02,266 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-24 01:00:02,266 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-24 01:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-24 01:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-24 01:30:02,597 - INFO - ============================================================
+2026-07-24 01:30:02,598 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-24 01:30:02,598 - INFO - Started at 2026-07-24 01:30:02.598028
+2026-07-24 01:30:02,598 - INFO - ============================================================
+2026-07-24 01:30:02,598 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-24 01:30:02,598 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-24 01:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-24 02:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-24 02:00:01,906 - INFO - ============================================================
+2026-07-24 02:00:01,906 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-24 02:00:01,906 - INFO - Started at 2026-07-24 02:00:01.906892
+2026-07-24 02:00:01,906 - INFO - ============================================================
+2026-07-24 02:00:01,906 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-24 02:00:01,906 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-24 02:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-24 02:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-24 02:30:02,223 - INFO - ============================================================
+2026-07-24 02:30:02,223 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-24 02:30:02,223 - INFO - Started at 2026-07-24 02:30:02.223155
+2026-07-24 02:30:02,223 - INFO - ============================================================
+2026-07-24 02:30:02,223 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-24 02:30:02,223 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-24 02:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-24 03:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-24 03:00:02,538 - INFO - ============================================================
+2026-07-24 03:00:02,538 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-24 03:00:02,538 - INFO - Started at 2026-07-24 03:00:02.538906
+2026-07-24 03:00:02,538 - INFO - ============================================================
+2026-07-24 03:00:02,538 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-24 03:00:02,539 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-24 03:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-24 03:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-24 03:30:01,859 - INFO - ============================================================
+2026-07-24 03:30:01,859 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-24 03:30:01,859 - INFO - Started at 2026-07-24 03:30:01.859714
+2026-07-24 03:30:01,859 - INFO - ============================================================
+2026-07-24 03:30:01,859 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-24 03:30:01,859 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-24 03:30:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-24 04:00:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-24 04:00:02,179 - INFO - ============================================================
+2026-07-24 04:00:02,179 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-24 04:00:02,179 - INFO - Started at 2026-07-24 04:00:02.179169
+2026-07-24 04:00:02,179 - INFO - ============================================================
+2026-07-24 04:00:02,179 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-24 04:00:02,179 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-24 04:00:02+0800  [intraday_alerts]  ok (raw=0)
+2026-07-24 04:30:01+0800  [intraday_alerts]  begin
+Telegram credentials not configured
+2026-07-24 04:30:02,501 - INFO - ============================================================
+2026-07-24 04:30:02,501 - INFO - INTRADAY PRICE ALERT MONITOR
+2026-07-24 04:30:02,501 - INFO - Started at 2026-07-24 04:30:02.501883
+2026-07-24 04:30:02,501 - INFO - ============================================================
+2026-07-24 04:30:02,501 - INFO - Market status: CLOSED/AFTER HOURS
+2026-07-24 04:30:02,501 - INFO - Skipping alert check - market is closed. Use --force to run anyway.
+2026-07-24 04:30:02+0800  [intraday_alerts]  ok (raw=0)

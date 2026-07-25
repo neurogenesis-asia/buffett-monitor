@@ -1264,13 +1264,23 @@ def signals_tab():
             'PB': f"{row.get('pb_ratio', 0):.2f}",
             'ROE': f"{row.get('roe_latest', 0)*100:.1f}%" if row.get('roe_latest') else '-',
             'QS': f"{row.get('quant_score', 0):.1f}",
-            'Signal': row.get('signal', '-'),
-            'Moat': row.get('moat_strength', '-'),
+            # row.get(col, default) only returns `default` when the column
+            # is entirely missing -- for a column that exists but holds a
+            # NULL for this row (e.g. one of the ~6% of universe tickers
+            # never scanned), pandas .get() returns NaN, which used to
+            # render as the literal string "None"/"NaN" in the table.
+            'Signal': row['signal'] if pd.notna(row.get('signal')) else '-',
+            'Moat': row['moat_strength'] if pd.notna(row.get('moat_strength')) else '-',
             'Graham': f"{currency_symbol} {row.get('graham_number', 0):.2f}" if row.get('graham_number') else '-',
             'IV': (f"{currency_symbol} {(row.get('intrinsic_value', 0) or 0) / row['shares_outstanding']:.2f}"
                    if row.get('intrinsic_value') and row.get('shares_outstanding')
                    else (f"{currency_symbol} {row.get('intrinsic_value', 0):.2f}" if row.get('intrinsic_value') else '-')),
-            'MOS': f"{row.get('margin_of_safety', 0)*100:.1f}%" if row.get('margin_of_safety') else '-'
+            'MOS': f"{row.get('margin_of_safety', 0)*100:.1f}%" if row.get('margin_of_safety') else '-',
+            # signal_reason is computed and stored by every scan
+            # (buffett/scanner.py's _generate_signal_reason) but was never
+            # surfaced here -- a user saw a bare BUY/SELL with no
+            # explanation, even though the system already had one.
+            'Why': row['signal_reason'] if pd.notna(row.get('signal_reason')) else '-',
         })
     
     # Display signals table

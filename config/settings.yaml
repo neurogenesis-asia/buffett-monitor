@@ -1,5 +1,5 @@
 llm:
-  model: anthropic/claude-3-haiku
+  model: openai/gpt-4o-mini
   pillar_cache_days: 90
 thresholds:
   pe_max: 15

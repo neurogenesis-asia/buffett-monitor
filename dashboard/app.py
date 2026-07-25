@@ -12,6 +12,7 @@ import re
 from datetime import date, datetime
 from pathlib import Path
 import sys
+from streamlit_option_menu import option_menu
 
 # Add project root to path
 sys.path.insert(0, '.')
@@ -32,6 +33,64 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
+
+# App-wide visual polish: card-style metrics, tighter/consistent spacing,
+# and a defined sidebar width. Written to hold up in both light and dark
+# Streamlit themes (no hardcoded light-only backgrounds) rather than
+# fighting the user's chosen theme.
+st.markdown("""
+<style>
+    /* Tighten default top padding so content sits closer to the header */
+    .main .block-container {
+        padding-top: 1.5rem;
+        padding-bottom: 2rem;
+    }
+
+    /* Card-style metric tiles */
+    div[data-testid="stMetric"] {
+        background: rgba(127, 127, 127, 0.06);
+        border: 1px solid rgba(127, 127, 127, 0.18);
+        border-radius: 10px;
+        padding: 0.9rem 1rem 0.7rem 1rem;
+    }
+    div[data-testid="stMetric"] label {
+        font-weight: 600;
+        opacity: 0.75;
+    }
+
+    /* Sidebar: fixed comfortable width + subtle divider from main content */
+    section[data-testid="stSidebar"] {
+        width: 300px !important;
+        border-right: 1px solid rgba(127, 127, 127, 0.18);
+    }
+    section[data-testid="stSidebar"] > div {
+        padding-top: 0.5rem;
+    }
+
+    /* Section dividers: a little breathing room, not a hard black rule */
+    hr {
+        margin: 1.25rem 0;
+        opacity: 0.25;
+    }
+
+    /* Buttons: slightly rounder, consistent with the card language above */
+    button[kind], .stButton > button {
+        border-radius: 8px !important;
+    }
+
+    /* Sidebar brand header */
+    .sidebar-brand {
+        font-size: 1.15rem;
+        font-weight: 700;
+        padding: 0.25rem 0 0.1rem 0;
+    }
+    .sidebar-tagline {
+        opacity: 0.6;
+        font-size: 0.82rem;
+        margin-bottom: 0.75rem;
+    }
+</style>
+""", unsafe_allow_html=True)
 
 # Database path
 DB_PATH = "data/buffett.db"
@@ -2383,60 +2442,59 @@ def settings_tab():
             st.error("Model slug cannot be empty.")
 
 
+# Ordered nav definition: (label, icon, page function). Single source of
+# truth for the sidebar menu below -- icons are Bootstrap Icons names,
+# consumed by streamlit-option-menu.
+NAV_PAGES = [
+    ("Holdings", "briefcase", lambda: holdings_tab()),
+    ("Signals", "bullseye", lambda: signals_tab()),
+    ("Change Log", "clock-history", lambda: change_log_tab()),
+    ("Sell Calculator", "calculator", lambda: sell_calculator_tab()),
+    ("Portfolio Optimization", "pie-chart", lambda: portfolio_optimization_dashboard()),
+    ("Intelligence", "cpu", lambda: intelligence_dashboard()),
+    ("Week High/Low", "graph-up-arrow", lambda: week_high_low_radar()),
+    ("AI Watchlist", "eye", lambda: ai_watchlist_tab()),
+    ("ETF Watchlist", "bar-chart-line", lambda: etf_watchlist_tab()),
+    ("Bond Yield", "cash-coin", lambda: bond_yield_tab()),
+    ("AI Ecosystem", "diagram-3", lambda: layers_tab()),
+    ("Settings", "gear", lambda: settings_tab()),
+]
+
+
 def main():
-    # Sidebar
-    st.sidebar.title("📊 Stock Monitor")
-    st.sidebar.markdown("---")
-    
-    # Refresh button
-    if st.sidebar.button("🔄 Refresh Data"):
-        st.rerun()
-    
-    # Last updated
-    st.sidebar.markdown(f"*Last updated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}*")
-    
-    # Main tabs
-    tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8, tab9, tab10, tab11, tab12 = st.tabs([
-        "📈 Holdings", "🎯 Signals", "📋 Change Log", "💰 Sell Calculator",
-        "📊 Portfolio Optimization", "🧠 Intelligence", "📈 Week High/Low",
-        "👁️ AI Watchlist", "📊 ETF Watchlist", "📊 Bond Yield", "🏗️ AI Ecosystem",
-        "⚙️ Settings"
-    ])
+    with st.sidebar:
+        st.markdown('<div class="sidebar-brand">📊 Stock Monitor</div>', unsafe_allow_html=True)
+        st.markdown('<div class="sidebar-tagline">Buffett-style value investing monitor</div>', unsafe_allow_html=True)
 
-    with tab1:
-        holdings_tab()
+        selected = option_menu(
+            menu_title=None,
+            options=[label for label, _, _ in NAV_PAGES],
+            icons=[icon for _, icon, _ in NAV_PAGES],
+            default_index=0,
+            styles={
+                "container": {"padding": "0!important", "background-color": "transparent"},
+                "icon": {"font-size": "15px"},
+                "nav-link": {
+                    "font-size": "14px",
+                    "text-align": "left",
+                    "margin": "2px 0",
+                    "border-radius": "8px",
+                    "--hover-color": "rgba(127, 127, 127, 0.15)",
+                },
+                "nav-link-selected": {
+                    "background-color": "#2E86AB",
+                    "font-weight": "600",
+                },
+            },
+        )
 
-    with tab2:
-        signals_tab()
+        st.markdown("---")
+        if st.button("🔄 Refresh Data", use_container_width=True):
+            st.rerun()
+        st.caption(f"Last updated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 
-    with tab3:
-        change_log_tab()
-
-    with tab4:
-        sell_calculator_tab()
-
-    with tab5:
-        portfolio_optimization_dashboard()
-
-    with tab6:
-        intelligence_dashboard()
-
-    with tab7:
-        week_high_low_radar()
-
-
-    with tab8:
-        ai_watchlist_tab()
-    with tab9:
-        etf_watchlist_tab()
-    with tab10:
-        bond_yield_tab()
-    
-    with tab11:
-        layers_tab()
-
-    with tab12:
-        settings_tab()
+    page_fn = {label: fn for label, _, fn in NAV_PAGES}[selected]
+    page_fn()
 
 
 def edit_holding_form(holding):

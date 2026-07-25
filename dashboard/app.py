@@ -1809,179 +1809,18 @@ def load_bond_yield_data():
         st.error(f"Error loading bond yield data from database: {e}")
         return []
 
-def parse_layer_markdown(file_path):
-    """Extract ALL markdown tables from a layer file as a list of DataFrames.
-
-    Returns a list of (section_name, DataFrame) tuples — section name is the
-    most recent heading above the table, useful as a sub-layer label.
-    """
-    import pandas as pd
-    import re
-    with open(file_path, 'r') as f:
-        lines = f.readlines()
-
-    # Walk line-by-line, track current heading, accumulate table rows.
-    tables = []
-    cur_section = file_path.rsplit('/', 1)[-1].rsplit('.', 1)[0]
-    cur_heading_level = 0
-    cur = []
-    in_table = False
-    for line in lines:
-        s = line.rstrip('\n')
-        stripped = s.strip()
-        # a markdown table row starts AND ends with a pipe, with >=2 pipes
-        if stripped.startswith('|') and stripped.endswith('|') and stripped.count('|') >= 3:
-            in_table = True
-            cur.append(s)
-        else:
-            if in_table:
-                # heading above the table — promote it as section name
-                if stripped.startswith('#') or stripped.startswith('**'):
-                    heading = stripped.lstrip('#').strip().strip('*').strip()
-                    if heading:
-                        cur_section = heading
-            in_table = False
-            if len(cur) >= 3:
-                tables.append((cur_section, _md_table_to_df(cur)))
-            cur = []
-            # capture standalone headings for next-table section
-            if stripped.startswith('#'):
-                cur_section = stripped.lstrip('#').strip().strip('*').strip()
-    if len(cur) >= 3:
-        tables.append((cur_section, _md_table_to_df(cur)))
-    return tables
-
-
-def _md_table_to_df(raw_lines):
-    """Convert raw markdown table lines to a DataFrame."""
-    import re
-    import pandas as pd
-    cleaned = [re.sub(r'^\s*\|\s*|\s*\|\s*$', '', l) for l in raw_lines]
-    data = [[c.strip() for c in l.split('|')] for l in cleaned]
-    if len(data) < 2:
-        return pd.DataFrame()
-    header = data[0]
-    # find separator row (---)
-    sep_idx = None
-    for i, row in enumerate(data[1:], 1):
-        if all(re.match(r'^[\s\-:]+$', c) for c in row) and len(row) == len(header):
-            sep_idx = i
-            break
-    rows = data[sep_idx+1:] if sep_idx is not None else data[1:]
-    if not rows:
-        return pd.DataFrame()
-    df = pd.DataFrame(rows, columns=header)
-    # Strip whitespace-only fake columns (caused by leading/trailing pipes)
-    df = df.loc[:, ~df.columns.str.match(r'^\s*$')]
-    return df
-
-
-# Canonical names of ticker columns across the five layer files
-TICKER_CANDIDATES = ['Ticker', 'Ticker (US)', 'Ticker / Listing', 'Listing',
-                     'Ticker(s)', 'Symbol', 'Ticker (HKEX)']
-COMPANY_CANDIDATES = ['Company', 'Company / Group']
-REGION_CANDIDATES = ['Region']
-
-# Map ticker suffix → region for non-US exchanges (US is the default when no suffix)
-_REGION_BY_SUFFIX = [
-    (re.compile(r'\.HK$'), 'HK'),
-    (re.compile(r'\.SH$'), 'China'),
-    (re.compile(r'\.SS$'), 'China'),
-    (re.compile(r'\.SZ$'), 'China'),
-    (re.compile(r'\.T$'), 'Japan'),
-    (re.compile(r'\.L$'), 'UK ADR'),
-    (re.compile(r'\.LON$'), 'UK ADR'),
-    (re.compile(r'\.TO$'), 'Canada'),
-    (re.compile(r'\.DE$'), 'Germany ADR'),
-]
-
-
-def _parse_ticker_token(s):
-    """Pull a single clean ticker token from a string like 'NVDA (NASDAQ)' or '0992.HK'."""
-    s = str(s).strip()
-    m = re.match(r'^([0-9]{4,6}\.[A-Z]{1,3}|[A-Z]{1,5}(?:\.[A-Z])?)\b', s)
-    return m.group(1) if m else None
-
-
-def _split_tickers(cell):
-    """Split a multi-ticker cell like '0992.HK (HKEX), LNVGY (ADR)' into a list of clean tickers."""
-    s = str(cell)
-    parts = re.split(r'[,/]', s)
-    out = []
-    for p in parts:
-        t = _parse_ticker_token(p)
-        if t and t not in out:
-            out.append(t)
-    return out
-
-
-def _region_from_ticker(ticker):
-    """Infer region from ticker suffix. Default to 'US'."""
-    for rx, region in _REGION_BY_SUFFIX:
-        if rx.search(ticker):
-            return region
-    return 'US'
-
-
-def _enrich_ticker_rows(combined_df):
-    """For each row, find the ticker source column with a non-empty value.
-
-    pd.concat() of differently-shaped tables leaves a 'Ticker' key on every
-    row (NaN for rows whose source table doesn't have that column), so a
-    pure column-name lookup is misleading. We must look per-row.
-    """
-    import pandas as pd
-    # Determine which of the candidate columns are actually present in this df
-    tk_candidates = [c for c in TICKER_CANDIDATES if c in combined_df.columns]
-
-    has_region = 'Region' in combined_df.columns
-
-    tks, all_tks, regions = [], [], []
-    for _, row in combined_df.iterrows():
-        # Pick the first ticker source where THIS row has a non-empty value
-        tk_col = None
-        cell = ''
-        for cand in tk_candidates:
-            val = row.get(cand)
-            if pd.notna(val) and str(val).strip():
-                tk_col = cand
-                cell = str(val).strip()
-                break
-
-        tokens = _split_tickers(cell) if cell else []
-        primary = tokens[0] if tokens else ''
-
-        tks.append(primary)
-        all_tks.append('|'.join(tokens))
-
-        # Region inference — try the row's own Region value first; then ticker suffix
-        reg = '-'
-        if has_region:
-            raw = row.get('Region')
-            if pd.notna(raw):
-                reg = str(raw).strip()
-        if not reg or reg == '-':
-            if primary:
-                reg = _region_from_ticker(primary)
-            else:
-                reg = '-'
-        else:
-            # Normalize common variants
-            if 'US' in reg:
-                reg = 'US'
-            elif 'HK' in reg:
-                reg = 'HK'
-            elif 'China' in reg:
-                reg = 'China'
-            else:
-                reg = _region_from_ticker(primary) if primary else reg
-
-        regions.append(reg)
-
-    combined_df['Ticker'] = tks
-    combined_df['AllTickers'] = all_tks
-    combined_df['Region'] = regions
-    return combined_df
+# Markdown-parsing logic for the AI Ecosystem reference files lives in
+# buffett/layers_reference.py, shared with buffett/scanner_ecosystem.py --
+# previously duplicated here, which would have meant a second drifted copy
+# to keep in sync (the same problem found in scanner_ai.py/scanner_etf.py).
+from buffett.layers_reference import (
+    parse_layer_markdown,
+    enrich_ticker_rows as _enrich_ticker_rows,
+    LAYER_FILES,
+    TICKER_CANDIDATES,
+    COMPANY_CANDIDATES,
+    REGION_CANDIDATES,
+)
 
 
 def _batch_fetch_yfinance(tickers, session_state_key='_ai_eco_cache', max_workers=8):
@@ -2083,13 +1922,7 @@ def layers_tab():
     )
     st.divider()
 
-    layer_files = {
-        "⚡ Layer 1 - Energy": "config/reference/layers/Layer 1  Energy Companies Powering the AI Infrastructure Buildout.md",
-        "💻 Layer 2 - Chips & Computers": "config/reference/layers/Layer 2  Chips and Computers – Listed US and Hong Kong China Companies Powering AI Compute.md",
-        "🏢 Layer 3 - Infrastructure": "config/reference/layers/Layer 3  AI Infrastructure – Data Centers, Land, and Power-Adjacent Real Assets.md",
-        "🧠 Layer 4 - AI Models": "config/reference/layers/Layer 4  Model Layer – Listed US and Hong Kong China AI Model and Platform Companies.md",
-        "🚀 Layer 5 - Applications": "config/reference/layers/Layer 5  Application Layer – Listed US and Hong Kong China AI-Enabled Companies.md",
-    }
+    layer_files = LAYER_FILES
 
     # ----- Layer + region selection -----
     fc1, fc2 = st.columns(2)

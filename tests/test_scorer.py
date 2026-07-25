@@ -131,6 +131,56 @@ def test_quant_score_is_percentage_of_passed_criteria():
 
 
 # ---------------------------------------------------------------------------
+# compute_quant_score -- sector-relative thresholds
+# ---------------------------------------------------------------------------
+
+def test_quant_score_sector_stats_override_fixed_pe_threshold():
+    # PE of 20 fails the fixed global threshold (18.0) but should pass
+    # against a sector where the peer-median PE is 25 (e.g. a richly
+    # valued sector where 20 is actually cheap relative to comparables).
+    fundamentals = {"pe_ratio": 20.0}
+    score_absolute, passed_absolute = compute_quant_score(fundamentals)
+    assert passed_absolute["pe_ok"] is False
+
+    score_relative, passed_relative = compute_quant_score(
+        fundamentals, sector_stats={"pe_ratio": 25.0}
+    )
+    assert passed_relative["pe_ok"] is True
+
+
+def test_quant_score_sector_stats_can_be_stricter_than_fixed_threshold():
+    # PE of 15 passes the fixed global threshold (18.0) but should fail
+    # against a sector where peers trade far cheaper (median PE 10).
+    fundamentals = {"pe_ratio": 15.0}
+    _, passed_absolute = compute_quant_score(fundamentals)
+    assert passed_absolute["pe_ok"] is True
+
+    _, passed_relative = compute_quant_score(fundamentals, sector_stats={"pe_ratio": 10.0})
+    assert passed_relative["pe_ok"] is False
+
+
+def test_quant_score_sector_stats_roe_latest_is_fraction_scaled_to_percentage():
+    # sector_stats['roe_latest'] is a fraction (e.g. 0.12 = 12%), while
+    # fundamentals['roe']/'roe_latest' comparisons inside compute_quant_score
+    # operate on percentage points -- verify the *100 conversion lines up.
+    fundamentals = {"roe_latest": 0.13}  # 13% > sector median 12%
+    _, passed = compute_quant_score(fundamentals, sector_stats={"roe_latest": 0.12})
+    assert passed["roe_ok"] is True
+
+    fundamentals_low = {"roe_latest": 0.11}  # 11% < sector median 12%
+    _, passed_low = compute_quant_score(fundamentals_low, sector_stats={"roe_latest": 0.12})
+    assert passed_low["roe_ok"] is False
+
+
+def test_quant_score_missing_sector_metric_falls_back_to_fixed_constant():
+    # sector_stats provided but doesn't cover 'pb_ratio' (e.g. too few
+    # peers with usable data) -- pb_ok should fall back to the fixed 1.8.
+    fundamentals = {"pb_ratio": 1.7}
+    _, passed = compute_quant_score(fundamentals, sector_stats={"pe_ratio": 25.0})
+    assert passed["pb_ok"] is True
+
+
+# ---------------------------------------------------------------------------
 # decide_signal
 # ---------------------------------------------------------------------------
 

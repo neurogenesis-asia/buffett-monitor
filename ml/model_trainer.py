@@ -38,35 +38,57 @@ class ModelTrainer:
         # Try to load existing model
         self.load_model()
     
-    def train_model(self, 
+    def train_model(self,
                    features_df: pd.DataFrame,
                    labels: pd.Series,
                    test_size: float = 0.2,
-                   random_state: int = 42) -> Dict[str, Any]:
+                   random_state: int = 42,
+                   dates: Optional[pd.Series] = None) -> Dict[str, Any]:
         """
         Train the ML model for signal enhancement
-        
+
         Args:
             features_df: DataFrame with engineered features
             labels: Series with target labels (enhanced signals)
             test_size: Fraction of data to use for testing
             random_state: Random seed for reproducibility
-            
+            dates: Optional per-row date/timestamp series, same length and
+                order as features_df/labels. When provided, the split is
+                chronological (walk-forward): the most recent `test_size`
+                fraction becomes the test set. Without it, falls back to a
+                random stratified split, which risks look-ahead leakage on
+                time-series financial data (training on rows that come
+                after the test rows chronologically) -- pass `dates`
+                whenever the caller has them.
+
         Returns:
             Dictionary with training metrics
         """
         try:
             logger.info(f"Training ML model with {len(features_df)} samples and {len(features_df.columns)} features")
-            
+
             # Store feature names
             self.feature_names = list(features_df.columns)
-            
-            # Split data
-            X_train, X_test, y_train, y_test = train_test_split(
-                features_df.to_numpy(), labels.to_numpy(), 
-                test_size=test_size, random_state=random_state, stratify=labels.to_numpy()
-            )
-            
+
+            if dates is not None:
+                order = np.argsort(pd.to_datetime(pd.Series(dates).reset_index(drop=True)).to_numpy())
+                X_sorted = features_df.to_numpy()[order]
+                y_sorted = labels.to_numpy()[order]
+                split_idx = int(len(X_sorted) * (1 - test_size))
+                X_train, X_test = X_sorted[:split_idx], X_sorted[split_idx:]
+                y_train, y_test = y_sorted[:split_idx], y_sorted[split_idx:]
+            else:
+                logger.warning(
+                    "train_model called without `dates` -- falling back to a "
+                    "random stratified split. This risks look-ahead leakage on "
+                    "time-series financial data; pass `dates` for a proper "
+                    "walk-forward split."
+                )
+                X_train, X_test, y_train, y_test = train_test_split(
+                    features_df.to_numpy(), labels.to_numpy(),
+                    test_size=test_size, random_state=random_state, stratify=labels.to_numpy()
+                )
+
             # Scale features
             self.scaler = StandardScaler()
             X_train_scaled = self.scaler.fit_transform(X_train)

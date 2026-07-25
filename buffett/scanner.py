@@ -13,6 +13,7 @@ from pathlib import Path
 from buffett.fetchers import fetch_fundamentals
 from buffett.scorer import calculate_graham_number, compute_enhanced_score
 from buffett.moat_llm import judge_moat
+from buffett.sector_stats import compute_sector_stats
 from buffett.change_log import diff_previous
 from data.init_db import init_database  # Fixed import path
 from alerts.alert_system import price_alert, signal_alert, fundamental_alert, alert_manager
@@ -121,6 +122,17 @@ def run_weekly_scan(db_path: str = "data/buffett.db", tickers: list[str] | None 
         enhancer = None
         logger.warning(f"Failed to initialize ML signal enhancer: {e}")
 
+    # Compute sector-relative peer thresholds once per scan (not per ticker)
+    # so scoring judges "cheap"/"profitable" against comparable peers rather
+    # than a single fixed global threshold. Falls back to no sector data
+    # (compute_quant_score uses its fixed constants) if this fails.
+    try:
+        sector_stats_by_sector = compute_sector_stats(db_path)
+        logger.info(f"Computed sector-relative stats for {len(sector_stats_by_sector)} sectors")
+    except Exception as e:
+        sector_stats_by_sector = {}
+        logger.warning(f"Failed to compute sector-relative stats: {e}")
+
     # Process each ticker
     for i, ticker in enumerate(tickers, 1):
         if i % 10 == 0:
@@ -152,7 +164,8 @@ def run_weekly_scan(db_path: str = "data/buffett.db", tickers: list[str] | None 
                 moat_strength=moat_strength,
                 sector=sector,
                 industry=industry,
-                db_path=db_path
+                db_path=db_path,
+                sector_stats=sector_stats_by_sector.get(sector)
             )
             
             fundamentals["quant_score"] = quant_score

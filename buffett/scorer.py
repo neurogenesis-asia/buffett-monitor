@@ -69,16 +69,30 @@ def compute_intrinsic_value(
     return pv_stage1 + pv_terminal
 
 
-def compute_quant_score(fundamentals: Dict) -> Tuple[float, Dict[str, bool]]:
+def compute_quant_score(
+    fundamentals: Dict,
+    sector_stats: Optional[Dict[str, float]] = None,
+) -> Tuple[float, Dict[str, bool]]:
     """
     Compute quantitative score based on Buffett's financial criteria.
-    
+
     Args:
         fundamentals: Dictionary containing financial metrics
-        
+        sector_stats: Optional peer/sector-median values for this ticker's
+            sector (see buffett.sector_stats.compute_sector_stats), keyed
+            by 'pe_ratio', 'pb_ratio', 'de_ratio', 'current_ratio',
+            'roe_latest', 'dividend_yield'. When provided, thresholds
+            become "cheaper/better than the sector median" instead of the
+            fixed global constants below -- "PE<=18" means something very
+            different for a bank than for a semiconductor company, so a
+            criterion is only meaningful judged against comparable peers.
+            Falls back to the fixed constant for any metric missing from
+            sector_stats (e.g. thin sector with too few peers).
+
     Returns:
         Tuple of (score_0_to_100, passed_criteria_dict)
     """
+    sector_stats = sector_stats or {}
     # Extract metrics with safe defaults
     pe = fundamentals.get('pe_ratio', float('inf'))
     pb = fundamentals.get('pb_ratio', float('inf'))
@@ -102,13 +116,18 @@ def compute_quant_score(fundamentals: Dict) -> Tuple[float, Dict[str, bool]]:
     free_cash_flow = fundamentals.get('free_cash_flow', 0.0)
     market_cap = fundamentals.get('market_cap', 0.0)
     
-    # Buffett's quantitative thresholds (adjusted for current market)
-    PE_MAX = 18.0          # slightly higher than 15 to reflect lower rates
-    PB_MAX = 1.8           # slightly higher than 1.5
-    DE_MAX = 0.60          # slightly higher than 0.50
-    CURRENT_RATIO_MIN = 1.5
-    ROE_5Y_MIN = 10.0      # increased from 7.0 to 10.0 for better quality
-    DIVIDEND_YIELD_MIN = 0.02  # 2% minimum dividend yield (new)
+    # Buffett's quantitative thresholds (adjusted for current market).
+    # These fixed constants are the fallback for any metric where
+    # sector_stats has no reliable peer median (thin sector, missing data).
+    PE_MAX = sector_stats.get('pe_ratio', 18.0)          # slightly higher than 15 to reflect lower rates
+    PB_MAX = sector_stats.get('pb_ratio', 1.8)           # slightly higher than 1.5
+    DE_MAX = sector_stats.get('de_ratio', 0.60)          # slightly higher than 0.50
+    CURRENT_RATIO_MIN = sector_stats.get('current_ratio', 1.5)
+    ROE_5Y_MIN = (
+        sector_stats['roe_latest'] * 100 if 'roe_latest' in sector_stats else 10.0
+    )  # increased from 7.0 to 10.0 for better quality; sector value is a
+       # fraction (e.g. 0.12), roe is in percentage points, hence *100
+    DIVIDEND_YIELD_MIN = sector_stats.get('dividend_yield', 0.02)  # 2% minimum dividend yield (new)
     EP_YIELD_MIN = 0.05    # 5% earnings yield (new)
     FCF_YIELD_MIN = 0.04   # 4% free cash flow yield (new)
     
@@ -215,26 +234,30 @@ def compute_enhanced_score(
     moat_strength: Optional[str] = None,
     sector: Optional[str] = None,
     industry: Optional[str] = None,
-    db_path: str = "data/buffett.db"
+    db_path: str = "data/buffett.db",
+    sector_stats: Optional[Dict[str, float]] = None,
 ) -> Tuple[float, Dict, str, Dict]:
     """
     Enhanced scoring that blends classic Buffett + AI-native valuation + news sentiment.
-    
+
     Args:
         fundamentals: Financial metrics dictionary
         moat_strength: Moat judgment from LLM ("STRONG", "WEAK", or None)
         sector: Company sector (from yfinance)
         industry: Company industry (from yfinance)
         db_path: Path to database for news sentiment lookup
-        
+        sector_stats: Optional peer/sector-median thresholds for this
+            ticker's sector, passed straight through to compute_quant_score
+            (see its docstring).
+
     Returns:
         Tuple of (final_score_0_100, passed_criteria, final_signal, metadata)
         metadata contains: ai_valuation, news_sentiment, scoring_method_used
     """
     price = fundamentals.get('price', 0.0)
-    
+
     # Classic Buffett scoring
-    classic_score, classic_passed = compute_quant_score(fundamentals)
+    classic_score, classic_passed = compute_quant_score(fundamentals, sector_stats=sector_stats)
     
     # Calculate classic intrinsic value
     fcf = fundamentals.get('free_cash_flow') or fundamentals.get('operating_cf')
@@ -268,6 +291,7 @@ def compute_enhanced_score(
         'classic_passed': classic_passed,
         'classic_intrinsic': classic_intrinsic,
         'classic_signal': classic_signal,
+        'sector_relative': bool(sector_stats),
         'scoring_method': 'classic',
         'ai_valuation': None,
         'news_sentiment': None,

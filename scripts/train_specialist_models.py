@@ -18,7 +18,6 @@ import numpy as np
 import pandas as pd
 from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.metrics import classification_report
-from sklearn.model_selection import train_test_split
 import joblib
 
 ROOT = Path("/home/shalu/buffett-monitor")
@@ -103,6 +102,9 @@ def build_X(df: pd.DataFrame) -> pd.DataFrame:
 
 def train_signal_model(df: pd.DataFrame, signal_type: str):
   mask = df["final_signal"] == signal_type
+  # df is loaded ORDER BY o.signal_date (see load_training_data), and
+  # boolean masking preserves row order, so `sub` stays chronological --
+  # required for the time-based split below.
   sub = df[mask].copy()
   log.info(f"[{signal_type}] {len(sub)} samples\n  "
            + str(sub[LABEL_COL].value_counts(dropna=False).to_dict()))
@@ -112,16 +114,31 @@ def train_signal_model(df: pd.DataFrame, signal_type: str):
     return None, {}, []
 
   # Use only the signal-specific subset; binary label: 1=correct, 0=incorrect
-  y = (sub[LABEL_COL] > 0).astype(int).values
-  if len(np.unique(y)) < 2:
+  y_all = (sub[LABEL_COL] > 0).astype(int).values
+  if len(np.unique(y_all)) < 2:
     log.warning(f"[{signal_type}] single-class labels, skipping")
     return None, {}, []
 
-  X = build_X(sub)
-  cols = X.columns.tolist()
+  X_all = build_X(sub)
+  cols = X_all.columns.tolist()
 
-  Xtr, Xte, ytr, yte = train_test_split(X.values, y, test_size=0.25,
-                                         random_state=42, stratify=y)
+  # Chronological (walk-forward) split, not a random shuffle: the last
+  # 25% of signal_dates becomes the test set. A random/stratified split
+  # on time-series financial data lets the model train on rows that come
+  # AFTER its own test rows -- leaking regime/market information the
+  # model would never have access to when actually deployed.
+  split_idx = int(len(sub) * 0.75)
+  if split_idx < 5 or (len(sub) - split_idx) < 5:
+    log.warning(f"[{signal_type}] too few samples for a chronological split, skipping")
+    return None, {}, []
+
+  Xtr, Xte = X_all.values[:split_idx], X_all.values[split_idx:]
+  ytr, yte = y_all[:split_idx], y_all[split_idx:]
+
+  if len(np.unique(ytr)) < 2 or len(np.unique(yte)) < 2:
+    log.warning(f"[{signal_type}] chronological split produced a single-class "
+                f"train or test set (label distribution shifted over time), skipping")
+    return None, {}, []
 
   clf = GradientBoostingClassifier(
     n_estimators=200,

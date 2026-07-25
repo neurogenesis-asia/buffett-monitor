@@ -137,15 +137,58 @@ assertions, and there was no automated check on scan output quality.
 
 **Result**: `pytest tests/` → 27 passed, 0 failed.
 
+### #4 — Walk-forward (chronological) ML validation
+- `scripts/train_specialist_models.py` (the actual production retraining
+  entrypoint, run via `scripts/weekly_model_retraining.py`) used
+  `sklearn.train_test_split(..., stratify=y)` — a random shuffle split on
+  data that's loaded `ORDER BY o.signal_date`. This lets a model train on
+  rows chronologically *after* its own test rows, leaking regime/market
+  information it would never have at live-prediction time. Replaced with a
+  strict positional 75/25 chronological split (first 75% of dates = train,
+  last 25% = test), with an explicit skip-and-log if either partition ends
+  up single-class (signals the label distribution shifted too much over
+  time for a meaningful split, rather than silently training on it anyway).
+- `ml/model_trainer.py`'s `ModelTrainer.train_model` (a more general
+  trainer used by `ml/signal_enhancer.py`) gained an optional `dates`
+  parameter: when supplied, it performs the same chronological split;
+  without it, it now logs an explicit warning that a random split risks
+  look-ahead leakage, rather than silently doing the risky thing.
+- Covered by 7 new tests (`tests/test_model_trainer.py`,
+  `tests/test_train_specialist_models.py`) verifying the split is
+  positional/date-ordered, not shuffled, and that degenerate splits are
+  skipped rather than trained on.
+
+### #6 — Sector/industry-relative scoring
+- `buffett/scorer.py`'s `compute_quant_score` judged every ticker against
+  fixed global constants (PE≤18, PB≤1.8, D/E≤0.60, ROE≥10%, dividend
+  yield≥2%) regardless of sector — meaningless for comparing, say, a bank
+  to a semiconductor company.
+- Added `buffett/sector_stats.py`: computes each sector's peer median for
+  these same six ratios from each ticker's latest `buffett_fundamentals`
+  snapshot (requires ≥5 peers with usable data per metric, else that
+  metric falls back to the fixed constant for that sector).
+- `compute_quant_score` and `compute_enhanced_score` now accept an optional
+  `sector_stats` dict; when supplied, "cheap"/"profitable" is judged
+  against the sector median instead of the fixed constant (can be either
+  stricter or more lenient than the global threshold, depending on the
+  sector).
+- `buffett/scanner.py` computes sector stats **once per scan** (not once
+  per ticker — cheap batch query) and passes each ticker's own sector's
+  stats into scoring.
+- Covered by 9 new tests (`tests/test_sector_stats.py`, plus additions to
+  `tests/test_scorer.py`) verifying peer-median computation, the ≥5-peer
+  fallback, latest-snapshot-only usage, and that scoring correctly applies
+  sector-relative vs. fixed thresholds in both directions (stricter and
+  more lenient).
+
+**Result after #4 and #6**: `pytest tests/` → 43 passed, 0 failed.
+
 ## Remaining recommendations (not yet started)
 
-4. Switch `ml/model_trainer.py` to `TimeSeriesSplit`/walk-forward validation.
 5. Make moat judgment genuinely independent of the quant score (require the
    LLM path in production, or clearly label the heuristic fallback as
    "quant-derived" rather than "moat"). **Pending**: LLM calls for this will
    go through OpenRouter — see below.
-6. Add sector/industry-relative percentile normalization to
-   `compute_quant_score`.
 7. Add transaction-cost/slippage modeling to `scripts/run_backtest.py`.
 8. Add point-in-time fundamental snapshots for backtest joins.
 9. Surface portfolio-level risk (concentration, correlation) directly on

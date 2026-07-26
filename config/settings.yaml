@@ -4,11 +4,11 @@ llm:
     reasoning:
       primary: inclusionai/ling-2.6-flash
       fallbacks:
-        - openai/gpt-4o-mini
-        - anthropic/claude-3-haiku
-    extraction:
-      primary: openai/gpt-4o-mini
-      fallbacks: []
+      - openai/gpt-oss-20b
+      - openai/gpt-oss-120b
+      - deepseek/deepseek-v4-flash
+      - openai/gpt-4.1-nano
+      - openai/gpt-4o-mini
 thresholds:
   pe_max: 15
   pb_max: 1.5

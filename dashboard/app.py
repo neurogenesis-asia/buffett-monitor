@@ -2250,19 +2250,13 @@ TASK_DESCRIPTIONS = {
         "moat/management quality judgment. Pick a stronger (and usually "
         "pricier) model here."
     ),
-    "extraction": (
-        "Simple, cheap, structured-output tasks. No live call site in this "
-        "codebase uses this yet (data extraction here is done via yfinance/"
-        "regex, not an LLM) -- this slot is reserved so a future simple "
-        "task can use a cheaper model without a config-schema change."
-    ),
 }
 
 
 def settings_tab():
-    """Settings for agent/LLM configuration: per-task (reasoning/
-    extraction) primary model + up to 5 fallback models, chosen from a
-    live-fetched OpenRouter catalog. Reads/writes config/settings.yaml
+    """Settings for agent/LLM configuration: per-task primary model + up
+    to 5 fallback models, chosen from a live-fetched OpenRouter catalog.
+    Reads/writes config/settings.yaml
     through buffett/config.py, the single source of truth both this tab
     and buffett/moat_llm.py read from -- a change here takes effect on the
     next call, no restart needed. moat_llm.py tries the primary model

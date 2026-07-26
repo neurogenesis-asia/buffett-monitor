@@ -43,8 +43,8 @@ def test_set_then_get_task_model_chain_round_trips(config_path):
 
 
 def test_set_task_models_with_no_fallbacks(config_path):
-    set_task_models("extraction", "openai/gpt-4o-mini", config_path=config_path)
-    assert get_task_model_chain("extraction", config_path) == ["openai/gpt-4o-mini"]
+    set_task_models("reasoning", "openai/gpt-4o-mini", config_path=config_path)
+    assert get_task_model_chain("reasoning", config_path) == ["openai/gpt-4o-mini"]
 
 
 def test_set_task_models_creates_file_if_missing(config_path):
@@ -54,9 +54,12 @@ def test_set_task_models_creates_file_if_missing(config_path):
 
 
 def test_set_task_models_preserves_other_existing_keys(config_path):
+    # "some_other_task" here stands in for any pre-existing/unrecognized
+    # key under llm.tasks (e.g. left over from a removed task) -- writing
+    # "reasoning" must not clobber it.
     with open(config_path, "w") as f:
         yaml.safe_dump({
-            "llm": {"pillar_cache_days": 90, "tasks": {"extraction": {"primary": "old-model", "fallbacks": []}}},
+            "llm": {"pillar_cache_days": 90, "tasks": {"some_other_task": {"primary": "old-model", "fallbacks": []}}},
             "thresholds": {"pe_max": 15},
         }, f)
 
@@ -66,14 +69,14 @@ def test_set_task_models_preserves_other_existing_keys(config_path):
         result = yaml.safe_load(f)
 
     assert result["llm"]["tasks"]["reasoning"]["primary"] == "anthropic/claude-3-haiku"
-    assert result["llm"]["tasks"]["extraction"]["primary"] == "old-model"  # untouched
-    assert result["llm"]["pillar_cache_days"] == 90                       # untouched
-    assert result["thresholds"]["pe_max"] == 15                           # untouched
+    assert result["llm"]["tasks"]["some_other_task"]["primary"] == "old-model"  # untouched
+    assert result["llm"]["pillar_cache_days"] == 90                            # untouched
+    assert result["thresholds"]["pe_max"] == 15                                # untouched
 
 
 def test_get_task_model_chain_returns_default_when_task_missing(config_path):
     with open(config_path, "w") as f:
-        yaml.safe_dump({"llm": {"tasks": {"extraction": {"primary": "openai/gpt-4o-mini"}}}}, f)
+        yaml.safe_dump({"llm": {"tasks": {"some_other_task": {"primary": "openai/gpt-4o-mini"}}}}, f)
     chain = get_task_model_chain("reasoning", config_path)
     assert chain == [DEFAULT_TASK_MODELS["reasoning"]["primary"]]
 
@@ -121,6 +124,9 @@ def test_get_pillar_cache_days_from_file(config_path):
     assert get_pillar_cache_days(config_path) == 30
 
 
-def test_task_names_includes_reasoning_and_extraction():
-    assert "reasoning" in TASK_NAMES
-    assert "extraction" in TASK_NAMES
+def test_task_names_includes_reasoning_only():
+    # "extraction" was removed: it had no real call site anywhere in the
+    # codebase and only showed up as a confusing, do-nothing control in
+    # the Settings tab. Add a task name back only once a real consumer
+    # exists for it.
+    assert TASK_NAMES == ["reasoning"]

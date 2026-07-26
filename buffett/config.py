@@ -10,12 +10,14 @@ the next call without restarting anything (models are read fresh each
 call, not cached at import time).
 
 Models are assigned per TASK (e.g. "reasoning" for moat/management
-judgment -- writing a rationale, real analysis; "extraction" for
-simple/cheap structured-output work), each with a primary model and up
-to MAX_FALLBACKS fallback models tried in order if the primary fails.
-This lets a cheap model handle mechanical tasks while a stronger one is
-reserved for tasks that need actual judgment, and means a single bad/
-rate-limited model doesn't take the whole pipeline down.
+judgment -- writing a rationale, real analysis), each with a primary
+model and up to MAX_FALLBACKS fallback models tried in order if the
+primary fails. This means a single bad/rate-limited model doesn't take
+the whole pipeline down. Add a new entry to TASK_NAMES/DEFAULT_TASK_MODELS
+only once a real call site for it exists -- an earlier version of this
+module shipped a speculative "extraction" task with no consumer anywhere
+in the codebase, which just showed up as a confusing, do-nothing control
+in the Settings tab.
 """
 from __future__ import annotations
 
@@ -27,18 +29,13 @@ import yaml
 DEFAULT_CONFIG_PATH = "config/settings.yaml"
 MAX_FALLBACKS = 5
 
-# Task names this codebase currently assigns models to. "reasoning" is the
-# only one with a real call site today (buffett/moat_llm.py's moat/
-# management judgment -- it writes an analytical rationale, not just
-# structured extraction). "extraction" has no LLM call site yet (data
-# extraction in this codebase is done via yfinance/regex, not an LLM) --
-# the slot exists so a future simple/structured-output task can use a
-# cheaper model without needing a config-schema change.
-TASK_NAMES = ["reasoning", "extraction"]
+# Task names this codebase currently assigns models to. "reasoning" is
+# used by buffett/moat_llm.py's moat/management judgment (it writes an
+# analytical rationale, not just structured extraction).
+TASK_NAMES = ["reasoning"]
 
 DEFAULT_TASK_MODELS = {
     "reasoning": {"primary": "anthropic/claude-3-haiku", "fallbacks": []},
-    "extraction": {"primary": "openai/gpt-4o-mini", "fallbacks": []},
 }
 
 

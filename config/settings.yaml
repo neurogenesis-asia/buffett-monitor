@@ -9,6 +9,14 @@ llm:
       - deepseek/deepseek-v4-flash
       - openai/gpt-4.1-nano
       - openai/gpt-4o-mini
+    universe_scan:
+      primary: openrouter/free
+      fallbacks:
+      - openai/gpt-oss-20b:free
+      - poolside/laguna-m.1:free
+      - google/gemma-4-31b-it:free
+      - inclusionai/ling-3.0-flash:free
+      - nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free
 thresholds:
   pe_max: 15
   pb_max: 1.5

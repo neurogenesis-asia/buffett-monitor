@@ -64,8 +64,10 @@ def test_quant_score_all_criteria_pass_gives_100():
         "roe": 11.16,          # ROE_5Y_MIN threshold is 10.0 (percentage points, not fraction)
         "dividend_yield": 0.0582,
         "eps_ttm": 1.0,        # ep_yield = 1.0/11.36 = 8.8% >= 5%
+        # free_cash_flow is $ millions, market_cap is raw dollars (matches
+        # buffett/fetchers.py's units) -- fcf_yield = (50 * 1e6) / 1e9 = 5% >= 4%
         "free_cash_flow": 50.0,
-        "market_cap": 1000.0,  # fcf_yield = 50/1000 = 5% >= 4%
+        "market_cap": 1_000_000_000.0,
     }
     score, passed = compute_quant_score(fundamentals)
     assert score == 100.0
@@ -110,24 +112,29 @@ def test_quant_score_explicit_roe_and_debt_to_equity_keys_take_priority():
     assert passed["de_ok"] is True
 
 
-def test_quant_score_is_percentage_of_passed_criteria():
+def test_quant_score_is_percentage_of_quality_criteria_only():
+    # score reflects only the 3 QUALITY_CRITERIA (de_ok, current_ratio_ok,
+    # roe_ok) -- valuation criteria (pe/pb/graham/ep_yield/fcf_yield) are
+    # still computed and returned in `passed` for display, but a company
+    # doesn't need to also be statistically cheap to score well on quality.
     fundamentals = {
-        "pe_ratio": 13.06,      # pass
-        "pb_ratio": 1.47,       # pass
-        "graham_number": 5.0,   # fail (price > graham)
+        "pe_ratio": 13.06,      # pass (valuation, not counted)
+        "pb_ratio": 1.47,       # pass (valuation, not counted)
+        "graham_number": 5.0,   # fail (valuation, not counted)
         "price": 11.36,
-        "debt_to_equity": 0.0,  # pass
-        "current_ratio": 1.5,   # pass
-        "roe": -5,              # fail
-        "dividend_yield": 0.0,  # fail
-        "eps_ttm": 0.0,         # fail (ep_yield needs eps_ttm > 0)
-        "free_cash_flow": 0.0,  # fail
+        "debt_to_equity": 0.0,  # pass (quality)
+        "current_ratio": 1.5,   # pass (quality)
+        "roe": -5,              # fail (quality)
+        "dividend_yield": 0.0,  # fail (not a quality criterion at all)
+        "eps_ttm": 0.0,         # fail (valuation, not counted)
+        "free_cash_flow": 0.0,  # fail (valuation, not counted)
         "market_cap": 1000.0,
     }
     score, passed = compute_quant_score(fundamentals)
-    passed_count = sum(passed.values())
-    assert score == pytest.approx((passed_count / len(passed)) * 100)
-    assert passed_count == 4  # pe_ok, pb_ok, de_ok, current_ratio_ok
+    assert passed["de_ok"] is True
+    assert passed["current_ratio_ok"] is True
+    assert passed["roe_ok"] is False
+    assert score == pytest.approx((2 / 3) * 100)  # 2 of 3 quality criteria pass
 
 
 # ---------------------------------------------------------------------------

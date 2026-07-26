@@ -559,7 +559,25 @@ def calculate_ai_intrinsic_value(fundamentals: Dict, sector: Optional[str], indu
     details['equity_value'] = equity_value
     details['shares_outstanding'] = shares
     details['intrinsic_per_share'] = intrinsic_per_share
-    
+
+    # Plausibility guard: revenue is occasionally wrong by an order of
+    # magnitude for some tickers (observed live: yfinance reported TSM's
+    # totalRevenue as ~$4.44T, ~49x its real revenue, likely a currency/
+    # unit issue with this ADR) -- an EV built on bad revenue blows up into
+    # a nonsense per-share value (TSM: $11,105/share vs a $403 price),
+    # silently forcing a false BUY via a huge bogus margin of safety.
+    # market_cap is independently observable (price * shares) and doesn't
+    # go through the same revenue field, so a wild EV/market_cap ratio is a
+    # reliable tell that the input data -- not the company's valuation --
+    # is the problem. Degrade to "no reliable value" rather than trust it.
+    market_cap = fundamentals.get('market_cap')
+    if market_cap and market_cap > 0:
+        ev_to_mcap = ev / float(market_cap)
+        details['ev_to_market_cap'] = ev_to_mcap
+        if ev_to_mcap > 10 or ev_to_mcap < 0.1:
+            details['data_suspect'] = f"EV/market_cap={ev_to_mcap:.2f} implies unreliable revenue data"
+            return 0.0, details
+
     return intrinsic_per_share, details
 
 
@@ -689,7 +707,6 @@ def decide_ai_signal(
     
     score_ok = ai_score >= 55          # Lower than classic 60
     mos_ok = margin_of_safety_ai >= 0.10  # 10% vs classic 20%
-    moat_leaky = moat_strength == "STRONG"
     moat_acceptable = moat_strength in ["STRONG", "WEAK"]  # Accept weak for growth
     
     if score_ok and moat_acceptable and mos_ok:

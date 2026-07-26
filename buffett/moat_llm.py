@@ -222,6 +222,14 @@ class MoatLLMJudge:
         keeps _parse_judgment itself side-effect-free (no caching).
         """
         import re
+        if not isinstance(response_text, str):
+            # Some free/rate-limited OpenRouter models return a null or
+            # empty `content` (e.g. output was filtered, or all of it landed
+            # in a "reasoning" field instead) -- treat as unparseable so the
+            # caller advances to the next model in the fallback chain
+            # instead of crashing (surfaced as TENAGA.KL: "expected string
+            # or bytes-like object, got 'NoneType'").
+            return None
         json_match = re.search(r'\{.*\}', response_text, re.DOTALL)
         if json_match:
             try:

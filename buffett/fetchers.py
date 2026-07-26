@@ -33,6 +33,26 @@ except ImportError:
 from buffett.scorer import calculate_graham_number
 
 
+def _safe_float(value, default: float = 0.0) -> float:
+    """Coerce a yfinance numeric field to float.
+
+    Yahoo occasionally returns the literal string "Infinity" (or "-Infinity",
+    "NaN") for ratios like trailingPE when earnings are zero/negative -- these
+    fail silently downstream since Python's `>`/`<` refuse to compare a str
+    against a number (surfaced as the SDA scan failure: PE ratio was the
+    string 'Infinity').
+    """
+    if value is None:
+        return default
+    try:
+        result = float(value)
+    except (TypeError, ValueError):
+        return default
+    if result != result:  # NaN
+        return default
+    return result
+
+
 def _get_project_root() -> str:
     """Get the absolute path to the project root directory."""
     return os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -191,7 +211,10 @@ def fetch_yfinance(ticker: str) -> Optional[Dict]:
             "shares_outstanding": info.get("sharesOutstanding", 0),
             
             # Valuation ratios
-            "pe_ratio": info.get("trailingPE", info.get("forwardPE", 0)),
+            # A raw "Infinity"/"NaN" string from Yahoo (zero/negative earnings)
+            # must resolve to a real infinite float, not 0 -- 0 would look
+            # artificially cheap and wrongly pass the PE_MAX screen.
+            "pe_ratio": _safe_float(info.get("trailingPE", info.get("forwardPE", 0)), default=float("inf")),
             "pb_ratio": info.get("priceToBook", 0),
             "ps_ratio": info.get("priceToSalesTrailing12Months", 0),
             "peg_ratio": info.get("pegRatio", 0),
@@ -317,7 +340,7 @@ def alpha_vantage_fallback(ticker: str) -> Optional[Dict]:
                     "price": 0,  # Will be fetched separately
                     "market_cap": float(data.get("MarketCapitalization", 0)),
                     "shares_outstanding": float(data.get("SharesOutstanding", 0)),
-                    "pe_ratio": float(data.get("PERatio", 0)),
+                    "pe_ratio": _safe_float(data.get("PERatio", 0), default=float("inf")),
                     "pb_ratio": float(data.get("PriceToBookRatio", 0)),
                     "ps_ratio": float(data.get("PriceToSalesRatioTTM", 0)),
                     "peg_ratio": float(data.get("PEGRatio", 0)),

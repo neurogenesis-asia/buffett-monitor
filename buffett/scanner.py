@@ -23,6 +23,32 @@ from ml.signal_enhancer import SignalEnhancer
 logger = logging.getLogger(__name__)
 
 
+def _backfill_universe_sector(ticker: str, sector: str, db_path: str) -> None:
+    """Keep buffett_universe.sector in sync with freshly-fetched fundamentals.
+
+    buffett_universe is only ever populated once, from a seed CSV that has
+    sector filled in for a small minority of tickers -- everything else is
+    left '' forever, since nothing else ever writes to this column.
+    buffett.sector_stats.compute_sector_stats() joins its peer-median query
+    on this exact column, so a blank universe.sector silently disables ALL
+    sector-relative scoring: every ticker falls back to the fixed global
+    PE/PB/D-E/current-ratio thresholds regardless of what's normal for its
+    actual industry (e.g. payments/financial names judged against a global
+    debt-to-equity ceiling calibrated for industrials).
+    """
+    if not sector:
+        return
+    conn = sqlite3.connect(db_path)
+    try:
+        conn.execute(
+            "UPDATE buffett_universe SET sector = ? WHERE ticker = ? AND (sector IS NULL OR sector = '')",
+            (sector, ticker),
+        )
+        conn.commit()
+    finally:
+        conn.close()
+
+
 def _generate_signal_reason(quant_score: float, moat_strength: str,
                            margin_of_safety: float, fundamentals_flag: str) -> str:
     """Generate human-readable reason for the signal."""
@@ -219,6 +245,7 @@ def run_weekly_scan(
             # Enhanced scoring (AI + classic + news sentiment)
             sector = fundamentals.get("sector", "")
             industry = fundamentals.get("industry", "")
+            _backfill_universe_sector(ticker, sector, db_path)
             moat_judgment = judge_moat(ticker, fundamentals, db_path=db_path, task=moat_task)
             moat_strength = moat_judgment.get("moat_strength", "UNKNOWN")
             

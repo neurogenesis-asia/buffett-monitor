@@ -16,7 +16,7 @@ import pytest
 
 from data.init_db import init_database
 from buffett import scanner as scanner_module
-from buffett.scanner import run_weekly_scan, _check_scan_health, _check_price_sanity
+from buffett.scanner import run_weekly_scan, _check_scan_health, _check_price_sanity, _backfill_universe_sector
 
 
 @pytest.fixture
@@ -50,8 +50,14 @@ def _good_fundamentals(ticker):
         "ticker": ticker,
         "snapshot_date": date.today().isoformat(),  # set by fetchers.py in real scans
         "price": 10.0,
-        "market_cap": 1000.0,
-        "shares_outstanding": 100.0,
+        # market_cap/shares_outstanding/free_cash_flow scaled to a
+        # realistic ratio (not just self-consistent toy numbers) --
+        # compute_enhanced_score converts free_cash_flow ($ millions,
+        # matching buffett/fetchers.py's real units) to a per-share figure
+        # by dividing by shares_outstanding, and a plausibility guard now
+        # rejects any resulting intrinsic value more than 20x the price.
+        "market_cap": 100_000_000.0,
+        "shares_outstanding": 10_000_000.0,
         "pe_ratio": 10.0,
         "pb_ratio": 1.0,
         "eps_ttm": 2.0,
@@ -60,8 +66,8 @@ def _good_fundamentals(ticker):
         "current_ratio": 2.0,
         "roe_latest": 0.20,
         "dividend_yield": 0.03,
-        "free_cash_flow": 100.0,
-        "operating_cf": 100.0,
+        "free_cash_flow": 10.0,   # $10M aggregate -> $1.00/share
+        "operating_cf": 10.0,
         "eps_growth_yoy": 0.05,
         "sector": "Finance",
         "industry": "Banking",
@@ -369,3 +375,53 @@ def test_run_weekly_scan_heuristic_fallback_has_no_model_used(db_path, monkeypat
         conn.close()
 
     assert row == ("heuristic_fallback", None)
+
+
+# ---------------------------------------------------------------------------
+# _backfill_universe_sector -- buffett_universe.sector was only ever set
+# once at initial CSV seed time (blank for the vast majority of tickers),
+# and buffett.sector_stats.compute_sector_stats() joins on exactly this
+# column to build peer-group medians. A blank column silently disabled ALL
+# sector-relative scoring, forcing every ticker onto fixed global
+# thresholds regardless of industry norms.
+# ---------------------------------------------------------------------------
+
+def test_backfill_universe_sector_fills_blank_sector(db_path):
+    _seed_universe(db_path, ["NOSECTOR"])
+    conn = sqlite3.connect(db_path)
+    conn.execute("UPDATE buffett_universe SET sector = '' WHERE ticker = ?", ("NOSECTOR",))
+    conn.commit()
+    conn.close()
+
+    _backfill_universe_sector("NOSECTOR", "Technology", db_path)
+
+    conn = sqlite3.connect(db_path)
+    sector = conn.execute("SELECT sector FROM buffett_universe WHERE ticker = ?", ("NOSECTOR",)).fetchone()[0]
+    conn.close()
+    assert sector == "Technology"
+
+
+def test_backfill_universe_sector_does_not_overwrite_existing_sector(db_path):
+    _seed_universe(db_path, ["HASECTOR"])  # _seed_universe sets sector="Finance"
+
+    _backfill_universe_sector("HASECTOR", "Technology", db_path)
+
+    conn = sqlite3.connect(db_path)
+    sector = conn.execute("SELECT sector FROM buffett_universe WHERE ticker = ?", ("HASECTOR",)).fetchone()[0]
+    conn.close()
+    assert sector == "Finance"
+
+
+def test_backfill_universe_sector_noop_on_empty_sector(db_path):
+    _seed_universe(db_path, ["NOSECTOR"])
+    conn = sqlite3.connect(db_path)
+    conn.execute("UPDATE buffett_universe SET sector = '' WHERE ticker = ?", ("NOSECTOR",))
+    conn.commit()
+    conn.close()
+
+    _backfill_universe_sector("NOSECTOR", "", db_path)  # fetched sector empty -- nothing to write
+
+    conn = sqlite3.connect(db_path)
+    sector = conn.execute("SELECT sector FROM buffett_universe WHERE ticker = ?", ("NOSECTOR",)).fetchone()[0]
+    conn.close()
+    assert sector == ""

@@ -2243,22 +2243,42 @@ def layers_tab():
         key="ai_eco_download",
     )
 
+TASK_DESCRIPTIONS = {
+    "reasoning": (
+        "Deep-thinking tasks that require actual judgment and writing an "
+        "analytical rationale -- currently used by buffett/moat_llm.py for "
+        "moat/management quality judgment. Pick a stronger (and usually "
+        "pricier) model here."
+    ),
+    "extraction": (
+        "Simple, cheap, structured-output tasks. No live call site in this "
+        "codebase uses this yet (data extraction here is done via yfinance/"
+        "regex, not an LLM) -- this slot is reserved so a future simple "
+        "task can use a cheaper model without a config-schema change."
+    ),
+}
+
+
 def settings_tab():
-    """Settings for agent/LLM configuration -- currently the model used
-    for moat judgment (buffett/moat_llm.py, via OpenRouter). Reads/writes
-    config/settings.yaml through buffett/config.py, which is the single
-    source of truth both this tab and moat_llm.py read from -- a change
-    here takes effect on the next call, no restart needed."""
+    """Settings for agent/LLM configuration: per-task (reasoning/
+    extraction) primary model + up to 5 fallback models, chosen from a
+    live-fetched OpenRouter catalog. Reads/writes config/settings.yaml
+    through buffett/config.py, the single source of truth both this tab
+    and buffett/moat_llm.py read from -- a change here takes effect on the
+    next call, no restart needed. moat_llm.py tries the primary model
+    first, then each fallback in order, before degrading to the
+    heuristic judgment -- so one bad/rate-limited/deprecated model
+    doesn't take the whole pipeline down."""
     import os
-    from buffett.config import get_llm_model, set_llm_model, DEFAULT_LLM_MODEL
+    from buffett.config import get_task_model_chain, set_task_models, TASK_NAMES, MAX_FALLBACKS
+    from buffett.openrouter_models import fetch_available_models, format_model_label
 
     st.header("⚙️ Settings")
-    st.subheader("Agent / LLM Model")
+    st.subheader("Agent / LLM Models")
     st.caption(
-        "Model used for moat judgment (buffett/moat_llm.py) and any future "
-        "LLM-backed agent, via OpenRouter. Changing this here updates "
-        "config/settings.yaml directly -- takes effect on the next scan, "
-        "no restart required."
+        "Model catalog is fetched live from OpenRouter (cached for a few "
+        "hours). Each task below has a primary model and an ordered list "
+        "of fallback models tried if the primary fails."
     )
 
     has_key = bool(os.getenv("OPENROUTER_API_KEY"))
@@ -2271,42 +2291,81 @@ def settings_tab():
             "until a key is added to .env."
         )
 
-    current_model = get_llm_model()
+    force_refresh = st.button("🔄 Refresh model list from OpenRouter")
+    models = fetch_available_models(force_refresh=force_refresh)
+    if not models:
+        st.error(
+            "Could not load the OpenRouter model catalog (network issue?). "
+            "You can still type a model slug manually below."
+        )
+    model_ids = [m["id"] for m in models]
+    label_by_id = {m["id"]: format_model_label(m) for m in models}
+    st.caption(f"{len(model_ids)} models loaded from OpenRouter." if model_ids else "")
 
-    preset_models = [
-        "anthropic/claude-3-haiku",
-        "anthropic/claude-3.5-sonnet",
-        "openai/gpt-4o-mini",
-        "openai/gpt-4o",
-        "google/gemini-flash-1.5",
-        "Custom...",
-    ]
-    default_index = preset_models.index(current_model) if current_model in preset_models[:-1] else len(preset_models) - 1
+    st.divider()
 
-    choice = st.selectbox(
-        "Model (OpenRouter slug)",
-        preset_models,
-        index=default_index,
-        help="Any valid OpenRouter model slug, e.g. 'anthropic/claude-3-haiku'.",
-    )
+    for task in TASK_NAMES:
+        st.markdown(f"#### {task.title()}")
+        st.caption(TASK_DESCRIPTIONS[task])
 
-    if choice == "Custom...":
-        new_model = st.text_input("Custom model slug", value=current_model if current_model not in preset_models[:-1] else "")
-    else:
-        new_model = choice
+        current_chain = get_task_model_chain(task)
+        current_primary = current_chain[0] if current_chain else ""
+        current_fallbacks = current_chain[1:]
 
-    st.caption(f"Currently configured: `{current_model}`")
+        primary_options = model_ids + ["Custom..."]
+        default_idx = primary_options.index(current_primary) if current_primary in model_ids else len(primary_options) - 1
 
-    if st.button("Save Model", type="primary"):
-        if new_model and new_model.strip():
-            try:
-                set_llm_model(new_model)
-                st.success(f"Saved. Agents will use `{new_model.strip()}` from the next call onward.")
-                st.rerun()
-            except ValueError as e:
-                st.error(str(e))
+        def _fmt_primary(model_id, _label_by_id=label_by_id):
+            return "Custom (type a slug manually)" if model_id == "Custom..." else _label_by_id.get(model_id, model_id)
+
+        primary_choice = st.selectbox(
+            "Primary model",
+            primary_options,
+            index=default_idx,
+            format_func=_fmt_primary,
+            key=f"{task}_primary_select",
+        )
+        if primary_choice == "Custom...":
+            primary_model = st.text_input(
+                "Custom primary model slug",
+                value=current_primary if current_primary not in model_ids else "",
+                key=f"{task}_primary_custom",
+            )
         else:
-            st.error("Model slug cannot be empty.")
+            primary_model = primary_choice
+
+        selected_fallbacks = st.multiselect(
+            f"Fallback models (tried in order if the primary fails, up to {MAX_FALLBACKS})",
+            options=model_ids,
+            default=[f for f in current_fallbacks if f in model_ids],
+            max_selections=MAX_FALLBACKS,
+            format_func=lambda m, _label_by_id=label_by_id: _label_by_id.get(m, m),
+            key=f"{task}_fallbacks_multiselect",
+        )
+        extra_fallback = st.text_input(
+            "Extra custom fallback slug (optional -- appended after the selections above)",
+            key=f"{task}_extra_fallback",
+        )
+        fallback_models = list(selected_fallbacks)
+        if extra_fallback.strip():
+            fallback_models.append(extra_fallback.strip())
+        fallback_models = fallback_models[:MAX_FALLBACKS]
+
+        chain_preview = " → ".join([primary_model or "(none)"] + fallback_models)
+        st.caption(f"Chain that will be tried: {chain_preview}")
+
+        if st.button(f"Save {task.title()} Models", key=f"{task}_save", type="primary"):
+            if not primary_model or not primary_model.strip():
+                st.error("Primary model cannot be empty.")
+            else:
+                try:
+                    set_task_models(task, primary_model, fallback_models)
+                    st.success(f"Saved. {task.title()} will use: {chain_preview}")
+                    st.rerun()
+                except ValueError as e:
+                    st.error(str(e))
+
+        st.divider()
 
 
 # Ordered nav definition: (label, icon, page function). Single source of

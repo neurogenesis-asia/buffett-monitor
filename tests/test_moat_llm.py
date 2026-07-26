@@ -73,12 +73,11 @@ def test_with_api_key_calls_openrouter_not_fallback(db_path, monkeypatch):
 
 def test_uses_model_from_settings_yaml_not_a_hardcoded_constant(db_path, monkeypatch, tmp_path):
     """Regression test: the model used to be a hardcoded module constant.
-    It must now come from buffett.config.get_llm_model() (backed by
-    config/settings.yaml, editable via the dashboard's Settings tab) so a
-    user can change it without a code change."""
+    It must now come from buffett.config.get_task_model_chain("reasoning")
+    (backed by config/settings.yaml, editable via the dashboard's Settings
+    tab) so a user can change it without a code change."""
     monkeypatch.setenv("OPENROUTER_API_KEY", "test-key-123")
-    config_path = tmp_path / "settings.yaml"
-    monkeypatch.setattr("buffett.moat_llm.get_llm_model", lambda: "openai/gpt-4o-mini")
+    monkeypatch.setattr("buffett.moat_llm.get_task_model_chain", lambda task: ["openai/gpt-4o-mini"])
 
     judge = MoatLLMJudge(db_path=db_path)
     content = '{"pillar1": "STRONG", "pillar2": "STRONG", "moat_strength": "STRONG", ' \
@@ -88,6 +87,62 @@ def test_uses_model_from_settings_yaml_not_a_hardcoded_constant(db_path, monkeyp
 
     sent_model = mock_post.call_args.kwargs["json"]["model"]
     assert sent_model == "openai/gpt-4o-mini"
+
+
+def test_falls_back_to_second_model_when_primary_fails(db_path, monkeypatch):
+    """The primary model in the chain errors out (e.g. rate limited,
+    deprecated); the next model in the chain should be tried before
+    giving up to the heuristic fallback."""
+    monkeypatch.setenv("OPENROUTER_API_KEY", "test-key-123")
+    monkeypatch.setattr(
+        "buffett.moat_llm.get_task_model_chain",
+        lambda task: ["broken-model", "openai/gpt-4o-mini"],
+    )
+    judge = MoatLLMJudge(db_path=db_path)
+
+    content = '{"pillar1": "STRONG", "pillar2": "STRONG", "moat_strength": "STRONG", ' \
+              '"moat_rationale": "test", "mgmt_quality": "GOOD", "mgmt_rationale": "test"}'
+    ok_response = _openrouter_response(content)
+
+    with patch("buffett.moat_llm.httpx.post", side_effect=[Exception("model unavailable"), ok_response]) as mock_post:
+        result = judge.judge_pillars("TEST.KL", SAMPLE_FUNDAMENTALS)
+
+    assert mock_post.call_count == 2
+    first_call_model = mock_post.call_args_list[0].kwargs["json"]["model"]
+    second_call_model = mock_post.call_args_list[1].kwargs["json"]["model"]
+    assert first_call_model == "broken-model"
+    assert second_call_model == "openai/gpt-4o-mini"
+    assert result["judgment_source"] == "llm"
+    assert result["model_used"] == "openai/gpt-4o-mini"
+    assert result["moat_strength"] == "STRONG"
+
+
+def test_falls_back_to_heuristic_when_entire_chain_fails(db_path, monkeypatch):
+    monkeypatch.setenv("OPENROUTER_API_KEY", "test-key-123")
+    monkeypatch.setattr(
+        "buffett.moat_llm.get_task_model_chain",
+        lambda task: ["broken-model-1", "broken-model-2"],
+    )
+    judge = MoatLLMJudge(db_path=db_path)
+
+    with patch("buffett.moat_llm.httpx.post", side_effect=Exception("model unavailable")) as mock_post:
+        result = judge.judge_pillars("TEST.KL", SAMPLE_FUNDAMENTALS)
+
+    assert mock_post.call_count == 2  # tried every model in the chain
+    assert result["judgment_source"] == "heuristic_fallback"
+
+
+def test_successful_judgment_records_which_model_was_used(db_path, monkeypatch):
+    monkeypatch.setenv("OPENROUTER_API_KEY", "test-key-123")
+    monkeypatch.setattr("buffett.moat_llm.get_task_model_chain", lambda task: ["anthropic/claude-3-haiku"])
+    judge = MoatLLMJudge(db_path=db_path)
+
+    content = '{"pillar1": "STRONG", "pillar2": "STRONG", "moat_strength": "STRONG", ' \
+              '"moat_rationale": "test", "mgmt_quality": "GOOD", "mgmt_rationale": "test"}'
+    with patch("buffett.moat_llm.httpx.post", return_value=_openrouter_response(content)):
+        result = judge.judge_pillars("TEST.KL", SAMPLE_FUNDAMENTALS)
+
+    assert result["model_used"] == "anthropic/claude-3-haiku"
 
 
 def test_openrouter_call_falls_back_on_http_error(db_path, monkeypatch):

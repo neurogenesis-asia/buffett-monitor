@@ -14,7 +14,7 @@ import httpx
 from dotenv import load_dotenv
 
 from buffett.scorer import decide_signal
-from buffett.config import get_llm_model
+from buffett.config import get_task_model_chain
 
 # Nothing in the production pipeline (scanner.py, scheduler.py) previously
 # loaded .env -- only a standalone test script did. That meant
@@ -128,45 +128,60 @@ class MoatLLMJudge:
         # Format the prompt with the fundamentals
         prompt = self._format_prompt(prompt_template, fundamentals)
 
-        # Call the LLM via OpenRouter (OpenAI-compatible chat completions API)
-        try:
-            response = httpx.post(
-                OPENROUTER_URL,
-                headers={
-                    "Authorization": f"Bearer {self.api_key}",
-                    "Content-Type": "application/json",
-                },
-                json={
-                    "model": get_llm_model(),
-                    "temperature": 0.0,
-                    "max_tokens": 1000,
-                    "messages": [
-                        {
-                            "role": "system",
-                            "content": "You are a financial analyst specializing in Warren Buffett's "
-                                       "investment principles. Your task is to judge a company's moat "
-                                       "and management quality based on financial data.",
-                        },
-                        {"role": "user", "content": prompt},
-                    ],
-                },
-                timeout=30.0,
-            )
-            response.raise_for_status()
-            response_text = response.json()["choices"][0]["message"]["content"]
-            judgment = self._parse_judgment(response_text)
-            if judgment is None:
-                # Response wasn't parseable JSON -- fall back without
-                # caching, same as the no-API-key case, so a transient bad
-                # response doesn't get stuck serving a fallback for 90 days.
-                return self._fallback_judgment(fundamentals)
+        # Moat/management judgment is a "reasoning" task (it writes an
+        # analytical rationale, not just structured extraction) -- try the
+        # configured primary model, then each configured fallback in
+        # order, so one bad/rate-limited/deprecated model doesn't take the
+        # whole pipeline down onto the heuristic fallback.
+        model_chain = get_task_model_chain("reasoning")
+        last_error = None
+        for model in model_chain:
+            try:
+                response = httpx.post(
+                    OPENROUTER_URL,
+                    headers={
+                        "Authorization": f"Bearer {self.api_key}",
+                        "Content-Type": "application/json",
+                    },
+                    json={
+                        "model": model,
+                        "temperature": 0.0,
+                        "max_tokens": 1000,
+                        "messages": [
+                            {
+                                "role": "system",
+                                "content": "You are a financial analyst specializing in Warren Buffett's "
+                                           "investment principles. Your task is to judge a company's moat "
+                                           "and management quality based on financial data.",
+                            },
+                            {"role": "user", "content": prompt},
+                        ],
+                    },
+                    timeout=30.0,
+                )
+                response.raise_for_status()
+                response_text = response.json()["choices"][0]["message"]["content"]
+                judgment = self._parse_judgment(response_text)
+                if judgment is None:
+                    # Response wasn't parseable JSON -- try the next model
+                    # in the chain rather than giving up immediately.
+                    last_error = f"{model}: unparseable response"
+                    continue
 
-            judgment["judgment_source"] = "llm"
-            self._cache_judgment(ticker, judgment)
-            return judgment
-        except Exception as e:
-            print(f"Error calling LLM for {ticker}: {e}")
-            return self._fallback_judgment(fundamentals)
+                judgment["judgment_source"] = "llm"
+                judgment["model_used"] = model
+                self._cache_judgment(ticker, judgment)
+                return judgment
+            except Exception as e:
+                last_error = f"{model}: {e}"
+                print(f"Error calling LLM ({model}) for {ticker}: {e}")
+                continue
+
+        # Every model in the chain failed (or returned something
+        # unparseable) -- degrade to the heuristic rather than caching
+        # nothing and retrying the whole chain on the next call.
+        print(f"All models in reasoning chain failed for {ticker} (last: {last_error})")
+        return self._fallback_judgment(fundamentals)
     
     def _format_prompt(self, template: str, fundamentals: Dict) -> str:
         """Format the prompt with the given fundamentals."""

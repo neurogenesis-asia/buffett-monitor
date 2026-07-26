@@ -1,6 +1,14 @@
 llm:
-  model: openai/gpt-4o-mini
   pillar_cache_days: 90
+  tasks:
+    reasoning:
+      primary: inclusionai/ling-2.6-flash
+      fallbacks:
+        - openai/gpt-4o-mini
+        - anthropic/claude-3-haiku
+    extraction:
+      primary: openai/gpt-4o-mini
+      fallbacks: []
 thresholds:
   pe_max: 15
   pb_max: 1.5

@@ -19,6 +19,7 @@ logs/
 
 # Cache
 data/price_cache/
+data/openrouter_models_cache.json
 .mlflow/
 
 # IDE

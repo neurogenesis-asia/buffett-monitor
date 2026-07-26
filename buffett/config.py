@@ -6,18 +6,40 @@ codebase ever read it -- buffett/moat_llm.py hardcoded its own model
 constant instead. This module is the single place that reads/writes
 settings.yaml so the dashboard's Settings tab and any LLM-calling module
 share one source of truth, and a change made in the UI takes effect on
-the next call without restarting anything (the model is read fresh each
-time, not cached at import time).
+the next call without restarting anything (models are read fresh each
+call, not cached at import time).
+
+Models are assigned per TASK (e.g. "reasoning" for moat/management
+judgment -- writing a rationale, real analysis; "extraction" for
+simple/cheap structured-output work), each with a primary model and up
+to MAX_FALLBACKS fallback models tried in order if the primary fails.
+This lets a cheap model handle mechanical tasks while a stronger one is
+reserved for tasks that need actual judgment, and means a single bad/
+rate-limited model doesn't take the whole pipeline down.
 """
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Any, Dict
+from typing import Any, Dict, List, Optional
 
 import yaml
 
 DEFAULT_CONFIG_PATH = "config/settings.yaml"
-DEFAULT_LLM_MODEL = "anthropic/claude-3-haiku"
+MAX_FALLBACKS = 5
+
+# Task names this codebase currently assigns models to. "reasoning" is the
+# only one with a real call site today (buffett/moat_llm.py's moat/
+# management judgment -- it writes an analytical rationale, not just
+# structured extraction). "extraction" has no LLM call site yet (data
+# extraction in this codebase is done via yfinance/regex, not an LLM) --
+# the slot exists so a future simple/structured-output task can use a
+# cheaper model without needing a config-schema change.
+TASK_NAMES = ["reasoning", "extraction"]
+
+DEFAULT_TASK_MODELS = {
+    "reasoning": {"primary": "anthropic/claude-3-haiku", "fallbacks": []},
+    "extraction": {"primary": "openai/gpt-4o-mini", "fallbacks": []},
+}
 
 
 def _load(config_path: str) -> Dict[str, Any]:
@@ -36,20 +58,62 @@ def _save(config: Dict[str, Any], config_path: str) -> None:
         yaml.safe_dump(config, f, sort_keys=False, default_flow_style=False)
 
 
-def get_llm_model(config_path: str = DEFAULT_CONFIG_PATH) -> str:
-    """Return the configured LLM model slug (e.g. 'anthropic/claude-3-haiku'
-    for OpenRouter), falling back to DEFAULT_LLM_MODEL if settings.yaml
-    is missing, empty, or doesn't set llm.model."""
-    config = _load(config_path)
-    model = config.get("llm", {}).get("model")
-    return model or DEFAULT_LLM_MODEL
+def _validate_task(task: str) -> None:
+    if task not in TASK_NAMES:
+        raise ValueError(f"Unknown task '{task}'; must be one of {TASK_NAMES}")
 
 
-def set_llm_model(model: str, config_path: str = DEFAULT_CONFIG_PATH) -> None:
-    """Persist a new LLM model slug to settings.yaml, preserving every
-    other existing key."""
-    if not model or not model.strip():
-        raise ValueError("model must be a non-empty string")
+def get_task_model_chain(task: str, config_path: str = DEFAULT_CONFIG_PATH) -> List[str]:
+    """
+    Return the ordered list of models to try for `task`: [primary, *fallbacks].
+
+    Falls back to DEFAULT_TASK_MODELS[task] for anything not configured in
+    settings.yaml (missing file, missing task, missing primary). Entries
+    are deduplicated (keeping first occurrence) so a model accidentally
+    listed as both primary and a fallback isn't tried twice.
+    """
+    _validate_task(task)
     config = _load(config_path)
-    config.setdefault("llm", {})["model"] = model.strip()
+    task_config = config.get("llm", {}).get("tasks", {}).get(task, {})
+
+    primary = task_config.get("primary") or DEFAULT_TASK_MODELS[task]["primary"]
+    fallbacks = task_config.get("fallbacks") or []
+
+    chain = [primary] + list(fallbacks)
+    seen = set()
+    deduped = []
+    for model in chain:
+        if model and model not in seen:
+            seen.add(model)
+            deduped.append(model)
+    return deduped
+
+
+def set_task_models(
+    task: str,
+    primary: str,
+    fallbacks: Optional[List[str]] = None,
+    config_path: str = DEFAULT_CONFIG_PATH,
+) -> None:
+    """
+    Persist the primary + fallback model chain for `task`, preserving
+    every other existing settings.yaml key.
+    """
+    _validate_task(task)
+    if not primary or not primary.strip():
+        raise ValueError("primary must be a non-empty string")
+
+    fallbacks = [f.strip() for f in (fallbacks or []) if f and f.strip()]
+    if len(fallbacks) > MAX_FALLBACKS:
+        raise ValueError(f"at most {MAX_FALLBACKS} fallback models are supported, got {len(fallbacks)}")
+
+    config = _load(config_path)
+    llm_config = config.setdefault("llm", {})
+    tasks_config = llm_config.setdefault("tasks", {})
+    tasks_config[task] = {"primary": primary.strip(), "fallbacks": fallbacks}
     _save(config, config_path)
+
+
+def get_pillar_cache_days(config_path: str = DEFAULT_CONFIG_PATH) -> int:
+    config = _load(config_path)
+    return config.get("llm", {}).get("pillar_cache_days", 90)

@@ -1204,15 +1204,30 @@ def signals_tab():
     universe_df = load_universe()
     fundamentals_df = load_latest_fundamentals()
     scores_df = load_latest_scores()
-    
+
     if fundamentals_df.empty:
         st.warning("No fundamentals data available. Please run a scan first.")
         return
-    
+
+    # Universe coverage: tickers with no buffett_scores row at all (never
+    # scanned) were previously dropped silently from the table below --
+    # min_score defaults to 0, and `NaN >= 0` is False in pandas, so an
+    # unscanned ticker just vanished from the filtered view with no
+    # indication ~6% of the universe was simply absent.
+    total_universe = len(universe_df)
+    scanned_tickers = scores_df['ticker'].nunique() if scores_df is not None and not scores_df.empty else 0
+    unscanned_count = total_universe - scanned_tickers
+    if unscanned_count > 0:
+        st.info(
+            f"📊 {scanned_tickers:,} of {total_universe:,} universe tickers have been "
+            f"scanned at least once ({unscanned_count:,} not yet scanned -- excluded "
+            f"from the table below since they have no score to show)."
+        )
+
     # Merge data
     merged_df = universe_df.merge(fundamentals_df, on='ticker', how='left', suffixes=('', '_fund'))
     merged_df = merged_df.merge(scores_df, on='ticker', how='left', suffixes=('', '_score'))
-    
+
     # Apply filters
     if signal_filter != "All":
         merged_df = merged_df[merged_df['signal'] == signal_filter]

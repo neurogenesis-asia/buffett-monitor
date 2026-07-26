@@ -63,6 +63,12 @@ PATH=/home/shalu/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/s
 0 10 * * 1 cd /home/shalu/buffett-monitor && venv/bin/python scripts/weekly_ml_pipeline.py >> logs/weekly_ml_pipeline.log 2>&1
 
 # ============================================================================
+# DAILY ECONOMIC HEALTH DATA
+# ============================================================================
+# Daily 06:00 MY — refresh yield curve, oil prices, recession periods (FRED)
+0 6 * * *     /home/shalu/buffett-monitor/scripts/run_pipeline.sh fred_refresh >> /home/shalu/buffett-monitor/logs/cron/cron.log 2>&1
+
+# ============================================================================
 # DAILY HEALTH
 # ============================================================================
 # Daily 23:30 MY — health check (writes problems JSON to logs/cron/health_check.log)
@@ -70,3 +76,6 @@ PATH=/home/shalu/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/s
 
 # Daily 23:45 MY — same context posted to your Telegram chat
 45 23 * * *   /home/shalu/buffett-monitor/scripts/run_pipeline.sh health_notify >> /home/shalu/buffett-monitor/logs/cron/cron.log 2>&1
+
+# Daily 05:00 MY — refresh fundamentals for AI watchlist / AI ecosystem layers
+0 5 * * *     /home/shalu/buffett-monitor/scripts/run_pipeline.sh update_daily_fundamentals >> /home/shalu/buffett-monitor/logs/cron/cron.log 2>&1

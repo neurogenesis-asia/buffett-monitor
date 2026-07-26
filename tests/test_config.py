@@ -128,6 +128,7 @@ def test_task_names_includes_reasoning_and_universe_scan():
     # "extraction" was removed: it had no real call site anywhere in the
     # codebase and only showed up as a confusing, do-nothing control in
     # the Settings tab. Add a task name back only once a real consumer
-    # exists for it. "reasoning" (curated watchlists) and "universe_scan"
-    # (full universe, cost-optimized) both have real call sites.
-    assert TASK_NAMES == ["reasoning", "universe_scan"]
+    # exists for it. "reasoning" (curated watchlists), "universe_scan"
+    # (full universe, cost-optimized), and "macro_analysis" (geopolitical
+    # risk judgment for the Economic Health view) all have real call sites.
+    assert TASK_NAMES == ["reasoning", "universe_scan", "macro_analysis"]

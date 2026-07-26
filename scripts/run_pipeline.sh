@@ -22,6 +22,7 @@
 #     scan_slice_row          -- Sun 07:30 MY -- refresh RoW universe
 #     backtest                -- Sun 14:30 MY -- vectorized backtest on ml_signal_outcomes
 #     harvest                 -- Sun 14:15 MY -- refill forward returns from yfinance (5 min on Pi)
+#     fred_refresh            -- Daily 06:00 MY -- refresh yield curve/oil/recession data (Economic Health tab)
 #
 # Exit codes:
 #   0  = success
@@ -216,6 +217,14 @@ run_backtest() {
   _runpy_quiet "$ROOT/scripts/run_backtest.py" --horizon 20
 }
 
+run_fred_refresh() {
+  # Refresh yield curve / oil price / recession-period data for the
+  # Economic Health tab. Previously this data source (bond_yield_fetcher.py,
+  # investing.com scraping) was never scheduled at all -- the DB sat 2+
+  # months stale with no automated job populating it.
+  _runpy_quiet "$ROOT/buffett/fred_fetcher.py"
+}
+
 # Backwards-compat: weekly_scan is currently NOT scheduled.
 run_weekly_scan() {
   _runpy_quiet "$ROOT/scripts/run_scan_now.py"
@@ -244,6 +253,7 @@ case "$JOB" in
   scan_slice_row)             run_scan_slice_row ; rc=$? ;;
   harvest)                    run_harvest ; rc=$? ;;
   backtest)                   run_backtest ; rc=$? ;;
+  fred_refresh)               run_fred_refresh ; rc=$? ;;
   *) fail "unknown job: $JOB" ;;
 esac
 

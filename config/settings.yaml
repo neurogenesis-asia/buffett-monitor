@@ -17,6 +17,11 @@ llm:
       - google/gemma-4-31b-it:free
       - inclusionai/ling-3.0-flash:free
       - nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free
+    macro_analysis:
+      primary: inclusionai/ling-2.6-flash
+      fallbacks:
+      - openai/gpt-oss-20b
+      - openai/gpt-4.1-nano
 thresholds:
   pe_max: 15
   pb_max: 1.5

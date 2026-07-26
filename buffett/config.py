@@ -37,11 +37,16 @@ MAX_FALLBACKS = 5
 #   universe (thousands of tickers, feeding the Signals tab) -- the same
 #   call, at far higher volume, where cost matters most. Defaults to a
 #   free OpenRouter model; pick your own via the Settings tab.
-TASK_NAMES = ["reasoning", "universe_scan"]
+# - "macro_analysis": periodic geopolitical/oil-market risk summary for
+#   the Economic Health view (buffett/geopolitical_llm.py) -- one call
+#   per cache refresh (7-day TTL), so call volume is negligible and a
+#   higher-quality model is worth it.
+TASK_NAMES = ["reasoning", "universe_scan", "macro_analysis"]
 
 DEFAULT_TASK_MODELS = {
     "reasoning": {"primary": "anthropic/claude-3-haiku", "fallbacks": []},
     "universe_scan": {"primary": "openai/gpt-oss-20b:free", "fallbacks": ["google/gemma-4-31b-it:free"]},
+    "macro_analysis": {"primary": "anthropic/claude-3-haiku", "fallbacks": ["openai/gpt-oss-20b:free"]},
 }
 
 

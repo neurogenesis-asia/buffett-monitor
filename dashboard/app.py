@@ -9,7 +9,8 @@ import pandas as pd
 import plotly.express as px
 import sqlite3
 import re
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
+from typing import Optional
 from pathlib import Path
 import sys
 from streamlit_option_menu import option_menu
@@ -92,6 +93,75 @@ st.markdown("""
 
 # Database path
 DB_PATH = "data/buffett.db"
+
+# Hover-tooltip text for table column headers, shared across every
+# st.dataframe() table in this file (Signals, AI Watchlist, ETF
+# Watchlist, AI Ecosystem, Change Log, Bond Yield) so a user can point at
+# any column header to see what it means instead of guessing or hunting
+# for a legend. Keyed by the exact display label used in that table --
+# some concepts (e.g. P/E) appear under two spellings across tables.
+COLUMN_HELP = {
+    "Ticker": "Stock/ETF ticker symbol as tracked in the universe.",
+    "Exchange": "The exchange/market this ticker trades on.",
+    "Company": "Company or fund name.",
+    "ETF Name": "Full ETF name.",
+    "Sector": "Sector classification from the data provider.",
+    "Region": "Geographic exposure or headquarters region.",
+    "Layer": "AI Ecosystem layer classification from the curated reference (e.g. Energy, Chips & Computers, AI Infrastructure, Model Layer, Application Layer).",
+    "SubLayer": "Sub-category within the AI Ecosystem layer.",
+    "Segment / Role": "The company's specific role or segment within its layer.",
+    "AI Exposure / Notes": "Curated notes on how exposed this company is to AI as a business driver.",
+    "AllTickers": "All known ticker symbols associated with this company (e.g. multiple share classes or listings).",
+    "Price": "Latest available market price.",
+    "Mkt Cap": "Total market capitalization (share price x shares outstanding).",
+    "PE": "Price-to-Earnings ratio: price divided by trailing 12-month earnings per share. Lower generally means cheaper relative to earnings.",
+    "P/E": "Price-to-Earnings ratio: price divided by trailing 12-month earnings per share. Lower generally means cheaper relative to earnings.",
+    "Fwd P/E": "Forward Price-to-Earnings ratio, using analyst-estimated next-12-month earnings instead of trailing earnings.",
+    "PB": "Price-to-Book ratio: price divided by book value per share. Lower generally means cheaper relative to net assets.",
+    "P/B": "Price-to-Book ratio: price divided by book value per share. Lower generally means cheaper relative to net assets.",
+    "Div Yield": "Annual dividend as a percentage of the current share price.",
+    "ROE": "Return on Equity: net income as a percentage of shareholder equity, measuring how efficiently the company turns equity into profit.",
+    "Rev Growth": "Year-over-year revenue growth rate.",
+    "Gross Margin": "Gross profit as a percentage of revenue -- a proxy for pricing power and cost efficiency.",
+    "D/E": "Debt-to-Equity ratio: total debt divided by shareholder equity. Lower means less balance-sheet leverage.",
+    "Beta": "Volatility relative to the overall market (1.0 = moves with the market; above 1 = more volatile).",
+    "52w Δ": "Price change over the trailing 12 months.",
+    "QS": "Quantitative Score (0-100): a business-quality score based on leverage, liquidity and ROE. Higher is better; it does not by itself account for valuation -- see Signal and MOS for that.",
+    "Signal": "Buy/Hold/Sell/Avoid recommendation, combining the quantitative quality score, LLM-judged moat strength, and margin of safety vs. intrinsic value.",
+    "Moat": "LLM-judged competitive moat strength: STRONG (durable advantage), WEAK (limited advantage), NONE (no advantage found), UNKNOWN (insufficient data).",
+    "Moat Source": "Whether the moat rating came from a real LLM qualitative judgment (\U0001f916 LLM) or a ratio-derived fallback heuristic (\U0001f4d0 Heuristic) used when no LLM call was available.",
+    "Graham": "Graham Number: a defensive fair-value ceiling = sqrt(22.5 x EPS x Book Value per Share). A price at or below this is considered conservatively priced.",
+    "IV": "Intrinsic Value per share, estimated via a discounted cash flow (DCF) model.",
+    "MOS": "Margin of Safety: how far below intrinsic value the current price sits, as a percentage. Higher means more of a safety cushion before buying.",
+    "Why": "Plain-language explanation of why this signal was generated.",
+    "Expense Ratio": "Annual ETF operating expense as a percentage of assets under management. Lower is better for a long-term holder.",
+    "AUM": "Assets Under Management: total fund size. Larger, more liquid funds are generally at lower risk of closure.",
+    "Time": "When this change was recorded.",
+    "Field": "Which data field changed.",
+    "Old Value": "The value before this change.",
+    "New Value": "The value after this change.",
+    "Change Type": "Category of change detected (e.g. signal flip, price update, moat re-rating).",
+    "Severity": "How significant this change is: INFO (routine), WARN (notable), ALERT (significant -- may need attention).",
+    "Country": "Country whose government bond yield this row reports.",
+    "Maturity": "Bond maturity / tenor (e.g. 10Y).",
+    "Yield (%)": "Current yield to maturity on this government bond.",
+    "Source": "Where this data point was sourced from.",
+    "Date": "Date this data point was recorded or fetched.",
+    "52W Signal": "Most recent breakout detected by the Week High/Low Radar (2W/4W/12W/26W/52W), shown only if it happened in the last 90 days. \U0001f53b LOW = price touched a multi-week low (potential pullback entry); \U0001f53a HIGH = price touched a multi-week high. See the Week High/Low tab for full history and charts.",
+}
+
+
+def _tooltip_column_config(columns):
+    """Build a st.dataframe column_config dict with hover-tooltip help
+    text for every column that has a known description in COLUMN_HELP.
+    Columns without an entry (e.g. dynamic/markdown-driven ones) are
+    simply left with no tooltip rather than raising."""
+    return {
+        col: st.column_config.Column(help=COLUMN_HELP[col])
+        for col in columns
+        if col in COLUMN_HELP
+    }
+
 
 def display_watchlist(ai_stocks, fundamentals_df, signal_filter="All", sector_filter="All", min_score=0):
     """Display the AI watchlist table with full signal data matching the Signals tab."""
@@ -304,6 +374,7 @@ def display_watchlist(ai_stocks, fundamentals_df, signal_filter="All", sector_fi
             width="stretch",
             hide_index=True,
             height=600,
+            column_config=_tooltip_column_config(watchlist_df.columns),
         )
         
         # Summary stats (reflects filtered subset)
@@ -529,6 +600,43 @@ def load_latest_scores():
     finally:
         conn.close()
 
+def load_latest_week_signals(days=90):
+    """Load each ticker's most recent Week High/Low Radar breakout
+    (buffett/scanner.py's week_high_lows table), for surfacing a compact
+    indicator on other tabs (e.g. Signals) without duplicating the full
+    detail already shown in the dedicated Week High/Low tab. Signals older
+    than `days` are dropped -- a breakout from months ago isn't a live
+    pullback/rally worth flagging next to today's BUY/SELL signal."""
+    conn = get_db_connection()
+    try:
+        df = pd.read_sql_query(
+            "SELECT ticker, signal_type, detection_date FROM week_high_lows",
+            conn,
+        )
+    finally:
+        conn.close()
+
+    if df.empty:
+        return df
+
+    df['detection_date'] = pd.to_datetime(df['detection_date'], errors='coerce')
+    df = df.dropna(subset=['detection_date'])
+    cutoff = pd.Timestamp.now() - pd.Timedelta(days=days)
+    df = df[df['detection_date'] >= cutoff]
+    if df.empty:
+        return df
+
+    df['direction'] = df['signal_type'].str.startswith('HIGH').map({True: 'HIGH', False: 'LOW'})
+    df['period'] = df['signal_type'].str.extract(r'(\d+W)$')[0]
+    # Longer lookback periods (52W) are more significant than short ones
+    # (2W); when a ticker has multiple breakouts on its most recent date,
+    # prefer the most significant one over an arbitrary row.
+    period_rank = {'2W': 0, '4W': 1, '12W': 2, '26W': 3, '52W': 4}
+    df['_rank'] = df['period'].map(period_rank).fillna(-1)
+    df = df.sort_values(['ticker', 'detection_date', '_rank'])
+    latest = df.groupby('ticker', as_index=False).tail(1)
+    return latest[['ticker', 'signal_type', 'detection_date', 'direction', 'period']]
+
 def load_holdings():
     """Load user holdings."""
     conn = get_db_connection()
@@ -750,6 +858,7 @@ def display_etf_watchlist(etf_stocks, fundamentals_df):
             watchlist_df,
             width="stretch",
             hide_index=True,
+            column_config=_tooltip_column_config(watchlist_df.columns),
         )
 
         # Summary stats
@@ -1204,6 +1313,7 @@ def signals_tab():
     universe_df = load_universe()
     fundamentals_df = load_latest_fundamentals()
     scores_df = load_latest_scores()
+    week_signals_df = load_latest_week_signals()
 
     if fundamentals_df.empty:
         st.warning("No fundamentals data available. Please run a scan first.")
@@ -1227,6 +1337,14 @@ def signals_tab():
     # Merge data
     merged_df = universe_df.merge(fundamentals_df, on='ticker', how='left', suffixes=('', '_fund'))
     merged_df = merged_df.merge(scores_df, on='ticker', how='left', suffixes=('', '_score'))
+    if not week_signals_df.empty:
+        merged_df = merged_df.merge(
+            week_signals_df[['ticker', 'direction', 'period']],
+            on='ticker', how='left',
+        )
+    else:
+        merged_df['direction'] = None
+        merged_df['period'] = None
 
     # Apply filters
     if signal_filter != "All":
@@ -1301,6 +1419,11 @@ def signals_tab():
                    if row.get('intrinsic_value') and row.get('shares_outstanding')
                    else (f"{currency_symbol} {row.get('intrinsic_value', 0):.2f}" if row.get('intrinsic_value') else '-')),
             'MOS': f"{row.get('margin_of_safety', 0)*100:.1f}%" if row.get('margin_of_safety') else '-',
+            '52W Signal': (
+                f"\U0001f53b LOW · {row['period']}" if row.get('direction') == 'LOW' and pd.notna(row.get('period'))
+                else f"\U0001f53a HIGH · {row['period']}" if row.get('direction') == 'HIGH' and pd.notna(row.get('period'))
+                else '-'
+            ),
             # signal_reason is computed and stored by every scan
             # (buffett/scanner.py's _generate_signal_reason) but was never
             # surfaced here -- a user saw a bare BUY/SELL with no
@@ -1363,19 +1486,28 @@ def signals_tab():
                 return "color: #ff4444; font-weight: bold"
             return ""
         
+        def _color_week_signal(val):
+            if isinstance(val, str) and val.startswith('\U0001f53b'):  # LOW
+                return "color: #00cc66; font-weight: bold"
+            elif isinstance(val, str) and val.startswith('\U0001f53a'):  # HIGH
+                return "color: #ffaa00; font-weight: bold"
+            return ""
+
         styled_df = (
             signals_df.style
             .map(_color_signal, subset=['Signal'])
             .map(_color_moat,   subset=['Moat'])
             .map(_color_qs,     subset=['QS'])
             .map(_color_mos,    subset=['MOS'])
+            .map(_color_week_signal, subset=['52W Signal'])
         )
         
         st.dataframe(
             styled_df,
             width='stretch',
             hide_index=True,
-            height=600
+            height=600,
+            column_config=_tooltip_column_config(signals_df.columns),
         )
         
         # Summary stats
@@ -1478,7 +1610,8 @@ def change_log_tab():
             styled_df,
             width='stretch',
             hide_index=True,
-            height=500
+            height=500,
+            column_config=_tooltip_column_config(changes_display_df.columns),
         )
         
         # Summary
@@ -1714,24 +1847,197 @@ def etf_watchlist_tab():
 
 
 
+_ECONOMIC_HEALTH_COLORS = {
+    "EXPANSION": "#00cc66",
+    "LATE-CYCLE CAUTION": "#ffaa00",
+    "RECESSION RISK ELEVATED": "#ff4444",
+}
+_RISK_LEVEL_COLORS = {"LOW": "#00cc66", "ELEVATED": "#ffaa00", "HIGH": "#ff4444", "SEVERE": "#990000", "UNKNOWN": "#888888"}
+
+
+def load_yield_spread_history(years: int = 10):
+    """Load the 10Y-2Y yield spread time series for charting."""
+    conn = get_db_connection()
+    try:
+        cutoff = (datetime.now() - timedelta(days=365 * years)).date().isoformat()
+        return pd.read_sql_query(
+            "SELECT date, spread_pct FROM buffett_yield_spread WHERE date >= ? ORDER BY date",
+            conn, params=(cutoff,),
+        )
+    finally:
+        conn.close()
+
+
+def load_oil_price_history(years: int = 5):
+    """Load WTI/Brent oil price history for charting."""
+    conn = get_db_connection()
+    try:
+        cutoff = (datetime.now() - timedelta(days=365 * years)).date().isoformat()
+        return pd.read_sql_query(
+            "SELECT date, benchmark, price_usd FROM buffett_oil_prices WHERE date >= ? ORDER BY date",
+            conn, params=(cutoff,),
+        )
+    finally:
+        conn.close()
+
+
+def load_recession_periods():
+    conn = get_db_connection()
+    try:
+        return pd.read_sql_query(
+            "SELECT start_date, end_date FROM buffett_recession_periods ORDER BY start_date", conn,
+        )
+    finally:
+        conn.close()
+
+
+def _shade_recessions(fig, recessions_df, chart_min_date: str):
+    """Overlay grey bands for each NBER recession that overlaps the
+    chart's visible date range, so a viewer can see at a glance how
+    today's reading compares to conditions right before past downturns."""
+    for _, rec in recessions_df.iterrows():
+        end = rec['end_date'] or datetime.now().date().isoformat()
+        if end < chart_min_date:
+            continue
+        fig.add_vrect(
+            x0=rec['start_date'], x1=end,
+            fillcolor="gray", opacity=0.2, line_width=0,
+        )
+    return fig
+
+
 def bond_yield_tab():
-    """Display global bond yields for monitoring investment opportunities."""
-    st.header("📊 Global Bond Yield")
-    st.markdown("Monitor international government bond yields for investment opportunities and economic insights.")
-    
+    """Economic Health: yield curve, oil prices, and geopolitical risk
+    combined into one read on the economic backdrop for markets -- not
+    just a bond yield table, but a monitor for the overall economic
+    conditions that drive stock market performance."""
+    st.header("🌍 Economic Health")
+    st.markdown(
+        "Yield curve position, oil price trend, and geopolitical risk combined into one read on "
+        "current economic conditions -- and how today compares to the run-up to past recessions."
+    )
+
+    from buffett.macro_analyzer import compute_economic_health, get_pre_recession_spreads, get_oil_trend
+
+    try:
+        health = compute_economic_health()
+    except Exception as e:
+        st.error(f"Error computing economic health: {e}")
+        health = None
+
+    if health:
+        overall = health["overall"]
+        color = _ECONOMIC_HEALTH_COLORS.get(overall, "#888888")
+        st.markdown(
+            f"<div style='padding: 16px; border-radius: 8px; background-color: {color}22; "
+            f"border: 2px solid {color};'>"
+            f"<span style='font-size: 1.4em; font-weight: bold; color: {color};'>{overall}</span>"
+            f"</div>",
+            unsafe_allow_html=True,
+        )
+        st.caption(health["why"])
+
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            yc = health["yield_curve"]
+            st.metric("Yield Curve", yc["status"], help=yc["note"])
+        with col2:
+            oil = health["oil"]
+            st.metric("Oil Price Trend", oil["status"], help=oil["note"])
+        with col3:
+            geo = health["geopolitical"]
+            risk_level = geo.get("risk_level", "UNKNOWN")
+            st.metric("Geopolitical Risk", risk_level, help=geo.get("rationale", ""))
+
+        with st.expander("Geopolitical risk detail"):
+            st.write(geo.get("rationale", "No assessment available."))
+            if geo.get("key_factors"):
+                st.markdown("**Key factors:** " + ", ".join(geo["key_factors"]))
+            assessed_at = geo.get("assessed_at")
+            if assessed_at:
+                st.caption(f"Assessed {assessed_at} using {geo.get('model_used', 'N/A')} "
+                           f"(cached for 7 days -- refresh below to force a new read).")
+            if st.button("🔄 Refresh geopolitical risk assessment now"):
+                from buffett.geopolitical_llm import get_geopolitical_risk
+                get_geopolitical_risk(force_refresh=True)
+                st.rerun()
+
+        st.divider()
+
+        # --- Yield curve chart with recession shading ---
+        st.subheader("📈 Yield Curve (10Y-2Y Spread)")
+        years_back = st.slider("Years of history", 1, 45, 10, key="yield_curve_years")
+        spread_df = load_yield_spread_history(years=years_back)
+        recessions_df = load_recession_periods()
+        if not spread_df.empty:
+            fig = px.line(spread_df, x='date', y='spread_pct', title=None,
+                          labels={'date': 'Date', 'spread_pct': '10Y-2Y Spread (pp)'})
+            fig.add_hline(y=0, line_dash="dash", line_color="red",
+                          annotation_text="Inversion threshold")
+            _shade_recessions(fig, recessions_df, spread_df['date'].min())
+            st.plotly_chart(fig, width='stretch')
+            st.caption("Grey bands mark NBER-dated US recessions. A spread below zero (inverted "
+                       "curve) has historically preceded every recession shown here by 6-24 months.")
+        else:
+            st.info("No yield spread history available -- run buffett/fred_fetcher.py.")
+
+        with st.expander("How does today compare to the run-up to past recessions?"):
+            pre_recession = get_pre_recession_spreads()
+            if pre_recession:
+                pre_df = pd.DataFrame(pre_recession)
+                pre_df = pre_df.rename(columns={
+                    'recession_start': 'Recession Start', 'recession_end': 'Recession End',
+                    'reference_date': '6mo-Before Date', 'spread_pct': '6mo-Before Spread',
+                })
+                st.dataframe(pre_df, width='stretch', hide_index=True)
+                current = get_latest_spread_value()
+                if current is not None:
+                    st.caption(f"Current spread: **{current:.2f}pp** -- compare against the "
+                               f"'6mo-Before Spread' column above.")
+            else:
+                st.info("No recession-period data available yet.")
+
+        st.divider()
+
+        # --- Oil price chart ---
+        st.subheader("🛢️ Oil Prices (WTI / Brent)")
+        oil_years = st.slider("Years of history", 1, 20, 3, key="oil_years")
+        oil_df = load_oil_price_history(years=oil_years)
+        if not oil_df.empty:
+            fig_oil = px.line(oil_df, x='date', y='price_usd', color='benchmark',
+                              labels={'date': 'Date', 'price_usd': 'Price (USD/barrel)', 'benchmark': 'Benchmark'})
+            _shade_recessions(fig_oil, recessions_df, oil_df['date'].min())
+            st.plotly_chart(fig_oil, width='stretch')
+        else:
+            st.info("No oil price history available -- run buffett/fred_fetcher.py.")
+
+        st.divider()
+
     # Load bond yield data from database
+    st.subheader("Bond Yield Detail")
     try:
         bond_data = load_bond_yield_data()
     except Exception as e:
         st.error(f"Error loading bond yield data: {e}")
         bond_data = []
-    
+
     if not bond_data:
         st.warning("No bond yield data available. Please run the bond yield fetcher first.")
         return
-    
+
     # Display the bond yield table
     display_bond_yield(bond_data)
+
+
+def get_latest_spread_value() -> Optional[float]:
+    conn = get_db_connection()
+    try:
+        row = conn.execute(
+            "SELECT spread_pct FROM buffett_yield_spread ORDER BY date DESC LIMIT 1"
+        ).fetchone()
+        return row[0] if row else None
+    finally:
+        conn.close()
 
 def display_bond_yield(bond_data):
     """Display the bond yield table with current data."""
@@ -1760,6 +2066,7 @@ def display_bond_yield(bond_data):
             watchlist_df,
             width="stretch",
             hide_index=True,
+            column_config=_tooltip_column_config(watchlist_df.columns),
         )
         
         # Summary stats
@@ -2253,9 +2560,10 @@ def layers_tab():
 
     st.dataframe(
         styled,
-        use_container_width=True,
+        width="stretch",
         hide_index=True,
         height=600,
+        column_config=_tooltip_column_config(combined.columns),
     )
 
     # Download button
@@ -2406,7 +2714,7 @@ NAV_PAGES = [
     ("AI Ecosystem", "diagram-3", lambda: layers_tab()),
     ("Signals", "bullseye", lambda: signals_tab()),
     ("Week High/Low", "graph-up-arrow", lambda: week_high_low_radar()),
-    ("Bond Yield", "cash-coin", lambda: bond_yield_tab()),
+    ("Economic Health", "cash-coin", lambda: bond_yield_tab()),
     ("Intelligence", "cpu", lambda: intelligence_dashboard()),
     ("Sell Calculator", "calculator", lambda: sell_calculator_tab()),
     ("Change Log", "clock-history", lambda: change_log_tab()),

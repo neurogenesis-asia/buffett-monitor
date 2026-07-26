@@ -245,3 +245,47 @@ def test_fetch_yfinance_does_not_retry_for_tickers_without_a_known_alias():
 
     assert call_log == ["NOTAREALALIAS"]  # no retry attempted
     assert result is None
+
+
+# ---------------------------------------------------------------------------
+# fetch_yfinance -- business_summary extraction (feeds buffett/moat_llm.py's
+# qualitative moat prompt; without this the LLM only ever sees the same
+# financial ratios the heuristic fallback already uses)
+# ---------------------------------------------------------------------------
+
+def test_fetch_yfinance_extracts_business_summary():
+    info = {
+        "longName": "Nvidia Corp", "regularMarketPrice": 180.0,
+        "longBusinessSummary": "NVIDIA Corporation designs graphics processing units.",
+        "trailingEps": 1, "bookValue": 1, "marketCap": 1e12,
+    }
+    with patch("buffett.fetchers.yf.Ticker", return_value=_mock_yf_ticker(info)), \
+         patch("buffett.fetchers.load_ticker_mapping", return_value={}):
+        result = fetch_yfinance("NVDA")
+
+    assert result["business_summary"] == "NVIDIA Corporation designs graphics processing units."
+
+
+def test_fetch_yfinance_truncates_long_business_summary():
+    info = {
+        "longName": "Test Corp", "regularMarketPrice": 10.0,
+        "longBusinessSummary": "A" * 5000,
+        "trailingEps": 1, "bookValue": 1, "marketCap": 1e9,
+    }
+    with patch("buffett.fetchers.yf.Ticker", return_value=_mock_yf_ticker(info)), \
+         patch("buffett.fetchers.load_ticker_mapping", return_value={}):
+        result = fetch_yfinance("TEST")
+
+    assert len(result["business_summary"]) == 1000
+
+
+def test_fetch_yfinance_missing_business_summary_defaults_to_empty_string():
+    info = {
+        "longName": "Test Corp", "regularMarketPrice": 10.0,
+        "trailingEps": 1, "bookValue": 1, "marketCap": 1e9,
+    }
+    with patch("buffett.fetchers.yf.Ticker", return_value=_mock_yf_ticker(info)), \
+         patch("buffett.fetchers.load_ticker_mapping", return_value={}):
+        result = fetch_yfinance("TEST")
+
+    assert result["business_summary"] == ""

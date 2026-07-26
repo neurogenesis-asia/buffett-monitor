@@ -172,6 +172,14 @@ def fetch_yfinance(ticker: str) -> Optional[Dict]:
             "company_name": info.get("longName", ticker),
             "sector": info.get("sector", ""),
             "industry": info.get("industry", ""),
+            # Real qualitative material for moat_llm.py's moat/management
+            # judgment (buffett/prompts/moat.md) -- without this, the LLM
+            # only ever sees the same financial ratios the heuristic
+            # fallback already uses, and re-derives the same conclusion
+            # from them instead of making a genuine qualitative assessment
+            # (brand, network effects, switching costs, competitive
+            # position). Truncated to keep prompt size/cost reasonable.
+            "business_summary": (info.get("longBusinessSummary") or "")[:1000],
             "index_membership": "KLCI" if yf_ticker.endswith(".KL") and info.get("marketCap", 0) > 1e10 else "",
             
             # Snapshot date
@@ -303,6 +311,7 @@ def alpha_vantage_fallback(ticker: str) -> Optional[Dict]:
                     "ticker": ticker,
                     "company_name": data.get("Name", ticker),
                     "sector": data.get("Sector", ""),
+                    "business_summary": (data.get("Description") or "")[:1000],
                     "index_membership": "",
                     "snapshot_date": date.today().isoformat(),
                     "price": 0,  # Will be fetched separately

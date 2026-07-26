@@ -189,6 +189,15 @@ class MoatLLMJudge:
         formatted = template.replace("{ticker}", fundamentals.get("ticker", "UNKNOWN"))
         formatted = formatted.replace("{company_name}", fundamentals.get("company_name", "Unknown"))
         formatted = formatted.replace("{sector}", fundamentals.get("sector", "Unknown"))
+        # Real qualitative material (buffett/fetchers.py's business_summary,
+        # from yfinance's longBusinessSummary / Alpha Vantage's Description)
+        # -- without this, moat_strength is derived from the same ratios
+        # the heuristic fallback already uses, with nothing qualitative to
+        # actually reason about. Missing for scraped KLSE data and some
+        # tickers; the prompt itself instructs the model not to fabricate
+        # specifics when this is absent.
+        business_summary = fundamentals.get("business_summary") or "(no business description available)"
+        formatted = formatted.replace("{business_summary}", business_summary)
         formatted = formatted.replace("{pe_ratio}", str(fundamentals.get("pe_ratio", "N/A")))
         formatted = formatted.replace("{pb_ratio}", str(fundamentals.get("pb_ratio", "N/A")))
         formatted = formatted.replace("{debt_to_equity}", str(fundamentals.get("debt_to_equity", "N/A")))

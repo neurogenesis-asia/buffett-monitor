@@ -241,3 +241,41 @@ def test_fallback_judgment_moat_strength_and_mgmt_quality_are_always_valid(db_pa
         result = judge._fallback_judgment({"roe_latest": roe, "de_ratio": 0.3, "current_ratio": 1.6})
         assert result["moat_strength"] in VALID_MOAT_STRENGTH
         assert result["mgmt_quality"] in VALID_MGMT_QUALITY
+
+
+# ---------------------------------------------------------------------------
+# _format_prompt -- business_summary wiring (real qualitative material for
+# the moat judgment, vs. re-deriving from the same ratios the heuristic
+# fallback already uses)
+# ---------------------------------------------------------------------------
+
+def test_format_prompt_includes_business_summary(db_path):
+    judge = MoatLLMJudge(db_path=db_path)
+    fundamentals = dict(SAMPLE_FUNDAMENTALS, business_summary="Acme Corp makes widgets with a strong brand moat.")
+    prompt = judge._format_prompt(judge._load_prompt(), fundamentals)
+    assert "Acme Corp makes widgets with a strong brand moat." in prompt
+
+
+def test_format_prompt_missing_business_summary_uses_placeholder(db_path):
+    judge = MoatLLMJudge(db_path=db_path)
+    fundamentals = dict(SAMPLE_FUNDAMENTALS)
+    fundamentals.pop("business_summary", None)
+    prompt = judge._format_prompt(judge._load_prompt(), fundamentals)
+    assert "(no business description available)" in prompt
+    assert "{business_summary}" not in prompt  # placeholder was actually substituted
+
+
+def test_live_call_sends_business_summary_to_the_model(db_path, monkeypatch):
+    """The formatted prompt (including business_summary) must actually
+    reach the API call, not just _format_prompt in isolation."""
+    monkeypatch.setenv("OPENROUTER_API_KEY", "test-key-123")
+    judge = MoatLLMJudge(db_path=db_path)
+    fundamentals = dict(SAMPLE_FUNDAMENTALS, business_summary="Acme Corp has a dominant network-effect moat.")
+
+    content = '{"pillar1": "STRONG", "pillar2": "STRONG", "moat_strength": "STRONG", ' \
+              '"moat_rationale": "test", "mgmt_quality": "GOOD", "mgmt_rationale": "test"}'
+    with patch("buffett.moat_llm.httpx.post", return_value=_openrouter_response(content)) as mock_post:
+        judge.judge_pillars("TEST.KL", fundamentals)
+
+    sent_prompt = mock_post.call_args.kwargs["json"]["messages"][1]["content"]
+    assert "Acme Corp has a dominant network-effect moat." in sent_prompt

@@ -2270,10 +2270,17 @@ def layers_tab():
 
 TASK_DESCRIPTIONS = {
     "reasoning": (
-        "Deep-thinking tasks that require actual judgment and writing an "
-        "analytical rationale -- currently used by buffett/moat_llm.py for "
-        "moat/management quality judgment. Pick a stronger (and usually "
-        "pricier) model here."
+        "Moat/management judgment for curated, smaller watchlists (AI "
+        "Watchlist, AI Ecosystem -- tens to ~100 tickers), where judgment "
+        "quality matters more than per-call cost. Pick a stronger (and "
+        "usually pricier) model here."
+    ),
+    "universe_scan": (
+        "Moat/management judgment for the full tracked universe "
+        "(thousands of tickers, feeding the Signals tab) -- the same "
+        "call, at far higher volume, where cost matters most. Pick a "
+        "free or very cheap model here; quality differences matter less "
+        "when averaged across thousands of calls."
     ),
 }
 
@@ -2324,7 +2331,8 @@ def settings_tab():
     st.divider()
 
     for task in TASK_NAMES:
-        st.markdown(f"#### {task.title()}")
+        task_label = task.replace("_", " ").title()
+        st.markdown(f"#### {task_label}")
         st.caption(TASK_DESCRIPTIONS[task])
 
         current_chain = get_task_model_chain(task)
@@ -2373,13 +2381,13 @@ def settings_tab():
         chain_preview = " → ".join([primary_model or "(none)"] + fallback_models)
         st.caption(f"Chain that will be tried: {chain_preview}")
 
-        if st.button(f"Save {task.title()} Models", key=f"{task}_save", type="primary"):
+        if st.button(f"Save {task_label} Models", key=f"{task}_save", type="primary"):
             if not primary_model or not primary_model.strip():
                 st.error("Primary model cannot be empty.")
             else:
                 try:
                     set_task_models(task, primary_model, fallback_models)
-                    st.success(f"Saved. {task.title()} will use: {chain_preview}")
+                    st.success(f"Saved. {task_label} will use: {chain_preview}")
                     st.rerun()
                 except ValueError as e:
                     st.error(str(e))

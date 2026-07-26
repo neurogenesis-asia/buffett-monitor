@@ -47,9 +47,10 @@ def test_run_weekly_scan_delegates_to_main_scanner_with_watchlist_tickers(monkey
 
     captured = {}
 
-    def fake_run_weekly_scan(db_path, tickers=None):
+    def fake_run_weekly_scan(db_path, tickers=None, moat_task=None):
         captured["db_path"] = db_path
         captured["tickers"] = tickers
+        captured["moat_task"] = moat_task
         return {"successful": 2, "failed": 0}
 
     monkeypatch.setattr("buffett.scanner_ai._run_weekly_scan", fake_run_weekly_scan)
@@ -57,5 +58,8 @@ def test_run_weekly_scan_delegates_to_main_scanner_with_watchlist_tickers(monkey
     result = run_weekly_scan(db_path="some.db")
 
     assert captured["db_path"] == "some.db"
+    # AI Watchlist is a small, curated list -- worth the "reasoning" chain's
+    # quality over the cost-optimized "universe_scan" default.
+    assert captured["moat_task"] == "reasoning"
     assert captured["tickers"] == ["NVDA", "AVGO"]
     assert result == {"successful": 2, "failed": 0}

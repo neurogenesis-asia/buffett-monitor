@@ -29,13 +29,19 @@ import yaml
 DEFAULT_CONFIG_PATH = "config/settings.yaml"
 MAX_FALLBACKS = 5
 
-# Task names this codebase currently assigns models to. "reasoning" is
-# used by buffett/moat_llm.py's moat/management judgment (it writes an
-# analytical rationale, not just structured extraction).
-TASK_NAMES = ["reasoning"]
+# Task names this codebase currently assigns models to.
+# - "reasoning": moat/management judgment for curated, smaller watchlists
+#   (AI Watchlist, AI Ecosystem -- tens to ~100 tickers), where judgment
+#   quality matters more than per-call cost.
+# - "universe_scan": moat/management judgment for the full tracked
+#   universe (thousands of tickers, feeding the Signals tab) -- the same
+#   call, at far higher volume, where cost matters most. Defaults to a
+#   free OpenRouter model; pick your own via the Settings tab.
+TASK_NAMES = ["reasoning", "universe_scan"]
 
 DEFAULT_TASK_MODELS = {
     "reasoning": {"primary": "anthropic/claude-3-haiku", "fallbacks": []},
+    "universe_scan": {"primary": "openai/gpt-oss-20b:free", "fallbacks": ["google/gemma-4-31b-it:free"]},
 }
 
 

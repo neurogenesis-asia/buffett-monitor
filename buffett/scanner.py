@@ -103,12 +103,25 @@ def _check_price_sanity(ticker: str, fundamentals: Dict, db_path: str) -> str:
     return fundamentals.get("fundamentals_flag") or "NORMAL"
 
 
-def run_weekly_scan(db_path: str = "data/buffett.db", tickers: list[str] | None = None) -> Dict:
+def run_weekly_scan(
+    db_path: str = "data/buffett.db",
+    tickers: list[str] | None = None,
+    moat_task: str = "universe_scan",
+) -> Dict:
     """
     Run a weekly scan over the entire universe.
 
     Args:
         db_path: Path to SQLite database
+        tickers: Optional ticker subset (None = full active universe).
+        moat_task: Which model chain (buffett/config.py's TASK_NAMES) to
+            use for moat judgment. Defaults to "universe_scan" -- this
+            function is what the Signals tab's data ultimately comes from
+            (whether run over the full universe or a cron slice), so by
+            default it uses the cost-optimized chain rather than the
+            "reasoning" chain reserved for smaller, curated watchlists
+            (buffett/scanner_ai.py, buffett/scanner_ecosystem.py
+            explicitly pass moat_task="reasoning" when delegating here).
 
     Returns:
         Summary dictionary with scan results
@@ -206,7 +219,7 @@ def run_weekly_scan(db_path: str = "data/buffett.db", tickers: list[str] | None 
             # Enhanced scoring (AI + classic + news sentiment)
             sector = fundamentals.get("sector", "")
             industry = fundamentals.get("industry", "")
-            moat_judgment = judge_moat(ticker, fundamentals, db_path=db_path)
+            moat_judgment = judge_moat(ticker, fundamentals, db_path=db_path, task=moat_task)
             moat_strength = moat_judgment.get("moat_strength", "UNKNOWN")
             
             quant_score, passed_criteria, signal, scoring_metadata = compute_enhanced_score(

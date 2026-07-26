@@ -124,9 +124,10 @@ def test_get_pillar_cache_days_from_file(config_path):
     assert get_pillar_cache_days(config_path) == 30
 
 
-def test_task_names_includes_reasoning_only():
+def test_task_names_includes_reasoning_and_universe_scan():
     # "extraction" was removed: it had no real call site anywhere in the
     # codebase and only showed up as a confusing, do-nothing control in
     # the Settings tab. Add a task name back only once a real consumer
-    # exists for it.
-    assert TASK_NAMES == ["reasoning"]
+    # exists for it. "reasoning" (curated watchlists) and "universe_scan"
+    # (full universe, cost-optimized) both have real call sites.
+    assert TASK_NAMES == ["reasoning", "universe_scan"]

@@ -96,7 +96,7 @@ def test_run_weekly_scan_produces_categorized_signal_not_null(db_path, monkeypat
     monkeypatch.setattr(scanner_module, "fetch_fundamentals", lambda t: _good_fundamentals(t))
     monkeypatch.setattr(
         scanner_module, "judge_moat",
-        lambda t, f, db_path=None: {
+        lambda t, f, db_path=None, task=None: {
             "pillar1": "STRONG", "pillar2": "STRONG", "moat_strength": "STRONG",
             "moat_rationale": "test", "mgmt_quality": "GOOD", "mgmt_rationale": "test",
         },
@@ -130,7 +130,7 @@ def test_run_weekly_scan_good_fundamentals_and_strong_moat_yields_buy(db_path, m
     monkeypatch.setattr(scanner_module, "fetch_fundamentals", lambda t: _good_fundamentals(t))
     monkeypatch.setattr(
         scanner_module, "judge_moat",
-        lambda t, f, db_path=None: {
+        lambda t, f, db_path=None, task=None: {
             "pillar1": "STRONG", "pillar2": "STRONG", "moat_strength": "STRONG",
             "moat_rationale": "test", "mgmt_quality": "GOOD", "mgmt_rationale": "test",
         },
@@ -151,7 +151,7 @@ def test_run_weekly_scan_intrinsic_value_is_single_sourced_from_enhanced_score(d
     monkeypatch.setattr(scanner_module, "fetch_fundamentals", lambda t: _good_fundamentals(t))
     monkeypatch.setattr(
         scanner_module, "judge_moat",
-        lambda t, f, db_path=None: {
+        lambda t, f, db_path=None, task=None: {
             "pillar1": "STRONG", "pillar2": "STRONG", "moat_strength": "STRONG",
             "moat_rationale": "test", "mgmt_quality": "GOOD", "mgmt_rationale": "test",
         },
@@ -321,7 +321,7 @@ def test_run_weekly_scan_persists_judgment_source_and_model_used(db_path, monkey
     monkeypatch.setattr(scanner_module, "fetch_fundamentals", lambda t: _good_fundamentals(t))
     monkeypatch.setattr(
         scanner_module, "judge_moat",
-        lambda t, f, db_path=None: {
+        lambda t, f, db_path=None, task=None: {
             "pillar1": "STRONG", "pillar2": "STRONG", "moat_strength": "STRONG",
             "moat_rationale": "test", "mgmt_quality": "GOOD", "mgmt_rationale": "test",
             "judgment_source": "llm", "model_used": "anthropic/claude-3-haiku",
@@ -348,7 +348,7 @@ def test_run_weekly_scan_heuristic_fallback_has_no_model_used(db_path, monkeypat
     monkeypatch.setattr(scanner_module, "fetch_fundamentals", lambda t: _good_fundamentals(t))
     monkeypatch.setattr(
         scanner_module, "judge_moat",
-        lambda t, f, db_path=None: {
+        lambda t, f, db_path=None, task=None: {
             "pillar1": "STRONG", "pillar2": "STRONG", "moat_strength": "STRONG",
             "moat_rationale": "test", "mgmt_quality": "GOOD", "mgmt_rationale": "test",
             "judgment_source": "heuristic_fallback",

@@ -89,6 +89,59 @@ def test_uses_model_from_settings_yaml_not_a_hardcoded_constant(db_path, monkeyp
     assert sent_model == "openai/gpt-4o-mini"
 
 
+def test_judge_pillars_defaults_to_reasoning_task(db_path, monkeypatch):
+    monkeypatch.setenv("OPENROUTER_API_KEY", "test-key-123")
+    captured_task = {}
+
+    def fake_get_task_model_chain(task):
+        captured_task["task"] = task
+        return ["openai/gpt-4o-mini"]
+
+    monkeypatch.setattr("buffett.moat_llm.get_task_model_chain", fake_get_task_model_chain)
+    judge = MoatLLMJudge(db_path=db_path)
+    content = '{"pillar1": "STRONG", "pillar2": "STRONG", "moat_strength": "STRONG", ' \
+              '"moat_rationale": "test", "mgmt_quality": "GOOD", "mgmt_rationale": "test"}'
+    with patch("buffett.moat_llm.httpx.post", return_value=_openrouter_response(content)):
+        judge.judge_pillars("TEST.KL", SAMPLE_FUNDAMENTALS)
+
+    assert captured_task["task"] == "reasoning"
+
+
+def test_judge_pillars_uses_explicit_task_when_given(db_path, monkeypatch):
+    monkeypatch.setenv("OPENROUTER_API_KEY", "test-key-123")
+    captured_task = {}
+
+    def fake_get_task_model_chain(task):
+        captured_task["task"] = task
+        return ["openai/gpt-oss-20b:free"]
+
+    monkeypatch.setattr("buffett.moat_llm.get_task_model_chain", fake_get_task_model_chain)
+    judge = MoatLLMJudge(db_path=db_path)
+    content = '{"pillar1": "STRONG", "pillar2": "STRONG", "moat_strength": "STRONG", ' \
+              '"moat_rationale": "test", "mgmt_quality": "GOOD", "mgmt_rationale": "test"}'
+    with patch("buffett.moat_llm.httpx.post", return_value=_openrouter_response(content)):
+        judge.judge_pillars("TEST.KL", SAMPLE_FUNDAMENTALS, task="universe_scan")
+
+    assert captured_task["task"] == "universe_scan"
+
+
+def test_judge_moat_passes_task_through(monkeypatch):
+    monkeypatch.delenv("OPENROUTER_API_KEY", raising=False)
+    captured = {}
+
+    class FakeJudge:
+        def __init__(self, db_path):
+            pass
+
+        def judge_pillars(self, ticker, fundamentals, task="reasoning"):
+            captured["task"] = task
+            return {}
+
+    monkeypatch.setattr("buffett.moat_llm.MoatLLMJudge", FakeJudge)
+    judge_moat("TEST.KL", SAMPLE_FUNDAMENTALS, task="universe_scan")
+    assert captured["task"] == "universe_scan"
+
+
 def test_falls_back_to_second_model_when_primary_fails(db_path, monkeypatch):
     """The primary model in the chain errors out (e.g. rate limited,
     deprecated); the next model in the chain should be tried before

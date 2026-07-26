@@ -62,7 +62,10 @@ def run_weekly_scan(db_path: str = "data/buffett.db") -> Dict:
     ticker subset instead of the full universe."""
     tickers = load_ai_watchlist()
     logger.info(f"Scanning {len(tickers)} AI watchlist tickers via the main scanner pipeline...")
-    return _run_weekly_scan(db_path=db_path, tickers=tickers)
+    # "reasoning" (not the default "universe_scan"): this is a small,
+    # curated watchlist (tens of tickers), not the full universe -- worth
+    # spending on judgment quality rather than the cost-optimized chain.
+    return _run_weekly_scan(db_path=db_path, tickers=tickers, moat_task="reasoning")
 
 
 if __name__ == "__main__":

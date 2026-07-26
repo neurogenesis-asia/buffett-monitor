@@ -101,16 +101,22 @@ class MoatLLMJudge:
         with open(prompt_path, 'r') as f:
             return f.read()
     
-    def judge_pillars(self, ticker: str, fundamentals: Dict) -> Dict:
+    def judge_pillars(self, ticker: str, fundamentals: Dict, task: str = "reasoning") -> Dict:
         """
         Judge the moat strength (Pillars 1 and 2) using LLM.
-        
+
         Args:
             ticker: Stock ticker
             fundamentals: Dictionary of fundamental metrics
-           
+            task: Which model chain to use (buffett/config.py's TASK_NAMES)
+                -- "reasoning" for curated, smaller watchlists where
+                judgment quality matters most; "universe_scan" for the
+                full tracked universe, where call volume is in the
+                thousands and cost matters most (defaults to a free
+                OpenRouter model, configurable via the Settings tab).
+
         Returns:
-            Dictionary with keys: pillar1, pillar2, moat_strength, moat_rationale, 
+            Dictionary with keys: pillar1, pillar2, moat_strength, moat_rationale,
                               mgmt_quality, mgmt_rationale
         """
         # Check cache first
@@ -128,12 +134,11 @@ class MoatLLMJudge:
         # Format the prompt with the fundamentals
         prompt = self._format_prompt(prompt_template, fundamentals)
 
-        # Moat/management judgment is a "reasoning" task (it writes an
-        # analytical rationale, not just structured extraction) -- try the
-        # configured primary model, then each configured fallback in
-        # order, so one bad/rate-limited/deprecated model doesn't take the
-        # whole pipeline down onto the heuristic fallback.
-        model_chain = get_task_model_chain("reasoning")
+        # Try the configured primary model for this task, then each
+        # configured fallback in order, so one bad/rate-limited/deprecated
+        # model doesn't take the whole pipeline down onto the heuristic
+        # fallback.
+        model_chain = get_task_model_chain(task)
         last_error = None
         for model in model_chain:
             try:
@@ -334,7 +339,7 @@ class MoatLLMJudge:
             "judgment_source": "heuristic_fallback",
         }
 
-def judge_moat(ticker: str, fundamentals: Dict, db_path: str = "data/buffett.db") -> Dict:
+def judge_moat(ticker: str, fundamentals: Dict, db_path: str = "data/buffett.db", task: str = "reasoning") -> Dict:
     """
     Convenience function to judge moat for a ticker.
 
@@ -346,9 +351,10 @@ def judge_moat(ticker: str, fundamentals: Dict, db_path: str = "data/buffett.db"
             was hardcoded to the default, so a scan against a non-default
             database (e.g. a test DB) would silently cache moat judgments
             into the wrong file.
+        task: Which model chain to use (see MoatLLMJudge.judge_pillars).
 
     Returns:
         Dictionary with moat judgment
     """
     judge = MoatLLMJudge(db_path=db_path)
-    return judge.judge_pillars(ticker, fundamentals)
+    return judge.judge_pillars(ticker, fundamentals, task=task)

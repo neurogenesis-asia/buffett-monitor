@@ -113,11 +113,28 @@ def init_database(db_path: str = "data/buffett.db"):
         mgmt_quality       TEXT CHECK (mgmt_quality IN
                          ('POOR','AVERAGE','GOOD','EXCELLENT','UNKNOWN')),
         mgmt_rationale     TEXT,
+        -- Transparency: was moat_strength/mgmt_quality a real LLM judgment
+        -- or the ratio-derived heuristic fallback (buffett/moat_llm.py)?
+        -- NULL for ETFs, where moat judgment doesn't apply at all.
+        judgment_source    TEXT CHECK (judgment_source IN ('llm','heuristic_fallback')),
+        model_used         TEXT,
         created_at         DATETIME DEFAULT CURRENT_TIMESTAMP,
         UNIQUE(ticker, snapshot_date)
     );
     """)
-    
+
+    # Migration: add judgment_source/model_used to buffett_scores if this
+    # table already existed before they were added (CREATE TABLE IF NOT
+    # EXISTS above is a no-op on an existing table). moat_llm.py has
+    # computed judgment_source/model_used since #5/OpenRouter fallback
+    # work, but there was nowhere to persist it -- it was silently
+    # discarded on every scan.
+    for column, coltype in [("judgment_source", "TEXT"), ("model_used", "TEXT")]:
+        try:
+            cursor.execute(f"ALTER TABLE buffett_scores ADD COLUMN {column} {coltype}")
+        except sqlite3.OperationalError:
+            pass  # column already exists
+
     # 3.4 User holdings
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS buffett_holdings (

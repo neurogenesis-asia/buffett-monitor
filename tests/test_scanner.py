@@ -306,3 +306,66 @@ def test_price_sanity_preserves_existing_flag_when_no_deviation_check_applies(db
     fundamentals = {"price": 0, "data_sources_json": '["malaysiastock"]', "fundamentals_flag": "LOSS_MAKING"}
     flag = _check_price_sanity("ABC.KL", fundamentals, db_path)
     assert flag == "LOSS_MAKING"
+
+
+# ---------------------------------------------------------------------------
+# judgment_source / model_used persistence -- previously computed by
+# buffett/moat_llm.py and then silently discarded (buffett_scores had no
+# column for it, and the dynamic PRAGMA-based INSERT in _save_scores only
+# writes columns that exist in the table).
+# ---------------------------------------------------------------------------
+
+def test_run_weekly_scan_persists_judgment_source_and_model_used(db_path, monkeypatch):
+    tickers = ["GOODCO"]
+    _seed_universe(db_path, tickers)
+    monkeypatch.setattr(scanner_module, "fetch_fundamentals", lambda t: _good_fundamentals(t))
+    monkeypatch.setattr(
+        scanner_module, "judge_moat",
+        lambda t, f, db_path=None: {
+            "pillar1": "STRONG", "pillar2": "STRONG", "moat_strength": "STRONG",
+            "moat_rationale": "test", "mgmt_quality": "GOOD", "mgmt_rationale": "test",
+            "judgment_source": "llm", "model_used": "anthropic/claude-3-haiku",
+        },
+    )
+
+    run_weekly_scan(db_path=db_path)
+
+    conn = sqlite3.connect(db_path)
+    try:
+        row = conn.execute(
+            "SELECT judgment_source, model_used FROM buffett_scores WHERE ticker = ?",
+            (tickers[0],),
+        ).fetchone()
+    finally:
+        conn.close()
+
+    assert row == ("llm", "anthropic/claude-3-haiku")
+
+
+def test_run_weekly_scan_heuristic_fallback_has_no_model_used(db_path, monkeypatch):
+    tickers = ["GOODCO"]
+    _seed_universe(db_path, tickers)
+    monkeypatch.setattr(scanner_module, "fetch_fundamentals", lambda t: _good_fundamentals(t))
+    monkeypatch.setattr(
+        scanner_module, "judge_moat",
+        lambda t, f, db_path=None: {
+            "pillar1": "STRONG", "pillar2": "STRONG", "moat_strength": "STRONG",
+            "moat_rationale": "test", "mgmt_quality": "GOOD", "mgmt_rationale": "test",
+            "judgment_source": "heuristic_fallback",
+            # no model_used key -- matches buffett/moat_llm.py's _fallback_judgment,
+            # which never sets it
+        },
+    )
+
+    run_weekly_scan(db_path=db_path)
+
+    conn = sqlite3.connect(db_path)
+    try:
+        row = conn.execute(
+            "SELECT judgment_source, model_used FROM buffett_scores WHERE ticker = ?",
+            (tickers[0],),
+        ).fetchone()
+    finally:
+        conn.close()
+
+    assert row == ("heuristic_fallback", None)

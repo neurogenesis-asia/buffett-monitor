@@ -118,6 +118,7 @@ def display_watchlist(ai_stocks, fundamentals_df, signal_filter="All", sector_fi
         graham_number = 0
         signal = "N/A"
         moat_strength = "N/A"
+        moat_source = "-"
         quant_score = 0
         sector = "-"
         exchange = "UNKNOWN"
@@ -151,6 +152,7 @@ def display_watchlist(ai_stocks, fundamentals_df, signal_filter="All", sector_fi
                 signal       = srow.get("signal", "N/A") or "N/A"
                 moat_strength = srow.get("moat_strength", "N/A") or "N/A"
                 quant_score  = srow.get("quant_score", 0) or 0
+                moat_source  = {"llm": "🤖 LLM", "heuristic_fallback": "📐 Heuristic"}.get(srow.get("judgment_source"), "-")
         
         # Pull sector/exchange/company from universe (fallback to provided)
         if universe_df is not None and not universe_df.empty:
@@ -193,6 +195,7 @@ def display_watchlist(ai_stocks, fundamentals_df, signal_filter="All", sector_fi
             "QS": f"{quant_score:.1f}" if quant_score > 0 else "N/A",
             "Signal": signal,
             "Moat": moat_strength,
+            "Moat Source": moat_source,
             "Graham": f"{currency_symbol} {graham_number:.2f}" if graham_number > 0 else "N/A",
             "IV": f"{currency_symbol} {iv_per_share:.2f}" if iv_per_share > 0 else "N/A",
             "MOS": f"{margin_of_safety*100:.1f}%" if margin_of_safety > 0 else "N/A",
@@ -1271,6 +1274,13 @@ def signals_tab():
             # render as the literal string "None"/"NaN" in the table.
             'Signal': row['signal'] if pd.notna(row.get('signal')) else '-',
             'Moat': row['moat_strength'] if pd.notna(row.get('moat_strength')) else '-',
+            # judgment_source distinguishes a real LLM moat judgment
+            # (buffett/moat_llm.py, via OpenRouter) from the ratio-derived
+            # heuristic fallback used when no API key is configured or the
+            # whole model chain fails -- this was computed on every scan
+            # but had nowhere to persist to until now, so it was
+            # impossible to tell the two apart from the dashboard.
+            'Moat Source': {"llm": "🤖 LLM", "heuristic_fallback": "📐 Heuristic"}.get(row.get('judgment_source'), '-'),
             'Graham': f"{currency_symbol} {row.get('graham_number', 0):.2f}" if row.get('graham_number') else '-',
             'IV': (f"{currency_symbol} {(row.get('intrinsic_value', 0) or 0) / row['shares_outstanding']:.2f}"
                    if row.get('intrinsic_value') and row.get('shares_outstanding')

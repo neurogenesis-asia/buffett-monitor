@@ -386,7 +386,23 @@ def main():
     logger.info(f"\nRegime stored in database (ID: {regime_id})")
     
     conn.close()
-    
+
+    # Multi-region (US/Malaysia/Asia/Global) regime + Fear & Greed for the
+    # Intelligence tab. Kept in a try/except so a failure here (e.g. a
+    # regional index ticker issue) can never break the US regime storage
+    # above, which buffett/scanner.py's signal thresholds actually depend on.
+    try:
+        from buffett.regime_detector import run_all_regions
+        region_results = run_all_regions(DB_PATH)
+        for region, result in region_results.items():
+            if "error" not in result:
+                logger.info(f"  {region}: {result['regime']['regime']} "
+                            f"(Fear & Greed: {result['fear_greed']['score']} {result['fear_greed']['label']})")
+            else:
+                logger.warning(f"  {region}: failed - {result['error']}")
+    except Exception as e:
+        logger.error(f"Multi-region regime detection failed (US regime above is unaffected): {e}")
+
     logger.info("=" * 60)
     logger.info("Regime detection complete")
     logger.info("=" * 60)
